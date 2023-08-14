@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.T_userDAO">
+
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="com.smhrd.entity.T_user">
+		insert into t_user
+		values(
+			#{u_email},
+			#{u_pw},
+			#{u_nick},
+			#{u_lolcd}
+		)
+	
+	</insert>
+	
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="com.smhrd.entity.T_user" resultType="com.smhrd.entity.T_user">
+  		select * from t_user
+  		where u_email = #{u_email}
+  		and u_pw = #{u_pw}
+  	</select>
+  	
+  	
+	<!-- 회원정보변경 -->
+	<update id="update" parameterType="com.smhrd.entity.T_user">
+		update t_user 
+			set u_pw = #{u_pw},
+				u_nick = #{u_nick}
+		where u_email = #{u_email}
+		
+	</update>
+	
+	
+	<!-- 회원정보확인 -->
+	<select id="check" resultType="com.smhrd.entity.T_user">
+		select * from t_user
+		where u_email = #{u_email}
+	</select>
+	
+	 
+	<!-- 회원탈퇴 -->
+	<delete id="delete" parameterType="com.smhrd.entity.T_user">
+  		delete from t_user
+  		where u_id=#{u_id} and u_pw=#{u_pw}
+  	</delete>
+  	
+  	
+  	
+  	<!-- 회원관리 -->
+  	<select id="list" resultType="com.smhrd.entity.T_user">
+  		select * from t_user
+  	</select>
+
+
+</mapper>
