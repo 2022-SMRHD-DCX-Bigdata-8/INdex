@@ -6,10 +6,12 @@
 	<insert id="join" parameterType="com.smhrd.entity.T_user">
 		insert into t_user
 		values(
+			#{u_name},
 			#{u_email},
 			#{u_pw},
 			#{u_nick},
-			#{u_lolcd}
+			#{u_lolcd},
+			#{u_tel}
 		)
 	
 	</insert>
