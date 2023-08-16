@@ -1,20 +1,20 @@
 package com.smhrd.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SqlSessionManager;
-import com.smhrd.entity.T_userdata;
+import com.smhrd.entity.L_ghostdata;
 
-public class T_userdataDAO {
+public class L_ghostdataDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 	
-	public List<T_userdata> udview() {
-		SqlSession session = factory.openSession(true);
-		List<T_userdata> list = session.selectList("fdlist");
+	
+	public L_ghostdata fdview(L_ghostdata t_ghostdata) {
+		SqlSession session = factory.openSession();
+		L_ghostdata result = session.selectOne("fdview",t_ghostdata);
 		session.close();
-		return list;
+		
+		return result;
 	}
 }

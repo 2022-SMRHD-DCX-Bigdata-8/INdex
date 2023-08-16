@@ -1,19 +1,20 @@
 package com.smhrd.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SqlSessionManager;
-import com.smhrd.entity.T_feedback;
+import com.smhrd.entity.L_userdata;
 
-public class T_feedbackDAO {
+public class L_userdataDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 	
-	public T_feedback fdview(T_feedback t_feedback) {
-		SqlSession session = factory.openSession();
-		T_feedback result = session.selectOne("fdview",t_feedback);
+	public List<L_userdata> udview() {
+		SqlSession session = factory.openSession(true);
+		List<L_userdata> list = session.selectList("fdlist");
 		session.close();
-		
-		return result;
+		return list;
 	}
 }

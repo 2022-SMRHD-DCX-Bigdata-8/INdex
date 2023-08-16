@@ -18,21 +18,22 @@ import javax.servlet.http.HttpSession;
 // == 모든 요청을 단 하나의 서블릿으로 처리
 // *.do : .do로 끝나는 모든 요청을 받겠다.
 @WebServlet("*.do")
-public class FrontController extends HttpServlet {
+public class L_FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	// HashMap 자료구조
 	// python의 dict와 유사 : KEY - VALUE 짝지어서 저장, KEY를 이용해서 조회
-	private HashMap<String, Controller> handler;
+	private HashMap<String, L_Controller> handler;
 	
 	@Override
 	public void init() throws ServletException {
 		// Servlet이 메모리에 등록되었을 때 단 한번만 실행
 		
-		handler = new HashMap<String, Controller>();
+		handler = new HashMap<String, L_Controller>();
 		
 		// HashMap에 데이터 집어넣기
-		// handler.put("/goMain.do", new GoMainCon());
+		handler.put("/login.do", new L_LoginCon());
+		handler.put("/goLogin.do", new L_GoLoginCon());
 		
 	}
 	
@@ -53,7 +54,7 @@ public class FrontController extends HttpServlet {
 		// ===========================================================================================
 		String url = "";
 
-		Controller con = null;
+		L_Controller con = null;
 		// 2. 요청을 구분해서 알맞는 코드를 실행
 		// HasHMap에서 저장되어 있는 POJO 하나 꺼내오기
 		
@@ -71,7 +72,7 @@ public class FrontController extends HttpServlet {
 				// ["redirect", "goMain.do"]
 				response.sendRedirect(url.split(":/")[1]);
 			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + url + ".jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + url + ".jsp");
 				rd.forward(request, response);
 			}
 		}

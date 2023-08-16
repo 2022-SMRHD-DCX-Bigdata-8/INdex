@@ -1,6 +1,6 @@
 package com.smhrd.entity;
 
-public class T_feedback {
+public class L_feedback {
 	private int fd_idx; 
 	private String u_email;
 	private String postive_yn;

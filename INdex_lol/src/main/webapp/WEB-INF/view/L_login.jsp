@@ -14,12 +14,12 @@
 <div id='stars2'></div>
 <div id='stars3'></div>
 
-    <link rel="stylesheet" href="연습.css">
+    <link rel="stylesheet" href="assets/css/login.css">
     <section class="login">
         <div class="login_box">
             <div class="left">
                 <div class="contact">
-                    <form action="#">
+                    <form action="login.do" method="post">
                         <h3>로그인</h3>
                         <input class="input_text" type="text" placeholder="아이디를 입력해주세요">
                         <input class="input_text" type="text" placeholder="비밀번호를 입력해주세요">

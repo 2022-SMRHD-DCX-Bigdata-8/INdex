@@ -8,32 +8,32 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SqlSessionManager;
-import com.smhrd.entity.T_user;
+import com.smhrd.entity.L_user;
 
-public class T_userDAO {
+public class L_userDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 	
-	public int join(T_user t_user) {
+	public int join(L_user t_user) {
 		SqlSession session = factory.openSession(true);
 		int result = session.insert("join", t_user);
 		session.close();
 		return result;
 	}
-	public T_user login(T_user t_user) {
+	public L_user login(L_user t_user) {
 		SqlSession session = factory.openSession(true);
-		T_user result = session.selectOne("login", t_user);
+		L_user result = session.selectOne("login", t_user);
 		session.close();
 		return result;
 	}
 	
-	public int update(T_user t_user) {
+	public int update(L_user t_user) {
 		SqlSession session = factory.openSession(true);
 		int result = session.insert("update", t_user);
 		session.close();
 		return result;
 	}
 	
-	public int delete(T_user t_user) {
+	public int delete(L_user t_user) {
 		SqlSession session = factory.openSession(true);
 		int result = session.insert("delete", t_user);
 		session.close();
@@ -41,18 +41,18 @@ public class T_userDAO {
 	}
 	
 	
-	public List<T_user> udview() {
+	public List<L_user> udview() {
 		SqlSession session = factory.openSession(true);
-		List<T_user> list = session.selectList("list");
+		List<L_user> list = session.selectList("list");
 		session.close();
 		return list;
 	}
 	
 	
-	public T_user check(String email) {
+	public L_user check(String email) {
 		SqlSession session = factory.openSession();
 		
-		T_user list = session.selectOne("check", email);
+		L_user list = session.selectOne("check", email);
 		
 		session.close();
 		

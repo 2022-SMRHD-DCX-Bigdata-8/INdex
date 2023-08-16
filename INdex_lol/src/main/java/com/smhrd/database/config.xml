@@ -29,10 +29,10 @@
   Mapper 파일을 만들때마다 추가해야한다.
   -->
   <mappers>
-    <mapper resource="com/smhrd/dao/T_feedbackMapper.xml"/>
-    <mapper resource="com/smhrd/dao/T_ghostdataMapper.xml"/>
-    <mapper resource="com/smhrd/dao/T_userdataMapper.xml"/>
-    <mapper resource="com/smhrd/dao/T_userMapper.xml"/>
+    <mapper resource="com/smhrd/dao/L_feedbackMapper.xml"/>
+    <mapper resource="com/smhrd/dao/L_ghostdataMapper.xml"/>
+    <mapper resource="com/smhrd/dao/L_userdataMapper.xml"/>
+    <mapper resource="com/smhrd/dao/L_userMapper.xml"/>
   </mappers>
 </configuration>
 

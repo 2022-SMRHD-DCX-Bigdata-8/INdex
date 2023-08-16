@@ -1,6 +1,6 @@
 package com.smhrd.entity;
 
-public class T_userdata {
+public class L_userdata {
 	private int u_idx ;
 	private String u_email ;
 	private String u_ranl;

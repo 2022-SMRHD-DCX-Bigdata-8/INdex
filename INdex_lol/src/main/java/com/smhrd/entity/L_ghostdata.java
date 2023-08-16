@@ -1,6 +1,6 @@
 package com.smhrd.entity;
 
-public class T_ghostdata {
+public class L_ghostdata {
 	private int g_idx ;
 	private String u_email ;
 	private String g_ranl;
