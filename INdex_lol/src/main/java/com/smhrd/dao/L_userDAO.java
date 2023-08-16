@@ -49,16 +49,28 @@ public class L_userDAO {
 	}
 	
 	
-	public L_user check(String email) {
+	public L_user emailCheck(String email) {
 		SqlSession session = factory.openSession();
 		
-		L_user list = session.selectOne("check", email);
+		L_user list = session.selectOne("eCheck", email);
 		
 		session.close();
 		
 		return list;
 		
 	}
+	
+	public L_user nickCheck(String nick) {
+		SqlSession session = factory.openSession();
+		
+		L_user list = session.selectOne("nCheck", nick);
+		
+		session.close();
+		
+		return list;
+		
+	}
+	
 	
 	
 	

@@ -22,8 +22,6 @@ public class JoinTestController implements L_Controller {
 		String lolNick = request.getParameter("lolNickname");
 		L_user member = new L_user();
 		L_userDAO dao = new L_userDAO();
-		
-		
 
 		try {
 			member.setU_EMAIL(email);
@@ -31,30 +29,34 @@ public class JoinTestController implements L_Controller {
 			member.setU_NICK(lolNick);
 			member.setU_TEL(tel);
 			member.setU_NAME(name);
-			
+
 			System.out.printf("Email: %s, 비밀번호: %s, LoL 닉네임: %s\n", email, pw, lolNick);
 			// API 호출 및 고유 id 찾아오는 로직
 			String puuid = ApiUtils.getLolpuuid(lolNick);
 			member.setU_LOLCD(puuid);
 			System.out.println(puuid);
-			
-			member = new L_user(email,pw,lolNick,puuid,name,tel);
+
+			member = new L_user(email, pw, lolNick, puuid, name, tel);
 			System.out.println(member);
 
 			// 데이터베이스에 저장
 			int cnt = dao.join(member);
 
-			if(cnt > 0) {
+			if (cnt > 0) {
+				// 회원가입 성공
+				response.sendRedirect("main.jsp");
+			} else {
+
 				
-				// 회원가입 완료 페이지로 이동 
-				response.sendRedirect("main.jsp");
-			}else {
-				System.out.println("회원가입실패");
-				response.sendRedirect("main.jsp");
+				return "main";
 			}
+
 		} catch (Exception e) {
-			e.printStackTrace();
-			// 에러 처리 로직
+			
+				e.printStackTrace();
+				request.setAttribute("apiError", "API 호출에 실패했습니다. 닉네임을 확인해주세요.");
+			
+			return "main";
 		}
 		return null;
 	}

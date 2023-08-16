@@ -39,10 +39,17 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/goUpdate.do", new L_GoUpdateCon());
 		
 		
-		////////////////////////////////////////////////////////////////
+		//ajax
+		handler.put("/eCheck.do", new EmailCheckCon());
+		handler.put("/nCheck.do", new NickCheckCon());
+		
+		
+		
+		////test////////////////////////////////////////
 		handler.put("/goMaintest.do", new goMainTestCon());
 		handler.put("/goGettest.do", new goGetTestCon());
 		handler.put("/Jointest.do", new JoinTestController());
+		
 		
 	}
 	
