@@ -3,12 +3,14 @@ package com.smhrd.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class L_user {
-	private String u_name;
+	public L_user(String email, String pw, String lolNick, String puuid) {
+		// TODO Auto-generated constructor stub
+	}
+	private String u_nema;
 	private String u_email;
 	private String u_pw;
 	private String u_nick;

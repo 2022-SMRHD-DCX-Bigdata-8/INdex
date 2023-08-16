@@ -2,7 +2,6 @@ package com.smhrd.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
 // FrontController 디자인패턴
@@ -39,6 +37,12 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/goJoin.do", new L_GoJoinCon());
 		handler.put("/update.do", new L_UpdateCon());
 		handler.put("/goUpdate.do", new L_GoUpdateCon());
+		
+		
+		////////////////////////////////////////////////////////////////
+		handler.put("/goMaintest.do", new goMainTestCon());
+		handler.put("/goGettest.do", new goGetTestCon());
+		handler.put("/Jointest.do", new JoinTestController());
 		
 	}
 	

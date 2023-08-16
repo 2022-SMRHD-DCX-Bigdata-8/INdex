@@ -1,5 +1,12 @@
 package com.smhrd.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class L_ghostdata {
 	private int g_idx ;
 	private String u_email ;
