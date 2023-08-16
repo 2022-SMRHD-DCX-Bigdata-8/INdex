@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.smhrd.dao.L_userDAO;
 import com.smhrd.entity.L_user;
 
-public class L_LoginCon implements L_Controller {
+public class L_MainCon implements L_Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
@@ -39,7 +39,7 @@ public class L_LoginCon implements L_Controller {
 			System.out.println("실패");
 		}
 		
-		return "redirect:/goLogin.do";
+		return "redirect:/goMain.do";
 	}
 
 }
