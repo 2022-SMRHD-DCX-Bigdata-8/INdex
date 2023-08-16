@@ -10,12 +10,11 @@ import javax.servlet.http.HttpSession;
 import com.smhrd.dao.L_userDAO;
 import com.smhrd.entity.L_user;
 
-public class L_MainCon implements L_Controller {
+public class L_LoginCon implements L_Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		String u_email = request.getParameter("u_email");
 		String u_pw = request.getParameter("u_pw");
@@ -39,7 +38,8 @@ public class L_MainCon implements L_Controller {
 			System.out.println("실패");
 		}
 		
-		return "redirect:/goMain.do";
+		return "redirect:/goLogin.do";
 	}
+	
 
 }

@@ -15,10 +15,13 @@
         .joinForm {
             visibility: hidden;
         }
+        .right{
+        background-image: url("assets/img/ball.jpg") !important ;
+        }
     </style>
 </head>
 
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/login.css">
 <body>
  <!-- 백그라운드 배경 html -->
     <!-- Starbackground -->
@@ -26,7 +29,7 @@
     <div id='stars2'></div>
     <div id='stars3'></div>
 
-    <link rel="stylesheet" href="연습.css">
+    
     <div class="all">
         <section class="login">
             <div class="login_box">
@@ -43,7 +46,7 @@
 
                         <button id="join" type="submit">회원가입</button>
 
-                        <span><a href="#">아이디/비밀번호를 잊으셨나요?</a></span>
+                        <span><a href="goFind.do">아이디/비밀번호를 잊으셨나요?</a></span>
 
                     </div>
 
