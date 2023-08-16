@@ -34,6 +34,7 @@ public class L_FrontController extends HttpServlet {
 		// HashMap에 데이터 집어넣기
 		handler.put("/login.do", new L_LoginCon());
 		handler.put("/goLogin.do", new L_GoLoginCon());
+		handler.put("/ajax.do", new L_AjaxCon());
 		
 	}
 	
