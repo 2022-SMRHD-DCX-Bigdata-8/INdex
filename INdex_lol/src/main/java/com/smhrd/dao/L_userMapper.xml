@@ -7,10 +7,12 @@
 		insert into l_user
 		values(
 			
-			#{U_EMAIL},
-			#{U_PW},
-			#{U_NICK},
-			#{U_LOLCD}
+			#{U_EMAIL,jdbcType=VARCHAR},
+			#{U_PW,jdbcType=VARCHAR},
+			#{U_NICK,jdbcType=VARCHAR},
+			#{U_LOLCD,jdbcType=VARCHAR},
+			#{U_NAME},
+			#{U_TEL}
 			
 		)
 	
