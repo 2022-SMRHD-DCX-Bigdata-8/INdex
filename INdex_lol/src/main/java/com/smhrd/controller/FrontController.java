@@ -33,6 +33,7 @@ public class FrontController extends HttpServlet {
 		
 		// HashMap에 데이터 집어넣기
 		// handler.put("/goMain.do", new GoMainCon());
+		handler.put("/ajax.do", new AjaxCon());
 		
 	}
 	
