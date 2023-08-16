@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 public class L_userdata {
 	private int u_idx ;
 	private String u_email ;
-	private String u_ranl;
 	private int u_gold;
 	private int u_level ;
 	private String u_kda;

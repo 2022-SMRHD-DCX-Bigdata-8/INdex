@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="Join.do" method="post">
+	<form action="Jointest.do" method="post">
 		<label for="email">Email:</label> <input type="email" id="email"
 			name="email" required><br> 
 		<label for="password">비밀번호:</label>

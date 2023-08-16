@@ -26,10 +26,10 @@ public class JoinTestController implements L_Controller {
 		try {
 			// API 호출 및 고유 id 찾아오는 로직
 			String puuid = ApiUtils.getLolpuuid(lolNick);
-			member.setU_email(email);
-			member.setU_pw(pw);
-			member.setU_nick(lolNick);
-			member.setU_lolcd(puuid);
+			member.setU_EMAIL(email);
+			member.setU_PW(pw);
+			member.setU_NICK(lolNick);
+			member.setU_LOLCD(puuid);
 			member = new L_user(email,pw,lolNick,puuid);
 
 			// 데이터베이스에 저장
