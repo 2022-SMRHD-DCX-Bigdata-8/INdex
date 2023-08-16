@@ -2,14 +2,19 @@ package com.smhrd.controller;
 
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.json.JSONObject;
 
 // ApiUtils.java
-public class ApiUtils {
+public class ApiUtils implements L_Controller {
 	public static String getLolpuuid(String lolNick) throws Exception {
 		
 		
@@ -38,5 +43,12 @@ public class ApiUtils {
 		} else {
 			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + responseCode);
 		}
+	}
+
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

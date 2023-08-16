@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.smhrd.dao.L_userDAO;
 import com.smhrd.entity.L_user;
@@ -20,6 +21,7 @@ public class JoinTestController implements L_Controller {
 		String tel = request.getParameter("tel");
 		String pw = request.getParameter("password");
 		String lolNick = request.getParameter("lolNickname");
+		HttpSession session = request.getSession();
 		L_user member = new L_user();
 		L_userDAO dao = new L_userDAO();
 
@@ -44,9 +46,10 @@ public class JoinTestController implements L_Controller {
 
 			if (cnt > 0) {
 				// 회원가입 성공
-				response.sendRedirect("main.jsp");
+				return "main";
 			} else {
-
+				
+				
 				
 				return "main";
 			}
@@ -55,10 +58,11 @@ public class JoinTestController implements L_Controller {
 			
 				e.printStackTrace();
 				request.setAttribute("apiError", "API 호출에 실패했습니다. 닉네임을 확인해주세요.");
-			
+				session.setAttribute("user", member);
+				
 			return "main";
 		}
-		return null;
+	
 	}
 
 }

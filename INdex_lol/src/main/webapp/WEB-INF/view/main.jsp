@@ -1,3 +1,5 @@
+
+<%@page import="com.smhrd.entity.L_user"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -8,13 +10,24 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+	// session에서 사용자 정보를 꺼내기
+
+	L_user user = (L_user) session.getAttribute("user");
+	%>
+
 	<form action="Jointest.do" method="post">
-		이름<input type="text" id="name" name="name" required><br>
-		핸드폰번호<input type="tel" id="tel" name="tel" required><br>
-		Email:<input type="text" id="checkEmail" name="email" required>
+
+		이름<input type="text" id="name" name="name"
+			<c:if test="${!empty user}"> value="<%= user.getU_NAME() %>" </c:if>
+			required><br> 핸드폰번호<input type="tel" id="tel" name="tel"
+			<c:if test="${!empty user}"> value="<%= user.getU_TEL() %>" </c:if>
+			required><br> Email:<input type="text" id="checkEmail"
+			name="email"
+			<c:if test="${!empty user}"> value="<%= user.getU_EMAIL() %>" </c:if>
+			required>
 		<p id="emailCheckResult"></p>
 		비밀번호: <input type="password" id="password" name="password" required><br>
-
 		LoL 닉네임:<input type="text" id="checkNick" name="lolNickname" required>
 		<br>
 		<p id="nickCheckResult"></p>
@@ -25,17 +38,19 @@
 	</form>
 
 
-
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
 
 	<script type="text/javascript">
 	 $(document).ready(function() {
          // apiError 메시지가 있다면
-         <% if (request.getAttribute("apiError") != null) { %>
-             alert("<%= request.getAttribute("apiError") %>");
-         <% } %>
-     });
+         <%if (request.getAttribute("apiError") != null) {%>
+         alert("<%=request.getAttribute("apiError")%>");
+	
+		window.location.href = "http://localhost:8081/INdex_lol/goMaintest.do";
+	<%}%>
+		});
+
 		$(document).ready(function() {
 			var input = $("#checkEmail")
 
