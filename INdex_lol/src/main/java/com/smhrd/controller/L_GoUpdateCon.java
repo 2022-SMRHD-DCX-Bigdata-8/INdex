@@ -12,7 +12,7 @@ public class L_GoUpdateCon implements L_Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return "update";
+		return "L_update";
 	}
 
 }

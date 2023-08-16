@@ -6,12 +6,14 @@
 	<insert id="join" parameterType="com.smhrd.entity.L_user">
 		insert into l_user
 		values(
-			#{u_name},
-			#{u_email},
-			#{u_pw},
-			#{u_nick},
-			#{u_lolcd},
-			#{u_tel}
+			
+			#{U_EMAIL,jdbcType=VARCHAR},
+			#{U_PW,jdbcType=VARCHAR},
+			#{U_NICK,jdbcType=VARCHAR},
+			#{U_LOLCD,jdbcType=VARCHAR},
+			#{U_NAME},
+			#{U_TEL}
+			
 		)
 	
 	</insert>

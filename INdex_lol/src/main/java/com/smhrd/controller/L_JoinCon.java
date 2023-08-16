@@ -36,7 +36,7 @@ public class L_JoinCon implements L_Controller {
 			System.out.println("회원가입실패");
 		}
 		
-		return "redirect:/goMain.do";
+		return "redirect:/goLogin.do";
 	}
 
 }

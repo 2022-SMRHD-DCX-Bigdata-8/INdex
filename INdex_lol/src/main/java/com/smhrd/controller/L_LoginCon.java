@@ -20,8 +20,8 @@ public class L_LoginCon implements L_Controller {
 		String u_pw = request.getParameter("u_pw");
 		
 		L_user l_user = new L_user();
-		l_user.setU_email(u_email);
-		l_user.setU_pw(u_pw);
+		l_user.setU_EMAIL(u_email);
+		l_user.setU_PW(u_pw);
 		
 		L_userDAO dao = new L_userDAO();
 		L_user result = dao.login(l_user);
