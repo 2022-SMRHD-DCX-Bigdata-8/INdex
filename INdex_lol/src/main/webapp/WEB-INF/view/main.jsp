@@ -20,8 +20,8 @@
 
 		이름<input type="text" id="name" name="name"
 			<c:if test="${!empty user}"> value="<%= user.getU_name() %>" </c:if>
-			required><br> 핸드폰번호<input type="tel" id="tel" name="tel"
-			<c:if test="${!empty user}"> value="<%= user.getU_tel() %>" </c:if>
+			required><br> 아이디<input type="tel" id="tel" name="tel"
+			<c:if test="${!empty user}"> value="<%= user.getU_id() %>" </c:if>
 			required><br> Email:<input type="text" id="checkEmail"
 			name="email"
 			<c:if test="${!empty user}"> value="<%= user.getU_email() %>" </c:if>
