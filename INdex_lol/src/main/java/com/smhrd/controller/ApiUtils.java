@@ -12,8 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import com.smhrd.entity.L_userdata;
+
 // ApiUtils.java
 public class ApiUtils implements L_Controller {
+	
+	// 수정중 건들지마시오
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
@@ -51,4 +55,20 @@ public class ApiUtils implements L_Controller {
 		}
 	}
 
+	
+	// Riot API 호출 및 랭크 데이터 가져오는 메서드
+    public static L_userdata getRankData(String lolNick) {
+        // 실제로는 Riot API를 호출하여 랭크 데이터를 가져오는 로직을 구현해야 합니다.
+        // 예시로 랭크 데이터를 하드코딩하여 반환하는 코드를 작성하겠습니다.
+        
+    	L_userdata userData = new L_userdata();
+    	
+    	userData.setU_rank("Gold");
+    	
+    	
+        
+        return userData;
+    }
+	
+	
 }

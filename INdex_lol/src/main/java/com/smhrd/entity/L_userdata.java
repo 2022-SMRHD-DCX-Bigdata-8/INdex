@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class L_userdata {
 	private int u_idx ;
-	private String u_email ;
+	private String u_id ;
 	private int u_gold;
 	private int u_level ;
+	private String u_rank;
 	private String u_kda;
 	private int u_damage;
 	private int u_playtime;
