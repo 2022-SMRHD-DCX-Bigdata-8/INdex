@@ -1,6 +1,5 @@
 package com.smhrd.controller;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,9 +14,16 @@ import org.json.JSONObject;
 
 // ApiUtils.java
 public class ApiUtils implements L_Controller {
+
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public static String getLolpuuid(String lolNick) throws Exception {
-		
-		
+
 		String apiKey = "RGAPI-811a57a2-d560-406d-9613-6e931f54fa08"; // API 키
 		String apiUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + lolNick;
 
@@ -39,16 +45,10 @@ public class ApiUtils implements L_Controller {
 			in.close();
 
 			JSONObject summonerInfo = new JSONObject(response.toString());
-			return summonerInfo.getString("puuid"); // 예시로  puuid 추출
+			return summonerInfo.getString("puuid"); // 예시로 puuid 추출
 		} else {
 			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + responseCode);
 		}
 	}
 
-	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
