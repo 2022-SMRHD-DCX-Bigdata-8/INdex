@@ -6,13 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class L_GoUpdateCon implements L_Controller {
+public class L_GoLoginCon implements L_Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return "L_update";
+		
+		return "L_login";
 	}
 
 }

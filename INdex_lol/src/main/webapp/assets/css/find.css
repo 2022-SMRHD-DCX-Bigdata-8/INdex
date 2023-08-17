@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+  
+section {
+    width: 500px;
+    margin: 0 auto;
+}
+  
+.login_title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 5rem;
+    font-weight: bold;
+}
+  
+.login_FindID .login_findId,
+.login_FindPW .login_findPW {
+    padding-top: 2px;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 100%;
+    color: #000;
+    font-weight: bold;
+    margin: 40px 0px 20px 0px;
+}
+  
+input {
+    
+    line-height: 45px;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    display: inline-block;
+    border-radius: 15px / 15px;
+    margin-bottom: 1%;
+}
+  
+button {
+    cursor: pointer;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 45px;
+    letter-spacing: -0.02em;
+    color: #fff;
+    border: 1px solid #5a5a5a;
+    box-sizing: border-box;
+    background: #000;
+    margin-top: 2%;
+}
+  
+  

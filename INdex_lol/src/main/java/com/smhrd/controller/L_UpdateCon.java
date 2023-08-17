@@ -36,7 +36,7 @@ public class L_UpdateCon implements L_Controller {
 		
 		
 		
-		return "redirect:/goMain.do";
+		return "redirect:/goLogin.do";
 	}
 
 }

@@ -6,13 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class L_GoMainCon implements L_Controller {
+public class L_GoFindCon implements L_Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return "L_main";
+		
+		return "L_find";
 	}
 
 }

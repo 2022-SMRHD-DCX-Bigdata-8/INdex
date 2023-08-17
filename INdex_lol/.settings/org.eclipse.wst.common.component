@@ -7,7 +7,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                 
         <wb-resource deploy-path="/" source-path="/src/main/java/com/smhrd/dao/webapp"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
                 
         <property name="java-output-path" value="/INdex_lol/build/classes"/>
         <property name="context-root" value="MessageSystem"/>

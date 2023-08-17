@@ -31,12 +31,13 @@ public class L_FrontController extends HttpServlet {
 		
 		// HashMap에 데이터 집어넣기
 		handler.put("/ajax.do", new L_AjaxCon());
-		handler.put("/main.do", new L_MainCon());
-		handler.put("/goMain.do", new L_GoMainCon());
+		handler.put("/login.do", new L_LoginCon());
+		handler.put("/goLogin.do", new L_GoLoginCon());
 		handler.put("/join.do", new L_JoinCon());
 		handler.put("/goJoin.do", new L_GoJoinCon());
 		handler.put("/update.do", new L_UpdateCon());
 		handler.put("/goUpdate.do", new L_GoUpdateCon());
+		handler.put("/goFind.do", new L_GoFindCon());
 		
 		
 		//ajax
