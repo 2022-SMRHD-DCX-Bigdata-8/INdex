@@ -34,7 +34,6 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/login.do", new L_LoginCon());
 		handler.put("/goLogin.do", new L_GoLoginCon());
 		handler.put("/Join.do", new JoinTestController());
-		handler.put("/goJoin.do", new L_GoJoinCon());
 		handler.put("/update.do", new L_UpdateCon());
 		handler.put("/goUpdate.do", new L_GoUpdateCon());
 		handler.put("/goFind.do", new L_GoFindCon());
@@ -53,7 +52,7 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/apiUtils.do", new ApiUtils());
 		handler.put("/goMaintest.do", new goMainTestCon());
 		handler.put("/goGettest.do", new goGetTestCon());
-		
+
 
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -22,7 +22,6 @@
         <div class="login_findId">아이디 찾기</div>
         <input name="u_name" id="login_findIdname" type="text" placeholder="이름을 입력해주세요.">
         <input name="u_email" id="login_findIdEmail" type="text" placeholder="이메일을 입력해주세요.">
-        <input name="u_tel" id="login_findPhoneNumber" type="text" placeholder="전화번호 입력해주세요.">
         
         <button id="login_findIdButton">아이디 찾기</button>
     </div>
@@ -34,7 +33,6 @@
         <input name="u_name" id="login_findIdname" type="text" placeholder="이름을 입력해주세요.">
         <input name="u_id" id="login_findId" type="text" placeholder="아이디를 입력해주세요.">
         <input name="u_email" id="login_findIdEmail" type="text" placeholder="이메일을 입력해주세요.">     
-        <input name="u_tel" id="login_findPhoneNumber" type="text" placeholder="전화번호 입력해주세요.">
         
         <button id="login_findPWButton">비밀번호 찾기</button>
     </div>

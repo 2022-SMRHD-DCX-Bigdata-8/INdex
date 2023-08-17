@@ -93,13 +93,21 @@
 							placeholder="회원비밀번호" required>
 					</div>
 
+
+
+
 					<div class="textForm">
 						<input name="email" type="text" class="email" id="checkEmail"
-							placeholder="회원이메일"
+							placeholder="회원이메일" maxlength="30"
 							<c:if test="${!empty user}"> value="<%= user.getU_email() %>" </c:if>
 							required>
 						<p id="emailCheckResult"></p>
 					</div>
+
+
+
+
+
 
 					<div class="textForm">
 						<input name="lolNickname" type="text" class="nickname"
@@ -171,7 +179,7 @@
 		// emailCheck 기능 만들기
 		function emailCheck() {
 			// 입력된 값이 DB에 존재하는지 확인 필요
-
+			
 			// input에 입력되는 값을 바로 가져오는 명령
 			var value = $("#checkEmail").val();
 
@@ -237,7 +245,8 @@
 
 		}
 	</script>
-
+	
+	
 
 
 </body>

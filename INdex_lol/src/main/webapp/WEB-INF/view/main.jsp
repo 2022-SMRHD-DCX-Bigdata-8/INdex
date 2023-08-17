@@ -18,14 +18,24 @@
 
 	<form action="Jointest.do" method="post">
 
-		이름<input type="text" id="name" name="name"
+			이름<input type="text" id="name" name="name"
 			<c:if test="${!empty user}"> value="<%= user.getU_name() %>" </c:if>
+
 			required><br> 아이디<input type="tel" id="tel" name="tel"
 			<c:if test="${!empty user}"> value="<%= user.getU_id() %>" </c:if>
 			required><br> Email:<input type="text" id="checkEmail"
 			name="email"
+
+			required>
+			
+			
+			<br> 
+			
+			Email:<input type="text" id="checkEmail" name="email"
 			<c:if test="${!empty user}"> value="<%= user.getU_email() %>" </c:if>
 			required>
+			
+			
 		<p id="emailCheckResult"></p>
 		비밀번호: <input type="password" id="password" name="password" required><br>
 		LoL 닉네임:<input type="text" id="checkNick" name="lolNickname" required>
