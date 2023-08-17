@@ -67,23 +67,23 @@
                     <div class="textForm">
                         <input name="name" type="text" class="name" placeholder="회원 이름" required>
                     </div>
-
+                    
                     <div class="textForm">
-                        <input name="loginId" type="text" class="email" placeholder="회원이메일" required>
+                        <input name="Phonenumber" type="text" class="Phonenumber" placeholder="회원 아이디 입력" required>
                     </div>
 
                     <div class="textForm">
                         <input name="loginPw" type="password" class="pw" placeholder="회원비밀번호" required>
+                    </div>
+                    
+                    <div class="textForm">
+                        <input name="loginId" type="text" class="email" placeholder="회원이메일" required>
                     </div>
 
                     <div class="textForm">
                         <input name="nickname" type="text" class="nickname" placeholder="회원 롤 닉네임" required>
                     </div>
 
-                    <div class="textForm">
-                        <input name="Phonenumber" type="tel" onKeyup="this.value=this.value.replace(/[^0-9]/g,'')"
-                            class="Phonenumber" placeholder="회원 전화번호(- 없이입력)" required>
-                    </div>
 
                     <input type="submit" class="btn" value="JOIN" />
                 </div>
