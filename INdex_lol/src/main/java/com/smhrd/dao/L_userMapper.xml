@@ -38,10 +38,14 @@
 	
 	
 	<!-- 회원정보확인 -->
-	<select id="check" resultType="com.smhrd.entity.L_user">
+	<select id="eCheck" resultType="com.smhrd.entity.L_user">
 		select * from l_user
-		where u_name = #{u_name}
-		and u_tel = #{u_tel}
+		where u_email = #{u_email}
+	</select>
+	
+	<select id="nCheck" resultType="com.smhrd.entity.L_user">
+		select * from l_user
+		where u_nick = #{u_nick}
 	</select>
 	
 	 
@@ -58,5 +62,10 @@
   		select * from l_user
   	</select>
 
+	<select id="idfind" resultType="com.smhrd.entity.L_user">
+		select * from l_user
+		where u_name = #{u_name}
+		and u_tel = #{u_tel}
+	</select>
 
 </mapper>

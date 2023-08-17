@@ -42,10 +42,20 @@ public class L_FrontController extends HttpServlet {
 //		handler.put("/findpw.do", new L_FindPdCon());
 		
 		
-		////////////////////////////////////////////////////////////////
+
+		//ajax
+		handler.put("/eCheck.do", new EmailCheckCon());
+		handler.put("/nCheck.do", new NickCheckCon());
 		
+		
+		
+		////test////////////////////////////////////////
+		handler.put("/apiUtils.do", new ApiUtils());
+//		handler.put("/goMaintest.do", new goMainTestCon());
+//		handler.put("/goGettest.do", new goGetTestCon());
+		handler.put("/Jointest.do", new JoinTestController());
+
 	}
-	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

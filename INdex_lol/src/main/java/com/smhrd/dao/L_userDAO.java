@@ -80,12 +80,12 @@ public class L_userDAO {
 	}
 	
 	
-	public L_user check(L_user l_user) {
-		SqlSession session = factory.openSession(true);
-		
-		L_user result = null;
+
+	public L_user emailCheck(String email) {
+		SqlSession session = factory.openSession();
+		L_user list =null;
 		try {
-			result = session.selectOne("check", l_user);
+			list = session.selectOne("eCheck", email);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,10 +93,30 @@ public class L_userDAO {
 		
 		session.close();
 		
-		return result;
+		return list;
 		
 	}
 	
+	public L_user nickCheck(String nick) {
+		SqlSession session = factory.openSession();
+		
+		L_user list = session.selectOne("nCheck", nick);
+		
+		session.close();
+		
+		return list;
+		
+	}
+	
+	public L_user idfind(L_user l_user) {
+		SqlSession session = factory.openSession();
+		
+		L_user result = session.selectOne("idfind", l_user);
+		
+		session.close();
+		
+		return result;
+	}
 	
 	
 	

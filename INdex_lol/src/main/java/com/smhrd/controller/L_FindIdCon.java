@@ -23,7 +23,7 @@ public class L_FindIdCon implements L_Controller {
 		l_user.setU_tel(u_tel);
 		
 		L_userDAO dao = new L_userDAO();
-		L_user result = dao.check(l_user);
+		L_user result = dao.idfind(l_user);
 		
 		String url ="";
 		if(result != null) {
