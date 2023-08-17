@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 
 public class L_user {
+	private String u_id;
 	private String u_email;
 	private String u_pw;
 	private String u_nick;

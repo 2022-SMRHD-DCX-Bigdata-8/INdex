@@ -18,6 +18,7 @@ public class L_JoinCon implements L_Controller {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		String u_id = request.getParameter("u_id");
 		String u_name = request.getParameter("u_name");
 		String u_email = request.getParameter("u_email");
 		String u_pw = request.getParameter("u_pw");
@@ -25,7 +26,7 @@ public class L_JoinCon implements L_Controller {
 		String u_tel = request.getParameter("u_tel");
 		String u_lolcd = request.getParameter("u_lolcd");
 		
-		L_user l_user = new L_user(u_name, u_email, u_pw, u_nick, u_lolcd, u_tel);
+		L_user l_user = new L_user(u_id, u_name, u_email, u_pw, u_nick, u_lolcd, u_tel);
 
 		L_userDAO dao = new L_userDAO();
 		int cnt = dao.join(l_user);

@@ -20,25 +20,29 @@ public class JoinTestController implements L_Controller {
 		String name = request.getParameter("name");
 		String tel = request.getParameter("tel");
 		String pw = request.getParameter("password");
+		String id = request.getParameter("id");
 		String lolNick = request.getParameter("lolNickname");
+		
 		HttpSession session = request.getSession();
+		
 		L_user member = new L_user();
+		
 		L_userDAO dao = new L_userDAO();
 
 		try {
+
 			member.setU_email(email);
 			member.setU_pw(pw);
 			member.setU_nick(lolNick);
 			member.setU_tel(tel);
 			member.setU_name(name);
-
 			System.out.printf("Email: %s, 비밀번호: %s, LoL 닉네임: %s\n", email, pw, lolNick);
 			// API 호출 및 고유 id 찾아오는 로직
 			String puuid = ApiUtils.getLolpuuid(lolNick);
 			member.setU_lolcd(puuid);
 			System.out.println(puuid);
 
-			member = new L_user(email, pw, lolNick, puuid, name, tel);
+			member = new L_user(id, email, pw, lolNick, puuid, name, tel);
 			System.out.println(member);
 
 			// 데이터베이스에 저장

@@ -76,7 +76,7 @@
 
 					var p = $("#emailCheckResult")
 
-					if (res == true) {
+					if (res == "true") {
 						p.html("사용이 가능한 이메일 입니다").css("color", "black")
 
 					} else {
@@ -107,7 +107,7 @@
 
 					var p = $('#nickCheckResult');
 
-					if (res == true) {
+					if (res == "true") {
 						p.html('사용이 가능한 닉네임입니다.').css("color", "black");
 					} else {
 						p.html('중복된 닉네임입니다.').css("color", "red");

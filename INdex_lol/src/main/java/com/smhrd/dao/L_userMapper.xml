@@ -7,12 +7,13 @@
 		insert into l_user
 		values(
 			
-			#{U_EMAIL},
-			#{U_PW},
-			#{U_NICK},
-			#{U_LOLCD},
-			#{U_NAME},
-			#{U_TEL}
+			#{u_id},
+			#{u_email},
+			#{u_pw},
+			#{u_nick},
+			#{u_lolcd},
+			#{u_name},
+			#{u_tel}
 			
 		)
 	
