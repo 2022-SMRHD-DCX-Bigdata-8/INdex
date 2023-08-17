@@ -18,9 +18,8 @@ public class JoinTestController implements L_Controller {
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
-		String tel = request.getParameter("tel");
-		String pw = request.getParameter("password");
-		String id = request.getParameter("id");
+		String pw = request.getParameter("joinPw");
+		String id = request.getParameter("joinId");
 		String lolNick = request.getParameter("lolNickname");
 		
 		HttpSession session = request.getSession();
@@ -34,15 +33,15 @@ public class JoinTestController implements L_Controller {
 			member.setU_email(email);
 			member.setU_pw(pw);
 			member.setU_nick(lolNick);
-			member.setU_tel(tel);
 			member.setU_name(name);
+			member.setU_id(id);
 			System.out.printf("Email: %s, 비밀번호: %s, LoL 닉네임: %s\n", email, pw, lolNick);
 			// API 호출 및 고유 id 찾아오는 로직
 			String puuid = ApiUtils.getLolpuuid(lolNick);
 			member.setU_lolcd(puuid);
 			System.out.println(puuid);
 
-			member = new L_user(id, email, pw, lolNick, puuid, name, tel);
+			member = new L_user(id, email, pw, lolNick, puuid, name);
 			System.out.println(member);
 
 			// 데이터베이스에 저장
@@ -50,12 +49,12 @@ public class JoinTestController implements L_Controller {
 
 			if (cnt > 0) {
 				// 회원가입 성공
-				return "main";
+				return "L_login";
 			} else {
 				
 				
 				
-				return "main";
+				return "L_login";
 			}
 
 		} catch (Exception e) {
@@ -64,7 +63,7 @@ public class JoinTestController implements L_Controller {
 				request.setAttribute("apiError", "API 호출에 실패했습니다. 닉네임을 확인해주세요.");
 				session.setAttribute("user", member);
 				
-			return "main";
+			return "L_login";
 		}
 	
 	}

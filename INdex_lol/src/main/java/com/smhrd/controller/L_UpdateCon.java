@@ -23,13 +23,13 @@ public class L_UpdateCon implements L_Controller {
 		String u_email = user.getU_email();
 		String u_pw = request.getParameter("u_pw");
 		String u_nick = request.getParameter("u_nick");
-		String u_tel = request.getParameter("u_tel");
+		String email = request.getParameter("u_email");
 		
 		L_user l_user = new L_user();
 		l_user.setU_email(u_email);
 		l_user.setU_pw(u_pw);
 		l_user.setU_nick(u_nick);
-		l_user.setU_tel(u_tel);
+		l_user.setU_email(email);
 		
 		L_userDAO dao = new L_userDAO();
 		int cnt = dao.update(l_user);

@@ -7,14 +7,12 @@
 		insert into l_user
 		values(
 			
-			#{u_id},
 			#{u_email},
 			#{u_pw},
 			#{u_nick},
 			#{u_lolcd},
 			#{u_name},
-			#{u_tel}
-			
+			#{u_id}
 		)
 	
 	</insert>
@@ -66,7 +64,6 @@
 	<select id="idfind" resultType="com.smhrd.entity.L_user">
 		select * from l_user
 		where u_name = #{u_name}
-		and u_tel = #{u_tel}
 	</select>
 
 </mapper>

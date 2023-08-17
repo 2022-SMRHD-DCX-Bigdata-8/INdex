@@ -22,11 +22,6 @@
 			<c:if test="${!empty user}"> value="<%= user.getU_name() %>" </c:if>
 			required>
 			
-			<br>
-			
-			핸드폰번호<input type="tel" id="tel" name="tel"
-			<c:if test="${!empty user}"> value="<%= user.getU_tel() %>" </c:if>
-			required>
 			
 			<br> 
 			

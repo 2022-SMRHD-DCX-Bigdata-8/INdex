@@ -16,11 +16,11 @@ public class L_FindIdCon implements L_Controller {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String u_name = request.getParameter("u_name");
-		String u_tel = request.getParameter("u_tel");
+		String email = request.getParameter("u_email");
 		
 		L_user l_user = new L_user();
 		l_user.setU_name(u_name);
-		l_user.setU_tel(u_tel);
+		l_user.setU_email(email);
 		
 		L_userDAO dao = new L_userDAO();
 		L_user result = dao.idfind(l_user);
