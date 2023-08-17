@@ -37,10 +37,10 @@
 
                     <div class="contact">
 
-                        <form action="#">
+                        <form action="login.do">
                             <h3>로그인</h3>
-                            <input class="input_text" type="text" placeholder="아이디를 입력해주세요" required>
-                            <input class="input_text" type="text" placeholder="비밀번호를 입력해주세요" required>
+                            <input name="u_email" class="input_text" type="text" placeholder="아이디를 입력해주세요" required>
+                            <input name="u_pw" class="input_text" type="text" placeholder="비밀번호를 입력해주세요" required>
                             <button id="login" type="submit">로그인</button>
                         </form>
 
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <form action="#" method="POST" class="joinForm">
+            <form action="join.do" method="POST" class="joinForm">
 
                 <div id="tool">
                     <h2>회원가입</h2>

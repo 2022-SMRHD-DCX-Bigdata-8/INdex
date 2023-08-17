@@ -7,10 +7,10 @@
 		insert into l_user
 		values(
 			
-			#{U_EMAIL,jdbcType=VARCHAR},
-			#{U_PW,jdbcType=VARCHAR},
-			#{U_NICK,jdbcType=VARCHAR},
-			#{U_LOLCD,jdbcType=VARCHAR},
+			#{U_EMAIL},
+			#{U_PW},
+			#{U_NICK},
+			#{U_LOLCD},
 			#{U_NAME},
 			#{U_TEL}
 			
@@ -40,7 +40,8 @@
 	<!-- 회원정보확인 -->
 	<select id="check" resultType="com.smhrd.entity.L_user">
 		select * from l_user
-		where u_email = #{u_email}
+		where u_name = #{u_name}
+		and u_tel = #{u_tel}
 	</select>
 	
 	 

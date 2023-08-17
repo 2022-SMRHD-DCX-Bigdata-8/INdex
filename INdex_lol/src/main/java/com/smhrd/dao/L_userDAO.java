@@ -13,29 +13,54 @@ import com.smhrd.entity.L_user;
 public class L_userDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 	
-	public int join(L_user t_user) {
+	public int join(L_user l_user) {
 		SqlSession session = factory.openSession(true);
-		int result = session.insert("join", t_user);
+		int result = 0;
+		try {
+			result = session.insert("join", l_user);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		session.close();
 		return result;
 	}
-	public L_user login(L_user t_user) {
+	public L_user login(L_user l_user) {
 		SqlSession session = factory.openSession(true);
-		L_user result = session.selectOne("login", t_user);
+		
+		L_user result = null;
+		try {
+			result = session.selectOne("login", l_user);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		session.close();
 		return result;
 	}
 	
-	public int update(L_user t_user) {
+	public int update(L_user l_user) {
 		SqlSession session = factory.openSession(true);
-		int result = session.insert("update", t_user);
+		
+		int result = 0;
+		try {
+			result = session.insert("update", l_user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		session.close();
 		return result;
 	}
 	
-	public int delete(L_user t_user) {
+	public int delete(L_user l_user) {
 		SqlSession session = factory.openSession(true);
-		int result = session.insert("delete", t_user);
+		int result = 0;
+		try {
+			result = session.insert("delete", l_user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		session.close();
 		return result;
 	}
@@ -43,20 +68,32 @@ public class L_userDAO {
 	
 	public List<L_user> udview() {
 		SqlSession session = factory.openSession(true);
-		List<L_user> list = session.selectList("list");
+		List<L_user> list = null;
+		try {
+			list = session.selectList("list");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		session.close();
 		return list;
 	}
 	
 	
-	public L_user check(String email) {
-		SqlSession session = factory.openSession();
+	public L_user check(L_user l_user) {
+		SqlSession session = factory.openSession(true);
 		
-		L_user list = session.selectOne("check", email);
+		L_user result = null;
+		try {
+			result = session.selectOne("check", l_user);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		session.close();
 		
-		return list;
+		return result;
 		
 	}
 	

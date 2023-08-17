@@ -5,38 +5,35 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.smhrd.dao.L_userDAO;
 import com.smhrd.entity.L_user;
 
-public class L_UpdateCon implements L_Controller {
+public class L_FindIdCon implements L_Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		HttpSession session = request.getSession();
-		L_user user = (L_user)session.getAttribute("user");
-		
-		String u_email = user.getU_email();
-		String u_pw = request.getParameter("u_pw");
-		String u_nick = request.getParameter("u_nick");
+		String u_name = request.getParameter("u_name");
 		String u_tel = request.getParameter("u_tel");
 		
 		L_user l_user = new L_user();
-		l_user.setU_email(u_email);
-		l_user.setU_pw(u_pw);
-		l_user.setU_nick(u_nick);
+		l_user.setU_name(u_name);
 		l_user.setU_tel(u_tel);
 		
 		L_userDAO dao = new L_userDAO();
-		int cnt = dao.update(l_user);
+		L_user result = dao.check(l_user);
 		
-		
-		
-		return "redirect:/goLogin.do";
+		String url ="";
+		if(result != null) {
+			System.out.println("아이디찾기 성공");
+			url = "redirect:/L_login.do";
+		}else {
+			System.out.println("아이디찾기 실패");
+			url = "redirect:/L_find.do";
+		}
+		return null;
 	}
 
 }
