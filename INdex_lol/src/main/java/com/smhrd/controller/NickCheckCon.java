@@ -17,7 +17,7 @@ public class NickCheckCon implements L_Controller {
 			throws ServletException, IOException {
 		
 		String nick = request.getParameter("lolNickname");
-
+		
 		L_userDAO dao = new L_userDAO();
 		L_user result = dao.nickCheck(nick);
 

@@ -93,17 +93,21 @@
 							placeholder="회원비밀번호" required>
 					</div>
 
-
-
+			
 
 					<div class="textForm">
 						<input name="email" type="text" class="email" id="checkEmail"
 							placeholder="회원이메일" maxlength="30"
 							<c:if test="${!empty user}"> value="<%= user.getU_email() %>" </c:if>
 							required>
+            			<input id="emailsend" type="button" value="인증번호보내기">
 						<p id="emailCheckResult"></p>
 					</div>
-
+					
+					<div class="textForm">
+						<input type="text" name="verified" id="verified" placeholder="인증번호 4자리" class="verifi">
+						<input id="verified" type="button" onclick="verified()" value="인증번호확인" disabled>
+					</div>
 
 
 
@@ -116,11 +120,11 @@
 					</div>
 
 
-					<input type="submit" class="btn" value="JOIN" />
+					<input type="submit" class="btn" value="JOIN" >
 				</div>
 			</form>
-
-
+			
+            
 		</section>
 	</div>
 
@@ -245,7 +249,63 @@
 
 		}
 	</script>
+	<script>
+	$(document).ready(function() {
+		var button = $('#emailsend');
+		button.on('click', gmailsend);
+	});
 	
+	function gmailsend() {
+		var value = $('#checkEmail').val();
+		$.ajax({
+			url : 'gmailSend.do',
+			type : 'post',
+			data : {
+				"email" : value
+			},
+			dataType : "text",
+			
+			success : function(res) {
+				alert("인증번호 발송완료");
+				console.log(res.length,  res);
+
+			},
+			error : function(e) {
+				alert('실패');
+			}
+
+		});
+
+	}
+	
+	
+	function verified() {
+		var value = $('#verified').val();
+		$.ajax({
+			url : '#',
+			type : 'post',
+			data : {
+				"verified" : value
+			},
+			dataType : "json",
+			
+			success : function(res) {
+				
+
+			},
+			error : function(e) {
+				alert('실패');
+			}
+
+		});
+
+	}
+	
+	function btnActive()  {
+		  const target = document.getElementById('target_btn');
+		  target.disabled = false;
+		}
+	</script>
 	
 
 
