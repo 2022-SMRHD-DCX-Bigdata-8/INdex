@@ -12,12 +12,21 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class GmailSend implements L_Controller {
 
+	public int random() {
+		Random random = new Random();
+		int verificationCode = random.nextInt(9000) + 1000;
+		
+		return verificationCode;
+	}
+	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -30,9 +39,15 @@ public class GmailSend implements L_Controller {
 		System.out.println(user);
 		System.out.println(email+123);
 		
-		Random random = new Random();
-		int verificationCode = random.nextInt(9000) + 1000;
-
+		
+		int verificationCode = random();
+		
+		HttpSession ses = request.getSession();
+		
+		ses.setAttribute("verificationCode", verificationCode);
+		
+		System.out.println("Gmeil"+verificationCode);
+		
 		// SMTP 서버 정보를 설정한다.
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");

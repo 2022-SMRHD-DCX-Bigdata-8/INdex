@@ -28,7 +28,7 @@ public class ApiUtils implements L_Controller {
 
 	public static String getLolpuuid(String lolNick) throws Exception {
 
-		String apiKey = "RGAPI-811a57a2-d560-406d-9613-6e931f54fa08"; // API 키
+		String apiKey = "RGAPI-0a0887b4-e26d-4c4a-aef9-934ddca9c2ea"; // API 키
 		String apiUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + lolNick;
 
 		// API 호출 및 응답 데이터 처리

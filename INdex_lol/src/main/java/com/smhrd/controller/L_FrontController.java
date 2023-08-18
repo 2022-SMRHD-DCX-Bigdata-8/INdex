@@ -48,6 +48,7 @@ public class L_FrontController extends HttpServlet {
 		//ajax
 		handler.put("/eCheck.do", new EmailCheckCon());
 		handler.put("/nCheck.do", new NickCheckCon());
+		handler.put("/idCheck.do", new IdCheckCon());
 		
 		
 		

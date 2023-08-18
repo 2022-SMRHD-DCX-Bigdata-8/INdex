@@ -23,7 +23,6 @@ public class NickCheckCon implements L_Controller {
 
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		System.out.println(result);
 
 		if (result == null) {
 			out.print("true");

@@ -23,12 +23,12 @@ public class goGetTestCon implements L_Controller {
 		String apiUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName;
 
 		try {
-//			JSONObject summonerInfo = ApiUtils.getSummonerInfo(apiUrl, apiKey);
-//			String name = summonerInfo.getString("name");
-//            int puuid = summonerInfo.getInt("puuid");
-//            String accountId = summonerInfo.getString("accountId");
-//			
-//			out.println(summonerInfo);
+			JSONObject summonerInfo = ApiUtils.getSummonerInfo(apiUrl, apiKey);
+			String name = summonerInfo.getString("name");
+            int puuid = summonerInfo.getInt("puuid");
+            String accountId = summonerInfo.getString("accountId");
+			
+			out.println(summonerInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.println(new JSONObject().put("error", "Error fetching summoner info"));

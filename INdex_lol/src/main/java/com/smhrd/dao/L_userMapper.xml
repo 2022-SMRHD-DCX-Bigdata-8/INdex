@@ -67,5 +67,10 @@
 		select * from l_user
 		where u_name = #{u_name}
 	</select>
+	
+	<select id="idCheck" resultType="com.smhrd.entity.L_user">
+	select * from l_user
+	where u_id = #{u_id}
+	</select>
 
 </mapper>

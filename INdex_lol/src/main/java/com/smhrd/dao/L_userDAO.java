@@ -1,5 +1,6 @@
 package com.smhrd.dao;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,10 +15,13 @@ public class L_userDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 	
 	public int join(L_user l_user) {
+		
 		SqlSession session = factory.openSession(true);
 		int result = 0;
 		try {
 			result = session.insert("join", l_user);
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,7 +123,16 @@ public class L_userDAO {
 	}
 	
 	
-	
+	public L_user idCheck(String id) {
+		SqlSession session = factory.openSession();
+		
+		L_user list = session.selectOne("idCheck", id);
+		
+		session.close();
+		
+		return list;
+		
+	}
 	
 	
 	
