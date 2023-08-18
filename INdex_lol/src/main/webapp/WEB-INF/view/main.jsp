@@ -1,4 +1,3 @@
-
 <%@page import="com.smhrd.entity.L_user"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -20,6 +19,12 @@
 
 			이름<input type="text" id="name" name="name"
 			<c:if test="${!empty user}"> value="<%= user.getU_name() %>" </c:if>
+
+			required><br> 아이디<input type="tel" id="tel" name="tel"
+			<c:if test="${!empty user}"> value="<%= user.getU_id() %>" </c:if>
+			required><br> Email:<input type="text" id="checkEmail"
+			name="email"
+
 			required>
 			
 			

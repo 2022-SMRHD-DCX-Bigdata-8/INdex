@@ -57,7 +57,7 @@ public class L_userDAO {
 		SqlSession session = factory.openSession(true);
 		int result = 0;
 		try {
-			result = session.insert("delete", l_user);
+			result = session.delete("delete", l_user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

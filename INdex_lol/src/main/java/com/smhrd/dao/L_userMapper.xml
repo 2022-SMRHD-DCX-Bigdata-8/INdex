@@ -7,12 +7,14 @@
 		insert into l_user
 		values(
 			
+
 			#{u_email},
 			#{u_pw},
 			#{u_nick},
 			#{u_lolcd},
 			#{u_name},
 			#{u_id}
+
 		)
 	
 	</insert>
@@ -37,12 +39,12 @@
 	
 	
 	<!-- 회원정보확인 -->
-	<select id="eCheck" resultType="com.smhrd.entity.L_user">
+	<select id="eCheck" parameterType="com.smhrd.entity.L_user" resultType="com.smhrd.entity.L_user">
 		select * from l_user
 		where u_email = #{u_email}
 	</select>
 	
-	<select id="nCheck" resultType="com.smhrd.entity.L_user">
+	<select id="nCheck" parameterType="com.smhrd.entity.L_user" resultType="com.smhrd.entity.L_user">
 		select * from l_user
 		where u_nick = #{u_nick}
 	</select>

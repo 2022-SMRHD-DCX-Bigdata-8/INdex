@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class L_ghostdata {
 	private int g_idx ;
-	private String u_email ;
 	private String g_rank;
 	private int g_gold;
 	private int g_level ;
