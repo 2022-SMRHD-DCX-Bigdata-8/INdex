@@ -55,10 +55,12 @@ public class JoinTestController implements L_Controller {
 			int cnt = dao.join(member);
 			System.out.println(cnt);
 			
+			String num = null;
 			
 			if (cnt > 0) {
 				// 회원가입 성공
-				
+				num = "true";
+				session.setAttribute("num",num );
 				out.print("true");
 				return "L_login";
 				

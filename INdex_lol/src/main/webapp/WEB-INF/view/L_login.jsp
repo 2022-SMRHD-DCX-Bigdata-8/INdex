@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.entity.L_user"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -31,6 +32,8 @@
 	// session에서 사용자 정보를 꺼내기
 
 	L_user user = (L_user) session.getAttribute("user");
+	String num = (String) session.getAttribute("num");
+	
 	%>
 	<!-- 백그라운드 배경 html -->
 	<!-- Starbackground -->
@@ -362,9 +365,11 @@
 
 		}
 	</script>
+	
+	
 <script type="text/javascript">
 	$('#joinButton').on("click", function() {
-		if(${num}>0){
+		if(num == null){
 			alert("회원가입 성공")
 		}else{
 			alert("회원가입 실패")
