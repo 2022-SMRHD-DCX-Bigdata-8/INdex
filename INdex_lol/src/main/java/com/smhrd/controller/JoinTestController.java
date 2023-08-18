@@ -21,6 +21,7 @@ public class JoinTestController implements L_Controller {
 		String pw = request.getParameter("joinPw");
 		String id = request.getParameter("joinId");
 		String lolNick = request.getParameter("lolNickname");
+		String rank = null;
 		
 		HttpSession session = request.getSession();
 		
@@ -41,7 +42,7 @@ public class JoinTestController implements L_Controller {
 			member.setU_lolcd(puuid);
 			System.out.println(puuid);
 
-			member = new L_user(id, email, pw, lolNick, puuid, name);
+			member = new L_user(id, email, pw, lolNick, puuid, name,rank);
 			System.out.println(member);
 
 			// 데이터베이스에 저장

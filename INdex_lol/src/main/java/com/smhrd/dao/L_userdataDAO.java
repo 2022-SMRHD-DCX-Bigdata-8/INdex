@@ -29,11 +29,7 @@ public class L_userdataDAO {
 
 		int cnt = session.insert("insertPlayData", userData);
 
-		if (cnt > 0) {
-			System.out.println("데이터 저장 성공");
-		} else {
-			System.out.println("데이터 저장 실패");
-		}
+		
 		session.close();
 		return cnt;
 	}
@@ -43,9 +39,12 @@ public class L_userdataDAO {
 		return session.selectOne("getNextIdx");
 	}
 
-	public boolean checkExistingData(String matchcd) {
-		// TODO Auto-generated method stub
-		return false;
+	public L_userdata checkExistingData(String matchcd) {
+	    SqlSession session = factory.openSession(true);
+	    L_userdata result = session.selectOne("matchCdCheck", matchcd);
+	    
+	    session.close();
+	    return result; // 중복 데이터가 있으면 true, 없으면 false 반환
 	}
 
 }

@@ -20,40 +20,23 @@ public class L_UpdateCon implements L_Controller {
 		HttpSession session = request.getSession();
 		L_user user = (L_user)session.getAttribute("user");
 		
-		String id =user.getU_id();
-		
-		
-		
-		String u_name = request.getParameter("name");
-		String u_pw = request.getParameter("pw");
-		String u_nick = request.getParameter("nick");
-		String u_email = request.getParameter("email");
+		String u_email = user.getU_email();
+		String u_pw = request.getParameter("u_pw");
+		String u_nick = request.getParameter("u_nick");
+		String email = request.getParameter("u_email");
 		
 		L_user l_user = new L_user();
-		
-		
 		l_user.setU_email(u_email);
 		l_user.setU_pw(u_pw);
-		l_user.setU_name(u_name);
 		l_user.setU_nick(u_nick);
+		l_user.setU_email(email);
 		
 		L_userDAO dao = new L_userDAO();
-		
 		int cnt = dao.update(l_user);
 		
 		
-		if(cnt>0) {
-			
-			System.out.println("정보 수정 성공");
-			return "redirect:/goLogin.do";
-			
-		}else {
-			
-			System.out.println("정보 수정 실패");
-		}
 		
-		return null;
-		
+		return "redirect:/goLogin.do";
 	}
 
 }

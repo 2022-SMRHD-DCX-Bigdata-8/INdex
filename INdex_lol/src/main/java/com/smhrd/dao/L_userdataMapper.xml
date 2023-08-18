@@ -28,7 +28,6 @@
 		(
 		#{u_idx},
 		#{u_id},
-		#{u_rank},
 		#{u_gold},
 		#{u_level},
 		#{u_kda},
@@ -41,4 +40,10 @@
 		#{u_matchcd}
 		)
 	</insert>
+
+	<select id="matchCdCheck"
+		resultType="com.smhrd.entity.L_userdata">
+		select * from l_userdata
+		where u_matchcd = #{u_matchcd}
+	</select>
 </mapper>

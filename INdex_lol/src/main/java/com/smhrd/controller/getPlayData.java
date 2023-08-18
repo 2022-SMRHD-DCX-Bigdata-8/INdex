@@ -37,9 +37,9 @@ public class getPlayData implements L_Controller {
 		L_userdataDAO userdataDAO = new L_userdataDAO();
 		for (L_userdata userData : userDataList) {
 	        String matchcd = userData.getU_matchcd();
-	        boolean isExisting = userdataDAO.checkExistingData(matchcd);
+	        L_userdata result = userdataDAO.checkExistingData(matchcd);
 	        
-	        if (!isExisting) {
+	        if (result == null) {
 	            int nextIdx = userdataDAO.getNextIdx();
 	            userData.setU_idx(nextIdx);
 	            userData.setU_id(userId);

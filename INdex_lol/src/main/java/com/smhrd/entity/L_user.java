@@ -20,5 +20,6 @@ public class L_user {
 	private String u_nick;
 	private String u_lolcd;
 	private String u_name;
+	private String u_rank;
 
 }
