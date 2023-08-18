@@ -33,6 +33,7 @@
 
 	L_user user = (L_user) session.getAttribute("user");
 	String num = (String) session.getAttribute("num");
+	System.out.println( num +"adfgadfg");
 	
 	%>
 	<!-- 백그라운드 배경 html -->
@@ -368,13 +369,8 @@
 	
 	
 <script type="text/javascript">
-	$('#joinButton').on("click", function() {
-		if(num == null){
-			alert("회원가입 성공")
-		}else{
-			alert("회원가입 실패")
-		}
-	});
+
+
 </script>
 
 </body>
