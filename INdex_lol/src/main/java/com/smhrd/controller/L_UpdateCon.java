@@ -20,13 +20,13 @@ public class L_UpdateCon implements L_Controller {
 		HttpSession session = request.getSession();
 		L_user user = (L_user)session.getAttribute("user");
 		
-		String u_email = user.getU_email();
+		String u_id = user.getU_id();
 		String u_pw = request.getParameter("u_pw");
 		String u_nick = request.getParameter("u_nick");
 		String email = request.getParameter("u_email");
 		
 		L_user l_user = new L_user();
-		l_user.setU_email(u_email);
+		l_user.setU_email(u_id);
 		l_user.setU_pw(u_pw);
 		l_user.setU_nick(u_nick);
 		l_user.setU_email(email);

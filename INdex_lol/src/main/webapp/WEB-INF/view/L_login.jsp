@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.entity.L_user"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -31,6 +32,9 @@
 	// session에서 사용자 정보를 꺼내기
 
 	L_user user = (L_user) session.getAttribute("user");
+	String num = (String) session.getAttribute("num");
+	System.out.println( num +"adfgadfg");
+	
 	%>
 	<!-- 백그라운드 배경 html -->
 	<!-- Starbackground -->
@@ -82,10 +86,11 @@
 					</div>
 
 					<div class="textForm">
-						<input name="joinId" type="text" class="id"
-							placeholder="회원 아이디 입력"
+						<input name="joinId" type="text" class="id" id="checkId"
+							placeholder="회원 아이디"
 							<c:if test="${!empty user}"> value="<%= user.getU_id() %>" </c:if>
 							required>
+						<p id="idCheckResult">
 					</div>
 
 					<div class="textForm">
@@ -95,15 +100,21 @@
 
 
 
-
 					<div class="textForm">
 						<input name="email" type="text" class="email" id="checkEmail"
 							placeholder="회원이메일" maxlength="30"
 							<c:if test="${!empty user}"> value="<%= user.getU_email() %>" </c:if>
-							required>
+							required> <input id="emailsend" type="button"
+							value="인증번호보내기">
 						<p id="emailCheckResult"></p>
 					</div>
 
+					<div class="textForm">
+						<input type="text" name="verified" id="verifiedinput"
+							placeholder="인증번호 4자리" class="verify"> <input
+							id="verifiedbtn" type="button" value="인증번호확인">
+						<p id="verifyCheckResult">
+					</div>
 
 
 
@@ -116,10 +127,11 @@
 					</div>
 
 
-					<input type="submit" class="btn" value="JOIN" />
+					<input id="joinButton" type="submit" class="btn" value="JOIN"
+						disabled="disabled">
 				</div>
 			</form>
-
+			
 
 		</section>
 	</div>
@@ -153,22 +165,23 @@
 					}
 				});
 	</script>
-	
-	
-	
+
+
+
 	<%--비동기 이메일,닉네임 중복체크 --%>
-	
+
 	<%-- 비동기 이메일,닉네임 중복체크 --%>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			// apiError 메시지가 있다면
-			<% if (request.getAttribute("apiError") != null) { %>
-			alert("<%= request.getAttribute("apiError") %>");
-			window.location.href = "http://localhost:8081/INdex_lol/goLogin.do";
-			<% } %>
+			<%if (request.getAttribute("apiError") != null) {%>
+			alert("<%=request.getAttribute("apiError")%>
+		");
+							window.location.href = "http://localhost:8081/INdex_lol4/goLogin.do";
+	<%}%>
 		});
 	</script>
-	
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var input = $("#checkEmail")
@@ -179,7 +192,7 @@
 		// emailCheck 기능 만들기
 		function emailCheck() {
 			// 입력된 값이 DB에 존재하는지 확인 필요
-			
+
 			// input에 입력되는 값을 바로 가져오는 명령
 			var value = $("#checkEmail").val();
 
@@ -224,7 +237,7 @@
 				},
 				dataType : "text",
 				success : function(res) {
-					
+
 					console.log(res.length, res);
 
 					var p = $('#nickCheckResult');
@@ -245,9 +258,120 @@
 
 		}
 	</script>
-	
-	
+	<script>
+		$(document).ready(function() {
+			var button = $('#emailsend');
+			button.on('click', gmailsend);
+		});
 
+		function gmailsend() {
+			var value = $('#checkEmail').val();
+
+			if (value.trim() !== '') {
+				$.ajax({
+					url : 'gmailSend.do',
+					type : 'post',
+					data : {
+						"email" : value
+					},
+					dataType : "text",
+
+					success : function(value) {
+						alert("인증번호 발송완료");
+						console.log(emaildata.length, emaildata);
+
+					},
+					error : function(e) {
+						alert('실패');
+					}
+				});
+			} else {
+				alert('이메일 값을 입력해주세요.');
+			}
+		}
+
+		$(document).ready(function() {
+			var v_button = $('#verifiedbtn');
+			v_button.on('click', verified);
+		});
+
+		function verified() {
+			var value = $('#verifiedinput').val();
+			$.ajax({
+				url : 'verified.do',
+				type : 'post',
+				data : {
+					"verified" : value
+				},
+				dataType : "text",
+
+				success : function(res) {
+					var p = $("#verifyCheckResult")
+
+					if (res == "true") {
+						p.html("인증 성공").css("color", "white")
+						$('#joinButton').prop('disabled', false);
+					} else {
+						p.html("인증 실패").css("color", "red")
+					}
+
+				},
+				error : function(e) {
+					alert('실패');
+				}
+
+			});
+
+		}
+		
+		
+		
+	</script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var input = $('#checkId')
+			input.on('input', idCheck);
+		});
+
+		function idCheck() {
+			var value = $(this).val();
+			$.ajax({
+				url : 'idCheck.do',
+				type : 'post',
+				data : {
+					"joinId" : value
+				},
+				dataType : "text",
+				success : function(res) {
+
+					console.log(res.length, res);
+
+					var p = $('#idCheckResult');
+
+					if (res == "true") {
+						p.html('사용이 가능한 아이디입니다.').css("color", "white");
+					} else {
+						p.html('중복된 아이디입니다.').css("color", "red");
+
+					}
+
+				},
+				error : function(e) {
+					alert('실패');
+				}
+
+			});
+
+		}
+	</script>
+	
+	
+<script type="text/javascript">
+
+
+</script>
 
 </body>
 </html>

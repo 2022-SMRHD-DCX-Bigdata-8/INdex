@@ -1,7 +1,9 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +25,12 @@ public class JoinTestController implements L_Controller {
 		String lolNick = request.getParameter("lolNickname");
 
 		HttpSession session = request.getSession();
+
+		
+		response.setCharacterEncoding("UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		
 
 		L_user member = new L_user();
 
@@ -52,14 +60,25 @@ public class JoinTestController implements L_Controller {
 
 			// 데이터베이스에 저장
 			int cnt = dao.join(member);
-
+			System.out.println(cnt);
+			
+			String num = null;
+			
 			if (cnt > 0) {
 				// 회원가입 성공
+				num = "true";
+				session.setAttribute("num",num );
+				out.print("true");
 				return "L_login";
+				
 			} else {
+
+				out.print("false");
 
 				return "L_login";
 			}
+			
+			
 
 		} catch (Exception e) {
 

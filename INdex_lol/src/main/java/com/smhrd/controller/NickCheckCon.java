@@ -17,13 +17,12 @@ public class NickCheckCon implements L_Controller {
 			throws ServletException, IOException {
 		
 		String nick = request.getParameter("lolNickname");
-
+		
 		L_userDAO dao = new L_userDAO();
 		L_user result = dao.nickCheck(nick);
 
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		System.out.println(result);
 
 		if (result == null) {
 			out.print("true");

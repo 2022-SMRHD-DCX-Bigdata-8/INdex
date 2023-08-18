@@ -35,7 +35,7 @@
 		update l_user set
 				u_pw = #{u_pw},
 				u_nick = #{u_nick}
-		where u_email = #{u_email}
+		where u_id = #{u_id}
 		
 	</update>
 	
@@ -68,6 +68,11 @@
 	<select id="idfind" resultType="com.smhrd.entity.L_user">
 		select * from l_user
 		where u_name = #{u_name}
+	</select>
+	
+	<select id="idCheck" resultType="com.smhrd.entity.L_user">
+	select * from l_user
+	where u_id = #{u_id}
 	</select>
 
 </mapper>
