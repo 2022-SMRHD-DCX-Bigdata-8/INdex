@@ -37,7 +37,7 @@ public class L_LoginCon implements L_Controller {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", result);
 			
-			url = "redirect:/goMain.do";
+			url = "redirect:/goTestMain.do";
 			
 		}else {
 			System.out.println("실패");
