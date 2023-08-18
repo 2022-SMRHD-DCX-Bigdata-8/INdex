@@ -38,6 +38,9 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/goUpdate.do", new L_GoUpdateCon());
 		handler.put("/goFind.do", new L_GoFindCon());
 		handler.put("/findid.do", new L_FindIdCon());
+		handler.put("/goDelete.do", new L_GoDeleteCon());
+		handler.put("/delete.do", new L_DeleteCon());
+		
 //		handler.put("/findpw.do", new L_FindPdCon());
 		
 		
@@ -52,7 +55,9 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/apiUtils.do", new ApiUtils());
 		handler.put("/goMaintest.do", new goMainTestCon());
 		handler.put("/goGettest.do", new goGetTestCon());
-
+		handler.put("/goTestMain.do", new goTestMainCon());
+		
+//		handler.put("/goLogin.do", new L_UpdateCon());
 
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)
