@@ -14,7 +14,8 @@
 			#{u_lolcd},
 			#{u_name},
 			#{u_id},
-			null
+			#{u_rank},
+			#{u_lolkrcd}
 
 		)
 	

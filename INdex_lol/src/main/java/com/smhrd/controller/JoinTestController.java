@@ -21,28 +21,31 @@ public class JoinTestController implements L_Controller {
 		String pw = request.getParameter("joinPw");
 		String id = request.getParameter("joinId");
 		String lolNick = request.getParameter("lolNickname");
-		String rank = "";
-		
+
 		HttpSession session = request.getSession();
-		
+
 		L_user member = new L_user();
-		
+
 		L_userDAO dao = new L_userDAO();
 
 		try {
+
+			// API 호출 및 고유 id,rank 찾아오는 로직
+			member = ApiUtils.getLolpuuid(lolNick);
+			String puuid = member.getU_lolcd();
+			String lolkrcd = member.getU_lolkrcd();
+			String rank = ApiUtils.getRank(lolkrcd);
 
 			member.setU_email(email);
 			member.setU_pw(pw);
 			member.setU_nick(lolNick);
 			member.setU_name(name);
 			member.setU_id(id);
-			System.out.printf("Email: %s, 비밀번호: %s, LoL 닉네임: %s\n", email, pw, lolNick);
-			// API 호출 및 고유 id 찾아오는 로직
-			String puuid = ApiUtils.getLolpuuid(lolNick);
-			member.setU_lolcd(puuid);
-			System.out.println(puuid);
+			member.setU_rank(rank);
 
-			member = new L_user(id, email, pw, lolNick, puuid, name,rank);
+			
+	
+			member = new L_user(id, email, pw, lolNick, puuid, name, rank, lolkrcd);
 			System.out.println(member);
 
 			// 데이터베이스에 저장
@@ -52,21 +55,19 @@ public class JoinTestController implements L_Controller {
 				// 회원가입 성공
 				return "L_login";
 			} else {
-				
-				
-				
+
 				return "L_login";
 			}
 
 		} catch (Exception e) {
-			
-				e.printStackTrace();
-				request.setAttribute("apiError", "API 호출에 실패했습니다. 닉네임을 확인해주세요.");
-				session.setAttribute("user", member);
-				
+
+			e.printStackTrace();
+			request.setAttribute("apiError", "API 호출에 실패했습니다. 닉네임을 확인해주세요.");
+			session.setAttribute("user", member);
+
 			return "L_login";
 		}
-	
+
 	}
 
 }
