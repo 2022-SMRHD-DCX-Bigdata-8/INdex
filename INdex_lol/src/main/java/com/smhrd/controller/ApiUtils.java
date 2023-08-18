@@ -12,14 +12,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import com.smhrd.entity.L_user;
 import com.smhrd.entity.L_userdata;
 
 // ApiUtils.java
@@ -39,7 +40,7 @@ public class ApiUtils implements L_Controller {
 		return null;
 	}
 
-	public static String getLolpuuid(String lolNick) throws Exception {
+	public static L_user getLolpuuid(String lolNick) throws Exception {
 
 
 		String apiKey = "RGAPI-0a0887b4-e26d-4c4a-aef9-934ddca9c2ea"; // API 키
@@ -64,11 +65,56 @@ public class ApiUtils implements L_Controller {
 			}
 			in.close();
 
+			L_user user = new L_user();
+
 			JSONObject summonerInfo = new JSONObject(response.toString());
-			return summonerInfo.getString("puuid"); // 예시로 puuid 추출
+			String lolkrid = summonerInfo.getString("id");
+			String puuid = summonerInfo.getString("puuid");
+			user.setU_lolkrcd(lolkrid);
+			user.setU_lolcd(puuid);
+			return user;
 		} else {
 			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + responseCode);
 		}
+	}
+
+	public static String getRank(String lolkrcd) throws Exception {
+
+		String latestRank = "";
+		String apiUrl = API_BASED_UID_URL + "/lol/league/v4/entries/by-summoner/" + lolkrcd;
+
+		// API 호출 및 응답 데이터 처리
+		URL url = new URL(apiUrl);
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestMethod("GET");
+		connection.setRequestProperty("X-Riot-Token", API_KEY);
+
+		int responseCode = connection.getResponseCode();
+		if (responseCode == HttpURLConnection.HTTP_OK) {
+			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			String inputLine;
+			StringBuilder response = new StringBuilder();
+
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+
+			JSONArray rankInfoArray = new JSONArray(response.toString());
+			
+			
+			if (rankInfoArray.length() > 0) {
+				JSONObject latestRankInfo = rankInfoArray.getJSONObject(1);
+				String tier = latestRankInfo.getString("tier");
+				String rank = latestRankInfo.getString("rank");
+			
+
+				latestRank = tier + " " + rank;
+			}
+		} else {
+			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + responseCode);
+		}
+		return latestRank;// 예시로 puuid 추출
 	}
 
 	// Riot API 호출 및 랭크 데이터 가져오는 메서드
@@ -167,15 +213,14 @@ public class ApiUtils implements L_Controller {
 
 			JsonObject info = jsonData.getAsJsonObject("info");
 			JsonArray participants = info.getAsJsonArray("participants");
-			
 
 			for (JsonElement participantElement : participants) {
 				JsonObject participant = participantElement.getAsJsonObject();
 				String participantPuuid = participant.get("puuid").getAsString();
 				System.out.println(participantPuuid);
 
-				  if (participantPuuid.equals(puuid)) {
-					
+				if (participantPuuid.equals(puuid)) {
+
 					System.out.println("if문 안에 들어왔습니다");
 
 					int userGold = participant.get("goldEarned").getAsInt();
