@@ -101,17 +101,23 @@ public class ApiUtils implements L_Controller {
 			in.close();
 
 			JSONArray rankInfoArray = new JSONArray(response.toString());
-			
-			
-			if (rankInfoArray.length() > 0) {
-				JSONObject latestRankInfo = rankInfoArray.getJSONObject(1);
-				String tier = latestRankInfo.getString("tier");
-				String rank = latestRankInfo.getString("rank");
-			
 
-				latestRank = tier + " " + rank;
+			for (int i = 0; i < rankInfoArray.length(); i++) {
+				JSONObject rankInfo = rankInfoArray.getJSONObject(i);
+				System.out.print(rankInfo);
+				if (rankInfo.has("tier")) {
+					String tier = rankInfo.getString("tier");
+					String rank = rankInfo.getString("rank");
+					latestRank = tier + " " + rank;
+					System.out.println(latestRank);
+					break; // 가장 최근 데이터를 찾았으므로 루프 종료
+				}
+			}
+			if (latestRank.isEmpty()) {
+				latestRank = "unranked"; // 랭크 데이터가 하나도 없는 경우
 			}
 		} else {
+
 			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + responseCode);
 		}
 		return latestRank;// 예시로 puuid 추출
