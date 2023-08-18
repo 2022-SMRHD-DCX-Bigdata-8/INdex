@@ -4,7 +4,46 @@
 
 	<select id="fdlist" resultType="com.smhrd.entity.L_userdata">
 		select * from l_userdata
-		where u_idx = #{u_idx}
+		where
+		u_idx = #{u_idx}
 	</select>
 
+	<select id="getNextIdx" resultType="int">
+		SELECT T_USERDATA_SEQ.NEXTVAL
+		FROM dual
+	</select>
+
+	<!-- <insert id="insertPlayData" parameterType="map"> INSERT INTO l_userdata 
+		( u_id, u_rank, u_gold, u_level, u_kda, u_damage, u_playtime, u_sigthscore, 
+		u_gamecnt, u_winlose, u_champ, u_matchcd ) VALUES <foreach collection="userDataList" 
+		item="userData" separator=","> ( #{u_id}, #{userData.u_rank}, #{userData.u_gold}, 
+		#{userData.u_level}, #{userData.u_kda}, #{userData.u_damage}, #{userData.u_playtime}, 
+		#{userData.u_sigthscore}, #{userData.u_gamecnt}, #{userData.u_winlose}, #{userData.u_champ}, 
+		#{userData.u_matchcd} ) </foreach> </insert> -->
+
+	<insert id="insertPlayData"
+		parameterType="com.smhrd.entity.L_userdata">
+		INSERT INTO l_userdata
+		VALUES
+		(
+		#{u_idx},
+		#{u_id},
+		#{u_gold},
+		#{u_level},
+		#{u_kda},
+		#{u_damage},
+		#{u_playtime},
+		#{u_sigthscore},
+		#{u_gamecnt},
+		#{u_winlose},
+		#{u_champ},
+		#{u_matchcd}
+		)
+	</insert>
+
+	<select id="matchCdCheck"
+		resultType="com.smhrd.entity.L_userdata">
+		select * from l_userdata
+		where u_matchcd = #{u_matchcd}
+	</select>
 </mapper>

@@ -48,7 +48,7 @@
 
 						<form action="login.do">
 							<h3>로그인</h3>
-							<input name="u_email" class="input_text" type="text"
+							<input name="u_id" class="input_text" type="text"
 								placeholder="아이디를 입력해주세요" required> <input name="u_pw"
 								class="input_text" type="text" placeholder="비밀번호를 입력해주세요"
 								required>
@@ -127,7 +127,7 @@
 						disabled="disabled">
 				</div>
 			</form>
-
+			
 
 		</section>
 	</div>
@@ -319,16 +319,12 @@
 			});
 
 		}
-
-		$('#joinButton').on('click', function(res) {
-			if (res == "true") {
-				alert("회원가입 완료")
-			} else {
-				alert("회원가입실패")
-			}
-		});
+		
+		
+		
 	</script>
-	
+
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var input = $('#checkId')
@@ -366,9 +362,15 @@
 
 		}
 	</script>
-
-
-
+<script type="text/javascript">
+	$('#joinButton').on("click", function() {
+		if(${num}>0){
+			alert("회원가입 성공")
+		}else{
+			alert("회원가입 실패")
+		}
+	});
+</script>
 
 </body>
 </html>

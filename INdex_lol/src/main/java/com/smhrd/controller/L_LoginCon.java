@@ -17,12 +17,12 @@ public class L_LoginCon implements L_Controller {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-		String u_email = request.getParameter("u_email");
+		String u_id = request.getParameter("u_id");
 		String u_pw = request.getParameter("u_pw");
 		
 		
 		L_user l_user = new L_user();
-		l_user.setU_email(u_email);
+		l_user.setU_id(u_id);
 		l_user.setU_pw(u_pw);
 		
 		L_userDAO dao = new L_userDAO();
@@ -37,7 +37,7 @@ public class L_LoginCon implements L_Controller {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", result);
 			
-			url = "redirect:/goTestMain.do";
+			url = "redirect:/goMain.do";
 			
 		}else {
 			System.out.println("실패");

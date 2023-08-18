@@ -12,7 +12,7 @@ public class goMainTestCon implements L_Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		return "main";
+		return "renew";
 	}
 
 }

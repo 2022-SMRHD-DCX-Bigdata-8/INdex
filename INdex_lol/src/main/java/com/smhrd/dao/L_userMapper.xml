@@ -13,7 +13,8 @@
 			#{u_nick},
 			#{u_lolcd},
 			#{u_name},
-			#{u_id}
+			#{u_id},
+			null
 
 		)
 	
@@ -23,7 +24,7 @@
 	<!-- 로그인 -->
 	<select id="login" parameterType="com.smhrd.entity.L_user" resultType="com.smhrd.entity.L_user">
   		select * from l_user
-  		where u_email = #{u_email}
+  		where u_id = #{u_id}
   		and u_pw = #{u_pw}
   	</select>
   	
@@ -33,18 +34,18 @@
 		update l_user set
 				u_pw = #{u_pw},
 				u_nick = #{u_nick}
-		where u_email = #{u_email}
+		where u_id = #{u_id}
 		
 	</update>
 	
 	
 	<!-- 회원정보확인 -->
-	<select id="eCheck" parameterType="com.smhrd.entity.L_user" resultType="com.smhrd.entity.L_user">
+	<select id="eCheck" resultType="com.smhrd.entity.L_user">
 		select * from l_user
 		where u_email = #{u_email}
 	</select>
 	
-	<select id="nCheck" parameterType="com.smhrd.entity.L_user" resultType="com.smhrd.entity.L_user">
+	<select id="nCheck" resultType="com.smhrd.entity.L_user">
 		select * from l_user
 		where u_nick = #{u_nick}
 	</select>
