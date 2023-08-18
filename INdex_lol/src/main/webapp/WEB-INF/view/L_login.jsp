@@ -33,7 +33,8 @@
 
 	L_user user = (L_user) session.getAttribute("user");
 	String num = (String) session.getAttribute("num");
-	System.out.println( num +"adfgadfg");
+	
+	System.out.print(num+"asdbhgfahj");
 	
 	%>
 	<!-- 백그라운드 배경 html -->
@@ -369,8 +370,10 @@
 	
 	
 <script type="text/javascript">
-
-
+	$('#joinButton').on("click", function() {
+		
+			alert("회원가입 성공")
+	});
 </script>
 
 </body>

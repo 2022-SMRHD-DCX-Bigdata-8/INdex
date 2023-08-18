@@ -65,7 +65,7 @@ public class JoinTestController implements L_Controller {
 			if (cnt > 0) {
 				// 회원가입 성공
 				num = "true";
-				session.setAttribute("num",num );
+				session.setAttribute("num", num );
 				out.print("true");
 				return "L_login";
 				
