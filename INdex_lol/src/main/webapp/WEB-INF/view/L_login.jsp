@@ -48,7 +48,7 @@
 
 						<form action="login.do">
 							<h3>로그인</h3>
-							<input name="u_email" class="input_text" type="text"
+							<input name="u_id" class="input_text" type="text"
 								placeholder="아이디를 입력해주세요" required> <input name="u_pw"
 								class="input_text" type="text" placeholder="비밀번호를 입력해주세요"
 								required>

@@ -23,7 +23,7 @@
 	<!-- 로그인 -->
 	<select id="login" parameterType="com.smhrd.entity.L_user" resultType="com.smhrd.entity.L_user">
   		select * from l_user
-  		where u_email = #{u_email}
+  		where u_id = #{u_id}
   		and u_pw = #{u_pw}
   	</select>
   	
