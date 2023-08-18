@@ -21,7 +21,7 @@ public class JoinTestController implements L_Controller {
 		String pw = request.getParameter("joinPw");
 		String id = request.getParameter("joinId");
 		String lolNick = request.getParameter("lolNickname");
-		String rank = null;
+		String rank = "";
 		
 		HttpSession session = request.getSession();
 		
