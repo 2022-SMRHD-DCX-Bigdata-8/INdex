@@ -175,9 +175,8 @@
 		$(document).ready(function() {
 			// apiError 메시지가 있다면
 			<%if (request.getAttribute("apiError") != null) {%>
-			alert("<%=request.getAttribute("apiError")%>
-		");
-							window.location.href = "http://localhost:8081/INdex_lol4/goLogin.do";
+			alert("<%=request.getAttribute("apiError")%>");
+			window.location.href = "http://localhost:8081/INdex_lol/goLogin.do";
 	<%}%>
 		});
 	</script>
