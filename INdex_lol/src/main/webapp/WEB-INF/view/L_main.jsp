@@ -8,10 +8,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>L.GM</title>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
 <link rel="stylesheet" href="assets/css/L_main.css">
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+	<style>
+    /* CSS 스타일을 추가하여 name 텍스트를 굵게 표시 */
+    .indicator-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
 <style>
 #editBox {
 	visibility: hidden;
@@ -153,57 +159,148 @@ body[data-darkmode=on] .darkmode>.inner {
 			</div>
 
 		</nav>
+		
+		
+		<!-- 대시보드 수정할것들!!!! -->
+		<div class="body_main">
 
-			<div class="body_main">
-			<table>
-				<tr >
-					<td>
-						<div id="chart" style="width: 270px; height: 270px;"></div>
-					</td>
-							<td>
-								<div id = "info">
-									<div id = "KDA">
-										<span> 10 </span> /
-										<span class="death"> 1 </span> /
-										<span> 20 </span>
-									</div>
+			<div class = "bodyfirst">
+				<div id="chart" style="width: 270px; height: 270px;"></div>
+	
+	
+				<div id="kdaavg">
+					<div id="KDA">
+						<span> 10 </span> / <span class="death"> 1 </span> / <span> 20 </span>
+					</div>
+	
+					<div class="ratio">30.0</div>
+	
+				</div>
+	
+	
+				<div id = "best5Box">
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
 						
-									<div class="ratio"> 30.0 </div>
+						<div class="best5">
+							<div class = "champname"> 가렌 </div>
+							<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
 						
-								</div>
-							</td>
-							
-							<td>
-								<img src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
-							</td>
-							
-				</tr>
-			</table>	
-
-			<div class="box1">
-				<img src="5.PNG">
-
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+				
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Galio.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+							<div class = "champname"> 갈리오 </div>
+							<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+					
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gangplank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+								<div class = "champname"> 갱플랭크 </div>
+								<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+					
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gragas.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+								<div class = "champname"> 그라가스 </div>
+								<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+					
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Graves.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+								<div class = "champname"> 그레이브즈 </div>
+								<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id = "radarChartAll">
+					    <div class="row">
+					      <div class="col-lg-6">
+					        <div class="card">
+					          <div class="card-body">	
+					            <div id="radarChart" style="width: 300%; height: 400px;" class="echart"></div>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+				</div>
 			</div>
-
-			<div class="box1">
-				<img src="방사형1.PNG">
-
-			</div>
-
-
-			<div class="box1">
-				<img src="롤전적1.PNG">
-
-			</div>
-
 		</div>
 	</div>
-
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
 		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous">
+	</script>
+	<!-- 메인화면 스크립트 -->
 	<script>
     $(document).ready(function () {
     $(".profile-image").on("click", function (e) {
@@ -312,6 +409,8 @@ body[data-darkmode=on] .darkmode>.inner {
         });
         
     </script>
+    
+    <!-- 파이형 차트 수정 -->
 	<script>
 		// 파이형차트
         var chartDom = document.getElementById('chart');
@@ -338,6 +437,7 @@ body[data-darkmode=on] .darkmode>.inner {
                 }
             }],
             legend: {
+            	show: false, 
                 orient: 'vertical',
                 left: 'left'
             },
@@ -373,5 +473,59 @@ body[data-darkmode=on] .darkmode>.inner {
 
         myChart.setOption(option); // Set option to myChart
     </script>
+    
+    <!-- 방사형차트 스크립트 수정 -->
+    <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                var radarChart = echarts.init(document.querySelector("#radarChart"));
+                radarChart.setOption({
+                  legend: {
+                    data: ['GhostData', 'PlayerData']
+                  },
+                  radar: {
+                    shape: 'polygon',
+                    indicator: [
+                      { name: '생존력', max: 6500 },
+                      { name: '성장력', max: 16000 },
+                      { name: '전투력', max: 30000 },
+                      { name: '시야력', max: 38000 },
+                      { name: '총 골드량', max: 52000 }
+                    ]
+                  },
+                  series: [{
+                    name: 'Budget vs spending',
+                    type: 'radar',
+                    data: [
+                      { 
+                        value: [4200, 3000, 20000, 35000, 50000],
+                        name: 'GhostData',
+                        areaStyle: {
+                          color: 'rgba(16, 212, 243, 0.37)'
+                        },
+                        itemStyle: {
+                          color: '#b4e2ed',
+                        
+                         
+                        },
+                        symbol: 'none',
+                      },
+                      {
+                        value: [5000, 14000, 28000, 26000, 42000],
+                        name: 'PlayerData',
+                        areaStyle: {
+                          color: 'rgba(253, 101, 5, 0.35)'
+                        },
+                        itemStyle: {
+                          color: 'rgb(253, 101, 5)', // 변경하려는 색상
+                          
+                           // 변경하려는 테두리 색상
+                        },
+                        symbol: 'none',
+                      }
+                    ]
+                  }]
+                });
+              });
+            </script>
 </body>
 </html>

@@ -207,24 +207,110 @@ body[data-tolight=on] {
 	color: #1e1f21 !important;
 }
 
-#info {
-	
+.death {
+	color: red;
 }
-
-#chart {
-	
+#info {
+	margin-top: 100px;
 }
 
 .ratio {
+	
 	font-size: 30px;
 	font-weight: bold;
 	text-align: center;
 }
 
-.death {
-	color: red;
-}
 
 #KDA {
 	font-size: 20px;
 }
+
+.faceimg {
+	margin-left: 30px;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.bodyfirst {
+	display: flex;
+}
+
+#chart{
+	margin-top: 30px;	
+}
+
+.champion-box {
+	display: table;
+    height: 48px;
+	border-bottom: 1px solid;
+	border-color: #ebeef1;
+    table-layout: fixed;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+
+
+.csavg{
+	font-size:1px;
+}
+
+#kdaavg{
+	margin-top: 100px;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+#best5Box{
+	width: 400px;
+}
+.faced{
+	display: table-cell;
+    width: 44px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.best5{
+	display: table-cell;
+    width: 100px;
+    text-align: left;
+    vertical-align: middle;
+    padding-left: 8px;
+    box-sizing: border-box;
+}
+
+.champavg{
+	display: table-cell;
+    width: 100px;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.played{
+	display: table-cell;
+    width: 88px;
+    padding-right: 0;
+    vertical-align: middle;
+    text-align: right;
+    padding-right: 12px;
+    box-sizing: border-box;
+}
+
+#radarChartAll{
+
+}
+
+#radarChart{
+}
+
+
+
+
+
+
