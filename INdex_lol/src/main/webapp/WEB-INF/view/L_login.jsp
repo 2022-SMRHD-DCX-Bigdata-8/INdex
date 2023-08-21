@@ -25,7 +25,7 @@
 </style>
 </head>
 
-<link rel="stylesheet" href="assets/css/login.css">
+<link rel="stylesheet" href="assets/css/L_login.css">
 <body>
 
 	<%
@@ -33,7 +33,8 @@
 
 	L_user user = (L_user) session.getAttribute("user");
 	String num = (String) session.getAttribute("num");
-	System.out.println( num +"adfgadfg");
+	
+	System.out.print(num+"asdbhgfahj");
 	
 	%>
 	<!-- 백그라운드 배경 html -->
@@ -53,9 +54,8 @@
 						<form action="login.do">
 							<h3>로그인</h3>
 							<input name="u_id" class="input_text" type="text"
-								placeholder="아이디를 입력해주세요" required> <input name="u_pw"
-								class="input_text" type="text" placeholder="비밀번호를 입력해주세요"
-								required>
+								placeholder="아이디를 입력해주세요" required> 
+							<input name="u_pw" class="input_text" type="password" placeholder="비밀번호를 입력해주세요" required>
 							<button id="login" type="submit">로그인</button>
 						</form>
 
@@ -176,7 +176,8 @@
 			// apiError 메시지가 있다면
 			<%if (request.getAttribute("apiError") != null) {%>
 			alert("<%=request.getAttribute("apiError")%>");
-			window.location.href = "http://localhost:8081/INdex_lol/goLogin.do";
+
+		window.location.href = "http://localhost:8081/INdex_lol/goLogin.do";
 	<%}%>
 		});
 	</script>
@@ -367,10 +368,15 @@
 	</script>
 	
 	
-<script type="text/javascript">
-
-
-</script>
+<!-- <script type="text/javascript">
+	$('#joinButton').on("click", function() {
+		if(num!=null){
+			alert("회원가입 성공")
+		}else{
+			alert("시이일패")
+		}
+	});
+</script>-->
 
 </body>
 </html>

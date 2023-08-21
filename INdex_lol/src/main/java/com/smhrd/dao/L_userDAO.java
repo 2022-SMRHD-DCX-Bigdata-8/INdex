@@ -112,17 +112,6 @@ public class L_userDAO {
 		
 	}
 	
-	public L_user idfind(L_user l_user) {
-		SqlSession session = factory.openSession();
-		
-		L_user result = session.selectOne("idfind", l_user);
-		
-		session.close();
-		
-		return result;
-	}
-	
-	
 	public L_user idCheck(String id) {
 		SqlSession session = factory.openSession();
 		
@@ -134,7 +123,25 @@ public class L_userDAO {
 		
 	}
 	
+	public L_user idfind(L_user l_user) {
+		SqlSession session = factory.openSession();
+		
+		L_user result = session.selectOne("idfind", l_user);
+		
+		session.close();
+		
+		return result;
+	}
 	
+	public L_user pwfind(L_user l_user) {
+		SqlSession session = factory.openSession();
+		
+		L_user result = session.selectOne("pwfind", l_user);
+		
+		session.close();
+		
+		return result;
+	}
 	
 	
 }
