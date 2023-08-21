@@ -25,7 +25,7 @@
 </style>
 </head>
 
-<link rel="stylesheet" href="assets/css/login.css">
+<link rel="stylesheet" href="assets/css/L_login.css">
 <body>
 
 	<%
@@ -54,9 +54,8 @@
 						<form action="login.do">
 							<h3>로그인</h3>
 							<input name="u_id" class="input_text" type="text"
-								placeholder="아이디를 입력해주세요" required> <input name="u_pw"
-								class="input_text" type="text" placeholder="비밀번호를 입력해주세요"
-								required>
+								placeholder="아이디를 입력해주세요" required> 
+							<input name="u_pw" class="input_text" type="password" placeholder="비밀번호를 입력해주세요" required>
 							<button id="login" type="submit">로그인</button>
 						</form>
 

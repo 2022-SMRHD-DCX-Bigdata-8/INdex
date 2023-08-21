@@ -1,0 +1,285 @@
+@charset "UTF-8";
+/*  import google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.body_main {
+  background-color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 20px;
+  background: #e2dddd;
+  position: relative;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  display: inline-flex;
+}
+
+.logo a {
+  color: #000;
+  font-size: 28px;
+  font-weight: 600;
+  position: relative;
+}
+
+.chal {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  right: 30%;
+  margin-top: 13px;
+}
+
+.header-icons {
+  display: flex;
+  align-items: right;
+  position: relative;
+  right: 0%;
+}
+
+/* .header-icons .account {
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+} */
+
+.header-icons img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.profile-card{
+  height: 30%;
+  width: 100px;
+}
+.account{
+  position: relative;
+  right: 100%;
+
+}
+
+.profile-image {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0%;
+  position: relative;
+  left: 70%;
+}
+
+#editBox {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  top: 80%;
+  right: 10%;
+  width: 150px;
+
+}
+#edit-box-tool{
+  position: relative; 
+}
+
+/* wrap */
+#wrap {
+  width: 100%;
+  background-color: #e2dddd;
+}
+
+#wrap::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.body_main {
+  width: 85%;
+  display: block;
+  float: left;
+  height: 100%;
+}
+
+/* */
+
+/* Side menubar section */
+
+.side_bar {
+  background: #e2dddd;
+  float: left;
+  width: 15%;
+  height: 100%;
+}
+
+.side_navbar {
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  float: left;
+}
+
+.side_navbar img {
+  width: 72px;
+}
+
+#tear {
+  display: inline-flex;
+  width: 100%;
+}
+
+#nick {
+  margin-top: 25px;
+  margin-right: 3px;
+}
+
+#tear button {
+  display: inline-block;
+  width: auto;
+  /* 자동으로 너비 조절 */
+  padding: 5px 10px;
+  /* 버튼 내부 패딩 설정 */
+  font-size: 14px;
+  /* 폰트 크기 설정 */
+  height: auto;
+  box-shadow: #e2dddd;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 3px;
+  border-radius: 20px;
+  background: #462679;
+  transition: background-color 0.3s ease-in-out;
+  color: white;
+}
+
+#tear button:active,
+#tear button:focus {
+  background-color: #D3D3D3;
+  /* 클릭 시 배경색 변화 */
+}
+
+.side_navbar a {
+  padding: 0.8rem 3rem;
+  font-weight: 500;
+  font-size: 15px;
+  color: rgb(100, 100, 100);
+}
+
+.side_navbar a:hover {
+  background: rgb(235, 235, 235);
+}
+
+/* dark mode */
+body[data-darkmode=on] {
+  background-color: #1e1f21;
+  color: #e8e8e8 !important;
+}
+
+body[data-tolight=on] {
+  background-color: #e8e8e8;
+  color: #1e1f21 !important;
+}
+body[data-darkmode=off] nav.side_bar {
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+}
+body[data-darkmode=on] nav.side_bar {
+  box-shadow : 0px 0px 6px rgba(255, 255, 255, 0.5);
+}
+
+/* body 내용 */
+.body_main{
+float: left;
+width: 30%;
+background-color: #e2dddd;
+position: relative;
+left: 1%;
+top: 8px;
+}
+ul{
+  list-style: none;
+}
+li{
+  list-style: none;
+}
+.champion{
+  background: var(--gray0);
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 8px 0px 0px;
+  display: block;
+  margin-right: 10%;
+  height: 100%;
+  justify-content: space-between; /* 요소들 사이의 공간을 최대한 활용 */
+}
+.champion span {
+  display: block;
+  width: 100%;
+  line-height: 100%;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--gray500);
+  margin-top: 2px;
+  height: 16px;
+  text-align: center;
+}
+.champion img{
+  border: 0px;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+li a {
+  cursor: pointer;
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 25%;
+  border: 1px solid #ccc;
+ 
+}
+nav.champion ul {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  list-style: none;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+}
+
+nav.champion li {
+  /* margin-right: 10px; */ /* 여기서 margin-right를 제거합니다 */
+  width: 100%;
+  margin: 0;
+  padding: 10%;
+}
