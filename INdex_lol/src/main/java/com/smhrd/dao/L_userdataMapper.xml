@@ -30,14 +30,20 @@
 		#{u_id},
 		#{u_gold},
 		#{u_level},
-		#{u_kda},
 		#{u_damage},
 		#{u_playtime},
-		#{u_sigthscore},
+		#{u_wardskill},
 		#{u_gamecnt},
 		#{u_winlose},
 		#{u_champ},
 		#{u_matchcd}
+		#{u_cs},
+		#{u_teamposition},
+		#{u_kill},
+		#{u_death},
+		#{u_assist},
+		#{u_minionkill},
+		#{u_wardsplaced},
 		)
 	</insert>
 
