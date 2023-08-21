@@ -165,8 +165,9 @@ body[data-darkmode=on] .darkmode>.inner {
 		<div class="body_main">
 
 			<div class = "bodyfirst">
-				<div id="chart" style="width: 270px; height: 270px;"></div>
-	
+				<div id= "chartAll">
+					<div id="chart" style="width: 400px; height: 300px;"></div>
+				</div>
 	
 				<div id="kdaavg">
 					<div id="KDA">
@@ -281,20 +282,36 @@ body[data-darkmode=on] .darkmode>.inner {
 				</div>
 				
 				<div id = "radarChartAll">
-					    <div class="row">
-					      <div class="col-lg-6">
-					        <div class="card">
-					          <div class="card-body">	
-					            <div id="radarChart" style="width: 300%; height: 400px;" class="echart"></div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
+					<div class="card-body">	
+						<div id="radarChart" style="width: 400%; height: 400px;" class="echart"></div>
+					</div>
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
 	</div>
-	</div>
+	<nav>
+	</nav>
+		<!-- 최근전적 20게임 만들기 -->
+		<div class="side_navbar" >
+			<div result="lose" class="recentRecord20">
+				<div class="content">
+					<div class="gameContent">
+						<div>솔랭</div>
+						<div class="bar"></div>
+						<div class="result">패배</div>
+						<div class="length">30분0초</div>
+					</div>
+					<div>
+					
+					
+					</div>
+				</div>
+			</div>
+		</div>
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
 		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
