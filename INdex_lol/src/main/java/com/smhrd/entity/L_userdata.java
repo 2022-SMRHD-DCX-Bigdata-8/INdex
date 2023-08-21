@@ -10,16 +10,21 @@ import lombok.NoArgsConstructor;
 public class L_userdata {
 	private int u_idx ;
 	private String u_id ;
-	private String u_rank;
 	private int u_gold;
 	private int u_level ;
-	private String u_kda;
+	private int u_kill;
+	private int u_death;
+	private int u_assist;
 	private int u_damage;
 	private int u_playtime;
-	private int u_sigthscore;
 	private int u_gamecnt;
 	private String u_winlose;
 	private String u_champ;
 	private String u_matchcd;
+	private int u_wardskill;
+	private int u_wardsplaced;
+	private int u_minionkill;
+	private int u_cs;
+	private String u_teamposition;
 
 }

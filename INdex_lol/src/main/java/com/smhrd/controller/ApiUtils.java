@@ -231,30 +231,34 @@ public class ApiUtils implements L_Controller {
 
 					int userGold = participant.get("goldEarned").getAsInt();
 					int userLevel = participant.get("champLevel").getAsInt();
-					String userK = participant.get("kills").getAsString();
-					String userD = participant.get("deaths").getAsString();
-					String userA = participant.get("assists").getAsString();
+					int userK = participant.get("kills").getAsInt();
+					int userD = participant.get("deaths").getAsInt();
+					int userA = participant.get("assists").getAsInt();
 					int userDamage = participant.get("totalDamageDealtToChampions").getAsInt();
 					int userPlaytime = participant.get("timePlayed").getAsInt();
-					int userSigthScore = participant.get("wardsPlaced").getAsInt();
+					int userWardsPlaced = participant.get("wardsPlaced").getAsInt();
+					int userWardsKilled = participant.get("wardsKilled").getAsInt();
 					String userWinLose = participant.get("win").getAsString();
 					String userChamp = participant.get("championName").getAsString();
-					String userKDA = userK + "/" + userD + "/" + userA;
+					int minionKill = participant.get("minionsKilled").getAsInt();
 
 					System.out.println(userGold);
 					// L_userdata 객체에 매핑
 					L_userdata userData = new L_userdata();
 					userData.setU_id(userId);
-					userData.setU_rank("null");
 					userData.setU_gold(userGold);
 					userData.setU_level(userLevel);
-					userData.setU_kda(userKDA);
+					userData.setU_kill(userK);
+					userData.setU_death(userD);
+					userData.setU_assist(userA);
 					userData.setU_damage(userDamage);
 					userData.setU_playtime(userPlaytime);
-					userData.setU_sigthscore(userSigthScore);
+					userData.setU_wardskill(userWardsKilled);
+					userData.setU_wardsplaced(userWardsPlaced);
 					userData.setU_winlose(userWinLose);
 					userData.setU_champ(userChamp);
 					userData.setU_matchcd(matchId);
+					userData.setU_minionkill(minionKill);
 					userDataList.add(userData);
 				}
 			}
