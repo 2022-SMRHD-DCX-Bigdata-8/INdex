@@ -26,6 +26,7 @@ public class JoinTestController implements L_Controller {
 
 		HttpSession session = request.getSession();
 
+		System.out.println(lolNick);
 		
 		response.setCharacterEncoding("UTF-8");
 		
@@ -35,7 +36,7 @@ public class JoinTestController implements L_Controller {
 		L_user member = new L_user();
 
 		L_userDAO dao = new L_userDAO();
-		String num = null;
+		String sucResult = null;
 		try {
 
 			// API 호출 및 고유 id,rank 찾아오는 로직
@@ -66,8 +67,8 @@ public class JoinTestController implements L_Controller {
 			
 			if (cnt > 0) {
 				// 회원가입 성공
-				num = "true";
-				session.setAttribute("num", num );
+				sucResult = "true";
+				session.setAttribute("sucResult", sucResult );
 				out.print("true");
 				return "L_login";
 				
@@ -84,9 +85,7 @@ public class JoinTestController implements L_Controller {
 
 			e.printStackTrace();
 			request.setAttribute("apiError", "API 호출에 실패했습니다. 닉네임을 확인해주세요.");
-			session.setAttribute("user", member);
-			num =null;
-			session.setAttribute("num", num );
+		
 			return "L_login";
 		}
 

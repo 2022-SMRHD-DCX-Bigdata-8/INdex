@@ -13,7 +13,7 @@ public class goTestMainCon implements L_Controller {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		return "TestMain";
+		return "L_login_test";
 	}
 
 }

@@ -41,6 +41,7 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/findid.do", new L_FindIdCon());
 		handler.put("/findpw.do", new L_FindPwCon());
 		handler.put("/champion.do", new L_GoChampionCon());
+		handler.put("/newUserLogin.do", new NewUserLoginCon());
 
 		
 		
@@ -57,7 +58,7 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/gmailSend.do", new GmailSend());
 		handler.put("/getPlayData.do", new getPlayData());
 		handler.put("/apiUtils.do", new ApiUtils());
-//		handler.put("/goMain.do", new goMainTestCon());
+		handler.put("/goRenew.do", new goMainTestCon());
 		handler.put("/goGettest.do", new goGetTestCon());
 		handler.put("/verified.do", new VerifiedCon());
 		handler.put("/goTestMain.do", new goTestMainCon());
