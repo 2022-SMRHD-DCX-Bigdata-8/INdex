@@ -516,7 +516,7 @@ body[data-darkmode=on] .darkmode>.inner {
                     var userPuuid = "${user.u_lolcd}";
 
                     // 여기 수정해야함 null !null 로 nerefresh , refresh 버튼 분기
-                    newrefreshPlayData(userId, userPuuid);
+                    //newrefreshPlayData(userId, userPuuid);
                     refreshPlayData(userId, userPuuid);
 
 
