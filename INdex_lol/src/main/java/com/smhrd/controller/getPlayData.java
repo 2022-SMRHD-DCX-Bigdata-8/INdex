@@ -31,14 +31,14 @@ public class getPlayData implements L_Controller {
 		// Riot API로부터 랭크 데이터 가져오기
 
 		try {
-			List<String> rankData = ApiUtils.getMatchIds(puuid);
-			System.out.println("랭크데이터완료");
-			List<L_userdata> userDataList = ApiUtils.getPlayDataByMatchIds(puuid, userId, rankData);
+			List<String> matchData = ApiUtils.getMatchIds(puuid);
+			System.out.println("매치데이터완료");
+			List<L_userdata> userDataList = ApiUtils.getPlayDataByMatchIds(puuid, userId, matchData);
 			System.out.println("플레이데이터완료");
-			List<L_usertimeline> userTimeList = ApiUtils.getTimestampDataByMatchIds(puuid, userId, rankData);
+			List<L_usertimeline> userTimeList = ApiUtils.getTimestampDataByMatchIds(puuid, userId, matchData);
 			System.out.println("타임라인완료");
 
-			System.out.println(rankData);
+			System.out.println(matchData);
 			System.out.println(userDataList);
 			System.out.println(userTimeList);
 
