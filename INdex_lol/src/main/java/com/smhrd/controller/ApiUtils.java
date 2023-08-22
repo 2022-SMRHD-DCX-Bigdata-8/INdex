@@ -28,7 +28,7 @@ public class ApiUtils implements L_Controller {
 
 	// 수정중 건들지마시오
 
-	private static final String API_KEY = "RGAPI-ff294aca-97c4-4a5a-bcd7-2d4be9a54b03";
+	private static final String API_KEY = "RGAPI-5f2c9f81-0579-44fe-bf70-056f95268e0b";
 	private static final String API_BASED_UID_URL = "https://kr.api.riotgames.com";
 	private static final String API_BASED_MATCH_URL = "https://asia.api.riotgames.com";
 
@@ -151,10 +151,11 @@ public class ApiUtils implements L_Controller {
 		return userData;
 	}
 	
+	// 테스트 끝내고 수정해줘야함
 	public static List<String> getNewMemberMatchIds(String puuid) throws IOException {
 		int COUNT = 19;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + puuid
-				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
+				+ "/ids?queue=420&type=ranked&start=39&count=" + COUNT;
 
 		URL url = new URL(apiUrl);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
