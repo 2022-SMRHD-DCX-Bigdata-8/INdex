@@ -155,7 +155,7 @@ public class ApiUtils implements L_Controller {
 	public static List<String> getNewMemberMatchIds(String puuid) throws IOException {
 		int COUNT = 19;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + puuid
-				+ "/ids?queue=420&type=ranked&start=39&count=" + COUNT;
+				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
 
 		URL url = new URL(apiUrl);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();

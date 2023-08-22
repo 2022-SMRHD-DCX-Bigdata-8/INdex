@@ -228,20 +228,20 @@ body[data-darkmode=on] .darkmode>.inner {
 			<table border="1">
 				<c:forEach var="user" items="${userdata}">
 					<tr>
-						
-						
-						
+
+
+
 						<td>챔피언명 ${user.u_champ}</td>
 						<td>레벨 ${user.u_level}</td>
 						<td>골드량 ${user.u_gold}</td>
 						<td>피해량 ${user.u_damage}</td>
-						<td>킬 ${user.u_kill}</td>						
-						<td>데스 ${user.u_death}</td>						
-						<td>어시 ${user.u_assist}</td>						
+						<td>킬 ${user.u_kill}</td>
+						<td>데스 ${user.u_death}</td>
+						<td>어시 ${user.u_assist}</td>
 						<td>플레이타임 ${user.u_playtime}</td>
 						<td>와드 파괴수 ${user.u_wardskill}</td>
 						<td>와드 설치수 ${user.u_wardsplaced}</td>
-						
+
 						<!-- 다른 필드들도 위와 같이 출력 -->
 					</tr>
 				</c:forEach>
@@ -355,21 +355,23 @@ body[data-darkmode=on] .darkmode>.inner {
                     renewalButton.style.color = "#1e1f21";
                     console.log("클릭");
                     
-                    var userId = "${user.u_id}";
-                    var userPuuid = "${user.u_lolcd}";
-
-                    // 여기 수정해야함 null !null 로 nerefresh , refresh 버튼 분기
-                    newrefreshPlayData(userId, userPuuid);
-                   // refreshPlayData(userId, userPuuid);
-
-
-                    // 일정 시간(여기서는 120초) 후에 다시 클릭 가능하게 설정
                     setTimeout(function () {
                         canRenew = true; // 버튼 클릭 활성화
                         console.log('다시 버튼을 클릭할 수 있습니다.');
                         renewalButton.style.background = "#462679";
                         renewalButton.style.color = "#e8e8e8";
                     }, 120000); // 120초 (2분)
+                    
+                    var userId = "${user.u_id}";
+                    var userPuuid = "${user.u_lolcd}";
+
+                    // 여기 수정해야함 null !null 로 nerefresh , refresh 버튼 분기
+                    newrefreshPlayData(userId, userPuuid);
+                    refreshPlayData(userId, userPuuid);
+
+
+                    // 일정 시간(여기서는 120초) 후에 다시 클릭 가능하게 설정
+                    
                 }
             });
         });
