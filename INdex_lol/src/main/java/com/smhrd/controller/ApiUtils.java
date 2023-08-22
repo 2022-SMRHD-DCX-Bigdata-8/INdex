@@ -31,6 +31,7 @@ public class ApiUtils implements L_Controller {
 	// 수정중 건들지마시오
 
 	private static final String API_KEY = "RGAPI-105f443b-63a8-4bde-9b41-999930db4aac";
+
 	private static final String API_BASED_UID_URL = "https://kr.api.riotgames.com";
 	private static final String API_BASED_MATCH_URL = "https://asia.api.riotgames.com";
 
@@ -127,7 +128,7 @@ public class ApiUtils implements L_Controller {
 	public static List<String> getNewMemberMatchIds(String puuid) throws IOException {
 		int COUNT = 19;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + puuid
-				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
+				+ "/ids?queue=420&type=ranked&start=20&count=" + COUNT;
 
 		URL url = new URL(apiUrl);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -298,18 +299,17 @@ public class ApiUtils implements L_Controller {
 	}
 
 	public static List<int[]> getFilteredResultsFromMatchId(String matchId, String puuid) throws Exception {
-		
+
 		L_usertimelineDAO usertimeDAO = new L_usertimelineDAO();
-		
-	    L_usertimelineDAO userTimeDAO = new L_usertimelineDAO();
-	    if (userTimeDAO.checkExistingData(matchId) != null) {
-	        System.out.println("이미 데이터가 존재합니다: " + matchId);
-	        return new ArrayList<>(); // 이미 데이터가 존재하는 경우 빈 리스트 반환
-	    }
+
+		L_usertimelineDAO userTimeDAO = new L_usertimelineDAO();
+		if (userTimeDAO.checkExistingData(matchId) != null) {
+			System.out.println("이미 데이터가 존재합니다: " + matchId);
+			return new ArrayList<>(); // 이미 데이터가 존재하는 경우 빈 리스트 반환
+		}
 
 		String matchApiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/" + matchId + "/timeline?api_key=" + API_KEY;
 
-		
 		System.out.println("타임라인1분단위쪽들어옴");
 		URL matchUrl = new URL(matchApiUrl);
 		HttpURLConnection matchConnection = (HttpURLConnection) matchUrl.openConnection();
@@ -341,26 +341,26 @@ public class ApiUtils implements L_Controller {
 				int timestamp = frame.getInt("timestamp") / 60000; // 1분 단위로 변환
 
 				if (timestamp <= 20) {
-				int participantIndex = -1;
-				for (int j = 0; j < participants.length(); j++) {
-					if (participants.getString(j).equals(puuid)) {
-						participantIndex = j;
-						break;
+					int participantIndex = -1;
+					for (int j = 0; j < participants.length(); j++) {
+						if (participants.getString(j).equals(puuid)) {
+							participantIndex = j;
+							break;
+						}
 					}
-				}
 
-				if (participantIndex != -1) {
-					JSONObject matchingParticipantFrame = participantFrames
-							.getJSONObject(String.valueOf(participantIndex + 1));
-					int gold = matchingParticipantFrame.getInt("currentGold");
-					int damage = matchingParticipantFrame.getJSONObject("damageStats")
-							.getInt("totalDamageDoneToChampions");
-					int jungleMinionsKilled = matchingParticipantFrame.getInt("jungleMinionsKilled");
-					int minionsKilled = matchingParticipantFrame.getInt("minionsKilled");
+					if (participantIndex != -1) {
+						JSONObject matchingParticipantFrame = participantFrames
+								.getJSONObject(String.valueOf(participantIndex + 1));
+						int gold = matchingParticipantFrame.getInt("currentGold");
+						int damage = matchingParticipantFrame.getJSONObject("damageStats")
+								.getInt("totalDamageDoneToChampions");
+						int jungleMinionsKilled = matchingParticipantFrame.getInt("jungleMinionsKilled");
+						int minionsKilled = matchingParticipantFrame.getInt("minionsKilled");
 
-					// 필터링된 결과를 리스트에 추가
-					filteredResults.add(new int[] { timestamp, gold, damage, jungleMinionsKilled, minionsKilled });
-				}
+						// 필터링된 결과를 리스트에 추가
+						filteredResults.add(new int[] { timestamp, gold, damage, jungleMinionsKilled, minionsKilled });
+					}
 				}
 			}
 			return filteredResults;

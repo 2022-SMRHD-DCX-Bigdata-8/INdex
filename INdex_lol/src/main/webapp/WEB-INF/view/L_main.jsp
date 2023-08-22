@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.entity.L_champimg"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.entity.L_userdata"%>
 <%@page import="com.smhrd.entity.L_user"%>
@@ -16,6 +17,16 @@
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
 <link rel="stylesheet" href="assets/css/L_main.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+<style>
+/* CSS 스타일을 추가하여 name 텍스트를 굵게 표시 */
+.indicator-name {
+	font-size: 16px;
+	font-weight: bold;
+}
+</style>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
 <style>
@@ -110,8 +121,70 @@ body[data-darkmode=on] .darkmode>.inner {
 
 	L_user user = (L_user) session.getAttribute("user");
 	List<L_userdata> userdata = (List<L_userdata>) session.getAttribute("userdata");
+	List<L_userdata> userdataDesc = (List<L_userdata>) session.getAttribute("userdataDesc");
+	List<L_userdata> champDesc = (List<L_userdata>) session.getAttribute("champDesc");
+	List<L_champimg> champimg = (List<L_champimg>) session.getAttribute("champimg");
 
-	System.out.print("success" + userdata);
+	System.out.println("success" + userdataDesc);
+
+	String[] arr = new String[5];
+	for (int j = 0; j < 5; j++) {
+		for (int i = 0; i < champimg.size(); i++) {
+			if (champDesc.get(j).getU_champ().equals(champimg.get(i).getChamp_nick())) {
+		arr[j] = champimg.get(i).getChamp_img();
+			}
+		}
+	}
+
+	int allkill = 0;
+	int alldeath = 0;
+	int allassist = 0;
+	for (int i = 0; i < userdataDesc.size(); i++) {
+		allkill += userdataDesc.get(i).getU_kill();
+		alldeath += userdataDesc.get(i).getU_death();
+		allassist += userdataDesc.get(i).getU_assist();
+	}
+	double K = Math.round(allkill / (double) userdataDesc.size() * 10) / 10.0;
+	double D = Math.round(alldeath / (double) userdataDesc.size() * 10) / 10.0;
+	double A = Math.round(allassist / (double) userdataDesc.size() * 10) / 10.0;
+	double KDA = Math.round((K + A) / D * 10) / 10.0;
+	System.out.println(KDA);
+
+	int wincnt = 0;
+	int losecnt = 0;
+	for (int i = 0; i < 20; i++) {
+		if (userdataDesc.get(i).getU_winlose().equals("true")) {
+			wincnt += 1;
+		} else if (userdataDesc.get(i).getU_winlose().equals("false")) {
+			losecnt += 1;
+		}
+	}
+	int winlose = (int) ((wincnt / 20.0) * 100);
+
+	int champ1kill = 0;
+	int champ1death = 0;
+	int champ1assist = 0;
+	double[][] Array = new double[5][3];
+	for (int j = 0; j < 5; j++) {
+		for (int i = 0; i < userdata.size(); i++) {
+			if (champDesc.get(j).getU_champ().equals(userdata.get(i).getU_champ())) {
+		champ1kill += userdata.get(i).getU_kill();
+		champ1death += userdata.get(i).getU_death();
+		champ1assist += userdata.get(i).getU_assist();
+			}
+		}
+		Array[j][0] = Math.round(champ1kill / (double) champDesc.get(j).getChampcnt() * 10) / 10.0;
+		champ1kill = 0;
+		Array[j][1] = Math.round(champ1death / (double) champDesc.get(j).getChampcnt() * 10) / 10.0;
+		champ1death = 0;
+		Array[j][2] = Math.round(champ1assist / (double) champDesc.get(j).getChampcnt() * 10) / 10.0;
+		champ1assist = 0;
+	}
+	double champAvg1 = Math.round((Array[0][0] + Array[0][2]) / Array[0][1] * 10) / 10.0;
+	double champAvg2 = Math.round((Array[1][0] + Array[1][2]) / Array[1][1] * 10) / 10.0;
+	double champAvg3 = Math.round((Array[2][0] + Array[2][2]) / Array[2][1] * 10) / 10.0;
+	double champAvg4 = Math.round((Array[3][0] + Array[3][2]) / Array[3][1] * 10) / 10.0;
+	double champAvg5 = Math.round((Array[4][0] + Array[4][2]) / Array[4][1] * 10) / 10.0;
 	%>
 	<header class="header">
 		<div class="logo">
@@ -150,7 +223,6 @@ body[data-darkmode=on] .darkmode>.inner {
 	</header>
 
 	<div id="wrap">
-
 		<nav>
 			<div class="side_navbar" style="border: 1;">
 				<form action="#">
@@ -180,236 +252,197 @@ body[data-darkmode=on] .darkmode>.inner {
 			</div>
 
 		</nav>
-
-<<<<<<< HEAD
-		<div class="body_main">
-			<table>
-				<tr>
-					<td>
-						<div id="chart" style="width: 270px; height: 270px;"></div>
-					</td>
-					<td>
-						<div id="info">
-							<div id="KDA">
-								<span> 10 </span> / <span class="death"> 1 </span> / <span>
-									20 </span>
-							</div>
-=======
->>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
-
-<<<<<<< HEAD
-							<div class="ratio">30.0</div>
-
-						</div>
-					</td>
-
-					<td><img
-						src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
-					</td>
-
-				</tr>
-			</table>
-
-			<div class="box1">
-				<img src="5.PNG">
-
-=======
-			<div class = "bodyfirst">
-				<div id= "chartAll">
-					<div id="chart" style="width: 400px; height: 300px;"></div>
-				</div>
-	
-				<div id="kdaavg">
-					<div id="KDA">
-						<span> 10 </span> / <span class="death"> 1 </span> / <span> 20 </span>
-					</div>
-	
-					<div class="ratio">30.0</div>
-	
-				</div>
-	
-	
-				<div id = "best5Box">
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
-						</div>
-						
-						<div class="best5">
-							<div class = "champname"> 가렌 </div>
-							<div class ="csavg"> CS 176.3 (6.6)</div>
-						</div>
-						
-						<div class="champavg">
-							<div>평점</div>
-							<div>K/D/A</div>
-						</div>
-						
-						<div class="played">
-							<div class="cnt">6게임</div>
-						</div>
-					</div>
-				
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Galio.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
-						</div>
-						
-						<div class="best5">
-							<div class = "champname"> 갈리오 </div>
-							<div class ="csavg"> CS 176.3 (6.6)</div>
-						</div>
-						
-						<div class="champavg">
-							<div>평점</div>
-							<div>K/D/A</div>
-						</div>
-						
-						<div class="played">
-							<div class="cnt">6게임</div>
-						</div>
-					</div>
-					
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gangplank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
-						</div>
-						
-						<div class="best5">
-								<div class = "champname"> 갱플랭크 </div>
-								<div class ="csavg"> CS 176.3 (6.6)</div>
-						</div>
-						
-						<div class="champavg">
-							<div>평점</div>
-							<div>K/D/A</div>
-						</div>
-						
-						<div class="played">
-							<div class="cnt">6게임</div>
-						</div>
-					</div>
-					
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gragas.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
-						</div>
-						
-						<div class="best5">
-								<div class = "champname"> 그라가스 </div>
-								<div class ="csavg"> CS 176.3 (6.6)</div>
-						</div>
-						
-						<div class="champavg">
-							<div>평점</div>
-							<div>K/D/A</div>
-						</div>
-						
-						<div class="played">
-							<div class="cnt">6게임</div>
-						</div>
-					</div>
-					
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Graves.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
-						</div>
-						
-						<div class="best5">
-								<div class = "champname"> 그레이브즈 </div>
-								<div class ="csavg"> CS 176.3 (6.6)</div>
-						</div>
-						
-						<div class="champavg">
-							<div>평점</div>
-							<div>K/D/A</div>
-						</div>
-						
-						<div class="played">
-							<div class="cnt">6게임</div>
-						</div>
-					</div>
-				</div>
-				
-				<div id = "radarChartAll">
-					<div class="card-body">	
-						<div id="radarChart" style="width: 400%; height: 400px;" class="echart"></div>
-					</div>
-				</div>
->>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
-			</div>
-<<<<<<< HEAD
-
-			<div class="box1">
-				<img src="방사형1.PNG">
-
-			</div>
-
-
-			<div class="box1">
-				<img src="롤전적1.PNG">
-
-			</div>
-
-
-
-=======
->>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
-
-			<table border="1">
-				<c:forEach var="user" items="${userdata}">
-					<tr>
-
-
-
-						<td>챔피언명 ${user.u_champ}</td>
-						<td>레벨 ${user.u_level}</td>
-						<td>골드량 ${user.u_gold}</td>
-						<td>피해량 ${user.u_damage}</td>
-						<td>킬 ${user.u_kill}</td>
-						<td>데스 ${user.u_death}</td>
-						<td>어시 ${user.u_assist}</td>
-						<td>플레이타임 ${user.u_playtime}</td>
-						<td>와드 파괴수 ${user.u_wardskill}</td>
-						<td>와드 설치수 ${user.u_wardsplaced}</td>
-
-						<!-- 다른 필드들도 위와 같이 출력 -->
-					</tr>
-				</c:forEach>
-			</table>
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
-		</div>
 	</div>
+	<div class="body_main">
+		<table>
+			<tr>
+				<td>
+					<div id="chart" style="width: 270px; height: 270px;"></div>
+				</td>
+				<td>
+					<div id="info">
+						<div id="KDA">
+							<span> 10 </span> / <span class="death"> 1 </span> / <span>
+								20 </span>
+						</div>
+						<div class="ratio">30.0</div>
 
-		<!-- 최근전적 20게임 만들기
-		<div class="side_navbar" >
-			<div result="lose" class="recentRecord20">
-				<div class="content">
-					<div class="gameContent">
-						<div>솔랭</div>
-						<div class="bar"></div>
-						<div class="result">패배</div>
-						<div class="length">30분0초</div>
+
+						<div class="bodyfirst">
+							<div id="chartAll">
+								<div id="chart" style="width: 400px; height: 300px;"></div>
+							</div>
+
+							<div id="kdaavg">
+								<div id="KDA">
+									<span> <%=K%>
+									</span> / <span class="death"> <%=D%>
+									</span> / <span> <%=A%>
+									</span>
+								</div>
+
+								<div class="ratio"><%=KDA%></div>
+
+							</div>
+
+
+							<div id="best5Box">
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[0]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(0).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg1%></div>
+										<div><%=Array[0][0]%>/<%=Array[0][1]%>/<%=Array[0][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt">
+											<%=champDesc.get(0).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[1]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(1).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg2%></div>
+										<div><%=Array[1][0]%>/<%=Array[1][1]%>/<%=Array[1][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt"><%=champDesc.get(1).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[2]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(2).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg3%></div>
+										<div><%=Array[2][0]%>/<%=Array[2][1]%>/<%=Array[2][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt"><%=champDesc.get(2).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[3]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(3).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg4%></div>
+										<div><%=Array[3][0]%>/<%=Array[3][1]%>/<%=Array[3][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt"><%=champDesc.get(3).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[4]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(4).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg5%></div>
+										<div><%=Array[4][0]%>/<%=Array[4][1]%>/<%=Array[4][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt"><%=champDesc.get(4).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="radarChartAll">
+								<div class="card-body">
+									<div id="radarChart" style="width: 400%; height: 400px;"
+										class="echart"></div>
+								</div>
+							</div>
+
+						</div>
+
+
+
+						<table border="1">
+							<c:forEach var="user" items="${userdata}">
+								<tr>
+									<td>챔피언명 ${user.u_champ}</td>
+									<td>레벨 ${user.u_level}</td>
+									<td>골드량 ${user.u_gold}</td>
+									<td>피해량 ${user.u_damage}</td>
+									<td>킬 ${user.u_kill}</td>
+									<td>데스 ${user.u_death}</td>
+									<td>어시 ${user.u_assist}</td>
+									<td>플레이타임 ${user.u_playtime}</td>
+									<td>와드 파괴수 ${user.u_wardskill}</td>
+									<td>와드 설치수 ${user.u_wardsplaced}</td>
+
+									<!-- 다른 필드들도 위와 같이 출력 -->
+								</tr>
+							</c:forEach>
+						</table>
+
 					</div>
-					<div>
-						
-					
-					</div>
-				</div>
-			</div>
-		</div> -->
-
-
-	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
-		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-		crossorigin="anonymous"></script>
-	<script>
+					</div> <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+						integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+						crossorigin="anonymous"></script> <script>
     $(document).ready(function () {
     $(".profile-image").on("click", function (e) {
       e.stopPropagation(); // 이벤트 전파 중단 (버블링 방지)
@@ -579,15 +612,14 @@ body[data-darkmode=on] .darkmode>.inner {
         });
 
         
-    </script>
-	<script>
+    </script> <!-- 파이형 차트 수정 --> <script>
 		// 파이형차트
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom); // Initialize myChart
 
         option = {
             title: {
-                text: '20전 10승 10패',
+                text: '<%=20%>전 <%=wincnt%>승 <%=losecnt%>패',
                 subtext: 'Test Data',
                 left: 'center'
             },
@@ -599,7 +631,7 @@ body[data-darkmode=on] .darkmode>.inner {
                 left: 'center',
                 top: 'center',
                 style: {
-                    text: '50%', // 텍스트 내용
+                    text: ' <%=winlose%>% ' ,
                     font: 'bold 30px Arial', // 폰트 스타일
                     fill: '#333' // 텍스트 색상
 
@@ -616,8 +648,8 @@ body[data-darkmode=on] .darkmode>.inner {
                     radius: ['60%', '35%'],
                     data: [
                     	// 수정할 부분
-                        { value: 10, name: '패', itemStyle: { color: 'red' } }, // 패 시리즈 색상 변경
-                        { value: 10, name: '승', itemStyle: { color: 'blue' } } // 승 시리즈 색상 변경
+                        { value: <%=losecnt%>, name: '패', itemStyle: { color: 'red' } }, // 패 시리즈 색상 변경
+                        { value: <%=wincnt%>, name: '승', itemStyle: { color: 'blue' } } // 승 시리즈 색상 변경
                     ],
                     label: {
                         show: false,
@@ -640,6 +672,57 @@ body[data-darkmode=on] .darkmode>.inner {
         };
 
         myChart.setOption(option); // Set option to myChart
-    </script>
+    </script> <!-- 방사형차트 스크립트 수정 --> <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                var radarChart = echarts.init(document.querySelector("#radarChart"));
+                radarChart.setOption({
+                  legend: {
+                    data: ['GhostData', 'PlayerData']
+                  },
+                  radar: {
+                    shape: 'polygon',
+                    indicator: [
+                      { name: '생존력', max: 6500 },
+                      { name: '성장력', max: 16000 },
+                      { name: '전투력', max: 30000 },
+                      { name: '시야력', max: 38000 },
+                      { name: '총 골드량', max: 52000 }
+                    ]
+                  },
+                  series: [{
+                    name: 'Budget vs spending',
+                    type: 'radar',
+                    data: [
+                      { 
+                        value: [4200, 3000, 20000, 35000, 50000],
+                        name: 'GhostData',
+                        areaStyle: {
+                          color: 'rgba(16, 212, 243, 0.37)'
+                        },
+                        itemStyle: {
+                          color: '#b4e2ed',
+                        
+                         
+                        },
+                        symbol: 'none',
+                      },
+                      {
+                        value: [5000, 14000, 28000, 26000, 42000],
+                        name: 'PlayerData',
+                        areaStyle: {
+                          color: 'rgba(253, 101, 5, 0.35)'
+                        },
+                        itemStyle: {
+                          color: 'rgb(253, 101, 5)', // 변경하려는 색상
+                          
+                           // 변경하려는 테두리 색상
+                        },
+                        symbol: 'none',
+                      }
+                    ]
+                  }]
+                });
+              });
+            </script>
 </body>
 </html>
