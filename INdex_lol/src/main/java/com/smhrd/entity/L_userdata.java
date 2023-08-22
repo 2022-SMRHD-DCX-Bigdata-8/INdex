@@ -26,5 +26,6 @@ public class L_userdata {
 	private int u_assist;
 	private int u_minionkill;
 	private int u_wardsplaced;
+	private int champcnt;
 
 }

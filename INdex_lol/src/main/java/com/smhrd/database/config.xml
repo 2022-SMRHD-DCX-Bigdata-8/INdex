@@ -33,6 +33,7 @@
     <mapper resource="com/smhrd/dao/L_ghostdataMapper.xml"/>
     <mapper resource="com/smhrd/dao/L_userdataMapper.xml"/>
     <mapper resource="com/smhrd/dao/L_userMapper.xml"/>
+    <mapper resource="com/smhrd/dao/L_champimgMapper.xml"/>
   </mappers>
 </configuration>
 

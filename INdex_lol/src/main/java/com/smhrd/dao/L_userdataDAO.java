@@ -6,15 +6,15 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SqlSessionManager;
-
+import com.smhrd.entity.L_user;
 import com.smhrd.entity.L_userdata;
 
 public class L_userdataDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 
-	public List<L_userdata> udview(String u_id) {
+	public List<L_userdata> udview(L_userdata l_userdata) {
 		SqlSession session = factory.openSession(true);
-		List<L_userdata> list = session.selectList("fdlist",u_id);
+		List<L_userdata> list = session.selectList("fdlist",l_userdata);
 		session.close();
 		return list;
 	}
@@ -45,5 +45,40 @@ public class L_userdataDAO {
 	    session.close();
 	    return result; // 중복 데이터가 있으면 true, 없으면 false 반환
 	}
-
+	
+	public List<L_userdata> userdataDesc( L_userdata l_userdata) {
+		SqlSession session = factory.openSession(true);
+		List<L_userdata> userdataDesc = session.selectList("userdataDesc",l_userdata);
+		session.close();
+		return userdataDesc;
+	}
+	
+	
+	public List<L_userdata> champDesc(L_userdata l_userdata) {
+		SqlSession session = factory.openSession(true);
+		List<L_userdata> champDesc=session.selectList("champDesc",l_userdata);
+		session.close();
+		return champDesc;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

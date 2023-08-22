@@ -62,6 +62,7 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/goGettest.do", new goGetTestCon());
 		handler.put("/verified.do", new VerifiedCon());
 		handler.put("/goTestMain.do", new goTestMainCon());
+		
 
 
 

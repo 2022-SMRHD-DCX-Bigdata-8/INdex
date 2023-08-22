@@ -28,7 +28,7 @@ public class ApiUtils implements L_Controller {
 
 	// 수정중 건들지마시오
 
-	private static final String API_KEY = "RGAPI-ff294aca-97c4-4a5a-bcd7-2d4be9a54b03";
+	private static final String API_KEY = "RGAPI-9b95674a-7c38-4d78-819a-ee1927187cfb";
 	private static final String API_BASED_UID_URL = "https://kr.api.riotgames.com";
 	private static final String API_BASED_MATCH_URL = "https://asia.api.riotgames.com";
 
@@ -121,7 +121,7 @@ public class ApiUtils implements L_Controller {
 	// Riot API 호출 및 랭크 데이터 가져오는 메서드
 
 	public static List<L_userdata> getRankData(String lolcd) throws IOException {
-		int COUNT = 5;
+		int COUNT = 19;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + lolcd
 				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
 
@@ -154,7 +154,7 @@ public class ApiUtils implements L_Controller {
 	public static List<String> getNewMemberMatchIds(String puuid) throws IOException {
 		int COUNT = 19;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + puuid
-				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
+				+ "/ids?queue=420&type=ranked&start=20&count=" + COUNT;
 
 		URL url = new URL(apiUrl);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
