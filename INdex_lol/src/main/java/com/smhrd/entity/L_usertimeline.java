@@ -17,6 +17,7 @@ public class L_usertimeline {
 	private int u_jmkill;
 	private int u_mkill;
 	private String u_teamposition;
+	private String u_matchcd;
 	
 	
 	

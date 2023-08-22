@@ -1,89 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.smhrd.dao.L_userDAO">
+<mapper namespace="com.smhrd.dao.L_usertimelineDAO">
 
-	<!-- 회원가입 -->
-	<insert id="join" parameterType="com.smhrd.entity.L_user">
-		insert into l_user
-		values(
-
-
-		#{u_email},
-		#{u_pw},
-		#{u_nick},
-		#{u_lolcd},
-		#{u_name},
+	<insert id="insertUserTimeline"
+		parameterType="com.smhrd.entity.L_usertimeline">
+		INSERT INTO l_usertimeline
+		VALUES (
 		#{u_id},
-		#{u_rank},
-		#{u_lolkrcd}
-
-		)
-
+		#{u_timestamp},
+		#{u_timegold},
+		#{u_timedamage},
+		#{u_jmkill},
+		#{u_mkill},
+		#{u_teamposition},
+		#{u_matchcd})
 	</insert>
 
-
-	<!-- 로그인 -->
-	<select id="login" parameterType="com.smhrd.entity.L_user"
-		resultType="com.smhrd.entity.L_user">
-		select * from l_user
-		where u_id = #{u_id}
-		and u_pw = #{u_pw}
-	</select>
-
-
-	<!-- 회원정보변경 -->
-	<update id="update" parameterType="com.smhrd.entity.L_user">
-		update l_user set
-		u_pw = #{u_pw},
-		u_nick = #{u_nick}
-		where u_id = #{u_id}
-
-	</update>
-
-
-	<!-- 회원정보확인 -->
-	<select id="eCheck" resultType="com.smhrd.entity.L_user">
-		select * from l_user
-		where u_email
-		= #{u_email}
-	</select>
-
-	<select id="nCheck" resultType="com.smhrd.entity.L_user">
-		select * from l_user
-		where u_nick
-		= #{u_nick}
-	</select>
-
-
-	<!-- 회원탈퇴 -->
-	<delete id="delete" parameterType="com.smhrd.entity.L_user">
-		delete from l_user
-		where u_id=#{u_id} and u_pw=#{u_pw}
-	</delete>
-
-
-
-	<!-- 회원관리 -->
-	<select id="list" resultType="com.smhrd.entity.L_user">
-		select * from l_user
-	</select>
-
-	<select id="idfind" resultType="com.smhrd.entity.L_user">
-		select * from l_user
-		where u_name
-		= #{u_name}
-	</select>
-
-	<select id="idCheck" resultType="com.smhrd.entity.L_user">
-		select * from l_user
-		where u_id = #{u_id}
-	</select>
-
-	<select id="pwfind" resultType="com.smhrd.entity.L_user">
-		select * from l_user
-		where u_name = #{u_name}
-		and u_id = #{u_id}
-		and u_email = #{u_email}
+	<select id="matchCdCheck"
+		resultType="com.smhrd.entity.L_usertimeline">
+		select * from l_usertimeline
+		where u_matchcd = #{u_matchcd}
 	</select>
 
 </mapper>

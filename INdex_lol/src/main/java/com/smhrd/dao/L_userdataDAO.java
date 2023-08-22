@@ -28,7 +28,7 @@ public class L_userdataDAO {
 
 		int cnt = session.insert("insertPlayData", userData);
 
-		
+		 
 		session.close();
 		return cnt;
 	}
