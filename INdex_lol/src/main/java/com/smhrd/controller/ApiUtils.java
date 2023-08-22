@@ -22,6 +22,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.smhrd.entity.L_user;
 import com.smhrd.entity.L_userdata;
+import com.smhrd.entity.L_usertimeline;
 
 // ApiUtils.java
 public class ApiUtils implements L_Controller {
@@ -66,7 +67,7 @@ public class ApiUtils implements L_Controller {
 			String lolkrid = summonerInfo.getString("id");
 			String puuid = summonerInfo.getString("puuid");
 			System.out.println(lolkrid);
-			
+
 			return user;
 		} else {
 			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + responseCode);
@@ -120,38 +121,6 @@ public class ApiUtils implements L_Controller {
 
 	// Riot API 호출 및 랭크 데이터 가져오는 메서드
 
-	public static List<L_userdata> getRankData(String lolcd) throws IOException {
-		int COUNT = 5;
-		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + lolcd
-				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
-
-		URL url = new URL(apiUrl);
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-		connection.setRequestMethod("GET");
-		connection.setRequestProperty("X-Riot-Token", API_KEY);
-		connection.setRequestProperty("Accept", "application/json");
-
-		StringBuilder response = new StringBuilder();
-
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
-			String line;
-			while ((line = reader.readLine()) != null) {
-				response.append(line);
-			}
-		} finally {
-			connection.disconnect();
-		}
-
-		Gson gson = new Gson();
-		List<L_userdata> userData = (List<L_userdata>) gson.fromJson(response.toString(), L_userdata.class);
-
-		return userData;
-	}
-	
-	// 테스트 끝내고 수정해줘야함
 	public static List<String> getNewMemberMatchIds(String puuid) throws IOException {
 		int COUNT = 19;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + puuid
@@ -185,7 +154,6 @@ public class ApiUtils implements L_Controller {
 
 		return matchIds;
 	}
-
 
 	public static List<String> getMatchIds(String puuid) throws IOException {
 		int COUNT = 5;
@@ -298,5 +266,79 @@ public class ApiUtils implements L_Controller {
 			}
 		}
 		return userDataList;
+	}
+
+	public static List<L_usertimeline> getTimestampDataByMatchIds(String puuid, String userId, List<String> matchIds)
+			throws Exception {
+		List<L_usertimeline> userTimeList = new ArrayList<>();
+
+		for (String matchId : matchIds) {
+			List<int[]> filteredResults = getFilteredResultsFromMatchId(matchId, puuid);
+
+			// Create L_usertimeline instance and set data
+			for (int[] result : filteredResults) {
+				L_usertimeline userTime = new L_usertimeline();
+				userTime.setU_id(userId);
+				userTime.setU_timestamp(result[0]);
+				userTime.setU_timegold(result[1]);
+				userTime.setU_timedamage(result[2]);
+				userTime.setU_jmkill(result[3]);
+				userTime.setU_mkill(result[4]);
+
+				userTimeList.add(userTime);
+			}
+		}
+
+		return userTimeList;
+	}
+
+	public static List<int[]> getFilteredResultsFromMatchId(String matchId, String puuid) throws Exception {
+		String matchApiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/" + matchId + "/timeline?api_key=" + API_KEY;
+
+		URL matchUrl = new URL(matchApiUrl);
+		HttpURLConnection matchConnection = (HttpURLConnection) matchUrl.openConnection();
+		matchConnection.setRequestMethod("GET");
+
+		int matchResponseCode = matchConnection.getResponseCode();
+		if (matchResponseCode == HttpURLConnection.HTTP_OK) {
+			BufferedReader matchIn = new BufferedReader(new InputStreamReader(matchConnection.getInputStream()));
+			String matchInputLine;
+			StringBuilder matchResponse = new StringBuilder();
+
+			while ((matchInputLine = matchIn.readLine()) != null) {
+				matchResponse.append(matchInputLine);
+			}
+			matchIn.close();
+
+			JSONObject matchInfo = new JSONObject(matchResponse.toString());
+			JSONObject info = matchInfo.getJSONObject("info");
+
+			List<int[]> filteredResults = new ArrayList<>();
+
+			// 필터링된 결과를 구하는 로직 추가
+			JSONArray frames = info.getJSONArray("frames");
+			for (int i = 0; i < frames.length(); i++) {
+				JSONObject frame = frames.getJSONObject(i);
+				int timestamp = frame.getInt("timestamp") / 60000; // 1분 단위로 변환
+
+				if (timestamp <= 20) {
+					JSONObject participantFrames = frame.getJSONObject("participantFrames");
+					JSONObject matchingParticipantFrame = participantFrames.getJSONObject(puuid); // participantId에 해당하는
+																									// 가져오기
+					int gold = matchingParticipantFrame.getInt("currentGold");
+					int damage = matchingParticipantFrame.getJSONObject("damageStats")
+							.getInt("totalDamageDoneToChampions");
+					int jungleMinionsKilled = matchingParticipantFrame.getInt("jungleMinionsKilled");
+					int minionsKilled = matchingParticipantFrame.getInt("minionsKilled");
+
+					// 필터링된 결과를 리스트에 추가
+					filteredResults.add(new int[] { timestamp, gold, damage, jungleMinionsKilled, minionsKilled });
+				}
+			}
+
+			return filteredResults;
+		} else {
+			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + matchResponseCode);
+		}
 	}
 }

@@ -33,6 +33,8 @@
     <mapper resource="com/smhrd/dao/L_ghostdataMapper.xml"/>
     <mapper resource="com/smhrd/dao/L_userdataMapper.xml"/>
     <mapper resource="com/smhrd/dao/L_userMapper.xml"/>
+    <mapper resource="com/smhrd/dao/L_usertimelineMapper.xml"/>
+    <mapper resource="com/smhrd/dao/L_ghosttimelineMapper.xml"/>
   </mappers>
 </configuration>
 

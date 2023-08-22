@@ -7,10 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.synth.SynthToggleButtonUI;
 
 import com.smhrd.dao.L_userdataDAO;
 import com.smhrd.entity.L_userdata;
+import com.smhrd.entity.L_usertimeline;
 
 /**
  * Servlet implementation class playDataCon
@@ -28,35 +28,42 @@ public class getPlayData implements L_Controller {
 		System.out.println(userId);
 
 		// Riot API로부터 랭크 데이터 가져오기
-		List<String> rankData = ApiUtils.getMatchIds(puuid);
-		List<L_userdata> userDataList = ApiUtils.getPlayDataByMatchIds(puuid, userId, rankData);
-		System.out.println(rankData);
-		System.out.println(userDataList);
 
-		// 가져온 랭크 데이터를 DB에 저장 또는 업데이트
-		L_userdataDAO userdataDAO = new L_userdataDAO();
-		for (L_userdata userData : userDataList) {
-			String matchcd = userData.getU_matchcd();
-			L_userdata result = userdataDAO.checkExistingData(matchcd);
+		try {
+			List<String> rankData = ApiUtils.getMatchIds(puuid);
+			List<L_userdata> userDataList = ApiUtils.getPlayDataByMatchIds(puuid, userId, rankData);
+			List<L_usertimeline> userTimeList = ApiUtils.getTimestampDataByMatchIds(puuid, userId, rankData);
 
-			if (result == null) {
-				int nextIdx = userdataDAO.getNextIdx();
-				userData.setU_idx(nextIdx);
-				userData.setU_id(userId);
+			System.out.println(rankData);
+			System.out.println(userDataList);
 
-				int isSuccess = userdataDAO.insertPlayData(userId, userData);
+			// 가져온 랭크 데이터를 DB에 저장 또는 업데이트
+			L_userdataDAO userdataDAO = new L_userdataDAO();
+			for (L_userdata userData : userDataList) {
+				String matchcd = userData.getU_matchcd();
+				L_userdata result = userdataDAO.checkExistingData(matchcd);
+				if (result == null) {
+					int nextIdx = userdataDAO.getNextIdx();
+					userData.setU_idx(nextIdx);
+					userData.setU_id(userId);
+					int isSuccess = userdataDAO.insertPlayData(userId, userData);
 
-				if (isSuccess > 0) {
-					System.out.println("데이터 저장 성공");
+					if (isSuccess > 0) {
+						System.out.println("데이터 저장 성공");
+						response.getWriter().write("Rank data updated successfully.");
+					} else {
+						System.out.println("데이터 저장 실패");
+					}
 				} else {
-					System.out.println("데이터 저장 실패");
+					System.out.println("이미 데이터가 존재합니다: " + matchcd);
 				}
-			} else {
-				System.out.println("이미 데이터가 존재합니다: " + matchcd);
 			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		response.getWriter().write("Rank data updated successfully.");
 		return null;
 	}
 
