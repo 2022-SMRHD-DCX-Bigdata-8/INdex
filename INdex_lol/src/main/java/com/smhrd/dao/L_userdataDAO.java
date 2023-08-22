@@ -1,21 +1,20 @@
 package com.smhrd.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SqlSessionManager;
+
 import com.smhrd.entity.L_userdata;
 
 public class L_userdataDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 
-	public List<L_userdata> udview() {
+	public List<L_userdata> udview(String u_id) {
 		SqlSession session = factory.openSession(true);
-		List<L_userdata> list = session.selectList("fdlist");
+		List<L_userdata> list = session.selectList("fdlist",u_id);
 		session.close();
 		return list;
 	}

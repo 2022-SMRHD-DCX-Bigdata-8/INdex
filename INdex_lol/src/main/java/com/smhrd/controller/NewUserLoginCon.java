@@ -4,23 +4,19 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.synth.SynthToggleButtonUI;
 
 import com.smhrd.dao.L_userdataDAO;
 import com.smhrd.entity.L_userdata;
 
-/**
- * Servlet implementation class playDataCon
- */
-@WebServlet("/getPlayData")
-public class getPlayData implements L_Controller {
+public class NewUserLoginCon implements L_Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		// 19 count
 		String puuid = request.getParameter("userPuuid"); // 클라이언트에서 받은 롤 닉네임
 		String userId = request.getParameter("userId"); // 사용자 아이디 (임의로 설정)
 
@@ -28,7 +24,7 @@ public class getPlayData implements L_Controller {
 		System.out.println(userId);
 
 		// Riot API로부터 랭크 데이터 가져오기
-		List<String> rankData = ApiUtils.getMatchIds(puuid);
+		List<String> rankData = ApiUtils.getNewMemberMatchIds(puuid);
 		List<L_userdata> userDataList = ApiUtils.getPlayDataByMatchIds(puuid, userId, rankData);
 		System.out.println(rankData);
 		System.out.println(userDataList);

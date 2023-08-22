@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.L_userdataDAO">
 
-	<select id="fdlist" resultType="com.smhrd.entity.L_userdata">
+	<select id="fdlist" parameterType="com.smhrd.entity.L_user"
+		resultType="com.smhrd.entity.L_userdata">
 		select * from l_userdata
 		where
-		u_idx = #{u_idx}
+		u_id= #{u_id}
 	</select>
 
 	<select id="getNextIdx" resultType="int">
@@ -36,14 +37,14 @@
 		#{u_gamecnt},
 		#{u_winlose},
 		#{u_champ},
-		#{u_matchcd}
+		#{u_matchcd},
 		#{u_cs},
 		#{u_teamposition},
 		#{u_kill},
 		#{u_death},
 		#{u_assist},
 		#{u_minionkill},
-		#{u_wardsplaced},
+		#{u_wardsplaced}
 		)
 	</insert>
 

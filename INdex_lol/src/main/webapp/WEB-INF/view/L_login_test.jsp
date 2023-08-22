@@ -228,7 +228,7 @@
 		});
 
 		function nickCheck() {
-			var value = $(this).val();
+			var value = $("#checkNick").val();
 			$.ajax({
 				url : 'nCheck.do',
 				type : 'post',

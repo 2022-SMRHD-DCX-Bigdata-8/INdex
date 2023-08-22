@@ -226,25 +226,11 @@ body[data-darkmode=on] .darkmode>.inner {
 
 
 			<table border="1">
-				<c:forEach var="user" items="${userdata}">
-					<tr>
-						
-						
-						
-						<td>챔피언명 ${user.u_champ}</td>
-						<td>레벨 ${user.u_level}</td>
-						<td>골드량 ${user.u_gold}</td>
-						<td>피해량 ${user.u_damage}</td>
-						<td>킬 ${user.u_kill}</td>						
-						<td>데스 ${user.u_death}</td>						
-						<td>어시 ${user.u_assist}</td>						
-						<td>플레이타임 ${user.u_playtime}</td>
-						<td>와드 파괴수 ${user.u_wardskill}</td>
-						<td>와드 설치수 ${user.u_wardsplaced}</td>
-						
-						<!-- 다른 필드들도 위와 같이 출력 -->
-					</tr>
-				</c:forEach>
+				<tr>
+					<c:forEach var="userdata" items="userdata">
+						<td>${userdata}</td>
+					</c:forEach>
+				</tr>
 
 			</table>
 

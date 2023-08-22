@@ -28,10 +28,9 @@ public class ApiUtils implements L_Controller {
 
 	// 수정중 건들지마시오
 
-	private static final String API_KEY = "RGAPI-ca4b83b5-7732-4db1-92d1-bd111296cfff";
+	private static final String API_KEY = "RGAPI-ff294aca-97c4-4a5a-bcd7-2d4be9a54b03";
 	private static final String API_BASED_UID_URL = "https://kr.api.riotgames.com";
 	private static final String API_BASED_MATCH_URL = "https://asia.api.riotgames.com";
-	private static final int COUNT = 5;
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
@@ -42,11 +41,7 @@ public class ApiUtils implements L_Controller {
 
 	public static L_user getLolpuuid(String lolNick) throws Exception {
 
-
-		String apiKey = "RGAPI-0a0887b4-e26d-4c4a-aef9-934ddca9c2ea"; // API 키
-	
 		String apiUrl = API_BASED_UID_URL + "/lol/summoner/v4/summoners/by-name/" + lolNick;
-
 
 		// API 호출 및 응답 데이터 처리
 		URL url = new URL(apiUrl);
@@ -70,8 +65,8 @@ public class ApiUtils implements L_Controller {
 			JSONObject summonerInfo = new JSONObject(response.toString());
 			String lolkrid = summonerInfo.getString("id");
 			String puuid = summonerInfo.getString("puuid");
-			user.setU_lolkrcd(lolkrid);
-			user.setU_lolcd(puuid);
+			System.out.println(lolkrid);
+			
 			return user;
 		} else {
 			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + responseCode);
@@ -126,6 +121,7 @@ public class ApiUtils implements L_Controller {
 	// Riot API 호출 및 랭크 데이터 가져오는 메서드
 
 	public static List<L_userdata> getRankData(String lolcd) throws IOException {
+		int COUNT = 5;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + lolcd
 				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
 
@@ -154,8 +150,44 @@ public class ApiUtils implements L_Controller {
 
 		return userData;
 	}
+	
+	public static List<String> getNewMemberMatchIds(String puuid) throws IOException {
+		int COUNT = 19;
+		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + puuid
+				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
+
+		URL url = new URL(apiUrl);
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+		connection.setRequestMethod("GET");
+		connection.setRequestProperty("X-Riot-Token", API_KEY);
+		connection.setRequestProperty("Accept", "application/json");
+
+		StringBuilder response = new StringBuilder();
+
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+			String line;
+			while ((line = reader.readLine()) != null) {
+				response.append(line);
+			}
+		} finally {
+			connection.disconnect();
+		}
+
+		Gson gson = new Gson();
+		List<String> matchIds = gson.fromJson(response.toString(), new TypeToken<List<String>>() {
+		}.getType());
+		System.out.println(matchIds);
+		System.out.println();
+
+		return matchIds;
+	}
+
 
 	public static List<String> getMatchIds(String puuid) throws IOException {
+		int COUNT = 5;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + puuid
 				+ "/ids?queue=420&type=ranked&start=0&count=" + COUNT;
 
@@ -240,8 +272,8 @@ public class ApiUtils implements L_Controller {
 					int userWardsKilled = participant.get("wardsKilled").getAsInt();
 					String userWinLose = participant.get("win").getAsString();
 					String userChamp = participant.get("championName").getAsString();
-					int minionKill = participant.get("minionsKilled").getAsInt();
-
+					int minionKill = participant.get("totalMinionsKilled").getAsInt();
+					String teamPosition = participant.get("teamPosition").getAsString();
 					System.out.println(userGold);
 					// L_userdata 객체에 매핑
 					L_userdata userData = new L_userdata();
@@ -259,6 +291,7 @@ public class ApiUtils implements L_Controller {
 					userData.setU_champ(userChamp);
 					userData.setU_matchcd(matchId);
 					userData.setU_minionkill(minionKill);
+					userData.setU_teamposition(teamPosition);
 					userDataList.add(userData);
 				}
 			}

@@ -44,6 +44,8 @@ public class L_userDAO {
 		return result;
 	}
 	
+	
+	
 	public int update(L_user l_user) {
 		SqlSession session = factory.openSession(true);
 		
