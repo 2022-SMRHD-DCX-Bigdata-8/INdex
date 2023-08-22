@@ -43,6 +43,7 @@ public class JoinTestController implements L_Controller {
 			member = ApiUtils.getLolpuuid(lolNick);
 			String puuid = member.getU_lolcd();
 			String lolkrcd = member.getU_lolkrcd();
+			System.out.println("=");
 			System.out.println(puuid);
 			System.out.println(lolkrcd);
 			String rank = ApiUtils.getRank(lolkrcd);

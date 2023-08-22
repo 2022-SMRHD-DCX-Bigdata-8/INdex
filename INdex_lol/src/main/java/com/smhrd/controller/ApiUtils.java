@@ -29,7 +29,7 @@ public class ApiUtils implements L_Controller {
 
 	// 수정중 건들지마시오
 
-	private static final String API_KEY = "RGAPI-5f2c9f81-0579-44fe-bf70-056f95268e0b";
+	private static final String API_KEY = "RGAPI-a8c8a517-be61-4834-8de5-33f0031b7b5c";
 	private static final String API_BASED_UID_URL = "https://kr.api.riotgames.com";
 	private static final String API_BASED_MATCH_URL = "https://asia.api.riotgames.com";
 
@@ -67,6 +67,8 @@ public class ApiUtils implements L_Controller {
 			String lolkrid = summonerInfo.getString("id");
 			String puuid = summonerInfo.getString("puuid");
 			System.out.println(lolkrid);
+			user.setU_lolkrcd(lolkrid);
+			user.setU_lolcd(puuid);
 
 			return user;
 		} else {
