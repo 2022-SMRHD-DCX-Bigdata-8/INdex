@@ -241,6 +241,7 @@ body[data-tolight=on] {
 
 #chart{
 	margin-top: 40px;	
+	border: 1;
 }
 
 .champion-box {
@@ -251,9 +252,8 @@ body[data-tolight=on] {
     table-layout: fixed;
     flex-direction: column;
     margin-top: 10px;
-    margin-left: 20px;
+    width: 100%
 }
-
 
 
 .csavg{
@@ -272,7 +272,7 @@ body[data-tolight=on] {
 	width: 400px;
 }
 #best5Box{
-	width: 400px;
+	width: 100%;
 	margin-top: 70px;
 }
 .faced{
