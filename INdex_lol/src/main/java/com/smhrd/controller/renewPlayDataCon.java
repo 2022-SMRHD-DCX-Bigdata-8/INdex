@@ -17,7 +17,7 @@ import com.smhrd.entity.L_usertimeline;
  * Servlet implementation class playDataCon
  */
 @WebServlet("/getPlayData")
-public class getPlayData implements L_Controller {
+public class renewPlayDataCon implements L_Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)

@@ -17,24 +17,17 @@
 
 	<form action="Jointest.do" method="post">
 
-			이름<input type="text" id="name" name="name"
+		이름<input type="text" id="name" name="name"
 			<c:if test="${!empty user}"> value="<%= user.getU_name() %>" </c:if>
-
 			required><br> 아이디<input type="tel" id="tel" name="tel"
 			<c:if test="${!empty user}"> value="<%= user.getU_id() %>" </c:if>
 			required><br> Email:<input type="text" id="checkEmail"
-			name="email"
-
-			required>
-			
-			
-			<br> 
-			
-			Email:<input type="text" id="checkEmail" name="email"
+			name="email" required> <br> Email:<input type="text"
+			id="checkEmail" name="email"
 			<c:if test="${!empty user}"> value="<%= user.getU_email() %>" </c:if>
 			required>
-			
-			
+
+
 		<p id="emailCheckResult"></p>
 		비밀번호: <input type="password" id="password" name="password" required><br>
 		LoL 닉네임:<input type="text" id="checkNick" name="lolNickname" required>
@@ -54,9 +47,19 @@
 	 $(document).ready(function() {
          // apiError 메시지가 있다면
          <%if (request.getAttribute("apiError") != null) {%>
-         alert("<%=request.getAttribute("apiError")%>");
-	
-		window.location.href = "http://localhost:8081/INdex_lol/goMaintest.do";
+         alert("<%=request.getAttribute("apiError")%>
+		");
+			$.ajax({
+				
+				type : "GET",
+				url : "goLogin.do", // 서버의 경로에 맞게 수정
+				success : function() {
+					console.log("페이지 이동 성공");
+				},
+				error : function() {
+					console.log("페이지 이동 실패");
+				}
+			});
 	<%}%>
 		});
 
