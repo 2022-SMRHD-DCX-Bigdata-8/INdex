@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -17,8 +17,6 @@
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
 <link rel="stylesheet" href="assets/css/L_main.css">
-
-
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
 <style>
@@ -29,6 +27,8 @@
 }
 </style>
 
+<script
+	src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
 <style>
 #editBox {
 	visibility: hidden;
@@ -126,12 +126,12 @@ body[data-darkmode=on] .darkmode>.inner {
 	List<L_champimg> champimg = (List<L_champimg>) session.getAttribute("champimg");
 
 	System.out.println("success" + userdataDesc);
-	
+
 	String[] arr = new String[5];
 	for (int j = 0; j < 5; j++) {
 		for (int i = 0; i < champimg.size(); i++) {
 			if (champDesc.get(j).getU_champ().equals(champimg.get(i).getChamp_nick())) {
-			arr[j] = champimg.get(i).getChamp_img();
+		arr[j] = champimg.get(i).getChamp_img();
 			}
 		}
 	}
@@ -223,7 +223,6 @@ body[data-darkmode=on] .darkmode>.inner {
 	</header>
 
 	<div id="wrap">
-
 		<nav>
 			<div class="side_navbar" style="border: 1;">
 				<form action="#">
@@ -253,197 +252,197 @@ body[data-darkmode=on] .darkmode>.inner {
 			</div>
 
 		</nav>
-
-
-		<!-- 대시보드 수정할것들!!!! -->
-		<div class="body_main">
-
-
-			<div class="bodyfirst">
-				<div id="chartAll">
-					<div id="chart" style="width: 400px; height: 300px;"></div>
-				</div>
-
-				<div id="kdaavg">
-					<div id="KDA">
-						<span> <%=K%>
-						</span> / <span class="death"> <%=D%>
-						</span> / <span> <%=A%>
-						</span>
-					</div>
-
-					<div class="ratio"><%=KDA%></div>
-
-				</div>
-
-
-				<div id="best5Box">
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg"
-								src="<%=arr[0]%>">
-						</div>
-
-						<div class="best5">
-							<div class="champname">
-								<%=champDesc.get(0).getU_champ()%>
-							</div>
-							<div class="csavg">CS 176.3 (6.6)</div>
-						</div>
-
-						<div class="champavg">
-							<div>
-								평점<%=champAvg1%></div>
-							<div><%=Array[0][0]%>/<%=Array[0][1]%>/<%=Array[0][2]%></div>
-						</div>
-
-						<div class="played">
-							<div class="cnt">
-								<%=champDesc.get(0).getChampcnt()%>게임
-							</div>
-						</div>
-					</div>
-
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg"
-								src="<%=arr[1]%>">
-						</div>
-
-						<div class="best5">
-							<div class="champname">
-								<%=champDesc.get(1).getU_champ()%>
-							</div>
-							<div class="csavg">CS 176.3 (6.6)</div>
-						</div>
-
-						<div class="champavg">
-							<div>
-								평점<%=champAvg2%></div>
-							<div><%=Array[1][0]%>/<%=Array[1][1]%>/<%=Array[1][2]%></div>
-						</div>
-
-						<div class="played">
-							<div class="cnt"><%=champDesc.get(1).getChampcnt()%>게임
-							</div>
-						</div>
-					</div>
-
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg"
-								src="<%=arr[2]%>">
-						</div>
-
-						<div class="best5">
-							<div class="champname">
-								<%=champDesc.get(2).getU_champ()%>
-							</div>
-							<div class="csavg">CS 176.3 (6.6)</div>
-						</div>
-
-						<div class="champavg">
-							<div>
-								평점<%=champAvg3%></div>
-							<div><%=Array[2][0]%>/<%=Array[2][1]%>/<%=Array[2][2]%></div>
-						</div>
-
-						<div class="played">
-							<div class="cnt"><%=champDesc.get(2).getChampcnt()%>게임
-							</div>
-						</div>
-					</div>
-
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg"
-								src="<%=arr[3]%>">
-						</div>
-
-						<div class="best5">
-							<div class="champname">
-								<%=champDesc.get(3).getU_champ()%>
-							</div>
-							<div class="csavg">CS 176.3 (6.6)</div>
-						</div>
-
-						<div class="champavg">
-							<div>
-								평점<%=champAvg4%></div>
-							<div><%=Array[3][0]%>/<%=Array[3][1]%>/<%=Array[3][2]%></div>
-						</div>
-
-						<div class="played">
-							<div class="cnt"><%=champDesc.get(3).getChampcnt()%>게임
-							</div>
-						</div>
-					</div>
-
-					<div class="champion-box">
-						<div class="faced">
-							<img class="faceimg"
-								src="<%=arr[4]%>">
-						</div>
-
-						<div class="best5">
-							<div class="champname">
-								<%=champDesc.get(4).getU_champ()%>
-							</div>
-							<div class="csavg">CS 176.3 (6.6)</div>
-						</div>
-
-						<div class="champavg">
-							<div>
-								평점<%=champAvg5%></div>
-							<div><%=Array[4][0]%>/<%=Array[4][1]%>/<%=Array[4][2]%></div>
-						</div>
-
-						<div class="played">
-							<div class="cnt"><%=champDesc.get(4).getChampcnt()%>게임
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div id="radarChartAll">
-					<div class="card-body">
-						<div id="radarChart" style="width: 400%; height: 400px;"
-							class="echart"></div>
-					</div>
-				</div>
-			</div>
-
-			<table border="1">
-				<c:forEach var="user" items="${userdata}">
-					<tr>
-
-						<td>챔피언명 ${user.u_champ}</td>
-						<td>레벨 ${user.u_level}</td>
-						<td>골드량 ${user.u_gold}</td>
-						<td>피해량 ${user.u_damage}</td>
-						<td>킬 ${user.u_kill}</td>
-						<td>데스 ${user.u_death}</td>
-						<td>어시 ${user.u_assist}</td>
-						<td>플레이타임 ${user.u_playtime}</td>
-						<td>와드 파괴수 ${user.u_wardskill}</td>
-						<td>와드 설치수 ${user.u_wardsplaced}</td>
-
-						<!-- 다른 필드들도 위와 같이 출력 -->
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
 	</div>
+	<div class="body_main">
+		<table>
+			<tr>
+				<td>
+					<div id="chart" style="width: 270px; height: 270px;"></div>
+				</td>
+				<td>
+					<div id="info">
+						<div id="KDA">
+							<span> 10 </span> / <span class="death"> 1 </span> / <span>
+								20 </span>
+						</div>
+						<div class="ratio">30.0</div>
+
+
+						<div class="bodyfirst">
+							<div id="chartAll">
+								<div id="chart" style="width: 400px; height: 300px;"></div>
+							</div>
+
+							<div id="kdaavg">
+								<div id="KDA">
+									<span> <%=K%>
+									</span> / <span class="death"> <%=D%>
+									</span> / <span> <%=A%>
+									</span>
+								</div>
+
+								<div class="ratio"><%=KDA%></div>
+
+							</div>
+
+
+							<div id="best5Box">
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[0]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(0).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg1%></div>
+										<div><%=Array[0][0]%>/<%=Array[0][1]%>/<%=Array[0][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt">
+											<%=champDesc.get(0).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[1]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(1).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg2%></div>
+										<div><%=Array[1][0]%>/<%=Array[1][1]%>/<%=Array[1][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt"><%=champDesc.get(1).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[2]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(2).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg3%></div>
+										<div><%=Array[2][0]%>/<%=Array[2][1]%>/<%=Array[2][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt"><%=champDesc.get(2).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[3]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(3).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg4%></div>
+										<div><%=Array[3][0]%>/<%=Array[3][1]%>/<%=Array[3][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt"><%=champDesc.get(3).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+
+								<div class="champion-box">
+									<div class="faced">
+										<img class="faceimg" src="<%=arr[4]%>">
+									</div>
+
+									<div class="best5">
+										<div class="champname">
+											<%=champDesc.get(4).getU_champ()%>
+										</div>
+										<div class="csavg">CS 176.3 (6.6)</div>
+									</div>
+
+									<div class="champavg">
+										<div>
+											평점<%=champAvg5%></div>
+										<div><%=Array[4][0]%>/<%=Array[4][1]%>/<%=Array[4][2]%></div>
+									</div>
+
+									<div class="played">
+										<div class="cnt"><%=champDesc.get(4).getChampcnt()%>게임
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="radarChartAll">
+								<div class="card-body">
+									<div id="radarChart" style="width: 400%; height: 400px;"
+										class="echart"></div>
+								</div>
+							</div>
+
+						</div>
 
 
 
+						<table border="1">
+							<c:forEach var="user" items="${userdata}">
+								<tr>
+									<td>챔피언명 ${user.u_champ}</td>
+									<td>레벨 ${user.u_level}</td>
+									<td>골드량 ${user.u_gold}</td>
+									<td>피해량 ${user.u_damage}</td>
+									<td>킬 ${user.u_kill}</td>
+									<td>데스 ${user.u_death}</td>
+									<td>어시 ${user.u_assist}</td>
+									<td>플레이타임 ${user.u_playtime}</td>
+									<td>와드 파괴수 ${user.u_wardskill}</td>
+									<td>와드 설치수 ${user.u_wardsplaced}</td>
 
-	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
-		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-		crossorigin="anonymous">
-	</script>
-	<!-- 메인화면 스크립트 -->
-	<script>
+									<!-- 다른 필드들도 위와 같이 출력 -->
+								</tr>
+							</c:forEach>
+						</table>
+
+					</div>
+					</div> <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+						integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+						crossorigin="anonymous"></script> <script>
     $(document).ready(function () {
     $(".profile-image").on("click", function (e) {
       e.stopPropagation(); // 이벤트 전파 중단 (버블링 방지)
@@ -539,20 +538,23 @@ body[data-darkmode=on] .darkmode>.inner {
                     renewalButton.style.color = "#1e1f21";
                     console.log("클릭");
                     
-                    var userId = "${user.u_id}";
-                    var userPuuid = "${user.u_lolcd}";
-
-                    newrefreshPlayData(userId, userPuuid);
-                   // refreshPlayData(userId, userPuuid);
-
-
-                    // 일정 시간(여기서는 120초) 후에 다시 클릭 가능하게 설정
                     setTimeout(function () {
                         canRenew = true; // 버튼 클릭 활성화
                         console.log('다시 버튼을 클릭할 수 있습니다.');
                         renewalButton.style.background = "#462679";
                         renewalButton.style.color = "#e8e8e8";
                     }, 120000); // 120초 (2분)
+                    
+                    var userId = "${user.u_id}";
+                    var userPuuid = "${user.u_lolcd}";
+
+                    // 여기 수정해야함 null !null 로 nerefresh , refresh 버튼 분기
+                    newrefreshPlayData(userId, userPuuid);
+                    refreshPlayData(userId, userPuuid);
+
+
+                    // 일정 시간(여기서는 120초) 후에 다시 클릭 가능하게 설정
+                    
                 }
             });
         });
@@ -610,10 +612,7 @@ body[data-darkmode=on] .darkmode>.inner {
         });
 
         
-    </script>
-
-	<!-- 파이형 차트 수정 -->
-	<script>
+    </script> <!-- 파이형 차트 수정 --> <script>
 		// 파이형차트
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom); // Initialize myChart
@@ -639,7 +638,6 @@ body[data-darkmode=on] .darkmode>.inner {
                 }
             }],
             legend: {
-            	show: false, 
                 orient: 'vertical',
                 left: 'left'
             },
@@ -674,10 +672,7 @@ body[data-darkmode=on] .darkmode>.inner {
         };
 
         myChart.setOption(option); // Set option to myChart
-    </script>
-
-	<!-- 방사형차트 스크립트 수정 -->
-	<script>
+    </script> <!-- 방사형차트 스크립트 수정 --> <script>
               document.addEventListener("DOMContentLoaded", () => {
                 var radarChart = echarts.init(document.querySelector("#radarChart"));
                 radarChart.setOption({

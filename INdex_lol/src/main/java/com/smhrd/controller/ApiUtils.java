@@ -151,6 +151,7 @@ public class ApiUtils implements L_Controller {
 		return userData;
 	}
 	
+	// 테스트 끝내고 수정해줘야함
 	public static List<String> getNewMemberMatchIds(String puuid) throws IOException {
 		int COUNT = 19;
 		String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/by-puuid/" + puuid
