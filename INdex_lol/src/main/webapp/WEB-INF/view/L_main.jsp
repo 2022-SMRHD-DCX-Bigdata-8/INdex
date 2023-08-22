@@ -193,36 +193,7 @@ body[data-darkmode=on] .darkmode>.inner {
 		<!-- 대시보드 수정할것들!!!! -->
 		<div class="body_main">
 
-<<<<<<< HEAD
-		<div class="body_main">
-			<table>
-				<tr>
-					<td>
-						<div id="chart" style="width: 270px; height: 270px;"></div>
-					</td>
-					<td>
-						<div id="info">
-							<div id="KDA">
-								<span> 10 </span> / <span class="death"> 1 </span> / <span>
-									20 </span>
-							</div>
 
-							<div class="ratio">30.0</div>
-
-						</div>
-					</td>
-
-					<td><img
-						src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
-					</td>
-
-				</tr>
-			</table>
-
-			<div class="box1">
-				<img src="5.PNG">
-
-=======
 			<div class = "bodyfirst">
 				<div id= "chartAll">
 					<div id="chart" style="width: 400px; height: 300px;"></div>
@@ -345,23 +316,7 @@ body[data-darkmode=on] .darkmode>.inner {
 						<div id="radarChart" style="width: 400%; height: 400px;" class="echart"></div>
 					</div>
 				</div>
->>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
 			</div>
-<<<<<<< HEAD
-
-			<div class="box1">
-				<img src="방사형1.PNG">
-
-			</div>
-
-
-			<div class="box1">
-				<img src="롤전적1.PNG">
-
-			</div>
-
-
-
 
 			<table border="1">
 				<c:forEach var="user" items="${userdata}">
@@ -383,24 +338,11 @@ body[data-darkmode=on] .darkmode>.inner {
 						<!-- 다른 필드들도 위와 같이 출력 -->
 					</tr>
 				</c:forEach>
-
 			</table>
-
-
-
-
-=======
->>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
 		</div>
-		
-		
-		
-		
 	</div>
-<<<<<<< HEAD
-	<nav>
-	</nav>
-		<!-- 최근전적 20게임 만들기 -->
+
+		<!-- 최근전적 20게임 만들기
 		<div class="side_navbar" >
 			<div result="lose" class="recentRecord20">
 				<div class="content">
@@ -416,7 +358,7 @@ body[data-darkmode=on] .darkmode>.inner {
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
