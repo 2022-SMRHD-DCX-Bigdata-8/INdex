@@ -181,6 +181,7 @@ body[data-darkmode=on] .darkmode>.inner {
 
 		</nav>
 
+<<<<<<< HEAD
 		<div class="body_main">
 			<table>
 				<tr>
@@ -193,7 +194,10 @@ body[data-darkmode=on] .darkmode>.inner {
 								<span> 10 </span> / <span class="death"> 1 </span> / <span>
 									20 </span>
 							</div>
+=======
+>>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
 
+<<<<<<< HEAD
 							<div class="ratio">30.0</div>
 
 						</div>
@@ -209,7 +213,132 @@ body[data-darkmode=on] .darkmode>.inner {
 			<div class="box1">
 				<img src="5.PNG">
 
+=======
+			<div class = "bodyfirst">
+				<div id= "chartAll">
+					<div id="chart" style="width: 400px; height: 300px;"></div>
+				</div>
+	
+				<div id="kdaavg">
+					<div id="KDA">
+						<span> 10 </span> / <span class="death"> 1 </span> / <span> 20 </span>
+					</div>
+	
+					<div class="ratio">30.0</div>
+	
+				</div>
+	
+	
+				<div id = "best5Box">
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+							<div class = "champname"> 가렌 </div>
+							<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+				
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Galio.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+							<div class = "champname"> 갈리오 </div>
+							<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+					
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gangplank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+								<div class = "champname"> 갱플랭크 </div>
+								<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+					
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gragas.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+								<div class = "champname"> 그라가스 </div>
+								<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+					
+					<div class="champion-box">
+						<div class="faced">
+							<img class="faceimg" src="https://opgg-static.akamaized.net/meta/images/lol/champion/Graves.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						</div>
+						
+						<div class="best5">
+								<div class = "champname"> 그레이브즈 </div>
+								<div class ="csavg"> CS 176.3 (6.6)</div>
+						</div>
+						
+						<div class="champavg">
+							<div>평점</div>
+							<div>K/D/A</div>
+						</div>
+						
+						<div class="played">
+							<div class="cnt">6게임</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id = "radarChartAll">
+					<div class="card-body">	
+						<div id="radarChart" style="width: 400%; height: 400px;" class="echart"></div>
+					</div>
+				</div>
+>>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
 			</div>
+<<<<<<< HEAD
 
 			<div class="box1">
 				<img src="방사형1.PNG">
@@ -224,6 +353,8 @@ body[data-darkmode=on] .darkmode>.inner {
 
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
 
 			<table border="1">
 				<c:forEach var="user" items="${userdata}">
@@ -245,15 +376,34 @@ body[data-darkmode=on] .darkmode>.inner {
 						<!-- 다른 필드들도 위와 같이 출력 -->
 					</tr>
 				</c:forEach>
-
 			</table>
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/2022-SMRHD-DCX-Bigdata-8/INdex.git
 		</div>
 	</div>
 
+		<!-- 최근전적 20게임 만들기
+		<div class="side_navbar" >
+			<div result="lose" class="recentRecord20">
+				<div class="content">
+					<div class="gameContent">
+						<div>솔랭</div>
+						<div class="bar"></div>
+						<div class="result">패배</div>
+						<div class="length">30분0초</div>
+					</div>
+					<div>
+						
+					
+					</div>
+				</div>
+			</div>
+		</div> -->
 
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"

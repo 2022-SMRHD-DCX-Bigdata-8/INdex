@@ -224,6 +224,7 @@ body[data-tolight=on] {
 
 #KDA {
 	font-size: 20px;
+	text-align: center;
 }
 
 .faceimg {
@@ -239,7 +240,8 @@ body[data-tolight=on] {
 }
 
 #chart{
-	margin-top: 30px;	
+	margin-top: 40px;	
+	border: 1;
 }
 
 .champion-box {
@@ -250,9 +252,8 @@ body[data-tolight=on] {
     table-layout: fixed;
     flex-direction: column;
     margin-top: 10px;
-    margin-left: 20px;
+    width: 100%
 }
-
 
 
 .csavg{
@@ -260,13 +261,19 @@ body[data-tolight=on] {
 }
 
 #kdaavg{
-	margin-top: 100px;
+	margin-top: 170px;
 	margin-left: 25px;
 	margin-right: 25px;
+	width: 200px;
 }
 
-#best5Box{
+#chartAll{
+	margin-top: 50px;
 	width: 400px;
+}
+#best5Box{
+	width: 100%;
+	margin-top: 70px;
 }
 .faced{
 	display: table-cell;
@@ -303,10 +310,19 @@ body[data-tolight=on] {
 }
 
 #radarChartAll{
-
+	margin-left: 50px;
+	margin-top: 50px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+   
 }
 
-#radarChart{
+.bar{
+	width: 48px;
+    height: 1px;
+    margin: 8px 0px 4px;
+    background-color: var(--red50);
 }
 
 
