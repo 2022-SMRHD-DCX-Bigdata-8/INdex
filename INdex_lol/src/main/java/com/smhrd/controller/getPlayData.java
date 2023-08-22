@@ -32,21 +32,24 @@ public class getPlayData implements L_Controller {
 
 		try {
 			List<String> rankData = ApiUtils.getMatchIds(puuid);
+			System.out.println("랭크데이터완료");
 			List<L_userdata> userDataList = ApiUtils.getPlayDataByMatchIds(puuid, userId, rankData);
+			System.out.println("플레이데이터완료");
 			List<L_usertimeline> userTimeList = ApiUtils.getTimestampDataByMatchIds(puuid, userId, rankData);
+			System.out.println("타임라인완료");
 
 			System.out.println(rankData);
 			System.out.println(userDataList);
+			System.out.println(userTimeList);
 
 			// 가져온 랭크 데이터를 DB에 저장 또는 업데이트
 			L_userdataDAO userdataDAO = new L_userdataDAO();
 			L_usertimelineDAO userTimeDAO = new L_usertimelineDAO();
-			
+
 			for (L_userdata userData : userDataList) {
-				String ud_matchcd= userData.getU_matchcd();
+				String ud_matchcd = userData.getU_matchcd();
 				L_userdata result = userdataDAO.checkExistingData(ud_matchcd);
-				
-				
+
 				if (result == null) {
 					int nextIdx = userdataDAO.getNextIdx();
 					userData.setU_idx(nextIdx);
@@ -63,25 +66,21 @@ public class getPlayData implements L_Controller {
 					System.out.println("이미 데이터가 존재합니다: " + ud_matchcd);
 				}
 			}
-			
-		    for (L_usertimeline userTime : userTimeList) {
-		        String ut_matchcd = userTime.getU_matchcd();
-		        L_usertimeline existingUserTime = userTimeDAO.checkExistingData(ut_matchcd);
 
-		        if (existingUserTime == null) {
-		            userTime.setU_id(userId);
-		            int isSuccess = userTimeDAO.insertUserTimeline(userTime);
+			for (L_usertimeline userTime : userTimeList) {
+				String ut_matchcd = userTime.getU_matchcd();
 
-		            if (isSuccess > 0) {
-		                System.out.println("유저 타임라인 데이터 저장 성공");
-		                response.getWriter().write("User timeline data updated successfully.");
-		            } else {
-		                System.out.println("유저 타임라인 데이터 저장 실패");
-		            }
-		        } else {
-		            System.out.println("이미 유저 타임라인 데이터가 존재합니다: " + ut_matchcd);
-		        }
-		    }
+				userTime.setU_id(userId);
+				int isSuccess = userTimeDAO.insertUserTimeline(userTime);
+
+				if (isSuccess > 0) {
+					System.out.println("유저 타임라인 데이터 저장 성공");
+					response.getWriter().write("User timeline data updated successfully.");
+				} else {
+					System.out.println("유저 타임라인 데이터 저장 실패");
+				}
+
+			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

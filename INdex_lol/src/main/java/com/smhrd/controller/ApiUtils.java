@@ -198,6 +198,7 @@ public class ApiUtils implements L_Controller {
 		for (String matchId : matchIds) {
 			String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/" + matchId;
 
+			System.out.println(matchId);
 			URL url = new URL(apiUrl);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
@@ -225,11 +226,9 @@ public class ApiUtils implements L_Controller {
 
 			for (JsonElement participantElement : participants) {
 				JsonObject participant = participantElement.getAsJsonObject();
-				String participantPuuid = participant.get("puuid").getAsString();
-				System.out.println(participantPuuid);
+				String participantPuuid = participant.has("puuid") ? participant.get("puuid").getAsString() : null;
 
-				if (participantPuuid.equals(puuid)) {
-
+				if (participantPuuid != null && participantPuuid.equals(puuid)) {
 					System.out.println("if문 안에 들어왔습니다");
 
 					int userGold = participant.get("goldEarned").getAsInt();
@@ -241,7 +240,7 @@ public class ApiUtils implements L_Controller {
 					int userPlaytime = participant.get("timePlayed").getAsInt();
 					int userWardsPlaced = participant.get("wardsPlaced").getAsInt();
 					int userWardsKilled = participant.get("wardsKilled").getAsInt();
-					String userWinLose = participant.get("win").getAsString();
+					String userWinLose = participant.has("win") ? participant.get("win").getAsString() : "";
 					String userChamp = participant.get("championName").getAsString();
 					int minionKill = participant.get("totalMinionsKilled").getAsInt();
 					String teamPosition = participant.get("teamPosition").getAsString();
@@ -272,11 +271,13 @@ public class ApiUtils implements L_Controller {
 
 	public static List<L_usertimeline> getTimestampDataByMatchIds(String puuid, String userId, List<String> matchIds)
 			throws Exception {
+		System.out.println("타임라인안으로 들어왔습니다.");
 		List<L_usertimeline> userTimeList = new ArrayList<>();
 
 		for (String matchId : matchIds) {
 			List<int[]> filteredResults = getFilteredResultsFromMatchId(matchId, puuid);
 
+			System.out.println(filteredResults);
 			// Create L_usertimeline instance and set data
 			for (int[] result : filteredResults) {
 				L_usertimeline userTime = new L_usertimeline();
@@ -286,6 +287,7 @@ public class ApiUtils implements L_Controller {
 				userTime.setU_timedamage(result[2]);
 				userTime.setU_jmkill(result[3]);
 				userTime.setU_mkill(result[4]);
+				userTime.setU_matchcd(matchId);
 
 				userTimeList.add(userTime);
 			}
@@ -297,6 +299,7 @@ public class ApiUtils implements L_Controller {
 	public static List<int[]> getFilteredResultsFromMatchId(String matchId, String puuid) throws Exception {
 		String matchApiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/" + matchId + "/timeline?api_key=" + API_KEY;
 
+		System.out.println("타임라인1분단위쪽들어옴");
 		URL matchUrl = new URL(matchApiUrl);
 		HttpURLConnection matchConnection = (HttpURLConnection) matchUrl.openConnection();
 		matchConnection.setRequestMethod("GET");
@@ -313,20 +316,31 @@ public class ApiUtils implements L_Controller {
 			matchIn.close();
 
 			JSONObject matchInfo = new JSONObject(matchResponse.toString());
-			JSONObject info = matchInfo.getJSONObject("info");
+			JSONObject metadata = matchInfo.getJSONObject("metadata");
+			JSONArray participants = metadata.getJSONArray("participants"); // Get participants array
 
 			List<int[]> filteredResults = new ArrayList<>();
 
 			// 필터링된 결과를 구하는 로직 추가
+			JSONObject info = matchInfo.getJSONObject("info");
 			JSONArray frames = info.getJSONArray("frames");
 			for (int i = 0; i < frames.length(); i++) {
 				JSONObject frame = frames.getJSONObject(i);
+				JSONObject participantFrames = frame.getJSONObject("participantFrames");
 				int timestamp = frame.getInt("timestamp") / 60000; // 1분 단위로 변환
 
 				if (timestamp <= 20) {
-					JSONObject participantFrames = frame.getJSONObject("participantFrames");
-					JSONObject matchingParticipantFrame = participantFrames.getJSONObject(puuid); // participantId에 해당하는
-																									// 가져오기
+				int participantIndex = -1;
+				for (int j = 0; j < participants.length(); j++) {
+					if (participants.getString(j).equals(puuid)) {
+						participantIndex = j;
+						break;
+					}
+				}
+
+				if (participantIndex != -1) {
+					JSONObject matchingParticipantFrame = participantFrames
+							.getJSONObject(String.valueOf(participantIndex + 1));
 					int gold = matchingParticipantFrame.getInt("currentGold");
 					int damage = matchingParticipantFrame.getJSONObject("damageStats")
 							.getInt("totalDamageDoneToChampions");
@@ -336,11 +350,12 @@ public class ApiUtils implements L_Controller {
 					// 필터링된 결과를 리스트에 추가
 					filteredResults.add(new int[] { timestamp, gold, damage, jungleMinionsKilled, minionsKilled });
 				}
+				}
 			}
-
 			return filteredResults;
 		} else {
 			throw new Exception("API 호출에 실패했습니다. 응답 코드: " + matchResponseCode);
 		}
 	}
+
 }

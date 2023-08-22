@@ -23,7 +23,7 @@ public class L_usertimelineDAO {
 
 	public L_usertimeline checkExistingData(String matchcd) {
 		SqlSession session = factory.openSession(true);
-		L_usertimeline result = session.selectOne("matchCdCheck", matchcd);
+		L_usertimeline result = session.selectOne("ut_matchCdCheck", matchcd);
 
 		session.close();
 		return result; // 중복 데이터가 있으면 true, 없으면 false 반환

@@ -12,11 +12,11 @@
 		#{u_timedamage},
 		#{u_jmkill},
 		#{u_mkill},
-		#{u_teamposition},
+		null,
 		#{u_matchcd})
 	</insert>
 
-	<select id="matchCdCheck"
+	<select id="ut_matchCdCheck"
 		resultType="com.smhrd.entity.L_usertimeline">
 		select * from l_usertimeline
 		where u_matchcd = #{u_matchcd}
