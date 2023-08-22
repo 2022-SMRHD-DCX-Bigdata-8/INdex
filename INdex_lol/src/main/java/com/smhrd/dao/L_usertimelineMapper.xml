@@ -12,8 +12,8 @@
 		#{u_timedamage},
 		#{u_jmkill},
 		#{u_mkill},
-		null,
-		#{u_matchcd})
+		#{u_matchcd}
+		)
 	</insert>
 
 	<select id="ut_matchCdCheck"

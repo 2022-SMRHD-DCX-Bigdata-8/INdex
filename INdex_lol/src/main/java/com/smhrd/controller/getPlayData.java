@@ -61,25 +61,30 @@ public class getPlayData implements L_Controller {
 						response.getWriter().write("Rank data updated successfully.");
 					} else {
 						System.out.println("데이터 저장 실패");
+					
 					}
 				} else {
 					System.out.println("이미 데이터가 존재합니다: " + ud_matchcd);
 				}
 			}
 
-			for (L_usertimeline userTime : userTimeList) {
-				String ut_matchcd = userTime.getU_matchcd();
+			if (userTimeList == null || userTimeList.isEmpty()) {
+				System.out.println("이미 데이터가 존재합니다");
+				// 이미 데이터가 존재하는 경우 처리 코드 작성
+			} else {
+				for (L_usertimeline userTime : userTimeList) {
+					String ut_matchcd = userTime.getU_matchcd();
 
-				userTime.setU_id(userId);
-				int isSuccess = userTimeDAO.insertUserTimeline(userTime);
+					userTime.setU_id(userId);
+					int isSuccess = userTimeDAO.insertUserTimeline(userTime);
 
-				if (isSuccess > 0) {
-					System.out.println("유저 타임라인 데이터 저장 성공");
-					response.getWriter().write("User timeline data updated successfully.");
-				} else {
-					System.out.println("유저 타임라인 데이터 저장 실패");
+					if (isSuccess > 0) {
+						System.out.println("유저 타임라인 데이터 저장 성공");
+						response.getWriter().write("User timeline data updated successfully.");
+					} else {
+						System.out.println("유저 타임라인 데이터 저장 실패");
+					}
 				}
-
 			}
 
 		} catch (Exception e) {

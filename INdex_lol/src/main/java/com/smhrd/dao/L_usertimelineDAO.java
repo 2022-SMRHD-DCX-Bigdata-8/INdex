@@ -21,9 +21,9 @@ public class L_usertimelineDAO {
 		return cnt;
 	}
 
-	public L_usertimeline checkExistingData(String matchcd) {
+	public List<L_usertimeline> checkExistingData(String matchcd) {
 		SqlSession session = factory.openSession(true);
-		L_usertimeline result = session.selectOne("ut_matchCdCheck", matchcd);
+		List<L_usertimeline> result = session.selectList("ut_matchCdCheck", matchcd);
 
 		session.close();
 		return result; // 중복 데이터가 있으면 true, 없으면 false 반환

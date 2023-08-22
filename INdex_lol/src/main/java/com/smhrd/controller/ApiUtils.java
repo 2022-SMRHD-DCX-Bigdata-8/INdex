@@ -20,6 +20,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import com.smhrd.dao.L_usertimelineDAO;
 import com.smhrd.entity.L_user;
 import com.smhrd.entity.L_userdata;
 import com.smhrd.entity.L_usertimeline;
@@ -29,7 +30,7 @@ public class ApiUtils implements L_Controller {
 
 	// 수정중 건들지마시오
 
-	private static final String API_KEY = "RGAPI-a8c8a517-be61-4834-8de5-33f0031b7b5c";
+	private static final String API_KEY = "RGAPI-105f443b-63a8-4bde-9b41-999930db4aac";
 	private static final String API_BASED_UID_URL = "https://kr.api.riotgames.com";
 	private static final String API_BASED_MATCH_URL = "https://asia.api.riotgames.com";
 
@@ -194,7 +195,7 @@ public class ApiUtils implements L_Controller {
 	public static List<L_userdata> getPlayDataByMatchIds(String puuid, String userId, List<String> matchIds)
 			throws IOException {
 		List<L_userdata> userDataList = new ArrayList<>();
-
+		// 여기서 중복체크해
 		for (String matchId : matchIds) {
 			String apiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/" + matchId;
 
@@ -297,8 +298,18 @@ public class ApiUtils implements L_Controller {
 	}
 
 	public static List<int[]> getFilteredResultsFromMatchId(String matchId, String puuid) throws Exception {
+		
+		L_usertimelineDAO usertimeDAO = new L_usertimelineDAO();
+		
+	    L_usertimelineDAO userTimeDAO = new L_usertimelineDAO();
+	    if (userTimeDAO.checkExistingData(matchId) != null) {
+	        System.out.println("이미 데이터가 존재합니다: " + matchId);
+	        return new ArrayList<>(); // 이미 데이터가 존재하는 경우 빈 리스트 반환
+	    }
+
 		String matchApiUrl = API_BASED_MATCH_URL + "/lol/match/v5/matches/" + matchId + "/timeline?api_key=" + API_KEY;
 
+		
 		System.out.println("타임라인1분단위쪽들어옴");
 		URL matchUrl = new URL(matchApiUrl);
 		HttpURLConnection matchConnection = (HttpURLConnection) matchUrl.openConnection();
