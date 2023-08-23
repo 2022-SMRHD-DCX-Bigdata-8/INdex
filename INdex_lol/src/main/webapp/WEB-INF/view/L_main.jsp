@@ -17,6 +17,8 @@
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
 <link rel="stylesheet" href="assets/css/L_main.css">
+
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
 <script
@@ -111,6 +113,15 @@ body[data-darkmode=on] .darkmode>.inner {
 </head>
 
 <body>
+
+	<%
+	// session에서 사용자 정보를 꺼내기
+
+	L_user user = (L_user) session.getAttribute("user");
+	List<L_userdata> userdata = (List<L_userdata>) session.getAttribute("userdata");
+
+	System.out.print("success" + userdata);
+	%>
 
 
 	<header class="header">
@@ -320,40 +331,65 @@ body[data-darkmode=on] .darkmode>.inner {
 
 				<div id="wrapper">
 					<div class="que_container">
-						<button class="lastQue animated-item1">
-							<div>
+						<div>
+
+							<div class="record">
 								<span id="ChampImg"><img
 									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
 									alt="선택한 챔프사진" /></span>
-							</div>
 
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
+								<div class="item-content">
+									<span>k/d/a</span>
+									<div>
 
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main1" style="width: 800px; height: 600px;"></canvas>
-										</div>
+										<span>win or loss (색으로 표현)</span> <br> <span>게임
+											플레이 시간</span>
 									</div>
 								</div>
-
 							</div>
-						</button>
-						<!-- lastQue animated-item2 -->
+
+							<div class="button_chart">
+								<button class="lastQue animated-item1">
+									<div class="expandable-content">
+										<div class="expanded-content-inner">
+											<div class="expanded-content-wrapper">
+
+												<div>
+													<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+														열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+												</div>
+												<!-- 실제 상세 정보 내용을 여기에 입력 -->
+												<div id="info1">게임 상세 정보를 표시합니다. 승리 or 패배</div>
+
+												<canvas id="main1" style="width: 800px; height: 600px;"></canvas>
+											</div>
+										</div>
+									</div>
+								</button>
+								<!-- lastQue animated-item2 -->
+
+								<button class="lastQue animated-item1">
+									<div class="expandable-content">
+										<div class="expanded-content-inner">
+											<div class="expanded-content-wrapper">
+
+												<div>
+													<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+														열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+												</div>
+												<!-- 실제 상세 정보 내용을 여기에 입력 -->
+												<div id="info1">게임 상세 정보를 표시합니다. 승리 or 패배</div>
+
+												<canvas id="main2" style="width: 800px; height: 600px;"></canvas>
+											</div>
+										</div>
+									</div>
+								</button>
+								<!-- lastQue animated-item2 -->
+							</div>
+
+						</div>
+
 						<button class="lastQue animated-item2">
 							<div>
 								<span id="ChampImg"><img
@@ -1016,137 +1052,154 @@ body[data-darkmode=on] .darkmode>.inner {
 
 		<!-- 다른 필드들도 위와 같이 출력 -->
 
-	</div>
-	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
-		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-		crossorigin="anonymous"></script>
-	<script type="text/javascript">
-					    $(document).ready(function () {
-			                $(".profile-image").on("click", function (e) {
-			                    e.stopPropagation(); // 이벤트 전파 중단 (버블링 방지)
-			                    $("#editBox").css("visibility", "visible");
-			                });
 
-			                $(document).click(function (e) {
-			                    if (!$(e.target).is('.profile-image')) {
-			                        $("#editBox").css("visibility", "hidden");
-			                    }
-			                });
-			            });
-			            $(document).ready(function () {
-			                $("#withdrawLink").click(function () {
-			                    var password = prompt("비밀번호를 입력하세요:");
-			                    if (password !== null) {
-			                        // 비밀번호 검증 및 회원 탈퇴 처리 로직 추가
-			                        // 탈퇴 성공 시 아래와 같이 알림을 표시할 수 있습니다.
-			                        alert("회원 탈퇴가 성공적으로 완료되었습니다.");
-			                    }
-			                });
-			            });
-        // 다크모드 변환 시작
-        document.addEventListener('DOMContentLoaded', function () {
-            if (document.querySelector('.darkmode')) {
-                const header = document.querySelector('.header');
-                const lgmLink = document.querySelector('.lgm-link');
-                const sideNav = document.querySelector('nav');
-                const bodyMain = document.querySelector('.body_main');
-                const wrap = document.querySelector('#wrap')
-                const renewalButton = document.querySelector('#renewal');
-                let countdownTime = 120; // 카운트 다운 시간 (초 단위)
-                let canRenew = true; // 클릭 가능한 상태를 나타내는 변수
-                const countdownElement = document.querySelector('#countdown'); // 시간을 업데이트할 엘리먼트
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+			crossorigin="anonymous">
+            </script>
 
+		<!-- 메인화면 스크립트 -->
+		<script>
+            $(document).ready(function () {
+                $(".profile-image").on("click", function (e) {
+                    e.stopPropagation(); // 이벤트 전파 중단 (버블링 방지)
+                    $("#editBox").css("visibility", "visible");
+                });
 
-                if (localStorage.getItem("darkmode") == 'on') {
-                    document.body.dataset.darkmode = 'on';
-                    document.querySelector('#toggle-radio-dark').checked = true;
-                    header.style.background = "#1e1f21";                            // 다크 모드에서 헤더 배경색변경
-                    header.style.color = "#e8e8e8";                                 // 다크 모드에서 헤더 텍스트변경
-                    lgmLink.style.color = "#e8e8e8";                                // 다크 모드에서 l.gm 텍스트변경
-                    sideNav.style.background = "#1e1f21";                           // 다크 모드에서 사이드바 배경색변경
-                    bodyMain.style.color = "#e8e8e8";                               // 다크 모드에서 텍스트 색상변경
-                    bodyMain.style.background = "#e8e8e8";                          // 다크모드에서 바디 색상 변경
-                    header.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.3)"; // 다크모드에서 그림자 설정
-                    wrap.style.background = "#1e1f21";
-                    renewalButton.style.background = "#462679"; // 다크 모드에서 버튼 배경색 변경
-                    renewalButton.style.color = "#e8e8e8"
-                    sideNav.style.boxshadow= "0px 0px 6px rgba(255, 255, 255, 0.5)";
-                }
+                $(document).click(function (e) {
+                    if (!$(e.target).is('.profile-image')) {
+                        $("#editBox").css("visibility", "hidden");
+                    }
+                });
+            });
+            $(document).ready(function () {
+                $("#withdrawLink").click(function () {
+                    var password = prompt("비밀번호를 입력하세요:");
+                    if (password !== null) {
+                        // 비밀번호 검증 및 회원 탈퇴 처리 로직 추가
+                        // 탈퇴 성공 시 아래와 같이 알림을 표시할 수 있습니다.
+                        alert("회원 탈퇴가 성공적으로 완료되었습니다.");
+                    }
+                });
+            });
 
-                document.querySelector('.darkmode').addEventListener("click", e => {
-                    if (e.target.classList.contains('todark')) {
-                        document.body.dataset.darkmode = 'on';
-                        localStorage.setItem("darkmode", "on");
-                        header.style.background = "#1e1f21"; // 다크 모드에서 헤더 배경색변경
-                        header.style.color = "#e8e8e8"; // 다크 모드에서 헤더 텍스트변경
-                        lgmLink.style.color = "#e8e8e8"; // 다크 모드에서 l.gm 텍스트변경
-                        sideNav.style.background = "#1e1f21"; // 다크 모드에서 사이드바 배경색변경
-                        bodyMain.style.color = "#e8e8e8"; // 다크 모드에서 텍스트 색상변경
-                        bodyMain.style.background = "#e8e8e8"; // 다크모드에서 바디 색상 변경
-                        header.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.3)"; // 다크모드에서 그림자 설정
-                        wrap.style.background = "#1e1f21";
-                        renewalButton.style.background = "#462679"; // 다크 모드에서 버튼 배경색 변경
-                        renewalButton.style.color = "#e8e8e8";
-                        sideNav.style.boxshadow= "0px 0px 6px rgba(255, 255, 255, 0.5)";
+            // 다크모드 변환 시작
+            document.addEventListener('DOMContentLoaded', function () {
+                if (document.querySelector('.darkmode')) {
+                    const header = document.querySelector('.header');
+                    const lgmLink = document.querySelector('.lgm-link');
+                    const sideNav = document.querySelector('nav');
+                    const bodyMain = document.querySelector('.body_main');
+                    const wrap = document.querySelector('#wrap');
+                    const side_navbar = document.querySelector('.side_navbar');
+                    const renewalButton = document.querySelector('#renewal');
+                    const bodyfirst = document.querySelector('.bodyfirst');
+                    const best5 = document.querySelector('#best5Box');
+                    const canvas = document.querySelector("canvas");
+                    let countdownTime = 120; // 카운트 다운 시간 (초 단위)
+                    let canRenew = true; // 클릭 가능한 상태를 나타내는 변수
+                    const countdownElement = document.querySelector('#countdown'); // 시간을 업데이트할 엘리먼트
 
-                    } else if (e.target.classList.contains('tolight')) {
+                    if (localStorage.getItem("tolight") == 'on') {
                         document.body.dataset.darkmode = 'off';
                         localStorage.setItem("darkmode", "off");
                         header.style.background = "#e2dddd"; // 라이트 모드 에서 헤더 배경색변경
                         header.style.color = "#000"; // 라이트 모드에서 헤더 텍스트변경
                         lgmLink.style.color = "#000"; // 라이트 모드에서 l.gm 텍스트변경
                         sideNav.style.background = "#e2dddd"; // 라이트 모드에서 사이드바 배경색변경
-                        bodyMain.style.color = "#000"; // 라이트 모드에서 텍스트 색상변경
-                        bodyMain.style.background = "#000"; // 라이트 모드에서 바디 색상 변경
+                        bodyMain.style.color = "#e8e8e8"; // 라이트 모드에서 텍스트 색상변경
+                        bodyMain.style.background = "#e2dddd"; // 라이트 모드에서 바디 색상 변경
                         header.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)"; // 라이트 모드에서 그림자 설정
                         wrap.style.background = "#e2dddd";
                         renewalButton.style.background = "#462679"; // 다크 모드에서 버튼 배경색 변경
                         renewalButton.style.color = "#e8e8e8";
-                        sideNav.style.boxshadow= "0px 0px 1px rgba(0, 0, 0, 0.5)";
+                        bodyfirst.style.background = "#1e1f21"
+                        side_navbar.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.5)";
+                        bodyfirst.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.5)";
+                        best5.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.5)";
+                        canvas.style.color = "#e8e8e8"
 
                     }
-                }, false);
-            } else {
-                localStorage.removeItem("darkmode");
-            }
-        });
-        // 다크 모드 변경 끝
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const renewalButton = document.querySelector('#renewal');
-            let canRenew = true; // 클릭 가능한 상태를 나타내는 변수
+                    document.querySelector('.darkmode').addEventListener("click", e => {
+                        if (e.target.classList.contains('todark')) {
+                            document.body.dataset.darkmode = 'on';
+                            localStorage.setItem("darkmode", "on");
+                            header.style.background = "#1e1f21"; // 다크 모드에서 헤더 배경색변경
+                            header.style.color = "#e8e8e8"; // 다크 모드에서 헤더 텍스트변경
+                            lgmLink.style.color = "#e8e8e8"; // 다크 모드에서 l.gm 텍스트변경
+                            sideNav.style.background = "#1e1f21"; // 다크 모드에서 사이드바 배경색변경
+                            bodyMain.style.color = "#e8e8e8"; // 다크 모드에서 텍스트 색상변경
+                            bodyMain.style.background = "#1e1f21"; // 다크모드에서 바디 색상 변경
+                            header.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.3)"; // 다크모드에서 그림자 설정
+                            wrap.style.background = "#1e1f21";
+                            renewalButton.style.background = "#462679"; // 다크 모드에서 버튼 배경색 변경
+                            renewalButton.style.color = "#e8e8e8";
+                            bodyfirst.style.background = "#1e1f21";
+                            side_navbar.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.5)";
+                            bodyfirst.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.5)";
+                            best5.style.boxShadow = "0 2px 4px rgba(239, 237, 237, 0.5)";
+                            canvas.style.color = "#e8e8e8"
 
-            renewalButton.addEventListener('click', function () {
-                if (canRenew) {
-                    canRenew = false; // 버튼 클릭 비활성화
-                    renewalButton.disabled = true; // 버튼 비활성화
+                        } else if (e.target.classList.contains('tolight')) {
+                            document.body.dataset.darkmode = 'off';
+                            localStorage.setItem("darkmode", "off");
+                            header.style.background = "#e2dddd"; // 라이트 모드 에서 헤더 배경색변경
+                            header.style.color = "#000"; // 라이트 모드에서 헤더 텍스트변경
+                            lgmLink.style.color = "#000"; // 라이트 모드에서 l.gm 텍스트변경
+                            sideNav.style.background = "#e2dddd"; // 라이트 모드에서 사이드바 배경색변경
+                            bodyMain.style.color = "#1e1f21"; // 라이트 모드에서 텍스트 색상변경
+                            bodyMain.style.background = "#e2dddd"; // 라이트 모드에서 바디 색상 변경
+                            header.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.3)"; // 라이트 모드에서 그림자 설정
+                            wrap.style.background = "#e2dddd";
+                            renewalButton.style.background = "#462679"; // 다크 모드에서 버튼 배경색 변경
+                            renewalButton.style.color = "#e8e8e8";
+                            bodyfirst.style.background = "#e2dddd";
+                            side_navbar.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)";
+                            bodyfirst.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)";
+                            best5.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)";
+                            canvas.style.color = "#e2dddd"
 
-                    
-                    var userId = "${user.u_id}";
-                    var userPuuid = "${user.u_lolcd}";
-
-                    // 여기 수정해야함 null !null 로 nerefresh , refresh 버튼 분기
-                    //newrefreshPlayData(userId, userPuuid);
-                    
-    
-                    renewalButton.style.background = "#D3D3D3";
-                    renewalButton.style.color = "#1e1f21";
-                    console.log("클릭");
-                    
-            
-                    refreshPlayData(userId, userPuuid);
-
-                    setTimeout(function () {
-                        canRenew = true; // 버튼 클릭 활성화
-                        console.log('다시 버튼을 클릭할 수 있습니다.');
-                        renewalButton.style.background = "#462679";
-                        renewalButton.style.color = "#e8e8e8";
-                    }, 120000); // 120초 (2분)
-                    
+                        }
+                    }, false);
+                } else {
+                    localStorage.removeItem("darkmode");
                 }
             });
-        });
-        
+            // 다크 모드 변경 끝
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const renewalButton = document.querySelector('#renewal');
+                let canRenew = true; // 클릭 가능한 상태를 나타내는 변수
+
+                renewalButton.addEventListener('click', function () {
+                    if (canRenew) {
+                        canRenew = false; // 버튼 클릭 비활성화
+
+
+
+                        renewalButton.style.background = "#D3D3D3";
+                        renewalButton.style.color = "#1e1f21";
+                        console.log("클릭");
+
+                        var userId = "${user.u_id}";
+                        var userPuuid = "${user.u_lolcd}";
+
+                        //newrefreshPlayData(userId, userPuuid);
+                        refreshPlayData(userId, userPuuid);
+
+
+                        // 일정 시간(여기서는 120초) 후에 다시 클릭 가능하게 설정
+                        setTimeout(function () {
+                            canRenew = true; // 버튼 클릭 활성화
+                            console.log('다시 버튼을 클릭할 수 있습니다.');
+                            renewalButton.style.background = "#462679";
+                            renewalButton.style.color = "#e8e8e8";
+                        }, 120000); // 120초 (2분)
+                    }
+                });
+            });
+
 
 
         function refreshPlayData(userId, userPuuid) {
@@ -1173,8 +1226,8 @@ body[data-darkmode=on] .darkmode>.inner {
 
         
     </script>
-	<!-- 파이형 차트 수정 -->
-	<script type="text/javascript">
+		<!-- 파이형 차트 수정 -->
+		<script type="text/javascript">
 		// 파이형차트
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom); // Initialize myChart
@@ -1518,8 +1571,8 @@ body[data-darkmode=on] .darkmode>.inner {
       
         
     </script>
-	<!-- 방사형차트 스크립트 수정 -->
-	<script>
+		<!-- 방사형차트 스크립트 수정 -->
+		<script>
             document.addEventListener("DOMContentLoaded", () => {
                 var radarChart = echarts.init(document.querySelector("#radarChart"));
 
@@ -1604,7 +1657,7 @@ body[data-darkmode=on] .darkmode>.inner {
                 }, false);
             });
         </script>
-	<script>
+		<script>
             var expandableButtons = document.querySelectorAll('.lastQue');
 
             expandableButtons.forEach(function (button) {
