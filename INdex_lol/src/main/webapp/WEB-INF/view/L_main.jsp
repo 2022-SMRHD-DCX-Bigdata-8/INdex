@@ -348,6 +348,10 @@ body[data-darkmode=on] .darkmode>.inner {
 							</c:forEach>
 						</table>
 
+						<!-- <div class="playDataItem" data-gameId="123" data-userRank="DIAMOND" data-userPosition="MID">
+    대전 기록 정보를 표시하는 내용 
+</div>
+ -->
 					</div> <script src="https://code.jquery.com/jquery-3.7.0.min.js"
 						integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
 						crossorigin="anonymous"></script> <script type="text/javascript">
@@ -498,9 +502,10 @@ body[data-darkmode=on] .darkmode>.inner {
         var myChart = echarts.init(chartDom); // Initialize myChart
         var userId = '${user.u_id}';
         var userRank = '${user.u_rank}';
- 
+ 		var userPosition = '${user.u_teamposition}'
         console.log(userId)
         console.log(userRank)
+        
         
         
 ///////////////////////////////ajax 데이터 불러오기 /////////////////////////
@@ -564,6 +569,8 @@ body[data-darkmode=on] .darkmode>.inner {
         }
         
         function fetchPlayData() {
+        	
+        	// 유저 대전기록 리스트 
             $.ajax({
                 url: 'getPlayDataList.do',
                 type: 'GET', 
@@ -590,17 +597,84 @@ body[data-darkmode=on] .darkmode>.inner {
                 dataType: 'json', 
                 data: { userRank: userRank },
                 success: function(ghostplayDataList) {
+                	
                     console.log(ghostplayDataList)
                   // 받아온 데이터로 차트 업데이트
                     
                     
                 },
                 error: function(xhr, status, error) {
+                	console.log(userRank)
                 
                     console.error('데이터를 가져오는데 실패했습니다:', error);
                 }
             });
         }
+        
+        function fetchUserRadarData() {
+            $.ajax({
+                url: 'getRadar.do',
+                type: 'GET', 
+                dataType: 'json', 
+                data: { userId: userId },
+                success: function(UserRadarData) {
+                	
+                    console.log(UserRadarData)
+                  
+                    
+                    
+                },
+                error: function(xhr, status, error) {
+                	
+                
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
+                }
+            });
+        }
+        
+        function fetchGhostTimeLineData() {
+            $.ajax({
+                url: 'getGhostTimeLineData.do',
+                type: 'GET', 
+                dataType: 'json', 
+                data: { userRank: userRank },
+                success: function(GhostTimeLineData) {
+                	  console.log(GhostTimeLineData);
+                      
+              
+                 } ,
+                error: function(xhr, status, error) {
+                	
+                
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
+                }
+            });
+        }
+        
+        
+        function fetchUserTimeLineData() {
+        	// u_id하고 matchcd 로 넘겨야함
+            $.ajax({
+                url: 'getUserTimeLineData.do',
+                type: 'GET', 
+                dataType: 'json', 
+                data: { userId: userId },
+                success: function(GhostTimeLineData) {
+                	
+                    console.log(GhostTimeLineData)
+                  
+                    
+                    
+                },
+                error: function(xhr, status, error) {
+                	
+                
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
+                }
+            });
+        }
+        
+  
         
         
         
@@ -609,9 +683,44 @@ body[data-darkmode=on] .darkmode>.inner {
 ///////////////////////////////////////////////////////////////////////////
         fetchGhostPlayData();
         fetchPlayData();
-        fetchDataChampImg()
+        fetchDataChampImg();
+        fetchUserRadarData();
+        fetchGhostTimeLineData();
+        fetchUserTimeLineData();
         
         
+        $(document).ready(function () {
+            $('.playDataList').click(function () {
+                var userRank = $(this).data('userRank');
+                var userPosition = $(this).data('userPosition');
+                fetchChartData(userRank, userPosition);
+            });
+        });
+        
+        function fetchChartData(userRank, userPosition) {
+            $.ajax({
+                url: 'getGhostTimeLineData.do',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    userRank: userRank,
+                    userPosition: userPosition
+                },
+                success: function (chartData) {
+                    drawChart(chartData);
+                },
+                error: function (xhr, status, error) {
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
+                }
+            });
+        }
+        
+        function drawChart(chartData) {
+        	console.log('드로우차트안입니다.')
+            // 여기에서 차트를 그리는 로직을 구현
+            // 예: Chart.js 등의 라이브러리를 사용하여 차트 그리기
+            // chartData 객체를 이용하여 필요한 데이터 사용
+        }
         
         function updateChampionBoxes(bestChamp) {
             var str = "championBoxes 들어왔습니다";
@@ -633,7 +742,7 @@ body[data-darkmode=on] .darkmode>.inner {
             }
         }
         
-        fetchDataBest5()
+        fetchDataBest5();
         
         
       

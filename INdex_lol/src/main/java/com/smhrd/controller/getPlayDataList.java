@@ -23,9 +23,7 @@ public class getPlayDataList implements L_Controller {
 		String userId = request.getParameter("userId");
 		JSONObject jsonData = new JSONObject();
 		L_userdataDAO userDataDAO = new L_userdataDAO();
-		List<L_userdata> userdata = userDataDAO.udview(userId);
-
-		
+		List<L_userdata> userdata = userDataDAO.userdataDesc(userId);
 
 		JSONArray userDataArray = new JSONArray();
 
@@ -35,7 +33,7 @@ public class getPlayDataList implements L_Controller {
 			int seconds = playtimeInSeconds % 60;
 			JSONObject userDataObject = new JSONObject();
 			String playtimeString = String.format("%02dm %02ds", minutes, seconds);
-			
+
 			userDataObject.put("u_idx", user.getU_idx());
 			userDataObject.put("u_gold", user.getU_gold());
 			userDataObject.put("u_levle", user.getU_level());
@@ -62,7 +60,6 @@ public class getPlayDataList implements L_Controller {
 
 		response.setContentType("application/json");
 		response.getWriter().write(jsonData.toString());
-	
 
 		return null;
 	}

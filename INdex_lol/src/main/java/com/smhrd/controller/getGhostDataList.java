@@ -21,7 +21,7 @@ public class getGhostDataList implements L_Controller {
 
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("고스트데이터 가져오는곳");
-		String u_rank = request.getParameter("u_rank");
+		String u_rank = request.getParameter("userRank");
 		System.out.println(u_rank);
 		JSONObject jsonData = new JSONObject();
 		L_ghostdataDAO ghostDataDAO = new L_ghostdataDAO();
@@ -62,7 +62,6 @@ public class getGhostDataList implements L_Controller {
 			u_rank = "SILVER";
 			userdata = ghostDataDAO.gdview(u_rank);
 			for (L_ghostdata ghostData : userdata) {
-				System.out.println(userdata);
 
 				JSONObject ghostDataObject = new JSONObject();
 
@@ -70,9 +69,8 @@ public class getGhostDataList implements L_Controller {
 				int playtimeInSeconds = ghostData.getG_playtime();
 				int minutes = playtimeInSeconds / 60;
 				int seconds = playtimeInSeconds % 60;
-				JSONObject userDataObject = new JSONObject();
 				String playtimeString = String.format("%02dm %02ds", minutes, seconds);
-				userDataObject.put("u_playtime", playtimeString);
+				
 				ghostDataObject.put("g_idx", ghostData.getG_idx());
 				ghostDataObject.put("g_rank", ghostData.getG_rank());
 				ghostDataObject.put("g_gold", ghostData.getG_gold());

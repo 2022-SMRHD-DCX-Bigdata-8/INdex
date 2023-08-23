@@ -14,7 +14,7 @@ public class L_userdataDAO {
 
 	public List<L_userdata> udview(String u_id) {
 		SqlSession session = factory.openSession(true);
-		List<L_userdata> list = session.selectList("fdlist",u_id);
+		List<L_userdata> list = session.selectList("fdlist", u_id);
 		session.close();
 		return list;
 	}
@@ -28,7 +28,6 @@ public class L_userdataDAO {
 
 		int cnt = session.insert("insertPlayData", userData);
 
-		 
 		session.close();
 		return cnt;
 	}
@@ -39,46 +38,34 @@ public class L_userdataDAO {
 	}
 
 	public L_userdata checkExistingData(String matchcd) {
-	    SqlSession session = factory.openSession(true);
-	    L_userdata result = session.selectOne("matchCdCheck", matchcd);
-	    
-	    session.close();
-	    return result; // 중복 데이터가 있으면 true, 없으면 false 반환
+		SqlSession session = factory.openSession(true);
+		L_userdata result = session.selectOne("matchCdCheck", matchcd);
+
+		session.close();
+		return result; // 중복 데이터가 있으면 true, 없으면 false 반환
 	}
-	
+
+	// 가장 최근 데이터 가져오는용
 	public List<L_userdata> userdataDesc(String u_id) {
 		SqlSession session = factory.openSession(true);
-		List<L_userdata> userdataDesc = session.selectList("userdataDesc",u_id);
+		List<L_userdata> userdataDesc = session.selectList("userdataDesc", u_id);
 		session.close();
 		return userdataDesc;
 	}
-	
-	
+
+	// 가장 최근 데이터 가져오는거 단 하나
+	public L_userdata userdataDescOne(String u_id) {
+		SqlSession session = factory.openSession(true);
+		L_userdata userdataDesc = session.selectOne("userdataDescOne", u_id);
+		session.close();
+		return userdataDesc;
+	}
+
 	public List<L_userdata> champDesc(String u_id) {
 		SqlSession session = factory.openSession(true);
-		List<L_userdata> champDesc=session.selectList("champDesc",u_id);
+		List<L_userdata> champDesc = session.selectList("champDesc", u_id);
 		session.close();
 		return champDesc;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

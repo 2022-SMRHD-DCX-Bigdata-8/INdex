@@ -41,19 +41,21 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/findpw.do", new L_FindPwCon());
 		handler.put("/champion.do", new L_GoChampionCon());
 		handler.put("/newUserLogin.do", new NewUserLoginCon());
-		handler.put("/kdaChart.do", new getKdaChart());//완료
-		handler.put("/getBest5Chart.do", new getBest5Chart());//완료
-		handler.put("/getPlayDataList.do", new getPlayDataList()); //완료
-		handler.put("/getRadar.do", new getRadarChart());
-		handler.put("/getChampImg.do", new getChampImg()); //완료
-		handler.put("/getGhostDataList.do", new getGhostDataList()); 
-		handler.put("/getGhostTimeLineData.do", new getGhostTimeLineData());
-		handler.put("/getUserTimeLineData.do", new getUserTimeLinetData());
 
 		// ajax
-		handler.put("/eCheck.do", new EmailCheckCon());
-		handler.put("/nCheck.do", new NickCheckCon());
-		handler.put("/idCheck.do", new IdCheckCon());
+		handler.put("/eCheck.do", new EmailCheckCon()); //완
+		handler.put("/nCheck.do", new NickCheckCon()); //완
+		handler.put("/idCheck.do", new IdCheckCon()); //완
+		handler.put("/kdaChart.do", new getKdaChart());//완료
+		handler.put("/getBest5Chart.do", new getBest5Chart()); //완료
+		handler.put("/getPlayDataList.do", new getPlayDataList()); //완료
+		
+		
+		handler.put("/getRadar.do", new getRadarChart()); //완료
+		handler.put("/getChampImg.do", new getChampImg()); //완료
+		handler.put("/getGhostDataList.do", new getGhostDataList()); //완료
+		handler.put("/getGhostTimeLineData.do", new getGhostTimeLineData());
+		handler.put("/getUserTimeLineData.do", new getUserTimeLinetData());
 
 		//// test////////////////////////////////////////
 
