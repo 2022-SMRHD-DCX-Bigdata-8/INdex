@@ -62,7 +62,6 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/gmailSend.do", new GmailSend());
 		handler.put("/getPlayData.do", new renewPlayDataCon());
 		handler.put("/apiUtils.do", new ApiUtils());
-		handler.put("/goRenew.do", new goMainTestCon());
 		handler.put("/goGettest.do", new goGetTestCon());
 		handler.put("/verified.do", new VerifiedCon());
 		handler.put("/goTestMain.do", new goTestMainCon());

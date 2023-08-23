@@ -30,7 +30,7 @@ public class ApiUtils implements L_Controller {
 
 	// 수정중 건들지마시오
 
-	private static final String API_KEY = "RGAPI-105f443b-63a8-4bde-9b41-999930db4aac";
+	private static final String API_KEY = "RGAPI-a185c731-f1e2-4a5b-9bfb-af16adfe2f11";
 
 	private static final String API_BASED_UID_URL = "https://kr.api.riotgames.com";
 	private static final String API_BASED_MATCH_URL = "https://asia.api.riotgames.com";

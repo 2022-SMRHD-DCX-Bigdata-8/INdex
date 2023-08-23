@@ -44,10 +44,10 @@ public class getUserTimeLinetData implements L_Controller {
 				userTimeDataArray.put(userTimeLineObject);
 			}
 		} else {
-			jsonData.put("userRadarData", 0); // 또는 원하는 값으로 설정
+			jsonData.put("userTimeData", 0); // 또는 원하는 값으로 설정
 
 		}
-
+		jsonData.put("userTimeDataArray", userTimeDataArray);
 		response.setContentType("application/json");
 		response.getWriter().write(jsonData.toString());
 

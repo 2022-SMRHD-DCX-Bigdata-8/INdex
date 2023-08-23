@@ -48,7 +48,6 @@ public class getGhostTimeLineData implements L_Controller {
 		} else {
 			u_rank = "SILVER";
 			ghostTimeLineData = ghostDataDAO.timeLineList(u_rank);
-			ghostTimeLineData = ghostDataDAO.timeLineList(u_rank);
 
 			for (L_ghosttimeline timeLineData : ghostTimeLineData) {
 				JSONObject ghostTimeLineObject = new JSONObject();

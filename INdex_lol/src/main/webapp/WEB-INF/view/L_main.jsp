@@ -120,13 +120,13 @@ body[data-darkmode=on] .darkmode>.inner {
 	// session에서 사용자 정보를 꺼내기
 
 	L_user user = (L_user) session.getAttribute("user");
-	List<L_userdata> userdata = (List<L_userdata>) session.getAttribute("userdata");
-	List<L_userdata> userdataDesc = (List<L_userdata>) session.getAttribute("userdataDesc");
-	List<L_userdata> champDesc = (List<L_userdata>) session.getAttribute("champDesc");
-	List<L_champimg> champimg = (List<L_champimg>) session.getAttribute("champimg");
+	//List<L_userdata> userdata = (List<L_userdata>) session.getAttribute("userdata");
+	//List<L_userdata> userdataDesc = (List<L_userdata>) session.getAttribute("userdataDesc");
+	//List<L_userdata> champDesc = (List<L_userdata>) session.getAttribute("champDesc");
+	//List<L_champimg> champimg = (List<L_champimg>) session.getAttribute("champimg");
 
-	System.out.println("success" + userdataDesc);
-	String[] arr = new String[5];
+	System.out.println("success" + user);
+	
 	%>
 	<header class="header">
 		<div class="logo">
@@ -348,10 +348,8 @@ body[data-darkmode=on] .darkmode>.inner {
 							</c:forEach>
 						</table>
 
-						<!-- <div class="playDataItem" data-gameId="123" data-userRank="DIAMOND" data-userPosition="MID">
-    대전 기록 정보를 표시하는 내용 
-</div>
- -->
+					
+ 
 					</div> <script src="https://code.jquery.com/jquery-3.7.0.min.js"
 						integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
 						crossorigin="anonymous"></script> <script type="text/javascript">
@@ -502,7 +500,8 @@ body[data-darkmode=on] .darkmode>.inner {
         var myChart = echarts.init(chartDom); // Initialize myChart
         var userId = '${user.u_id}';
         var userRank = '${user.u_rank}';
- 		var userPosition = '${user.u_teamposition}'
+ 		var userPosition = ""
+ 		console.log(userPosition)
         console.log(userId)
         console.log(userRank)
         
@@ -659,9 +658,9 @@ body[data-darkmode=on] .darkmode>.inner {
                 type: 'GET', 
                 dataType: 'json', 
                 data: { userId: userId },
-                success: function(GhostTimeLineData) {
+                success: function(userTimeLineData) {
                 	
-                    console.log(GhostTimeLineData)
+                    console.log(userTimeLineData)
                   
                     
                     
@@ -692,19 +691,18 @@ body[data-darkmode=on] .darkmode>.inner {
         $(document).ready(function () {
             $('.playDataList').click(function () {
                 var userRank = $(this).data('userRank');
-                var userPosition = $(this).data('userPosition');
-                fetchChartData(userRank, userPosition);
+                  // position 부분
+                fetchChartData(userRank);
             });
         });
         
-        function fetchChartData(userRank, userPosition) {
+        function fetchChartData(userRank) {
             $.ajax({
                 url: 'getGhostTimeLineData.do',
                 type: 'GET',
                 dataType: 'json',
                 data: {
-                    userRank: userRank,
-                    userPosition: userPosition
+                    userRank: userRank
                 },
                 success: function (chartData) {
                     drawChart(chartData);
