@@ -316,11 +316,10 @@ body[data-darkmode=on] .darkmode>.inner {
 				</div>
 				<div id="kdaavg">
 					<div id="KDA">
-						<span> 10 </span> / <span class="death"> 1 </span> / <span>
-							20 </span>
+						<span> </span> <span class="death"> </span> <span> </span>
 					</div>
 
-					<div class="ratio">30.0</div>
+					<div class="ratio"></div>
 
 				</div>
 
@@ -1252,9 +1251,11 @@ body[data-darkmode=on] .darkmode>.inner {
                 data: { userId: userId },
                 success: function(data) {
                     console.log(data)
-                      $('#KDA span:eq(0)').text(data.A);
-            $('#KDA span.death').text(data.D);
-            $('#KDA span:eq(2)').text(data.K);
+                    $('#KDA span:eq(0)').text('평균 K' + data.K);
+            		$('#KDA span.death').text('평균 D'+ data.D);
+           			$('#KDA span:eq(2)').text('평균 A'+data.A);
+            		const ratioValue = (data.K + data.A) / data.D;
+            		$('.ratio').text(ratioValue.toFixed(2)); // 소수점 2자리까지 표시
                     PieUpdateChart(data); // 받아온 데이터로 차트 업데이트
                     
                     
@@ -1665,7 +1666,7 @@ body[data-darkmode=on] .darkmode>.inner {
       
         
     </script>
-		<!-- 방사형차트 스크립트 수정 -->
+		<!-- 라이더차트 스크립트 수정 -->
 		<script>
             document.addEventListener("DOMContentLoaded", () => {
                 var radarChart = echarts.init(document.querySelector("#radarChart"));
