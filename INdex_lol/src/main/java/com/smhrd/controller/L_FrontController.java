@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 // FrontController 디자인패턴
 // 단 한개의 서블릿(FrontController)만 사용
 // == 모든 요청을 단 하나의 서블릿으로 처리
@@ -18,17 +17,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("*.do")
 public class L_FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	// HashMap 자료구조
 	// python의 dict와 유사 : KEY - VALUE 짝지어서 저장, KEY를 이용해서 조회
 	private HashMap<String, L_Controller> handler;
-	 
+
 	@Override
 	public void init() throws ServletException {
 		// Servlet이 메모리에 등록되었을 때 단 한번만 실행
-		
+
 		handler = new HashMap<String, L_Controller>();
-		
+
 		// HashMap에 데이터 집어넣기
 		handler.put("/ajax.do", new L_AjaxCon());
 		handler.put("/login.do", new L_LoginCon());
@@ -42,24 +41,21 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/findpw.do", new L_FindPwCon());
 		handler.put("/champion.do", new L_GoChampionCon());
 		handler.put("/newUserLogin.do", new NewUserLoginCon());
-		handler.put("/kdaChart.do", new getKdaChart());
-		handler.put("/getBest5Chart.do", new getBest5Chart());
-		handler.put("/getPlayDataList.do", new getPlayDataListChart());
+		handler.put("/kdaChart.do", new getKdaChart());//완료
+		handler.put("/getBest5Chart.do", new getBest5Chart());//완료
+		handler.put("/getPlayDataList.do", new getPlayDataList()); //완료
 		handler.put("/getRadar.do", new getRadarChart());
-		handler.put("/getChampImg.do", new getChampImg());
-		
+		handler.put("/getChampImg.do", new getChampImg()); //완료
+		handler.put("/getGhostDataList.do", new getGhostDataList()); 
+		handler.put("/getGhostTimeLineData.do", new getGhostTimeLineData());
+		handler.put("/getUserTimeLineData.do", new getUserTimeLinetData());
 
-		
-		
-
-		//ajax
+		// ajax
 		handler.put("/eCheck.do", new EmailCheckCon());
 		handler.put("/nCheck.do", new NickCheckCon());
 		handler.put("/idCheck.do", new IdCheckCon());
-		
-		
-		
-		////test////////////////////////////////////////
+
+		//// test////////////////////////////////////////
 
 		handler.put("/gmailSend.do", new GmailSend());
 		handler.put("/getPlayData.do", new renewPlayDataCon());
@@ -68,11 +64,9 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/goGettest.do", new goGetTestCon());
 		handler.put("/verified.do", new VerifiedCon());
 		handler.put("/goTestMain.do", new goTestMainCon());
-		
-
-
 
 	}
+
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -93,15 +87,15 @@ public class L_FrontController extends HttpServlet {
 		L_Controller con = null;
 		// 2. 요청을 구분해서 알맞는 코드를 실행
 		// HasHMap에서 저장되어 있는 POJO 하나 꺼내오기
-		
+
 		con = handler.get(mapping);
-		
+
 		if (con != null) {
 			url = con.execute(request, response);
 		}
-		
+
 		// ==========================================================================================
-		
+
 		// 3....
 		if (url != null) {
 			if (url.contains("redirect:/")) {

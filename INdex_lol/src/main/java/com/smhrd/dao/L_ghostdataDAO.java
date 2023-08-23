@@ -1,5 +1,7 @@
 package com.smhrd.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -10,9 +12,9 @@ public class L_ghostdataDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 	
 	
-	public L_ghostdata fdview(L_ghostdata t_ghostdata) {
+	public List<L_ghostdata> gdview(String u_rank) {
 		SqlSession session = factory.openSession();
-		L_ghostdata result = session.selectOne("fdview",t_ghostdata);
+		List<L_ghostdata> result = session.selectList("gdview" , u_rank);
 		session.close();
 		
 		return result;

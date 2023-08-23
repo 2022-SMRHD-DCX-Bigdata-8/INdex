@@ -34,7 +34,7 @@ public class getChampImg implements L_Controller {
 			champImgData.put("championName",champImg.getChamp_nick());
 			champImgData.put("championImg", champImg.getChamp_img());
 			champImgArray.put(champImgData);
-//			System.out.println(champImg.getChamp_nick());
+
 		}
 
 		response.setContentType("application/json");

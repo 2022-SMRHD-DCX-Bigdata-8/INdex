@@ -497,12 +497,15 @@ body[data-darkmode=on] .darkmode>.inner {
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom); // Initialize myChart
         var userId = '${user.u_id}';
+        var userRank = '${user.u_rank}';
+ 
         console.log(userId)
+        console.log(userRank)
         
         
 ///////////////////////////////ajax 데이터 불러오기 /////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-        function fetchData1() {
+        function fetchDataKDAWinlose() {
       
             $.ajax({
                 url: 'kdaChart.do',
@@ -522,7 +525,7 @@ body[data-darkmode=on] .darkmode>.inner {
             });
         }
         
-        function fetchData2() {
+        function fetchDataChampImg() {
        
             $.ajax({
                 url: 'getChampImg.do',
@@ -541,15 +544,54 @@ body[data-darkmode=on] .darkmode>.inner {
             });
         }
         
-        function fetchData3() {
+        function fetchDataBest5() {
             $.ajax({
                 url: 'getBest5Chart.do',
                 type: 'GET', 
                 dataType: 'json', 
                 data: { userId: userId },
-                success: function(data) {
-                    console.log(data)
-                    // 받아온 데이터로 차트 업데이트
+                success: function(bestChamp) {
+                    console.log(bestChamp)
+                    updateChampionBoxes(bestChamp)// 받아온 데이터로 차트 업데이트
+                    
+                    
+                },
+                error: function(xhr, status, error) {
+                
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
+                }
+            });
+        }
+        
+        function fetchPlayData() {
+            $.ajax({
+                url: 'getPlayDataList.do',
+                type: 'GET', 
+                dataType: 'json', 
+                data: { userId: userId },
+                success: function(playDataList) {
+                    console.log(playDataList)
+                  // 받아온 데이터로 차트 업데이트
+                    
+                    
+                },
+                error: function(xhr, status, error) {
+                
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
+                }
+            });
+        }
+        
+        
+        function fetchGhostPlayData() {
+            $.ajax({
+                url: 'getGhostDataList.do',
+                type: 'GET', 
+                dataType: 'json', 
+                data: { userRank: userRank },
+                success: function(ghostplayDataList) {
+                    console.log(ghostplayDataList)
+                  // 받아온 데이터로 차트 업데이트
                     
                     
                 },
@@ -565,17 +607,24 @@ body[data-darkmode=on] .darkmode>.inner {
         
 ///////////////////////////////ajax 데이터 불러오기 끝 /////////////////////////
 ///////////////////////////////////////////////////////////////////////////
+        fetchGhostPlayData();
+        fetchPlayData();
+        fetchDataChampImg()
         
         
         
-        function updateChampionBoxes(champAvgArray) {
+        function updateChampionBoxes(bestChamp) {
+            var str = "championBoxes 들어왔습니다";
+            console.log(str);
+            console.log(bestChamp.champAvgArray.length);
             const championBoxes = $('.champion-box');
-            
 
-            for (let i = 0; i < champAvgArray.length; i++) {
+            for (let i = 0; i < bestChamp.champAvgArray.length; i++) {
                 const championBox = championBoxes.eq(i);
-                const champAvgData = champAvgArray[i];
+                const champAvgData = bestChamp.champAvgArray[i];
+                console.log(str);
 
+                console.log(champAvgData);
                 championBox.find('.champname').text(champAvgData.championName);
                 championBox.find('.csavg').text(`CS ${champAvgData.csAvg}`);
                 championBox.find('.champavg > div:first-child').text(champAvgData.k);
@@ -583,6 +632,12 @@ body[data-darkmode=on] .darkmode>.inner {
                 championBox.find('.played .cnt').text(`게임 ${champAvgData.played}`);
             }
         }
+        
+        fetchDataBest5()
+        
+        
+      
+      
 
         function updateChart(data) {
         	if(data){
@@ -670,10 +725,10 @@ body[data-darkmode=on] .darkmode>.inner {
         }
 
         // 페이지 로딩 시 데이터 가져오고 차트 업데이트
-        fetchData1();
-        fetchData2();
-        fetchData3();
-        // fetchData4();
+       fetchDataKDAWinlose();
+      
+        
+      
         
     </script> <!-- 방사형차트 스크립트 수정 --> <script type="text/javascript">
               document.addEventListener("DOMContentLoaded", () => {

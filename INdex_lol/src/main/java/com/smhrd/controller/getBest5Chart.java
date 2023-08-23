@@ -25,13 +25,13 @@ public class getBest5Chart implements L_Controller {
 		L_userdataDAO userDataDAO = new L_userdataDAO();
 		List<L_userdata> champDesc = userDataDAO.champDesc(userId);
 		List<L_userdata> userdata = userDataDAO.udview(userId);
-		
 
+		System.out.println(userdata);
 		JSONObject jsonData = new JSONObject();
-
 
 		// 챔피언별 플레이 데이터 계산
 		for (int j = 0; j < Math.min(5, champDesc.size()); j++) {
+
 			L_userdata champ = champDesc.get(j);
 			int champkill = 0;
 			int champdeath = 0;

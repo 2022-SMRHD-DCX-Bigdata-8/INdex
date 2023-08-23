@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.L_ghostdataDAO">
 
-	<select id="fdview" resultType="com.smhrd.entity.L_ghostdata">
+	<select id="gdview" resultType="com.smhrd.entity.L_ghostdata">
 		select * from l_ghostdata
-		where g_idx = #{g_idx}
+		where g_rank = #{g_rank}
 	</select>
 
 

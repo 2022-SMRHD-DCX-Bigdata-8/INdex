@@ -34,15 +34,11 @@ public class getKdaChart implements L_Controller {
 		int totalWinloseCnt = 0;
 
 		String userId = request.getParameter("userId");
-		L_userdataDAO userDataDAO = new L_userdataDAO();
-
-		List<L_userdata> userdata = userDataDAO.udview(userId);
-
+		L_userdataDAO userDataDAO = new L_userdataDAO();;
 		List<L_userdata> userdataDesc = userDataDAO.userdataDesc(userId);
-
 		JSONObject jsonData = new JSONObject();
 
-		if (userdata != null && !userdata.isEmpty()) {
+		if (userdataDesc != null && !userdataDesc.isEmpty()) {
 			System.out.println("if문 안에 들어와버렸습니다.");
 
 			// 승률
@@ -56,7 +52,7 @@ public class getKdaChart implements L_Controller {
 
 			}
 			winlose = (int) ((wincnt / (double) (wincnt + losecnt)) * 100);
-			totalWinloseCnt = userdata.size();
+			totalWinloseCnt = userdataDesc.size();
 			
 			
 			// 총 전적 k/d/a 평균 , 평점 평균
