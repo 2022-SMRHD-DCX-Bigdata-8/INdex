@@ -54,8 +54,10 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/getRadar.do", new getRadarChart()); //완료
 		handler.put("/getChampImg.do", new getChampImg()); //완료
 		handler.put("/getGhostDataList.do", new getGhostDataList()); //완료
-		handler.put("/getGhostTimeLineData.do", new getGhostTimeLineData());
-		handler.put("/getUserTimeLineData.do", new getUserTimeLinetData());
+		handler.put("/getGhostTimeLineData.do", new getGhostTimeLineData()); // 사용자 랭크로 매칭,  완료
+		handler.put("/getUserTimeLineData.do", new getUserTimeLinetData()); // matchcd로 매칭, 완료
+		
+		
 
 		//// test////////////////////////////////////////
 

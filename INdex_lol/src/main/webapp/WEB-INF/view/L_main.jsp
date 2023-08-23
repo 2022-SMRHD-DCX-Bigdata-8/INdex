@@ -1231,8 +1231,8 @@ body[data-darkmode=on] .darkmode>.inner {
         var chartTitleColor = document.body.dataset.darkmode === 'on' ? '#e2dddd' : '#1e1f21';
         var userId = '${user.u_id}';
         var userRank = '${user.u_rank}';
- 		var userPosition = ""
- 		console.log(userPosition)
+ 		//var userMatch = playDataList;
+ 		// console.log(userPosition)
         console.log(userId)
         console.log(userRank)
         
@@ -1268,19 +1268,7 @@ body[data-darkmode=on] .darkmode>.inner {
             });
         }
  		
- 		/* function updateChart(data) {
- 		    const kdaAvgSpan = $('#KDA span');
- 		    const deathSpan = $('.death');
- 		    const ratioDiv = $('.ratio');
-
- 		    kdaAvgSpan.eq(0).text(data.K.toFixed(1));
- 		    deathSpan.text(data.D.toFixed(1));
- 		    kdaAvgSpan.eq(2).text(data.A.toFixed(1));
-
- 		    ratioDiv.text(data.winlose.toFixed(1));
- 		}*/
- 		
- 		// champ 이미지, 이름
+ 
         
         function fetchDataChampImg() {
        
@@ -1314,7 +1302,7 @@ body[data-darkmode=on] .darkmode>.inner {
                     return champImgData[i].championImg;
                 }
             }
-            return null; // 일치하는 데이터가 없을 경우 null 반환
+            return null; 
         }
         
  		
@@ -1340,6 +1328,7 @@ body[data-darkmode=on] .darkmode>.inner {
             });
         }
         
+ 		
         function fetchPlayData() {
         	
         	// 유저 대전기록 리스트 
@@ -1351,6 +1340,7 @@ body[data-darkmode=on] .darkmode>.inner {
                 success: function(playDataList) {
                     console.log(playDataList)
                   // 받아온 데이터로 차트 업데이트
+                  // for문으로 length 까지 html태그 출력되게 만들어야함
                     
                     
                 },
@@ -1362,6 +1352,7 @@ body[data-darkmode=on] .darkmode>.inner {
         }
         
         
+        // ghost 플레이데이터 목록 userRank 인자
         function fetchGhostPlayData() {
             $.ajax({
                 url: 'getGhostDataList.do',
@@ -1372,6 +1363,7 @@ body[data-darkmode=on] .darkmode>.inner {
                 	
                     console.log(ghostplayDataList)
                   // 받아온 데이터로 차트 업데이트
+                  // 단 position 매칭시켜서 같은것만 가져오게해야함
                     
                     
                 },
@@ -1383,6 +1375,7 @@ body[data-darkmode=on] .darkmode>.inner {
             });
         }
         
+        // 레이더 데이터용 json 최근경기 단 하나
         function fetchUserRadarData() {
             $.ajax({
                 url: 'getRadar.do',
@@ -1404,6 +1397,7 @@ body[data-darkmode=on] .darkmode>.inner {
             });
         }
         
+     // 고스트 타임라인 (시간별)
         function fetchGhostTimeLineData() {
             $.ajax({
                 url: 'getGhostTimeLineData.do',
@@ -1424,13 +1418,14 @@ body[data-darkmode=on] .darkmode>.inner {
         }
         
         
+        // 유저 타임라인 (시간별)
         function fetchUserTimeLineData() {
-        	// u_id하고 matchcd 로 넘겨야함
+        	// matchcd 로 넘겨야함
             $.ajax({
                 url: 'getUserTimeLineData.do',
                 type: 'GET', 
                 dataType: 'json', 
-                data: { userId: userId },
+                data: { userMatch: userMatch },
                 success: function(userTimeLineData) {
                 	
                     console.log(userTimeLineData)
@@ -1458,7 +1453,7 @@ body[data-darkmode=on] .darkmode>.inner {
         fetchDataChampImg();
         fetchUserRadarData();
         fetchGhostTimeLineData();
-        fetchUserTimeLineData();
+        // fetchUserTimeLineData();
         
         
         $(document).ready(function () {

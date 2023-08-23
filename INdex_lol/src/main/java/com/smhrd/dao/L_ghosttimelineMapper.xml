@@ -5,7 +5,7 @@
 	<select id="gTimeLine" resultType="com.smhrd.entity.L_ghosttimeline">
 		select * from l_ghosttimeline
 		where g_rank = #{g_rank}
-		and g_teamposition = #{g_teamposition}
+		
 	</select>
 
 

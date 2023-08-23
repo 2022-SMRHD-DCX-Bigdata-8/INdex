@@ -20,6 +20,7 @@
 		resultType="com.smhrd.entity.L_usertimeline">
 		select * from l_usertimeline
 		where u_matchcd = #{u_matchcd}
+		<!-- 고스트 타임라인이랑 position 매칭해줘야함 -->
 	</select>
 
 </mapper>
