@@ -38,24 +38,19 @@ public class L_LoginCon implements L_Controller {
 		l_userdata.setU_id(u_id);
 		
 		
+		u_id = l_user.getU_id();
 		
 		L_champimgDAO cidao= new L_champimgDAO();
-		
 		L_userDAO dao = new L_userDAO();
-		
 		L_userdataDAO ud_dao = new L_userdataDAO();
-		
 		L_user user = dao.login(l_user);
-		
 		L_champimg l_champimg = new L_champimg();
 
-		List<L_userdata> userdata = ud_dao.udview(l_userdata);
-
-		List<L_userdata> userdataDesc = ud_dao.userdataDesc(l_userdata);
-
-		List<L_userdata> champDesc = ud_dao.champDesc(l_userdata);
-		
-		List<L_champimg> champimg = cidao.champimg(l_champimg);
+		List<L_userdata> userdata = ud_dao.udview(u_id);
+		List<L_userdata> userdataDesc = ud_dao.userdataDesc(u_id);
+		List<L_userdata> champDesc = ud_dao.champDesc(u_id);
+		// champimg 필요없어질수도있음
+		List<L_champimg> champimg = cidao.champImg();
 		
 		
 		

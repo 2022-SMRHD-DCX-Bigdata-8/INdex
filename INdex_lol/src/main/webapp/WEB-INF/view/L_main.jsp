@@ -126,65 +126,7 @@ body[data-darkmode=on] .darkmode>.inner {
 	List<L_champimg> champimg = (List<L_champimg>) session.getAttribute("champimg");
 
 	System.out.println("success" + userdataDesc);
-
 	String[] arr = new String[5];
-	for (int j = 0; j < 5; j++) {
-		for (int i = 0; i < champimg.size(); i++) {
-			if (champDesc.get(j).getU_champ().equals(champimg.get(i).getChamp_nick())) {
-		arr[j] = champimg.get(i).getChamp_img();
-			}
-		}
-	}
-
-	int allkill = 0;
-	int alldeath = 0;
-	int allassist = 0;
-	for (int i = 0; i < userdataDesc.size(); i++) {
-		allkill += userdataDesc.get(i).getU_kill();
-		alldeath += userdataDesc.get(i).getU_death();
-		allassist += userdataDesc.get(i).getU_assist();
-	}
-	double K = Math.round(allkill / (double) userdataDesc.size() * 10) / 10.0;
-	double D = Math.round(alldeath / (double) userdataDesc.size() * 10) / 10.0;
-	double A = Math.round(allassist / (double) userdataDesc.size() * 10) / 10.0;
-	double KDA = Math.round((K + A) / D * 10) / 10.0;
-	System.out.println(KDA);
-
-	int wincnt = 0;
-	int losecnt = 0;
-	for (int i = 0; i < 20; i++) {
-		if (userdataDesc.get(i).getU_winlose().equals("true")) {
-			wincnt += 1;
-		} else if (userdataDesc.get(i).getU_winlose().equals("false")) {
-			losecnt += 1;
-		}
-	}
-	int winlose = (int) ((wincnt / 20.0) * 100);
-
-	int champ1kill = 0;
-	int champ1death = 0;
-	int champ1assist = 0;
-	double[][] Array = new double[5][3];
-	for (int j = 0; j < 5; j++) {
-		for (int i = 0; i < userdata.size(); i++) {
-			if (champDesc.get(j).getU_champ().equals(userdata.get(i).getU_champ())) {
-		champ1kill += userdata.get(i).getU_kill();
-		champ1death += userdata.get(i).getU_death();
-		champ1assist += userdata.get(i).getU_assist();
-			}
-		}
-		Array[j][0] = Math.round(champ1kill / (double) champDesc.get(j).getChampcnt() * 10) / 10.0;
-		champ1kill = 0;
-		Array[j][1] = Math.round(champ1death / (double) champDesc.get(j).getChampcnt() * 10) / 10.0;
-		champ1death = 0;
-		Array[j][2] = Math.round(champ1assist / (double) champDesc.get(j).getChampcnt() * 10) / 10.0;
-		champ1assist = 0;
-	}
-	double champAvg1 = Math.round((Array[0][0] + Array[0][2]) / Array[0][1] * 10) / 10.0;
-	double champAvg2 = Math.round((Array[1][0] + Array[1][2]) / Array[1][1] * 10) / 10.0;
-	double champAvg3 = Math.round((Array[2][0] + Array[2][2]) / Array[2][1] * 10) / 10.0;
-	double champAvg4 = Math.round((Array[3][0] + Array[3][2]) / Array[3][1] * 10) / 10.0;
-	double champAvg5 = Math.round((Array[4][0] + Array[4][2]) / Array[4][1] * 10) / 10.0;
 	%>
 	<header class="header">
 		<div class="logo">
@@ -231,18 +173,8 @@ body[data-darkmode=on] .darkmode>.inner {
 							src="https://opgg-static.akamaized.net/images/medals_new/gold.png?image=q_auto,f_webp,w_144&amp;v=1692255489132"
 							alt="GOLD">
 						<p id="nick">${user.u_nick}</p>
-						<%
-						if (userdata == null) {
-						%>
-						<button id="new_renewal">갱신</button>
-						<%
-						} else {
-						%>
-
 						<button id="renewal">갱신</button>
-						<%
-						}
-						%>
+
 					</div>
 				</form>
 
@@ -262,10 +194,9 @@ body[data-darkmode=on] .darkmode>.inner {
 				<td>
 					<div id="info">
 						<div id="KDA">
-							<span> 10 </span> / <span class="death"> 1 </span> / <span>
-								20 </span>
+							<span> </span> / <span class="death"> </span> / <span> </span>
 						</div>
-						<div class="ratio">30.0</div>
+						<div class="ratio"></div>
 
 
 						<div class="bodyfirst">
@@ -275,136 +206,114 @@ body[data-darkmode=on] .darkmode>.inner {
 
 							<div id="kdaavg">
 								<div id="KDA">
-									<span> <%=K%>
-									</span> / <span class="death"> <%=D%>
-									</span> / <span> <%=A%>
-									</span>
+									<span> </span> / <span class="death"> </span> / <span> </span>
 								</div>
 
-								<div class="ratio"><%=KDA%></div>
+								<div class="ratio"></div>
 
 							</div>
+
+
 
 
 							<div id="best5Box">
 								<div class="champion-box">
 									<div class="faced">
-										<img class="faceimg" src="<%=arr[0]%>">
+										<img class="faceimg" src="">
 									</div>
 
 									<div class="best5">
-										<div class="champname">
-											<%=champDesc.get(0).getU_champ()%>
-										</div>
+										<div class="champname"></div>
 										<div class="csavg">CS 176.3 (6.6)</div>
 									</div>
 
 									<div class="champavg">
-										<div>
-											평점<%=champAvg1%></div>
-										<div><%=Array[0][0]%>/<%=Array[0][1]%>/<%=Array[0][2]%></div>
+										<div>평점</div>
+										<div>//</div>
 									</div>
 
 									<div class="played">
-										<div class="cnt">
-											<%=champDesc.get(0).getChampcnt()%>게임
-										</div>
+										<div class="cnt">게임</div>
 									</div>
 								</div>
 
 								<div class="champion-box">
 									<div class="faced">
-										<img class="faceimg" src="<%=arr[1]%>">
+										<img class="faceimg" src="">
 									</div>
 
 									<div class="best5">
-										<div class="champname">
-											<%=champDesc.get(1).getU_champ()%>
-										</div>
+										<div class="champname"></div>
 										<div class="csavg">CS 176.3 (6.6)</div>
 									</div>
 
 									<div class="champavg">
-										<div>
-											평점<%=champAvg2%></div>
-										<div><%=Array[1][0]%>/<%=Array[1][1]%>/<%=Array[1][2]%></div>
+										<div>평점</div>
+										<div></div>
 									</div>
 
 									<div class="played">
-										<div class="cnt"><%=champDesc.get(1).getChampcnt()%>게임
-										</div>
+										<div class="cnt">게임</div>
 									</div>
 								</div>
 
 								<div class="champion-box">
 									<div class="faced">
-										<img class="faceimg" src="<%=arr[2]%>">
+										<img class="faceimg" src="">
 									</div>
 
 									<div class="best5">
-										<div class="champname">
-											<%=champDesc.get(2).getU_champ()%>
-										</div>
+										<div class="champname"></div>
 										<div class="csavg">CS 176.3 (6.6)</div>
 									</div>
 
 									<div class="champavg">
-										<div>
-											평점<%=champAvg3%></div>
-										<div><%=Array[2][0]%>/<%=Array[2][1]%>/<%=Array[2][2]%></div>
+										<div>평점</div>
+										<div>//</div>
 									</div>
 
 									<div class="played">
-										<div class="cnt"><%=champDesc.get(2).getChampcnt()%>게임
-										</div>
+										<div class="cnt">게임</div>
 									</div>
 								</div>
 
 								<div class="champion-box">
 									<div class="faced">
-										<img class="faceimg" src="<%=arr[3]%>">
+										<img class="faceimg" src="">
 									</div>
 
 									<div class="best5">
-										<div class="champname">
-											<%=champDesc.get(3).getU_champ()%>
-										</div>
+										<div class="champname"></div>
 										<div class="csavg">CS 176.3 (6.6)</div>
 									</div>
 
 									<div class="champavg">
-										<div>
-											평점<%=champAvg4%></div>
-										<div><%=Array[3][0]%>/<%=Array[3][1]%>/<%=Array[3][2]%></div>
+										<div></div>
+										<div>//</div>
 									</div>
 
 									<div class="played">
-										<div class="cnt"><%=champDesc.get(3).getChampcnt()%>게임
-										</div>
+										<div class="cnt">게임</div>
 									</div>
 								</div>
 
 								<div class="champion-box">
 									<div class="faced">
-										<img class="faceimg" src="<%=arr[4]%>">
+										<img class="faceimg" src="">
 									</div>
 
 									<div class="best5">
-										<div class="champname">
-											<%=champDesc.get(4).getU_champ()%>
-										</div>
+										<div class="champname"></div>
 										<div class="csavg">CS 176.3 (6.6)</div>
 									</div>
 
 									<div class="champavg">
-										<div>
-											평점<%=champAvg5%></div>
-										<div><%=Array[4][0]%>/<%=Array[4][1]%>/<%=Array[4][2]%></div>
+										<div>평점</div>
+										<div>//</div>
 									</div>
 
 									<div class="played">
-										<div class="cnt"><%=champDesc.get(4).getChampcnt()%>게임
-										</div>
+										<div class="cnt">게임</div>
 									</div>
 								</div>
 							</div>
@@ -439,10 +348,9 @@ body[data-darkmode=on] .darkmode>.inner {
 							</c:forEach>
 						</table>
 
-					</div>
 					</div> <script src="https://code.jquery.com/jquery-3.7.0.min.js"
 						integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-						crossorigin="anonymous"></script> <script>
+						crossorigin="anonymous"></script> <script type="text/javascript">
     $(document).ready(function () {
     $(".profile-image").on("click", function (e) {
       e.stopPropagation(); // 이벤트 전파 중단 (버블링 방지)
@@ -531,13 +439,23 @@ body[data-darkmode=on] .darkmode>.inner {
             renewalButton.addEventListener('click', function () {
                 if (canRenew) {
                     canRenew = false; // 버튼 클릭 비활성화
-                   
-                   
+                    renewalButton.disabled = true; // 버튼 비활성화
+
+                    
+                    var userId = "${user.u_id}";
+                    var userPuuid = "${user.u_lolcd}";
+
+                    // 여기 수정해야함 null !null 로 nerefresh , refresh 버튼 분기
+                    //newrefreshPlayData(userId, userPuuid);
+                    
     
                     renewalButton.style.background = "#D3D3D3";
                     renewalButton.style.color = "#1e1f21";
                     console.log("클릭");
                     
+            
+                    refreshPlayData(userId, userPuuid);
+
                     setTimeout(function () {
                         canRenew = true; // 버튼 클릭 활성화
                         console.log('다시 버튼을 클릭할 수 있습니다.');
@@ -545,41 +463,11 @@ body[data-darkmode=on] .darkmode>.inner {
                         renewalButton.style.color = "#e8e8e8";
                     }, 120000); // 120초 (2분)
                     
-                    var userId = "${user.u_id}";
-                    var userPuuid = "${user.u_lolcd}";
-
-                    // 여기 수정해야함 null !null 로 nerefresh , refresh 버튼 분기
-                    //newrefreshPlayData(userId, userPuuid);
-                    refreshPlayData(userId, userPuuid);
-
-
-                    // 일정 시간(여기서는 120초) 후에 다시 클릭 가능하게 설정
-                    
                 }
             });
         });
         
-        function newrefreshPlayData(userId, userPuuid) {
-        	console.log(userId)
-        	console.log(userPuuid)
-            $.ajax({
-                url: "newUserLogin.do", // 서버의 처리 URL
-                method: "POST",
-                data: {
-                    userId: userId,
-                    userPuuid: userPuuid
-                },
-                success: function(response) {
-                    // 서버 응답 성공 시 동작
-                    console.log("Rank data refreshed successfully.");
-                    console.log(response);
-                },
-                error: function(error) {
-                    // 서버 응답 실패 시 동작
-                    console.log(error);
-                }
-            });
-        }
+
 
         function refreshPlayData(userId, userPuuid) {
             $.ajax({
@@ -593,6 +481,7 @@ body[data-darkmode=on] .darkmode>.inner {
                     // 서버 응답 성공 시 동작
                     console.log("Rank data refreshed successfully.");
                     console.log(response);
+                    location.reload(true);
                 },
                 error: function(error) {
                     // 서버 응답 실패 시 동작
@@ -601,78 +490,192 @@ body[data-darkmode=on] .darkmode>.inner {
             });
         }
         
-        $("#new_renewal").click(function() {
-            console.log("new_renewal 버튼 클릭");
-            // ... 나머지 코드 ...
-        });
-
-        $("#renewal").click(function() {
-            console.log("renewal 버튼 클릭");
-            // ... 나머지 코드 ...
-        });
 
         
-    </script> <!-- 파이형 차트 수정 --> <script>
+    </script> <!-- 파이형 차트 수정 --> <script type="text/javascript">
 		// 파이형차트
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom); // Initialize myChart
-
-        option = {
-            title: {
-                text: '<%=20%>전 <%=wincnt%>승 <%=losecnt%>패',
-                subtext: 'Test Data',
-                left: 'center'
-            },
-            tooltip: {
-                trigger: 'item'
-            },
-            graphic: [{
-                type: 'text',
-                left: 'center',
-                top: 'center',
-                style: {
-                    text: ' <%=winlose%>% ' ,
-                    font: 'bold 30px Arial', // 폰트 스타일
-                    fill: '#333' // 텍스트 색상
-
+        var userId = '${user.u_id}';
+        console.log(userId)
+        
+        
+///////////////////////////////ajax 데이터 불러오기 /////////////////////////
+///////////////////////////////////////////////////////////////////////////
+        function fetchData1() {
+      
+            $.ajax({
+                url: 'kdaChart.do',
+                type: 'GET', 
+                dataType: 'json', 
+                data: { userId: userId },
+                success: function(data) {
+                    console.log(data)
+                    updateChart(data); // 받아온 데이터로 차트 업데이트
+                    
+                    
+                },
+                error: function(xhr, status, error) {
+                
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
                 }
-            }],
-            legend: {
-                orient: 'vertical',
-                left: 'left'
-            },
-            series: [
-                {
-                    name: '승패',
-                    type: 'pie',
-                    radius: ['60%', '35%'],
-                    data: [
-                    	// 수정할 부분
-                        { value: <%=losecnt%>, name: '패', itemStyle: { color: 'red' } }, // 패 시리즈 색상 변경
-                        { value: <%=wincnt%>, name: '승', itemStyle: { color: 'blue' } } // 승 시리즈 색상 변경
-                    ],
-                    label: {
-                        show: false,
-                        position: 'center'
-                    },
-                    itemStyle: {
-                        borderRadius: 10,
-                        borderColor: '#fff',
-                        borderWidth: 2
-                    },
-                    emphasis: {
+            });
+        }
+        
+        function fetchData2() {
+       
+            $.ajax({
+                url: 'getChampImg.do',
+                type: 'GET', 
+                dataType: 'json', 
+                success: function(champImgData) {
+                    console.log(champImgData)
+                    //받아온 데이터로 차트 업데이트
+                    
+                    
+                },
+                error: function(xhr, status, error) {
+                    // 요청이 실패했을 때 실행될 콜백 함수
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
+                }
+            });
+        }
+        
+        function fetchData3() {
+            $.ajax({
+                url: 'getBest5Chart.do',
+                type: 'GET', 
+                dataType: 'json', 
+                data: { userId: userId },
+                success: function(data) {
+                    console.log(data)
+                    // 받아온 데이터로 차트 업데이트
+                    
+                    
+                },
+                error: function(xhr, status, error) {
+                
+                    console.error('데이터를 가져오는데 실패했습니다:', error);
+                }
+            });
+        }
+        
+        
+        
+        
+///////////////////////////////ajax 데이터 불러오기 끝 /////////////////////////
+///////////////////////////////////////////////////////////////////////////
+        
+        
+        
+        function updateChampionBoxes(champAvgArray) {
+            const championBoxes = $('.champion-box');
+            
+
+            for (let i = 0; i < champAvgArray.length; i++) {
+                const championBox = championBoxes.eq(i);
+                const champAvgData = champAvgArray[i];
+
+                championBox.find('.champname').text(champAvgData.championName);
+                championBox.find('.csavg').text(`CS ${champAvgData.csAvg}`);
+                championBox.find('.champavg > div:first-child').text(champAvgData.k);
+                championBox.find('.champavg > div:last-child').text(champAvgData.d);
+                championBox.find('.played .cnt').text(`게임 ${champAvgData.played}`);
+            }
+        }
+
+        function updateChart(data) {
+        	if(data){
+        		
+        	
+            var option = {
+                title: {
+                    text: data.totalWinloseCnt.toString()+'전'+ data.wincnt.toString()+'승'+data.losecnt.toString()+'패',
+                    subtext: '승률',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+                graphic: [{
+                    type: 'text',
+                    left: 'center',
+                    top: 'center',
+                    style: {
+                    	text: data.winlose.toString() + '%',
+                        font: 'bold 30px Arial',
+                        fill: '#333'
+                    }
+                }],
+                legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                },
+                series: [
+                    {
+                        name: '승패',
+                        type: 'pie',
+                        radius: ['60%', '35%'],
+                        data: [
+                            { value: data.losecnt, name: '패', itemStyle: { color: 'red' } },
+                            { value: data.wincnt, name: '승', itemStyle: { color: 'blue' } }
+                        ],
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
                         itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
                         }
                     }
-                }
-            ]
-        };
+                ]
+            };
 
-        myChart.setOption(option); // Set option to myChart
-    </script> <!-- 방사형차트 스크립트 수정 --> <script>
+            myChart.setOption(option);
+          
+            
+        	}else{
+        		// 데이터를 받아오지 못한 경우에 대한 처리
+                var option = {
+                    title: {
+                        text: '데이터를 가져오지 못했습니다.',
+                        subtext: 'Error',
+                        left: 'center',
+                        top: 'middle'
+                    },
+                    graphic: [{
+                        type: 'text',
+                        left: 'center',
+                        top: 'center',
+                        style: {
+                            text: 'Error',
+                            font: 'bold 30px Arial',
+                            fill: 'red'
+                        }
+                    }]
+                };
+
+                myChart.setOption(option);
+            }
+        	
+        }
+
+        // 페이지 로딩 시 데이터 가져오고 차트 업데이트
+        fetchData1();
+        fetchData2();
+        fetchData3();
+        // fetchData4();
+        
+    </script> <!-- 방사형차트 스크립트 수정 --> <script type="text/javascript">
               document.addEventListener("DOMContentLoaded", () => {
                 var radarChart = echarts.init(document.querySelector("#radarChart"));
                 radarChart.setOption({

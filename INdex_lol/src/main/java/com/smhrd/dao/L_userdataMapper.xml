@@ -69,9 +69,10 @@
   		FROM l_userdata
  		GROUP BY u_champ, u_id
  		having u_id=#{u_id}
- 		order by 3 desc
+ 		order by champcnt desc
 	</select>
 	
+	<select id="winCnt"></select>
 	
 	
 	

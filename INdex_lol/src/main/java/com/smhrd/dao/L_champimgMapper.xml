@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.L_champimgDAO">
 
-	<select id="champimg" resultType="com.smhrd.entity.L_champimg" parameterType="com.smhrd.entity.L_champimg">
+	<select id="champimg" resultType="com.smhrd.entity.L_champimg"
+		parameterType="com.smhrd.entity.L_champimg">
 		select * from l_champimg
 	</select>
 

@@ -42,6 +42,12 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/findpw.do", new L_FindPwCon());
 		handler.put("/champion.do", new L_GoChampionCon());
 		handler.put("/newUserLogin.do", new NewUserLoginCon());
+		handler.put("/kdaChart.do", new getKdaChart());
+		handler.put("/getBest5Chart.do", new getBest5Chart());
+		handler.put("/getPlayDataList.do", new getPlayDataListChart());
+		handler.put("/getRadar.do", new getRadarChart());
+		handler.put("/getChampImg.do", new getChampImg());
+		
 
 		
 		

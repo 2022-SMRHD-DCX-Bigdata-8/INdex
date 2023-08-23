@@ -15,9 +15,9 @@ public class L_champimgDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 	
 	
-	public List<L_champimg> champimg(L_champimg l_champimg) {
+	public List<L_champimg> champImg() {
 		SqlSession session = factory.openSession(true);
-		List<L_champimg> champimg = session.selectList("champimg", l_champimg);
+		List<L_champimg> champimg = session.selectList("champimg");
 		session.close();
 		return champimg;
 	}

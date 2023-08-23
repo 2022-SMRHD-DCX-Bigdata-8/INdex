@@ -12,9 +12,9 @@ import com.smhrd.entity.L_userdata;
 public class L_userdataDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 
-	public List<L_userdata> udview(L_userdata l_userdata) {
+	public List<L_userdata> udview(String u_id) {
 		SqlSession session = factory.openSession(true);
-		List<L_userdata> list = session.selectList("fdlist",l_userdata);
+		List<L_userdata> list = session.selectList("fdlist",u_id);
 		session.close();
 		return list;
 	}
@@ -46,17 +46,17 @@ public class L_userdataDAO {
 	    return result; // 중복 데이터가 있으면 true, 없으면 false 반환
 	}
 	
-	public List<L_userdata> userdataDesc( L_userdata l_userdata) {
+	public List<L_userdata> userdataDesc(String u_id) {
 		SqlSession session = factory.openSession(true);
-		List<L_userdata> userdataDesc = session.selectList("userdataDesc",l_userdata);
+		List<L_userdata> userdataDesc = session.selectList("userdataDesc",u_id);
 		session.close();
 		return userdataDesc;
 	}
 	
 	
-	public List<L_userdata> champDesc(L_userdata l_userdata) {
+	public List<L_userdata> champDesc(String u_id) {
 		SqlSession session = factory.openSession(true);
-		List<L_userdata> champDesc=session.selectList("champDesc",l_userdata);
+		List<L_userdata> champDesc=session.selectList("champDesc",u_id);
 		session.close();
 		return champDesc;
 	}
