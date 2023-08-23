@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="assets/css/L_main.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+<script
+	src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
 /* CSS 스타일을 추가하여 name 텍스트를 굵게 표시 */
 .indicator-name {
@@ -27,8 +29,6 @@
 }
 </style>
 
-<script
-	src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
 <style>
 #editBox {
 	visibility: hidden;
@@ -56,13 +56,10 @@ body[data-darkmode=on] .darkmode>.inner {
 .darkmode>.inner {
 	position: relative;
 	display: inline-flex;
-	padding: 5px;
 	border-radius: 1.5em;
 	background-color: rgba(0, 0, 0, 0.1);
 	justify-content: right;
-	position: absolute;
 	/* 추가 */
-	bottom: 7px;
 }
 
 .darkmode label {
@@ -116,18 +113,6 @@ body[data-darkmode=on] .darkmode>.inner {
 <body>
 
 
-	<%
-	// session에서 사용자 정보를 꺼내기
-
-	L_user user = (L_user) session.getAttribute("user");
-	//List<L_userdata> userdata = (List<L_userdata>) session.getAttribute("userdata");
-	//List<L_userdata> userdataDesc = (List<L_userdata>) session.getAttribute("userdataDesc");
-	//List<L_userdata> champDesc = (List<L_userdata>) session.getAttribute("champDesc");
-	//List<L_champimg> champimg = (List<L_champimg>) session.getAttribute("champimg");
-
-	System.out.println("success" + user);
-	
-	%>
 	<header class="header">
 		<div class="logo">
 			<a href="#"><img src="/HTML/로고.png" alt="" class="chal"></a> <a
@@ -151,13 +136,21 @@ body[data-darkmode=on] .darkmode>.inner {
 
 
 			<div class="profile-card" id="profileCard">
-				<img class="profile-image"
-					src="/HTML/KakaoTalk_20230814_124926300.jpg" alt="프로필 사진">
+				<img class="profile-image" src="유저2.png" alt="프로필 사진">
 			</div>
 			<div id="editBox">
 				<div id="edit-box-tool">
 					<h3>내 정보</h3>
 					<a href="#" class="info">내정보 수정</a>
+				</div>
+
+				<div>
+					<a href="#" class="info" id="withdrawLink">회원 탈퇴</a>
+
+				</div>
+				<div>
+					<a href="#" class="info" id="withdrawLink">로그아웃</a>
+
 				</div>
 			</div>
 		</div>
@@ -165,6 +158,7 @@ body[data-darkmode=on] .darkmode>.inner {
 	</header>
 
 	<div id="wrap">
+
 		<nav>
 			<div class="side_navbar" style="border: 1;">
 				<form action="#">
@@ -172,9 +166,8 @@ body[data-darkmode=on] .darkmode>.inner {
 						<img
 							src="https://opgg-static.akamaized.net/images/medals_new/gold.png?image=q_auto,f_webp,w_144&amp;v=1692255489132"
 							alt="GOLD">
-						<p id="nick">${user.u_nick}</p>
+						<p id="nick">렝가는유미될래요</p>
 						<button id="renewal">갱신</button>
-
 					</div>
 				</form>
 
@@ -184,187 +177,872 @@ body[data-darkmode=on] .darkmode>.inner {
 			</div>
 
 		</nav>
+
+
+		<!-- 대시보드 수정할것들!!!! -->
+		<div class="body_main">
+
+
+
+			<div id="best5Box">
+				<div class="champion-box">
+					<div class="faced">
+						<img class="faceimg"
+							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+					</div>
+
+					<div class="best5">
+						<div class="champname">가렌</div>
+						<div class="csavg">CS 176.3 (6.6)</div>
+					</div>
+
+					<div class="champavg">
+						<div>평점</div>
+						<div>K/D/A</div>
+					</div>
+
+					<div class="played">
+						<div class="cnt">6게임</div>
+					</div>
+				</div>
+
+				<div class="champion-box">
+					<div class="faced">
+						<img class="faceimg"
+							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Galio.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+					</div>
+
+					<div class="best5">
+						<div class="champname">갈리오</div>
+						<div class="csavg">CS 176.3 (6.6)</div>
+					</div>
+
+					<div class="champavg">
+						<div>평점</div>
+						<div>K/D/A</div>
+					</div>
+
+					<div class="played">
+						<div class="cnt">6게임</div>
+					</div>
+				</div>
+
+				<div class="champion-box">
+					<div class="faced">
+						<img class="faceimg"
+							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gangplank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+					</div>
+
+					<div class="best5">
+						<div class="champname">갱플랭크</div>
+						<div class="csavg">CS 176.3 (6.6)</div>
+					</div>
+
+					<div class="champavg">
+						<div>평점</div>
+						<div>K/D/A</div>
+					</div>
+
+					<div class="played">
+						<div class="cnt">6게임</div>
+					</div>
+				</div>
+
+				<div class="champion-box">
+					<div class="faced">
+						<img class="faceimg"
+							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gragas.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+					</div>
+
+					<div class="best5">
+						<div class="champname">그라가스</div>
+						<div class="csavg">CS 176.3 (6.6)</div>
+					</div>
+
+					<div class="champavg">
+						<div>평점</div>
+						<div>K/D/A</div>
+					</div>
+
+					<div class="played">
+						<div class="cnt">6게임</div>
+					</div>
+				</div>
+
+				<div class="champion-box">
+					<div class="faced">
+						<img class="faceimg"
+							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Graves.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+					</div>
+
+					<div class="best5">
+						<div class="champname">그레이브즈</div>
+						<div class="csavg">CS 176.3 (6.6)</div>
+					</div>
+
+					<div class="champavg">
+						<div>평점</div>
+						<div>K/D/A</div>
+					</div>
+
+					<div class="played">
+						<div class="cnt">6게임</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="bodyfirst">
+
+				<div id="chartAll">
+					<div id="chart">
+						<canvas>
+
+                        </canvas>
+					</div>
+				</div>
+
+				<div id="radarChartAll">
+					<div id="radarChart" class="echart">
+						<canvas>
+
+                        </canvas>
+					</div>
+				</div>
+				<div id="kdaavg">
+					<div id="KDA">
+						<span> 10 </span> / <span class="death"> 1 </span> / <span>
+							20 </span>
+					</div>
+
+					<div class="ratio">30.0</div>
+
+				</div>
+
+				<div id="wrapper">
+					<div class="que_container">
+						<button class="lastQue animated-item1">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main1" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item2 -->
+						<button class="lastQue animated-item2">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main2" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item4 -->
+						<button class="lastQue animated-item3">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main3" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item6 -->
+						<button class="lastQue animated-item4">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main4" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item8 -->
+						<button class="lastQue animated-item5">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main5" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item10 -->
+						<button class="lastQue animated-item6">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main6" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item12 -->
+						<button class="lastQue animated-item7">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main7" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item14 -->
+						<button class="lastQue animated-item8">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main8" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item16 -->
+						<button class="lastQue animated-item9">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main9" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item18 -->
+						<button class="lastQue animated-item10">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main10" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item20 -->
+						<button class="lastQue animated-item11">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main11" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item12">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main12" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item13">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main13" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item14">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main14" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item15">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main15" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item16">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main16" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item17">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main17" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item18">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main18" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item19">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main19" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+						<button class="lastQue animated-item20">
+							<div>
+								<span id="ChampImg"><img
+									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
+									alt="선택한 챔프사진" /></span>
+							</div>
+
+							<div class="item-content">
+								<span>k/d/a</span>
+								<div>
+
+									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
+										시간</span>
+								</div>
+								<div class="expandable-content">
+									<div class="expanded-content-inner">
+										<div class="expanded-content-wrapper">
+
+											<div>
+												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
+													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
+											</div>
+											<!-- 실제 상세 정보 내용을 여기에 입력 -->
+											게임 상세 정보를 표시합니다.
+											<div id="info1">승리 or 패배</div>
+
+											<canvas id="main20" style="width: 800px; height: 600px;"></canvas>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</button>
+						<!-- lastQue animated-item -->
+
+
+
+
+					</div>
+					<!-- wrapper -->
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- 다른 필드들도 위와 같이 출력 -->
+
 	</div>
-	<div class="body_main">
-		<table>
-			<tr>
-				<td>
-					<div id="chart" style="width: 270px; height: 270px;"></div>
-				</td>
-				<td>
-					<div id="info">
-						<div id="KDA">
-							<span> </span> / <span class="death"> </span> / <span> </span>
-						</div>
-						<div class="ratio"></div>
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+		crossorigin="anonymous"></script>
+	<script type="text/javascript">
+					    $(document).ready(function () {
+			                $(".profile-image").on("click", function (e) {
+			                    e.stopPropagation(); // 이벤트 전파 중단 (버블링 방지)
+			                    $("#editBox").css("visibility", "visible");
+			                });
 
-
-						<div class="bodyfirst">
-							<div id="chartAll">
-								<div id="chart" style="width: 400px; height: 300px;"></div>
-							</div>
-
-							<div id="kdaavg">
-								<div id="KDA">
-									<span> </span> / <span class="death"> </span> / <span> </span>
-								</div>
-
-								<div class="ratio"></div>
-
-							</div>
-
-
-
-
-							<div id="best5Box">
-								<div class="champion-box">
-									<div class="faced">
-										<img class="faceimg" src="">
-									</div>
-
-									<div class="best5">
-										<div class="champname"></div>
-										<div class="csavg">CS 176.3 (6.6)</div>
-									</div>
-
-									<div class="champavg">
-										<div>평점</div>
-										<div>//</div>
-									</div>
-
-									<div class="played">
-										<div class="cnt">게임</div>
-									</div>
-								</div>
-
-								<div class="champion-box">
-									<div class="faced">
-										<img class="faceimg" src="">
-									</div>
-
-									<div class="best5">
-										<div class="champname"></div>
-										<div class="csavg">CS 176.3 (6.6)</div>
-									</div>
-
-									<div class="champavg">
-										<div>평점</div>
-										<div></div>
-									</div>
-
-									<div class="played">
-										<div class="cnt">게임</div>
-									</div>
-								</div>
-
-								<div class="champion-box">
-									<div class="faced">
-										<img class="faceimg" src="">
-									</div>
-
-									<div class="best5">
-										<div class="champname"></div>
-										<div class="csavg">CS 176.3 (6.6)</div>
-									</div>
-
-									<div class="champavg">
-										<div>평점</div>
-										<div>//</div>
-									</div>
-
-									<div class="played">
-										<div class="cnt">게임</div>
-									</div>
-								</div>
-
-								<div class="champion-box">
-									<div class="faced">
-										<img class="faceimg" src="">
-									</div>
-
-									<div class="best5">
-										<div class="champname"></div>
-										<div class="csavg">CS 176.3 (6.6)</div>
-									</div>
-
-									<div class="champavg">
-										<div></div>
-										<div>//</div>
-									</div>
-
-									<div class="played">
-										<div class="cnt">게임</div>
-									</div>
-								</div>
-
-								<div class="champion-box">
-									<div class="faced">
-										<img class="faceimg" src="">
-									</div>
-
-									<div class="best5">
-										<div class="champname"></div>
-										<div class="csavg">CS 176.3 (6.6)</div>
-									</div>
-
-									<div class="champavg">
-										<div>평점</div>
-										<div>//</div>
-									</div>
-
-									<div class="played">
-										<div class="cnt">게임</div>
-									</div>
-								</div>
-							</div>
-
-							<div id="radarChartAll">
-								<div class="card-body">
-									<div id="radarChart" style="width: 400%; height: 400px;"
-										class="echart"></div>
-								</div>
-							</div>
-
-						</div>
-
-
-
-						<table border="1">
-							<c:forEach var="user" items="${userdata}">
-								<tr>
-									<td>챔피언명 ${user.u_champ}</td>
-									<td>레벨 ${user.u_level}</td>
-									<td>골드량 ${user.u_gold}</td>
-									<td>피해량 ${user.u_damage}</td>
-									<td>킬 ${user.u_kill}</td>
-									<td>데스 ${user.u_death}</td>
-									<td>어시 ${user.u_assist}</td>
-									<td>플레이타임 ${user.u_playtime}</td>
-									<td>와드 파괴수 ${user.u_wardskill}</td>
-									<td>와드 설치수 ${user.u_wardsplaced}</td>
-
-									<!-- 다른 필드들도 위와 같이 출력 -->
-								</tr>
-							</c:forEach>
-						</table>
-
-					
- 
-					</div> <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-						integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-						crossorigin="anonymous"></script> <script type="text/javascript">
-    $(document).ready(function () {
-    $(".profile-image").on("click", function (e) {
-      e.stopPropagation(); // 이벤트 전파 중단 (버블링 방지)
-      $("#editBox").css("visibility", "visible");
-    });
-
-    $(document).click(function (e) {
-      if (!$(e.target).is('.profile-image')) {
-        $("#editBox").css("visibility", "hidden");
-      }
-    });
-  });
+			                $(document).click(function (e) {
+			                    if (!$(e.target).is('.profile-image')) {
+			                        $("#editBox").css("visibility", "hidden");
+			                    }
+			                });
+			            });
+			            $(document).ready(function () {
+			                $("#withdrawLink").click(function () {
+			                    var password = prompt("비밀번호를 입력하세요:");
+			                    if (password !== null) {
+			                        // 비밀번호 검증 및 회원 탈퇴 처리 로직 추가
+			                        // 탈퇴 성공 시 아래와 같이 알림을 표시할 수 있습니다.
+			                        alert("회원 탈퇴가 성공적으로 완료되었습니다.");
+			                    }
+			                });
+			            });
         // 다크모드 변환 시작
         document.addEventListener('DOMContentLoaded', function () {
             if (document.querySelector('.darkmode')) {
@@ -494,7 +1172,9 @@ body[data-darkmode=on] .darkmode>.inner {
         
 
         
-    </script> <!-- 파이형 차트 수정 --> <script type="text/javascript">
+    </script>
+	<!-- 파이형 차트 수정 -->
+	<script type="text/javascript">
 		// 파이형차트
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom); // Initialize myChart
@@ -837,57 +1517,157 @@ body[data-darkmode=on] .darkmode>.inner {
         
       
         
-    </script> <!-- 방사형차트 스크립트 수정 --> <script type="text/javascript">
-              document.addEventListener("DOMContentLoaded", () => {
+    </script>
+	<!-- 방사형차트 스크립트 수정 -->
+	<script>
+            document.addEventListener("DOMContentLoaded", () => {
                 var radarChart = echarts.init(document.querySelector("#radarChart"));
-                radarChart.setOption({
-                  legend: {
-                    data: ['GhostData', 'PlayerData']
-                  },
-                  radar: {
-                    shape: 'polygon',
-                    indicator: [
-                      { name: '생존력', max: 6500 },
-                      { name: '성장력', max: 16000 },
-                      { name: '전투력', max: 30000 },
-                      { name: '시야력', max: 38000 },
-                      { name: '총 골드량', max: 52000 }
+
+                var isDarkMode = document.body.dataset.darkmode === 'on';
+                var ghostColor = isDarkMode ? '#e2dddd' : '#1e1f21';
+                var playerColor = isDarkMode ? '#e2dddd' : '#1e1f21';
+
+                var option = {
+                    responsive: false,
+                    legend: {
+                        data: ['GhostData', 'PlayerData'],
+                        textStyle: {
+                            color: isDarkMode ? '#e2dddd' : '#1e1f21'
+                        }
+                    },
+                    radar: {
+                        shape: 'polygon',
+                        indicator: [
+                            { name: '생존력', max: 6500 },
+                            { name: '성장력', max: 16000 },
+                            { name: '전투력', max: 30000 },
+                            { name: '시야력', max: 38000 },
+                            { name: '총 골드량', max: 52000 }
+                        ],
+                        axisLabel: {
+                            textStyle: {
+                                color: isDarkMode ? '#e2dddd' : '#1e1f21'
+                            }
+                        },
+                        name: {
+                            textStyle: {
+                                color: isDarkMode ? '#e2dddd' : '#1e1f21'
+                            }
+                        } // 이 부분을 추가하여 이름 글자 색 변경
+                    },
+                    series: [
+                        {
+                            name: 'Budget vs spending',
+                            type: 'radar',
+                            data: [
+                                {
+                                    value: [4200, 3000, 20000, 35000, 50000],
+                                    name: 'GhostData',
+                                    areaStyle: {
+                                        color: 'rgba(16, 212, 243, 0.37)'
+                                    },
+                                    itemStyle: {
+                                        color: '#b4e2ed',
+                                    },
+                                    symbol: 'none',
+                                },
+                                {
+                                    value: [5000, 14000, 28000, 26000, 42000],
+                                    name: 'PlayerData',
+                                    areaStyle: {
+                                        color: 'rgba(253, 101, 5, 0.35)'
+                                    },
+                                    itemStyle: {
+                                        color: 'rgb(253, 101, 5)',
+                                    },
+                                    symbol: 'none',
+                                }
+                            ],
+                            label: {
+                                show: true, // Indicator 이름을 표시하도록 설정
+                                color: isDarkMode ? '#e2dddd' : '#1e1f21', // 글자 색상 설정
+                            }
+                        }
                     ]
-                  },
-                  series: [{
-                    name: 'Budget vs spending',
-                    type: 'radar',
-                    data: [
-                      { 
-                        value: [4200, 3000, 20000, 35000, 50000],
-                        name: 'GhostData',
-                        areaStyle: {
-                          color: 'rgba(16, 212, 243, 0.37)'
-                        },
-                        itemStyle: {
-                          color: '#b4e2ed',
-                        
-                         
-                        },
-                        symbol: 'none',
-                      },
-                      {
-                        value: [5000, 14000, 28000, 26000, 42000],
-                        name: 'PlayerData',
-                        areaStyle: {
-                          color: 'rgba(253, 101, 5, 0.35)'
-                        },
-                        itemStyle: {
-                          color: 'rgb(253, 101, 5)', // 변경하려는 색상
-                          
-                           // 변경하려는 테두리 색상
-                        },
-                        symbol: 'none',
-                      }
-                    ]
-                  }]
+                };
+
+                radarChart.setOption(option);
+
+                document.querySelector('.darkmode').addEventListener('click', function () {
+                    isDarkMode = document.body.dataset.darkmode === 'on';
+
+                    option.legend.textStyle.color = isDarkMode ? '#e2dddd' : '#1e1f21';
+                    option.radar.axisLabel.textStyle.color = isDarkMode ? '#e2dddd' : '#1e1f21';
+                    option.radar.name.textStyle.color = isDarkMode ? '#e2dddd' : '#1e1f21';
+
+                    radarChart.setOption(option);
+                }, false);
+            });
+        </script>
+	<script>
+            var expandableButtons = document.querySelectorAll('.lastQue');
+
+            expandableButtons.forEach(function (button) {
+                var expandableContent = button.querySelector('.expandable-content');
+
+                button.addEventListener('click', function (event) {
+                    expandableContent.classList.toggle('expanded');
+                    event.stopPropagation(); // 이벤트 전파 중지
+
+                    if (expandableContent.classList.contains('expanded')) {
+                        // 확장된 컨텐츠가 나타날 때
+                        var spaceElement = document.createElement('div');
+                        spaceElement.classList.add('expandable-space');
+                        button.parentNode.insertBefore(spaceElement, button.nextSibling);
+                    } else {
+                        // 확장된 컨텐츠가 사라질 때
+                        var spaceElement = button.nextElementSibling;
+                        if (spaceElement && spaceElement.classList.contains('expandable-space')) {
+                            spaceElement.remove();
+                        }
+                    }
                 });
-              });
-            </script>
+            });
+
+            /* main1 에대한 스크립트 코드 */
+
+            // 라인차트 main1~20 까지 적용
+            // 같은데이터만 적용 되는듯 
+
+            for (var i = 1; i <= 20; i++) {
+                var dom = document.getElementById('main' + i);
+                var myChart6 = echarts.init(dom, null, {
+                    renderer: 'canvas',
+                    useDirtyRect: false
+                });
+
+                var option = {
+                    xAxis: {
+                        type: 'category',
+                        data: ['5분', '10분', '15분', '20분', '25분', '30분', '35분', '40분']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [
+                        {
+                            data: [820, 932, 901, 934, 1290, 1330, 1320, 1700],
+                            type: 'line',
+                            smooth: true
+                        },
+                        {
+                            data: [720, 632, 701, 834, 990, 1130, 1220, 1500],
+                            type: 'line',
+                            smooth: true
+                        }
+                    ]
+                };
+
+                myChart6.setOption(option);
+
+                // 그래프 크기 변경
+                myChart6.resize(800, 600);
+            }
+        </script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*  import google fonts */
 @import
 	url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap")
@@ -17,10 +18,14 @@
 html, body {
 	height: 100%;
 	width: 100%;
+	margin: 0;
 }
 
 .body_main {
-	background-color: white;
+	background-color: #e2dddd;
+	margin: 0;
+	width: 85%;
+	height: 100%;
 }
 
 .header {
@@ -38,6 +43,8 @@ html, body {
 	display: flex;
 	align-items: center;
 	display: inline-flex;
+	position: relative;
+	left: 27.5%;
 }
 
 .logo a {
@@ -79,6 +86,9 @@ html, body {
 .profile-card {
 	height: 30%;
 	width: 100px;
+	position: relative;
+	right: 495%;
+	display: flex;
 }
 
 .account {
@@ -103,9 +113,8 @@ html, body {
 	padding: 20px;
 	text-align: center;
 	position: absolute;
-	top: 80%;
-	right: 10%;
 	width: 150px;
+	right: 330px;
 }
 
 #edit-box-tool {
@@ -116,6 +125,8 @@ html, body {
 #wrap {
 	width: 100%;
 	background-color: #e2dddd;
+	margin: 0;
+	display: flex;
 }
 
 #wrap::after {
@@ -124,21 +135,16 @@ html, body {
 	clear: both;
 }
 
-.body_main {
-	width: 85%;
-	display: block;
-	float: left;
-	height: 100%;
-}
-
 /* */
 
 /* Side menubar section */
 nav {
 	background: #e2dddd;
-	float: left;
-	width: 15%;
+	width: 25%;
 	height: 100%;
+	position: relative;
+	left: 27%;
+	top: 15px;
 }
 
 .side_navbar {
@@ -147,6 +153,7 @@ nav {
 	flex-direction: column;
 	height: 100%;
 	float: left;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .side_navbar img {
@@ -155,6 +162,7 @@ nav {
 
 #tear {
 	display: inline-flex;
+	width: 261px;
 }
 
 #nick {
@@ -210,17 +218,16 @@ body[data-tolight=on] {
 .death {
 	color: red;
 }
+
 #info {
 	margin-top: 100px;
 }
 
 .ratio {
-	
 	font-size: 30px;
 	font-weight: bold;
 	text-align: center;
 }
-
 
 #KDA {
 	font-size: 20px;
@@ -235,98 +242,228 @@ body[data-tolight=on] {
 	border-radius: 50%;
 }
 
-.bodyfirst {
+#chartAll {
+	margin-top: 30px;
+	width: 300px;
 	display: flex;
-}
-
-#chart{
-	margin-top: 40px;	
-	border: 1;
 }
 
 .champion-box {
 	display: table;
-    height: 48px;
+	height: 48px;
 	border-bottom: 1px solid;
 	border-color: #ebeef1;
-    table-layout: fixed;
-    flex-direction: column;
-    margin-top: 10px;
-    width: 100%
+	position: relative;
+	left: 0;
+	width: 600px;
 }
 
-
-.csavg{
-	font-size:1px;
+.csavg {
+	font-size: 1px;
 }
 
-#kdaavg{
-	margin-top: 170px;
-	margin-left: 25px;
-	margin-right: 25px;
-	width: 200px;
+#chart {
+	position: relative;
+	width: 550px;
+	height: 350px;
+	top: 90px;
 }
 
-#chartAll{
-	margin-top: 50px;
-	width: 400px;
+#kdaavg {
+	position: relative;
+	right: 7%;
+	bottom: 525px;
 }
-#best5Box{
-	width: 100%;
-	margin-top: 70px;
+
+#best5Box {
+	position: relative;
+	width: 600px;
+	height: 265px;
+	left: 25%;
+	top: 20px;
+	padding-top: 10px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
-.faced{
+
+.faced {
 	display: table-cell;
-    width: 44px;
-    text-align: right;
-    vertical-align: middle;
+	width: 44px;
+	vertical-align: middle;
 }
 
-.best5{
+.best5 {
 	display: table-cell;
-    width: 100px;
-    text-align: left;
-    vertical-align: middle;
-    padding-left: 8px;
-    box-sizing: border-box;
+	width: 100px;
+	text-align: left;
+	vertical-align: middle;
+	padding-left: 10px;
+	box-sizing: border-box;
 }
 
-.champavg{
+.champavg {
 	display: table-cell;
-    width: 100px;
-    vertical-align: middle;
-    text-align: center;
-    box-sizing: border-box;
+	width: 100px;
+	vertical-align: middle;
+	text-align: center;
+	box-sizing: border-box;
 }
 
-.played{
+.played {
 	display: table-cell;
-    width: 88px;
-    padding-right: 0;
-    vertical-align: middle;
-    text-align: right;
-    padding-right: 12px;
-    box-sizing: border-box;
+	width: 88px;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 12px;
+	box-sizing: border-box;
 }
 
-#radarChartAll{
-	margin-left: 50px;
-	margin-top: 50px;
+#radarChart {
+	position: relative;
+	width: 370px;
+	height: 380px;
+	left: 55%;
+	bottom: 270px;
+}
+
+.bodyfirst {
+	position: relative;
+	left: 79px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+	width: 889px;
+	background-color: #e2dddd;
+}
+
+#wrapper {
 	display: flex;
-    justify-content: center;
-    align-items: center;
-   
+	flex-direction: column;
+	align-items: center;
+}
+/* 아이템 컨테이너 스타일 */
+.que_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	bottom: 300px;
 }
 
-.bar{
-	width: 48px;
-    height: 1px;
-    margin: 8px 0px 4px;
-    background-color: var(--red50);
+#ChampImg img {
+	width: 90px;
+	height: 90px;
+	border-radius: 8px;
+	float: left;
+	margin-left: 20px;
 }
 
+.item-content {
+	display: flex;
+	justify-content: space-between; /* 요소들을 양 끝에 배치하고 간격을 균등하게 분배 */
+	align-items: center; /* 요소들을 수직 가운데 정렬 */
+	padding: 20px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
 
+/* 아이템 애니메이션 스타일 */
+.lastQue.animated-item1, .lastQue.animated-item2, .lastQue.animated-item3,
+	.lastQue.animated-item4, .lastQue.animated-item5, .lastQue.animated-item6,
+	.lastQue.animated-item7, .lastQue.animated-item8, .lastQue.animated-item9,
+	.lastQue.animated-item10, .lastQue.animated-item11, .lastQue.animated-item12,
+	.lastQue.animated-item13, .lastQue.animated-item14, .lastQue.animated-item15,
+	.lastQue.animated-item16, .lastQue.animated-item17, .lastQue.animated-item18,
+	.lastQue.animated-item19, .lastQue.animated-item20 {
+	width: 850px;
+	height: 120px;
+	margin-top: 50px;
+	border-radius: 24px;
+	box-shadow: 0 4px 6px rgba(100, 93, 93, 0.342);
+	opacity: 1;
+	border: none;
+}
 
+.expandable-space {
+	display: block;
+	height: 80%;
+	background-color: aqua;
+	margin: 500px;
+}
 
+/* 확장 가능한 컨텐츠 스타일 */
+.expandable-content {
+	display: none;
+	flex-direction: column; /* 세로 방향으로 내용 정렬 */
+	justify-content: center;
+	align-items: center;
+	height: 90%;
+	width: 0;
+}
 
+/* 확장된 컨텐츠 스타일 */
+.expandable-content.expanded {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgb(34, 39, 50);
+	color: white;
+	padding: 20px;
+	border-radius: 8px;
+	height: 90%;
+	width: 1100px;
+	max-width: 1900px;
+	max-height: 1900px;
+	flex-wrap: wrap;
+	gap: 200px;
+}
 
+/* 내용의 스타일 */
+.expanded-content-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 90%;
+	width: 90%;
+}
+
+/* 버튼 스타일 */
+button {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 600px;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+.btn {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	background-color: #00A4DC;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+	background-color: #0085B0;
+}
+
+#main {
+	width: 1000px;
+	height: 700px;
+	margin: 0;
+	padding: 0;
+}
