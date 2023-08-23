@@ -177,7 +177,7 @@ body[data-darkmode=on] .darkmode>.inner {
 						<img
 							src="https://opgg-static.akamaized.net/images/medals_new/gold.png?image=q_auto,f_webp,w_144&amp;v=1692255489132"
 							alt="GOLD">
-						<p id="nick">렝가는유미될래요</p>
+						<p id="nick">${user.u_nick }</p>
 						<button id="renewal">갱신</button>
 					</div>
 				</form>
@@ -198,106 +198,101 @@ body[data-darkmode=on] .darkmode>.inner {
 			<div id="best5Box">
 				<div class="champion-box">
 					<div class="faced">
-						<img class="faceimg"
-							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						<img class="faceimg" src="">
 					</div>
 
 					<div class="best5">
-						<div class="champname">가렌</div>
-						<div class="csavg">CS 176.3 (6.6)</div>
+						<div class="champname"></div>
+						<div class="csavg"></div>
 					</div>
 
 					<div class="champavg">
 						<div>평점</div>
-						<div>K/D/A</div>
+						<div></div>
 					</div>
 
 					<div class="played">
-						<div class="cnt">6게임</div>
+						<div class="cnt"></div>
 					</div>
 				</div>
 
 				<div class="champion-box">
 					<div class="faced">
-						<img class="faceimg"
-							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Galio.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						<img class="faceimg" src="">
 					</div>
 
 					<div class="best5">
-						<div class="champname">갈리오</div>
-						<div class="csavg">CS 176.3 (6.6)</div>
+						<div class="champname"></div>
+						<div class="csavg"></div>
 					</div>
 
 					<div class="champavg">
 						<div>평점</div>
-						<div>K/D/A</div>
+						<div></div>
 					</div>
 
 					<div class="played">
-						<div class="cnt">6게임</div>
+						<div class="cnt">게임</div>
 					</div>
 				</div>
 
 				<div class="champion-box">
 					<div class="faced">
-						<img class="faceimg"
-							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gangplank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						<img class="faceimg" src="">
 					</div>
 
 					<div class="best5">
-						<div class="champname">갱플랭크</div>
-						<div class="csavg">CS 176.3 (6.6)</div>
+						<div class="champname"></div>
+						<div class="csavg"></div>
 					</div>
 
 					<div class="champavg">
 						<div>평점</div>
-						<div>K/D/A</div>
+						<div></div>
 					</div>
 
 					<div class="played">
-						<div class="cnt">6게임</div>
+						<div class="cnt">게임</div>
 					</div>
 				</div>
 
 				<div class="champion-box">
 					<div class="faced">
-						<img class="faceimg"
-							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Gragas.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						<img class="faceimg" src="">
 					</div>
 
 					<div class="best5">
-						<div class="champname">그라가스</div>
-						<div class="csavg">CS 176.3 (6.6)</div>
+						<div class="champname"></div>
+						<div class="csavg"></div>
 					</div>
 
 					<div class="champavg">
 						<div>평점</div>
-						<div>K/D/A</div>
+						<div></div>
 					</div>
 
 					<div class="played">
-						<div class="cnt">6게임</div>
+						<div class="cnt">게임</div>
 					</div>
 				</div>
 
 				<div class="champion-box">
 					<div class="faced">
-						<img class="faceimg"
-							src="https://opgg-static.akamaized.net/meta/images/lol/champion/Graves.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378">
+						<img class="faceimg" src="">
 					</div>
 
 					<div class="best5">
-						<div class="champname">그레이브즈</div>
-						<div class="csavg">CS 176.3 (6.6)</div>
+						<div class="champname"></div>
+						<div class="csavg"></div>
 					</div>
 
 					<div class="champavg">
 						<div>평점</div>
-						<div>K/D/A</div>
+						<div></div>
 					</div>
 
 					<div class="played">
-						<div class="cnt">6게임</div>
+						<div class="cnt">게임</div>
 					</div>
 				</div>
 			</div>
@@ -1231,6 +1226,10 @@ body[data-darkmode=on] .darkmode>.inner {
 		// 파이형차트
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom); // Initialize myChart
+
+        var isDarkMode = false;
+        var chartTitleText = document.body.dataset.darkmode === 'on' ? '20전 10승 10패' : '20전 10승 10패';
+        var chartTitleColor = document.body.dataset.darkmode === 'on' ? '#e2dddd' : '#1e1f21';
         var userId = '${user.u_id}';
         var userRank = '${user.u_rank}';
  		var userPosition = ""
@@ -1242,6 +1241,8 @@ body[data-darkmode=on] .darkmode>.inner {
         
 ///////////////////////////////ajax 데이터 불러오기 /////////////////////////
 ///////////////////////////////////////////////////////////////////////////
+
+//승률파이, 가운데 글자 총 kda / 평점
         function fetchDataKDAWinlose() {
       
             $.ajax({
@@ -1251,7 +1252,11 @@ body[data-darkmode=on] .darkmode>.inner {
                 data: { userId: userId },
                 success: function(data) {
                     console.log(data)
-                    updateChart(data); // 받아온 데이터로 차트 업데이트
+                      $('#KDA span:eq(0)').text(data.A);
+            $('#KDA span.death').text(data.D);
+            $('#KDA span:eq(2)').text(data.K);
+                    PieUpdateChart(data); // 받아온 데이터로 차트 업데이트
+                    
                     
                     
                 },
@@ -1261,6 +1266,20 @@ body[data-darkmode=on] .darkmode>.inner {
                 }
             });
         }
+ 		
+ 		/* function updateChart(data) {
+ 		    const kdaAvgSpan = $('#KDA span');
+ 		    const deathSpan = $('.death');
+ 		    const ratioDiv = $('.ratio');
+
+ 		    kdaAvgSpan.eq(0).text(data.K.toFixed(1));
+ 		    deathSpan.text(data.D.toFixed(1));
+ 		    kdaAvgSpan.eq(2).text(data.A.toFixed(1));
+
+ 		    ratioDiv.text(data.winlose.toFixed(1));
+ 		}*/
+ 		
+ 		// champ 이미지, 이름
         
         function fetchDataChampImg() {
        
@@ -1271,8 +1290,14 @@ body[data-darkmode=on] .darkmode>.inner {
                 success: function(champImgData) {
                     console.log(champImgData)
                     //받아온 데이터로 차트 업데이트
-                    
-                    
+                    // 가져온 데이터를 이용하여 이미지 업데이트
+                    $('.champion-box').each(function(index) {
+                        var champName = $(this).find('.champname').text();
+                        var imgSrc = findImageSrc(champImgData, champName);
+                        if (imgSrc) {
+                            $(this).find('.faceimg').attr('src', imgSrc);
+                        }
+                    });
                 },
                 error: function(xhr, status, error) {
                     // 요청이 실패했을 때 실행될 콜백 함수
@@ -1280,7 +1305,19 @@ body[data-darkmode=on] .darkmode>.inner {
                 }
             });
         }
+ 		
+        function findImageSrc(champImgData, champName) {
+        	console.log("findImageSrc")
+            for (var i = 0; i < champImgData.length; i++) {
+                if (champImgData[i].championName === champName) {
+                    return champImgData[i].championImg;
+                }
+            }
+            return null; // 일치하는 데이터가 없을 경우 null 반환
+        }
         
+ 		
+ 		// best5개 추천
         function fetchDataBest5() {
             $.ajax({
                 url: 'getBest5Chart.do',
@@ -1289,6 +1326,8 @@ body[data-darkmode=on] .darkmode>.inner {
                 data: { userId: userId },
                 success: function(bestChamp) {
                     console.log(bestChamp)
+                    
+                    
                     updateChampionBoxes(bestChamp)// 받아온 데이터로 차트 업데이트
                     
                     
@@ -1453,33 +1492,38 @@ body[data-darkmode=on] .darkmode>.inner {
             // chartData 객체를 이용하여 필요한 데이터 사용
         }
         
+        
+        //BEST5
+        
         function updateChampionBoxes(bestChamp) {
-            var str = "championBoxes 들어왔습니다";
-            console.log(str);
-            console.log(bestChamp.champAvgArray.length);
             const championBoxes = $('.champion-box');
 
             for (let i = 0; i < bestChamp.champAvgArray.length; i++) {
                 const championBox = championBoxes.eq(i);
-                const champAvgData = bestChamp.champAvgArray[i];
-                console.log(str);
+                const champData = bestChamp.champAvgArray[i];
 
-                console.log(champAvgData);
-                championBox.find('.champname').text(champAvgData.championName);
-                championBox.find('.csavg').text(`CS ${champAvgData.csAvg}`);
-                championBox.find('.champavg > div:first-child').text(champAvgData.k);
-                championBox.find('.champavg > div:last-child').text(champAvgData.d);
-                championBox.find('.played .cnt').text(`게임 ${champAvgData.played}`);
+                const imgUrl = champData.championImg;
+                const championName = champData.championName;
+                const csAvg = champData.csAvg;
+                const k = champData.k;
+                const d = champData.d;
+                const a = champData.a;
+                const played = champData.played;
+
+               
+                championBox.find('.champname').text(championName);
+                championBox.find('.csavg').text('CS ' + csAvg);
+                championBox.find('.champavg > div:first-child').text('KDA ' + k + '/' + d + '/' + a);
+                championBox.find('.played .cnt').text( played + ' 게임');
             }
         }
-        
         fetchDataBest5();
         
         
       
       
 
-        function updateChart(data) {
+        function PieUpdateChart(data) {
         	if(data){
         		
         	
@@ -1535,7 +1579,32 @@ body[data-darkmode=on] .darkmode>.inner {
                 ]
             };
 
-            myChart.setOption(option);
+            
+            myChart.setOption(option); // Set option to myChart
+
+            document.querySelector('.darkmode').addEventListener('click', function () {
+                chartTitleText = document.body.dataset.darkmode === 'on' ? data.totalWinloseCnt.toString()+'전'+ data.wincnt.toString()+'승'+data.losecnt.toString()+'패' : data.totalWinloseCnt.toString()+'전'+ data.wincnt.toString()+'승'+data.losecnt.toString()+'패';
+                chartTitleColor = document.body.dataset.darkmode === 'on' ? '#e2dddd' : '#1e1f21';
+                myChart.setOption({
+                    title: {
+                        text: chartTitleText,
+                        textStyle: {
+                            color: chartTitleColor
+                        }
+                    },
+                    graphic: [{
+                        type: 'text',
+                        left: 'center',
+                        top: 'center',
+                        z: 2,
+                        style: {
+                            text: '50%', // 여기서 고정된 텍스트 내용을 수정하지 않습니다.
+                            font: 'bold 30px Arial',
+                            fill: chartTitleColor
+                        }
+                    }]
+                });
+            }, false);
           
             
         	}else{
@@ -1559,7 +1628,32 @@ body[data-darkmode=on] .darkmode>.inner {
                     }]
                 };
 
-                myChart.setOption(option);
+               
+                myChart.setOption(option); // Set option to myChart
+
+                document.querySelector('.darkmode').addEventListener('click', function () {
+                    chartTitleText = document.body.dataset.darkmode === 'on' ? '20전 10승 10패' : '20전 10승 10패';
+                    chartTitleColor = document.body.dataset.darkmode === 'on' ? '#e2dddd' : '#1e1f21';
+                    myChart.setOption({
+                        title: {
+                            text: chartTitleText,
+                            textStyle: {
+                                color: chartTitleColor
+                            }
+                        },
+                        graphic: [{
+                            type: 'text',
+                            left: 'center',
+                            top: 'center',
+                            z: 2,
+                            style: {
+                                text: '50%', // 여기서 고정된 텍스트 내용을 수정하지 않습니다.
+                                font: 'bold 30px Arial',
+                                fill: chartTitleColor
+                            }
+                        }]
+                    });
+                }, false);
             }
         	
         }
