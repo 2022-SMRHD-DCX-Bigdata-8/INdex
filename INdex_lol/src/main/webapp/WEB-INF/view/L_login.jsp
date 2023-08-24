@@ -181,7 +181,27 @@
 	<%}%>
 		});
 	</script>
+<script type="text/javascript">
+// 이미지 미리 로딩용
+function fetchAndStoreChampImg() {
+    $.ajax({
+        url: 'getChampImg.do',
+        type: 'GET', 
+        dataType: 'json', 
+        success: function(champImgData) {
+            // 이미지 데이터를 웹 스토리지에 저장
+            localStorage.setItem('champImgData', JSON.stringify(champImgData));
+        },
+        error: function(xhr, status, error) {
+            console.error('이미지 데이터를 가져오는데 실패했습니다:', error);
+        }
+    });
+}
 
+// 로그인 페이지에서 호출
+fetchAndStoreChampImg();
+
+</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var input = $("#checkEmail")

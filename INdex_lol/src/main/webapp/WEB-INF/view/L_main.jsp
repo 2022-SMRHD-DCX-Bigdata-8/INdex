@@ -1054,6 +1054,16 @@ body[data-darkmode=on] .darkmode>.inner {
 
 		<!-- 메인화면 스크립트 -->
 		<script>
+		// 일정 시간마다 데이터 업데이트 실행
+		// 1분마다 실행
+		
+		function storeDataInLocalStorage(data) {
+		    localStorage.setItem('userData', JSON.stringify(data));
+		}
+
+		// 데이터를 받아온 후에 호출
+		//fetchDataChampImg(); // 이 함수 내부에서 데이터를 업데이트하고 로컬 스토리지에 저장
+		
             $(document).ready(function () {
                 $(".profile-image").on("click", function (e) {
                     e.stopPropagation(); // 이벤트 전파 중단 (버블링 방지)
@@ -1195,6 +1205,7 @@ body[data-darkmode=on] .darkmode>.inner {
             });
 
 
+            //갱신버튼용 함수
 
         function refreshPlayData(userId, userPuuid) {
             $.ajax({
@@ -1269,10 +1280,11 @@ body[data-darkmode=on] .darkmode>.inner {
         }
  		
  
+        // fetchDataChampImgAndData()
         
-        function fetchDataChampImg() {
-       
-            $.ajax({
+       /* function fetchDataChampImg() {
+        	updateChampionImages(champImgData);
+            ajax({
                 url: 'getChampImg.do',
                 type: 'GET', 
                 dataType: 'json', 
@@ -1280,19 +1292,61 @@ body[data-darkmode=on] .darkmode>.inner {
                     console.log(champImgData)
                     //받아온 데이터로 차트 업데이트
                     // 가져온 데이터를 이용하여 이미지 업데이트
-                    $('.champion-box').each(function(index) {
-                        var champName = $(this).find('.champname').text();
-                        var imgSrc = findImageSrc(champImgData, champName);
-                        if (imgSrc) {
-                            $(this).find('.faceimg').attr('src', imgSrc);
-                        }
-                    });
+                    
+                    fetchDataWithDelay(3000); // 3초마다
+                    
                 },
                 error: function(xhr, status, error) {
                     // 요청이 실패했을 때 실행될 콜백 함수
                     console.error('데이터를 가져오는데 실패했습니다:', error);
                 }
             });
+        }
+        
+        fetchDataChampImg();*/
+        
+        
+     	// 메인 페이지에서 호출
+        function useStoredChampImgData() {
+            // 웹 스토리지에서 이미지 데이터 가져오기
+            const storedChampImgData = localStorage.getItem('champImgData');
+            
+            if (storedChampImgData) {
+                const champImgData = JSON.parse(storedChampImgData);
+                // 가져온 데이터를 이용하여 이미지 업데이트 등의 작업 실행
+                updateChampionImages(champImgData);
+            }
+        }
+
+        // 메인 페이지로 이동할 때 호출
+        useStoredChampImgData();
+        
+
+        //새로고침 딜레이용 함수
+        //새로고침 필요한 ajax function 안에 넣어주면됨
+        function fetchDataWithDelay(delayTime) {
+            setTimeout(function() {
+                fetchDataChampImg();
+            }, delayTime);
+        }
+
+        
+        
+        // 이미지 업데이트 함수
+        function updateChampionImages(champImgData) {
+            $('.champion-box').each(function() {
+                var champName = $(this).find('.champname').text();
+                var imgSrc = findImageSrc(champImgData, champName);
+                if (imgSrc) {
+                    $(this).find('.faceimg').attr('src', imgSrc);
+                }
+            });
+        }
+        
+        
+        function updateChampionData(userPlayData) {
+            // userPlayData를 이용하여 데이터 업데이트
+            // 예: $(this).find('.kda').text(userPlayData.kda);
         }
  		
         function findImageSrc(champImgData, champName) {
@@ -1450,7 +1504,7 @@ body[data-darkmode=on] .darkmode>.inner {
 ///////////////////////////////////////////////////////////////////////////
         fetchGhostPlayData();
         fetchPlayData();
-        fetchDataChampImg();
+        
         fetchUserRadarData();
         fetchGhostTimeLineData();
         // fetchUserTimeLineData();
