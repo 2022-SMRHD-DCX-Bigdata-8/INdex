@@ -138,5 +138,15 @@ public class L_userDAO {
 
 		return result;
 	}
+	
+	public int updatePw(L_user l_user) {
+		SqlSession session = factory.openSession();
+
+		int result = session.update("updatePw", l_user);
+
+		session.close();
+
+		return result;
+	}
 
 }

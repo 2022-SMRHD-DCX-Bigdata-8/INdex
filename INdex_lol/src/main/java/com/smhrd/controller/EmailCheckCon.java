@@ -22,7 +22,7 @@ public class EmailCheckCon implements L_Controller {
 
 		L_userDAO dao = new L_userDAO();
 		L_user result = dao.emailCheck(email);
-
+		
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		System.out.println(result);

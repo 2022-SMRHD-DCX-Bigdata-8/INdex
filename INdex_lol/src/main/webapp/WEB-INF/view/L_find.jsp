@@ -32,11 +32,11 @@ System.out.println(l_user);
 			
 				<div class="login_FindPW">
 					<div class="login_findPW">비밀번호 찾기</div>
-					<input name="u_name" id="login_findIdname" class="ip" type="text"
+					<input name="u_name" id="login_findPwname" class="ip" type="text"
 							placeholder="이름을 입력해주세요."> 
 					<input class="ip" name="u_id"
-							id="login_findId" type="text" placeholder="아이디를 입력해주세요.">
-					<input name="u_email" id="login_findIdEmail" type="text"
+							id="login_findPwId" type="text" placeholder="아이디를 입력해주세요.">
+					<input name="u_email" id="login_findPwEmail" type="text"
 						placeholder="이메일을 입력해주세요.">
 
 					<input type="button" id="login_findPWButton" class="btn" value="비밀번호찾기">
@@ -71,16 +71,81 @@ System.out.println(l_user);
 
 				success : function(res) {
 					console.log(res)
-					if (res == "true") {
-						alert('성공');
-
-					} else {
-						
-					}
+					alert(res)
+					
 				},
 				error : function(e) {
 					console.log(e)
-					alert('실패');
+					alert('통신 실패');
+				}
+			});
+		}
+		
+		$(document).ready(function() {
+			var button = $('#login_findPWButton');
+			button.on('click', findPw);
+		});
+		
+		function findPw() {
+			var uNameValue = $('#login_findPwname').val();  
+		    var uEmailValue = $('#login_findPwEmail').val();
+		    var uIdValue = $('#login_findPwId').val();
+			$.ajax({
+				url : 'findpw.do',
+				type : 'post',
+				data : {
+					 'u_name': uNameValue,
+					 'u_id': uIdValue,
+			         'u_email': uEmailValue
+				},
+				
+				dataType : 'text',
+
+				success : function(res) {
+					console.log(res)
+					 if(res=="true"){
+						 let pw = prompt("변경할 비밀번호를 입력해주세요")
+						 updatePw(uIdValue,pw);
+						 
+					 }else{
+						 alert("입력하신 정보를 확인해주세요.")
+						 
+					 }
+					 
+					
+				},
+				error : function(e) {
+					console.log(e)
+					alert('통신 실패');
+				}
+			});
+		}
+		
+		function updatePw(uId,pw) {
+			$.ajax({
+				url : 'updatePw.do',
+				type : 'post',
+				data : {
+					 'u_id': uId,
+			         'u_pw': pw
+				},
+				
+				dataType : 'text',
+
+				success : function(res) {
+					console.log(res)
+					if (res == "true"){
+			
+					alert("비밀번호 변경 성공 !")
+					} else {
+						alert("비밀번호 변경 실패 !")
+					}
+					 
+					
+				},
+				error : function(e) {
+					console.log(e)
+					alert('통신 실패');
 				}
 			});
 		}

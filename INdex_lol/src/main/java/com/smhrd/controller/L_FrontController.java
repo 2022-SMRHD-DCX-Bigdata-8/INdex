@@ -42,6 +42,8 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/champion.do", new L_GoChampionCon());
 		handler.put("/newUserLogin.do", new NewUserLoginCon());
 		handler.put("/logout.do", new L_LogoutCon());
+		handler.put("/updatePw.do", new updatePw());
+		
 		
 		handler.put("/delete.do", new L_DeleteCon());
 		handler.put("/goDelete.do", new L_GoDeleteCon());

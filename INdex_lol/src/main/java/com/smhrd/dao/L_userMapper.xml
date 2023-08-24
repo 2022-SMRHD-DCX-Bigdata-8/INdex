@@ -39,6 +39,13 @@
 		where u_id = #{u_id}
 
 	</update>
+	
+	<update id="updatePw" parameterType="com.smhrd.entity.L_user">
+		update l_user set
+		u_pw = #{u_pw},
+		where u_id = #{u_id}
+
+	</update>
 
 
 	<!-- 회원정보확인 -->
@@ -72,6 +79,7 @@
 		select * from l_user
 		where u_name
 		= #{u_name}
+		and u_email = #{u_email}
 	</select>
 
 	<select id="idCheck" resultType="com.smhrd.entity.L_user">
