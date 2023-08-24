@@ -13,7 +13,7 @@ public class L_ghostdataDAO {
 	private SqlSessionFactory factory = SqlSessionManager.getSqlSessionFactory();
 
 	public List<L_ghostdata> gdview(String u_rank) {
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 		List<L_ghostdata> result = session.selectList("gdview", u_rank);
 		session.close();
 

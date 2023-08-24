@@ -82,7 +82,7 @@ public class L_userDAO {
 	}
 
 	public L_user emailCheck(String email) {
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 		L_user list = null;
 		try {
 			list = session.selectOne("eCheck", email);
@@ -98,7 +98,7 @@ public class L_userDAO {
 	}
 
 	public L_user nickCheck(String nick) {
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 
 		L_user list = session.selectOne("nCheck", nick);
 
@@ -109,7 +109,7 @@ public class L_userDAO {
 	}
 
 	public L_user idCheck(String id) {
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 
 		L_user list = session.selectOne("idCheck", id);
 
@@ -120,7 +120,7 @@ public class L_userDAO {
 	}
 
 	public L_user idfind(L_user l_user) {
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 
 		L_user result = session.selectOne("idfind", l_user);
 
@@ -130,7 +130,7 @@ public class L_userDAO {
 	}
 
 	public L_user pwfind(L_user l_user) {
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 
 		L_user result = session.selectOne("pwfind", l_user);
 
@@ -140,9 +140,9 @@ public class L_userDAO {
 	}
 	
 	public int updatePw(L_user l_user) {
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 
-		int result = session.update("updatePw", l_user);
+		int result = session.update("updatePW", l_user);
 
 		session.close();
 
