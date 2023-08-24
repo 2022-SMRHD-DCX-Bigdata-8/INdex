@@ -125,7 +125,7 @@
 
 	<header class="header">
 		<div class="logo">
-			<a href="#"><img src="/HTML/로고.png" alt="" class="chal"></a> <a
+			<a href="#"><img src="/assets/img/logo.png" alt="" class="chal"></a> <a
 				href="#" class="lgm-link">L.gm</a>
 		</div>
 
@@ -146,7 +146,7 @@
 
 
 			<div class="profile-card" id="profileCard">
-				<img class="profile-image" src="유저2.png" alt="프로필 사진">
+				<img class="profile-image" src="/assests/img/profile.png" alt="프로필 사진">
 			</div>
 			<div id="editBox">
 				<div id="edit-box-tool">
