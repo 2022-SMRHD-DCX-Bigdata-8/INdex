@@ -95,8 +95,8 @@
 <body>
  <header class="header">
         <div class="logo">
-            <a href="#"><img src="/HTML/로고.png" alt="" class="chal"></a>
-            <a href="#" class="lgm-link">L.gm</a>
+            <a href="goMain.do"><img src="assets/img/logo11.png" alt="" class="chal"></a>
+            <a href="goMain.do" class="lgm-link">L.gm</a>
         </div>
 
         <div class="dkdk">
@@ -115,12 +115,16 @@
     
     
                 <div class="profile-card" id="profileCard">
-                    <img class="profile-image" src="/HTML/KakaoTalk_20230814_124926300.jpg" alt="프로필 사진">
+                    <img class="profile-image" src="assets/img/2.png" alt="프로필 사진">
                   </div>
                 <div id="editBox">
                   <div id="edit-box-tool">
                     <h3>내 정보 </h3>
-                    <a href="#" class="info">내정보 수정</a> 
+                    <a href="goUpdate.do" class="info">내정보 수정</a>
+					<br>
+					<a href="goDelete.do" class="info">회원 탈퇴</a>
+					<br>
+					<a href="logout.do" class="info">로그아웃</a>
                   </div>
             </div>
         </div>
@@ -139,10 +143,10 @@
                         <button id="renewal">갱신</button>
                     </div>
                 </form>
-                <a href="#">통계</a>
-                <a href="#">챔피언분석</a>
-                <a href="#">대전기록</a>
-                <a href="#">패치노트</a>
+                <a href="goMain.do">통계</a>
+                <a href="champion.do">챔피언분석</a>
+                <!-- <a href="#">대전기록</a>  -->
+                <a href="https://www.leagueoflegends.com/ko-kr/news/tags/patch-notes/">패치노트</a>
             </div>
 
         </nav>

@@ -155,15 +155,15 @@ body[data-darkmode=on] .darkmode>.inner {
 			<div id="editBox">
 				<div id="edit-box-tool">
 					<h3>내 정보</h3>
-					<a href="#" class="info">내정보 수정</a>
+					<a href="goUpdate.do" class="info">내정보 수정</a>
 				</div>
 
 				<div>
-					<a href="#" class="info" id="withdrawLink">회원 탈퇴</a>
+					<a href="goDelete.do" class="info" id="withdrawLink">회원 탈퇴</a>
 
 				</div>
 				<div>
-					<a href="#" class="info" id="withdrawLink">로그아웃</a>
+					<a href="logout.do" class="info" id="withdrawLink">로그아웃</a>
 
 				</div>
 			</div>

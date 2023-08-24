@@ -27,7 +27,7 @@ section {
     margin: 40px 0px 20px 0px;
 }
   
-input {
+.ip {
     
     line-height: 45px;
     font-size: 16px;
@@ -39,7 +39,7 @@ input {
     margin-bottom: 1%;
 }
   
-button {
+.btn {
     cursor: pointer;
     height: 45px;
     font-size: 16px;
@@ -50,7 +50,7 @@ button {
     border: 1px solid #5a5a5a;
     box-sizing: border-box;
     background: #000;
-    margin-top: 2%;
+    margin-top: 2%; 
 }
   
   
