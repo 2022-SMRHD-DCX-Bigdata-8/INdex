@@ -17,6 +17,7 @@
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
 <link rel="stylesheet" href="assets/css/L_main.css">
+<script src="../../assets/실험.js"></script>
 
 
 <script
@@ -564,9 +565,9 @@ body[data-darkmode=on] .darkmode>.inner {
                 data: { userId: userId },
                 success: function(data) {
                     // 확인함 console.log(data)
-                    $('#KDA span:eq(0)').text('평균 K' + data.K);
-            		$('#KDA span.death').text('평균 D'+ data.D);
-           			$('#KDA span:eq(2)').text('평균 A'+data.A);
+                    $('#KDA span:eq(0)').text('평균 K ' + data.K);
+            		$('#KDA span.death').text('/ D '+ data.D);
+           			$('#KDA span:eq(2)').text('/ A '+data.A);
             		const ratioValue = (data.K + data.A) / data.D;
             		$('.ratio').text(ratioValue.toFixed(2)); // 소수점 2자리까지 표시
                     PieUpdateChart(data); // 받아온 데이터로 차트 업데이트
@@ -748,6 +749,7 @@ body[data-darkmode=on] .darkmode>.inner {
                 success: function(playDataList) {
                   // 확인함  console.log(playDataList)
                     
+                  console.log(playDataList)
                     const ListPlayData = playDataList.userPlayData;
 
                     // 대전기록 출력 함수 호출
@@ -771,7 +773,7 @@ body[data-darkmode=on] .darkmode>.inner {
         
         
         
-        for (var i = 1; i <= 20; i++) {
+       /* for (var i = 1; i <= 20; i++) {
             var dom = document.getElementById('main' + i);
             var myChart6 = echarts.init(dom, null, {
                 renderer: 'canvas',
@@ -805,7 +807,7 @@ body[data-darkmode=on] .darkmode>.inner {
             // 그래프 크기 변경
             myChart6.resize(800, 600);
         }
-        
+        */
     
      
 
@@ -814,9 +816,10 @@ function renderPlayData(playDataList) {
     const wrapper = $("#wrapper"); // wrapper 선택
 
     playDataList.forEach(function(playData, index) {
+    	console.log(playData.u_level)
         const champImgSrc = "https://opgg-static.akamaized.net/meta/images/lol/champion/" + playData.u_champ + ".png";
         const champName = playData.u_champ;
-        const level = playData.u_level;
+        const champlevel = playData.u_levle;
         const gold = playData.u_gold;
         const damage = playData.u_damage;
         const kill = playData.u_kill;
@@ -830,13 +833,13 @@ function renderPlayData(playDataList) {
         const imgElement = $("<img>", { src: champImgSrc, alt: "선택한 챔프사진" });
         const spanCloseElement = $("<span>");
         const itemContentDiv = $("<div>", { class: "item-content" });
-        const champNameElement = $("<span>").text("챔피언명 " + champName);
-        const levelElement = $("<span>").text("레벨 " + level);
-        const goldElement = $("<span>").text("골드량 " + gold);
-        const damageElement = $("<span>").text("피해량 " + damage);
-        const killElement = $("<span>").text("킬 " + kill);
-        const deathElement = $("<span>").text("데스 " + death);
-        const assistElement = $("<span>").text("어시 " + assist);
+        const champNameElement = $("<strong><span>").text("챔피언명ㅤ" + champName+"ㅤ");
+        const levelElement = $("<strong><span>").text("레벨ㅤ" + champlevel +"ㅤ");
+        const goldElement = $("<strong><span>").text("골드량ㅤ" + gold +"ㅤ") ;
+        const damageElement = $("<strong><span>").text("피해량ㅤ" + damage +"ㅤ");
+        const killElement = $("<strong><span>").text("킬 " + kill +" / ");
+        const deathElement = $("<strong><span>").text("데스 " + death +" / ");
+        const assistElement = $("<strong><span>").text("어시 " + assist);
         
         const buttonChartContainer = $("<div>", { class: "button_chart" });
         const damageButton = $("<button>", { class: "lastQue animated-item" + (index+1) }).text("피해량");
@@ -1216,7 +1219,7 @@ $(document).ready(function () {
                     radar: {
                         shape: 'polygon',
                         indicator: [
-                            { name: '생존력', max: 10 },
+                            { name: '생존력', max: 10000 },
                             { name: '성장력', max: 16000 },
                             { name: '전투력', max: 30000 },
                             { name: '시야력', max: 38000 },
@@ -1284,8 +1287,72 @@ $(document).ready(function () {
         </script>
 	<script>
 
+    for (var i = 1; i <= 20; i++) {
+        var expandableButtons = document.querySelectorAll('.lastQue.animated-item'+i);
 
+        expandableButtons.forEach(function (button) {
+            var expandableContent = button.querySelector('.expandable-content');
 
+            button.addEventListener('click', function (event) {
+                expandableContent.classList.toggle('expanded');
+                event.stopPropagation(); // 이벤트 전파 중지
+
+                if (expandableContent.classList.contains('expanded')) {
+                    // 확장된 컨텐츠가 나타날 때
+                    var spaceElement = document.createElement('div');
+                    spaceElement.classList.add('expandable-space');
+                    button.parentNode.insertBefore(spaceElement, button.nextSibling);
+                } else {
+                    // 확장된 컨텐츠가 사라질 때
+                    var spaceElement = button.nextElementSibling;
+                    if (spaceElement && spaceElement.classList.contains('expandable-space')) {
+                        spaceElement.remove();
+                    }
+                }
+            });
+        });
+    };
+
+        /* main1 에대한 스크립트 코드
+
+        // 라인차트 main1~20 까지 적용
+        // 같은데이터만 적용 되는듯 
+
+        for (var i = 0; i <= 20; i++) {
+            var dom = document.getElementById('main' + i);
+            var myChart6 = echarts.init(dom, null, {
+                renderer: 'canvas',
+                useDirtyRect: false
+            });
+
+            var option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['5분', '10분', '15분', '20분', '25분', '30분', '35분', '40분']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        data: [820, 932, 901, 934, 1290, 1330, 1320, 1700],
+                        type: 'line',
+                        smooth: true
+                    },
+                    {
+                        data: [720, 632, 701, 834, 990, 1130, 1220, 1500],
+                        type: 'line',
+                        smooth: true
+                    }
+                ]
+            };
+
+            myChart6.setOption(option);
+
+            // 그래프 크기 변경
+            myChart6.resize(800, 600);
+        }
+ */
               
         </script>
 </body>
