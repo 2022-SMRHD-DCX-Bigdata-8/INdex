@@ -28,7 +28,8 @@ public class getGhostDataList implements L_Controller {
 		List<L_ghostdata> userdata = null;
 
 		JSONArray ghostDataArray = new JSONArray();
-		if (!u_rank.equals("unranked")) {
+		if (u_rank.contains(" ")) {
+			u_rank = u_rank.substring(0, u_rank.indexOf(" "));
 			userdata = ghostDataDAO.gdview(u_rank);
 
 			for (L_ghostdata ghostData : userdata) {
@@ -70,7 +71,7 @@ public class getGhostDataList implements L_Controller {
 				int minutes = playtimeInSeconds / 60;
 				int seconds = playtimeInSeconds % 60;
 				String playtimeString = String.format("%02dm %02ds", minutes, seconds);
-				
+
 				ghostDataObject.put("g_idx", ghostData.getG_idx());
 				ghostDataObject.put("g_rank", ghostData.getG_rank());
 				ghostDataObject.put("g_gold", ghostData.getG_gold());

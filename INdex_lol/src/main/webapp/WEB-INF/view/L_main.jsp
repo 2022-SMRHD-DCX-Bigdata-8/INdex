@@ -332,16 +332,14 @@ body[data-darkmode=on] .darkmode>.inner {
 
 				<!-- 대전기록 -->
 
-				<div id="wrapper">
-				
-				</div>
+				<div id="wrapper"></div>
 
-					<!-- lastQue animated-item2 -->
-				</div>
-
+				<!-- lastQue animated-item2 -->
 			</div>
 
 		</div>
+
+	</div>
 
 	</div>
 
@@ -754,6 +752,7 @@ body[data-darkmode=on] .darkmode>.inner {
 
                     // 대전기록 출력 함수 호출
                     renderPlayData(ListPlayData);
+                   
                     
 
                     
@@ -768,143 +767,46 @@ body[data-darkmode=on] .darkmode>.inner {
             });
         }
         
-     
-        $(document).ready(function () {
-            fetchPlayData(); // 대전기록 데이터 요청 및 처리
-
-            // 대전기록 컨테이너에 클릭 이벤트 위임
-            $("#wrapper").on("click", ".record1", function () {
-                console.log("클릭이벤트")
-                event.stopPropagation(); // 버튼 클릭 이벤트 전파 중단
-                
-                var index = $(this).index();
-                $(".lastQue.animated-item" + (index + 1)).toggle();
-
-                /*var lastQueElement = $(".lastQue.animated-item");
-                if (lastQueElement.css("display") === "none") {
-                    lastQueElement.css("display", "block");
-                } else {
-                    lastQueElement.css("display", "none");
-                }*/
-            });
-           
-            // wrapper 클릭이벤트
-            $("#wrapper").on("click", ".lastQue.animated-item", function (event) {
-            	console.log("확장이벤트")
-                event.stopPropagation();
-
-                var expandableContent = $(this).closest('.record1').find('.expandable-content');
-                expandableContent.toggleClass('expanded');
-
-                if (expandableContent.hasClass('expanded')) {
-                    var spaceElement = $("<div>", { class: "expandable-space" });
-                    $(this).parent().append(spaceElement);
-                } else {
-                    $(this).parent().find('.expandable-space').remove();
-                }
-            });
-        });
 
         
         
         
-        function createEChartsGraph(index) {
-            var dom = document.getElementById('main' + index);
-            var myChart = echarts.init(dom, null, {
+        for (var i = 1; i <= 20; i++) {
+            var dom = document.getElementById('main' + i);
+            var myChart6 = echarts.init(dom, null, {
                 renderer: 'canvas',
                 useDirtyRect: false
             });
 
-            var   option = {
-            	    dataset: [
-            	        {
-            	          id: 'dataset_raw',
-            	          source: _rawData
-            	        },
-            	        {
-            	          id: 'dataset_since_1950_of_germany',
-            	          fromDatasetId: 'dataset_raw',
-            	          transform: {
-            	            type: 'filter',
-            	            config: {
-            	              and: [
-            	                { dimension: 'Year', gte: 1950 },
-            	                { dimension: 'Country', '=': 'Germany' }
-            	              ]
-            	            }
-            	          }
-            	        },
-            	        {
-            	          id: 'dataset_since_1950_of_france',
-            	          fromDatasetId: 'dataset_raw',
-            	          transform: {
-            	            type: 'filter',
-            	            config: {
-            	              and: [
-            	                { dimension: 'Year', gte: 1950 },
-            	                { dimension: 'Country', '=': 'France' }
-            	              ]
-            	            }
-            	          }
-            	        }
-            	      ],
-            	      title: {
-            	        text: 'Income of Germany and France since 1950'
-            	      },
-            	      tooltip: {
-            	        trigger: 'axis'
-            	      },
-            	      xAxis: {
-            	        type: 'category',
-            	        nameLocation: 'middle'
-            	      },
-            	      yAxis: {
-            	        name: 'Income'
-            	      },
-            	      series: [
-            	        {
-            	          type: 'line',
-            	          datasetId: 'dataset_since_1950_of_germany',
-            	          showSymbol: false,
-            	          encode: {
-            	            x: 'Year',
-            	            y: 'Income',
-            	            itemName: 'Year',
-            	            tooltip: ['Income']
-            	          }
-            	        },
-            	        {
-            	          type: 'line',
-            	          datasetId: 'dataset_since_1950_of_france',
-            	          showSymbol: false,
-            	          encode: {
-            	            x: 'Year',
-            	            y: 'Income',
-            	            itemName: 'Year',
-            	            tooltip: ['Income']
-            	          }
-            	        }
-            	      ]
+            var option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['5분', '10분', '15분', '20분', '25분', '30분', '35분', '40분']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        data: [820, 932, 901, 934, 1290, 1330, 1320, 1700],
+                        type: 'line',
+                        smooth: true
+                    },
+                    {
+                        data: [720, 632, 701, 834, 990, 1130, 1220, 1500],
+                        type: 'line',
+                        smooth: true
+                    }
+                ]
             };
 
-            myChart.setOption(option);
+            myChart6.setOption(option);
 
             // 그래프 크기 변경
-            myChart.resize(800, 600);
+            myChart6.resize(800, 600);
         }
         
-        // wrapper 클릭이벤트
-        $("#wrapper").on("click", ".lastQue-animated-item", function () {
-            var expandableContent = $(this).closest('.record1').find('.expandable-content');
-            expandableContent.toggleClass('expanded');
-
-            if (expandableContent.hasClass('expanded')) {
-                var spaceElement = $("<div>", { class: "expandable-space" });
-                $(this).parent().append(spaceElement);
-            } else {
-                $(this).parent().find('.expandable-space').remove();
-            }
-        });
+    
      
 
 // 대전기록 출력함수
@@ -923,7 +825,7 @@ function renderPlayData(playDataList) {
         
         const queContainer = $("<div>", { class: "que_container" }); // que_container 생성
 
-        const recordElement = $("<div>", { class: "record1" });
+        const recordElement = $("<div>", { class: "record"+(index+1) });
         const champImgElement = $("<span>", { class: "ChampImg" });
         const imgElement = $("<img>", { src: champImgSrc, alt: "선택한 챔프사진" });
         const spanCloseElement = $("<span>");
@@ -947,6 +849,12 @@ function renderPlayData(playDataList) {
         const infoElement = $("<div>", { id: "info" + index }).text("게임 상세 정보를 표시합니다.\n승리 or 패배");
         const chartCanvas = $("<canvas>", { id: "main" + index, style: "width: 800px; height: 600px;" });
 
+        const chartContainer = $("<div>", { class: "chart-container" }); // 새로운 div 추가
+        chartContainer.append(chartCanvas); // chartCanvas를 chartContainer에 추가
+
+        expandedContentWrapper.append(infoElement);
+        expandedContentWrapper.append(chartContainer); // chartContainer 추가
+
         // 요소들을 계층적으로 구조에 추가
         wrapper.append(queContainer);
         queContainer.append(recordElement); // recordElement 추가
@@ -961,16 +869,45 @@ function renderPlayData(playDataList) {
         itemContentDiv.append(killElement);
         itemContentDiv.append(deathElement);
         itemContentDiv.append(assistElement);
-        recordElement.append(buttonChartContainer); // buttonChartContainer 추가
+        queContainer.append(buttonChartContainer); // buttonChartContainer 추가
         buttonChartContainer.append(damageButton);
         buttonChartContainer.append(goldButton);
         buttonChartContainer.append(expandableContent); // expandableContent 추가
         expandableContent.append(expandedContentInner);
         expandedContentInner.append(expandedContentWrapper);
-        expandedContentWrapper.append(infoElement);
-        expandedContentWrapper.append(chartCanvas);
+        
+        $("#wrapper").on("click", ".record"+ (index+1), function () {
+            const clickedIndex = index; // 클로저 문제를 해결하기 위해 index를 상수로 저장
+
+            console.log("클릭이벤트");
+            event.stopPropagation(); // 버튼 클릭 이벤트 전파 중단
+
+            var animatedItem = $(".lastQue.animated-item"+(clickedIndex + 1));
+
+            // 다른 토글된 요소들을 닫음
+            $(".lastQue.animated-item"+(clickedIndex + 1)).not(animatedItem).slideUp();
+
+            // 현재 토글할 요소를 열거나 닫음
+            animatedItem.slideToggle();
+            
+       
+        
+        });
     });
+    
+    // 대전기록 컨테이너에 클릭 이벤트 위임
+    
 }
+
+
+$(document).ready(function () {
+    fetchPlayData(); // 대전기록 데이터 요청 및 처리
+
+   
+
+});
+
+
 
 
 
@@ -1029,7 +966,9 @@ function renderPlayData(playDataList) {
                 dataType: 'json', 
                 data: { userRank: userRank },
                 success: function(GhostTimeLineData) {
-                	 // 확인함 console.log(GhostTimeLineData);
+                	  console.log(GhostTimeLineData);
+                	 
+                	 
                       
               
                  } ,
