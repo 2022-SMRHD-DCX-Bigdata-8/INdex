@@ -1,8 +1,6 @@
 @charset "UTF-8";
 /*  import google fonts */
-@import
-	url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap")
-	;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 * {
 	margin: 0;
@@ -14,16 +12,17 @@
 	font-family: "Poppins", sans-serif;
 }
 
-html, body {
+html,
+body {
 	height: 100%;
 	width: 100%;
-  margin: 0;
+	margin: 0;
 }
 
 .body_main {
 	background-color: #e2dddd;
-  margin: 0;
-  width: 85%;
+	margin: 0;
+	width: 85%;
 	height: 100%;
 }
 
@@ -124,8 +123,8 @@ html, body {
 #wrap {
 	width: 100%;
 	background-color: #e2dddd;
-  margin: 0;
-  display: flex;
+	margin: 0;
+	display: flex;
 }
 
 #wrap::after {
@@ -141,18 +140,18 @@ nav {
 	background: #e2dddd;
 	width: 25%;
 	height: 100%;
-  position: relative;
-  left: 27%;
-  top: 15px;
+	position: relative;
+	left: 27%;
+	top: 15px;
 }
 
 .side_navbar {
-  padding: 1px;
+	padding: 1px;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	float: left;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .side_navbar img {
@@ -161,7 +160,7 @@ nav {
 
 #tear {
 	display: inline-flex;
-  width: 261px;
+	width: 261px;
 }
 
 #nick {
@@ -187,7 +186,8 @@ nav {
 	transition: background-color 0.3s ease-in-out;
 }
 
-#tear button:active, #tear button:focus {
+#tear button:active,
+#tear button:focus {
 	background-color: #D3D3D3;
 	/* 클릭 시 배경색 변화 */
 }
@@ -217,12 +217,13 @@ body[data-tolight=on] {
 .death {
 	color: red;
 }
+
 #info {
 	margin-top: 100px;
 }
 
 .ratio {
-	
+
 	font-size: 30px;
 	font-weight: bold;
 	text-align: center;
@@ -241,188 +242,198 @@ body[data-tolight=on] {
 	height: 40px;
 	border-radius: 50%;
 }
-#chartAll{
-  margin-top: 30px;
-  width: 300px;
-  display: flex;
+
+#chartAll {
+	margin-top: 30px;
+	width: 300px;
+	display: flex;
 }
 
 .champion-box {
 	display: table;
-  height: 48px;
+	height: 48px;
 	border-bottom: 1px solid;
 	border-color: #ebeef1;
-  position: relative;
-  left: 0;
-  width: 600px;
+	position: relative;
+	left: 0;
+	width: 600px;
 }
-.csavg{
-	font-size:1px;
+
+.csavg {
+	font-size: 1px;
 }
 
 #chart {
-  position: relative;
-  width: 550px;
-  height: 350px;
-  top: 90px;
-  
+	position: relative;
+	width: 550px;
+	height: 350px;
+	top: 90px;
+
 }
 
-#kdaavg{
-  position: relative;
-  right: 7%;
-  bottom: 525px;
+#kdaavg {
+	position: relative;
+	right: 7%;
+	bottom: 525px;
 }
 
 #best5Box {
-  position: relative;
-  width: 600px;
-  height: 265px;
-  left: 25%;
-  top: 20px;
-  padding-top: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+	position: relative;
+	width: 600px;
+	height: 265px;
+	left: 25%;
+	top: 20px;
+	padding-top: 10px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
-.faced{
+
+.faced {
 	display: table-cell;
-    width: 44px;
-    vertical-align: middle;
+	width: 44px;
+	vertical-align: middle;
 }
 
-.best5{
+.best5 {
 	display: table-cell;
-    width: 100px;
-    text-align: left;
-    vertical-align: middle;
-    padding-left: 10px;
-    box-sizing: border-box;
+	width: 100px;
+	text-align: left;
+	vertical-align: middle;
+	padding-left: 10px;
+	box-sizing: border-box;
 }
 
-.champavg{
+.champavg {
 	display: table-cell;
-    width: 100px;
-    vertical-align: middle;
-    text-align: center;
-    box-sizing: border-box;
+	width: 100px;
+	vertical-align: middle;
+	text-align: center;
+	box-sizing: border-box;
 }
 
-.played{
+.played {
 	display: table-cell;
-    width: 88px;
-    vertical-align: middle;
-    text-align: right;
-    padding-right: 12px;
-    box-sizing: border-box;
+	width: 88px;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 12px;
+	box-sizing: border-box;
 }
 
-#radarChart{
-  position: relative;
-  width: 370px;
-  height: 380px;
-  left: 55%;
-  bottom: 270px;
+#radarChart {
+	position: relative;
+	width: 370px;
+	height: 380px;
+	left: 55%;
+	bottom: 270px;
 }
 
-.bodyfirst{
-  position: relative;
-  left: 79px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-  width: 889px;
-  background-color: #e2dddd;
+.bodyfirst {
+	position: relative;
+	left: 79px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+	width: 889px;
+	background-color: #e2dddd;
 }
 
-#wrapper{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	
-   }
-   /* 아이템 컨테이너 스타일 */
-   .que_container {
-	display: flex;
+#wrapper {
 	flex-direction: column;
 	align-items: center;
 	position: relative;
 	bottom: 300px;
-	
-   }
-   
-   
-   #ChampImg img {
+
+}
+
+/* 아이템 컨테이너 스타일 */
+.que_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+
+}
+
+
+#ChampImg img {
 	width: 90px;
 	height: 90px;
 	border-radius: 8px;
 	float: left;
 	margin-left: 20px;
 	margin-top: 15px;
-   }
-   
-   .item-content {
-	
+}
+
+.item-content {
+
 	display: flex;
-	justify-content: space-between; /* 요소들을 양 끝에 배치하고 간격을 균등하게 분배 */
-	align-items: center; /* 요소들을 수직 가운데 정렬 */
+	justify-content: space-between;
+	/* 요소들을 양 끝에 배치하고 간격을 균등하게 분배 */
+	align-items: center;
+	/* 요소들을 수직 가운데 정렬 */
 	padding: 20px;
 	border: none;
 	background: none;
 	cursor: pointer;
-   }
-   
-   /* 아이템 애니메이션 스타일 */
-   
-  .lastQue.animated-item1,
-  .lastQue.animated-item2,
-  .lastQue.animated-item3,
-  .lastQue.animated-item4,
-  .lastQue.animated-item5,
-  .lastQue.animated-item6,
-  .lastQue.animated-item7,
-  .lastQue.animated-item8,
-  .lastQue.animated-item9,
-  .lastQue.animated-item10,
-  .lastQue.animated-item11,
-  .lastQue.animated-item12,
-  .lastQue.animated-item13,
-  .lastQue.animated-item14,
-  .lastQue.animated-item15,
-  .lastQue.animated-item16,
-  .lastQue.animated-item17,
-  .lastQue.animated-item18,
-  .lastQue.animated-item19,
-  .lastQue.animated-item20{
+}
+
+/* 아이템 애니메이션 스타일 */
+
+.lastQue.animated-item1,
+.lastQue.animated-item2,
+.lastQue.animated-item3,
+.lastQue.animated-item4,
+.lastQue.animated-item5,
+.lastQue.animated-item6,
+.lastQue.animated-item7,
+.lastQue.animated-item8,
+.lastQue.animated-item9,
+.lastQue.animated-item10,
+.lastQue.animated-item11,
+.lastQue.animated-item12,
+.lastQue.animated-item13,
+.lastQue.animated-item14,
+.lastQue.animated-item15,
+.lastQue.animated-item16,
+.lastQue.animated-item17,
+.lastQue.animated-item18,
+.lastQue.animated-item19,
+.lastQue.animated-item20 {
 	width: 425px;
 	height: 60px;
 	border-radius: 24px;
 	box-shadow: 0 4px 6px rgba(100, 93, 93, 0.342);
-	display:none;
+	display: none;
 	float: left;
-  }
-   .button_char::after{
+	margin-bottom: 5px;
+}
+
+.button_char::after {
+	position: relative;
 	content: "";
 	clear: both;
 	display: block;
-   }
-   .expandable-space{
+}
+
+.expandable-space {
 	display: block;
 	height: 80%;
 	background-color: aqua;
-	margin: 500px;
-   }
-   
-   
-   /* 확장 가능한 컨텐츠 스타일 */
-   .expandable-content {
+}
+
+
+/* 확장 가능한 컨텐츠 스타일 */
+.expandable-content {
 	display: none;
-	flex-direction: column; /* 세로 방향으로 내용 정렬 */
+	flex-direction: column;
+	/* 세로 방향으로 내용 정렬 */
 	justify-content: center;
 	align-items: center;
 	height: 90%;
 	width: 0;
-   }
-   
-   
-   /* 확장된 컨텐츠 스타일 */
-   .expandable-content.expanded {
+}
+
+
+/* 확장된 컨텐츠 스타일 */
+.expandable-content.expanded {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -440,21 +451,22 @@ body[data-tolight=on] {
 	max-height: 1900px;
 	flex-wrap: wrap;
 	gap: 200px;
-   }
-   
-   /* 내용의 스타일 */
-   .expanded-content-inner {
+	z-index: 1000;
+}
+
+/* 내용의 스타일 */
+.expanded-content-inner {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 90%;
 	width: 90%;
-	
-   }
-   
-   /* 버튼 스타일 */
-   button {
+
+}
+
+/* 버튼 스타일 */
+button {
 	background-color: #007bff;
 	color: white;
 	border: none;
@@ -462,41 +474,61 @@ body[data-tolight=on] {
 	border-radius: 5px;
 	cursor: pointer;
 	width: 600px;
-   }
-   
-   button:hover {
-	background-color: #0056b3;
-   }
+}
 
-  .btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #00A4DC;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+button:hover {
+	background-color: #0056b3;
+}
+
+.btn {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	background-color: #00A4DC;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 
 }
 
 .btn:hover {
-    background-color: #0085B0;
+	background-color: #0085B0;
 }
-#main{
+
+#main {
 	width: 1000px;
 	height: 700px;
 	margin: 0;
 	padding: 0;
 }
-.record{
+
+.record1,
+.record2,
+.record3,
+.record4,
+.record5,
+.record6,
+.record7,
+.record8,
+.record9,
+.record10,
+.record11,
+.record12,
+.record13,
+.record14,
+.record15,
+.record16,
+.record17,
+.record18,
+.record19,
+.record20 {
+	position: relative;
+
 	background-color: #007bff;
 	height: 120px;
 	border-radius: 24px;
 	width: 850px;
 	margin-bottom: 5px;
-}
-.button_chart{
-	display: flex;
 }

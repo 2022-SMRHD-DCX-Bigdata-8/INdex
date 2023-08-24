@@ -19,96 +19,95 @@
 <link rel="stylesheet" href="assets/css/L_main.css">
 
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
-<script
-	src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-<style>
-/* CSS 스타일을 추가하여 name 텍스트를 굵게 표시 */
-.indicator-name {
-	font-size: 16px;
-	font-weight: bold;
-}
-</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        /* CSS 스타일을 추가하여 name 텍스트를 굵게 표시 */
+        .indicator-name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
 
-<style>
-#editBox {
-	visibility: hidden;
-}
-</style>
+    <style>
+        #editBox {
+            visibility: hidden;
+        }
+    </style>
 
-<style>
-html, body {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-body[data-darkmode=on] {
-	background-color: #1e1f21;
-	color: #e8e8e8 !important;
-}
+        body[data-darkmode=on] {
+            background-color: #1e1f21;
+            color: #e8e8e8 !important;
+        }
 
-/* Darkmode Toggle */
-body[data-darkmode=on] .darkmode>.inner {
-	background-color: rgba(255, 255, 255, 0.25);
-}
+        /* Darkmode Toggle */
+        body[data-darkmode=on] .darkmode>.inner {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
 
-.darkmode>.inner {
-	position: relative;
-	display: inline-flex;
-	border-radius: 1.5em;
-	background-color: rgba(0, 0, 0, 0.1);
-	justify-content: right;
-	/* 추가 */
-}
+        .darkmode>.inner {
+            position: relative;
+            display: inline-flex;
+            border-radius: 1.5em;
+            background-color: rgba(0, 0, 0, 0.1);
+            justify-content: right;
+            /* 추가 */
+        }
 
-.darkmode label {
-	cursor: pointer;
-}
+        .darkmode label {
+            cursor: pointer;
+        }
 
-.darkmode label:first-of-type {
-	padding: 5px 5px 5px 10px;
-	border-radius: 50% 0 0 50%;
-}
+        .darkmode label:first-of-type {
+            padding: 5px 5px 5px 10px;
+            border-radius: 50% 0 0 50%;
+        }
 
-.darkmode label:last-of-type {
-	padding: 5px 10px 5px 5px;
-	border-radius: 0 50% 50% 0;
-}
+        .darkmode label:last-of-type {
+            padding: 5px 10px 5px 5px;
+            border-radius: 0 50% 50% 0;
+        }
 
-.darkmode i {
-	font-size: 1.5em;
-	color: #aaa;
-}
+        .darkmode i {
+            font-size: 1.5em;
+            color: #aaa;
+        }
 
-.darkmode input[type=radio] {
-	display: none;
-}
+        .darkmode input[type=radio] {
+            display: none;
+        }
 
-.darkmode input[type=radio]:checked+label>i {
-	color: #fff;
-	transition: all 0.35s ease-in-out;
-}
+        .darkmode input[type=radio]:checked+label>i {
+            color: #fff;
+            transition: all 0.35s ease-in-out;
+        }
 
-.darkmode .darkmode-bg {
-	width: 39px;
-	height: 34px;
-	position: absolute;
-	left: 5px;
-	border-radius: 50px 15px 15px 50px;
-	z-index: -1;
-	transition: all 0.35s ease-in-out;
-	background-color: #03a9f4;
-}
+        .darkmode .darkmode-bg {
+            width: 39px;
+            height: 34px;
+            position: absolute;
+            left: 5px;
+            border-radius: 50px 15px 15px 50px;
+            z-index: -1;
+            transition: all 0.35s ease-in-out;
+            background-color: #03a9f4;
+        }
 
-#toggle-radio-dark:checked ~.darkmode-bg {
-	border-radius: 15px 50px 50px 15px;
-	top: 5px;
-	left: 44px;
-}
-</style>
+        #toggle-radio-dark:checked~.darkmode-bg {
+            border-radius: 15px 50px 50px 15px;
+            top: 5px;
+            left: 44px;
+        }
+    </style>
 
 </head>
 
