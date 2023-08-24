@@ -181,7 +181,11 @@
 	<%}%>
 		});
 	</script>
+	
+	
+	
 <script type="text/javascript">
+
 // 이미지 미리 로딩용
 function fetchAndStoreChampImg() {
     $.ajax({
@@ -189,6 +193,7 @@ function fetchAndStoreChampImg() {
         type: 'GET', 
         dataType: 'json', 
         success: function(champImgData) {
+        	console.log(champImgData)
             // 이미지 데이터를 웹 스토리지에 저장
             localStorage.setItem('champImgData', JSON.stringify(champImgData));
         },

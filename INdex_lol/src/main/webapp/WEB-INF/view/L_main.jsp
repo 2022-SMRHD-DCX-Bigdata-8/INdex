@@ -1052,7 +1052,9 @@ body[data-darkmode=on] .darkmode>.inner {
 			crossorigin="anonymous">
             </script>
 
-		<!-- 메인화면 스크립트 -->
+		<script src="text/javascript">
+
+ </script><!-- 메인화면 스크립트 -->
 		<script>
 		// 일정 시간마다 데이터 업데이트 실행
 		// 1분마다 실행
@@ -1307,49 +1309,7 @@ body[data-darkmode=on] .darkmode>.inner {
         
         
      	// 메인 페이지에서 호출
-        function useStoredChampImgData() {
-            // 웹 스토리지에서 이미지 데이터 가져오기
-            const storedChampImgData = localStorage.getItem('champImgData');
-            
-            if (storedChampImgData) {
-                const champImgData = JSON.parse(storedChampImgData);
-                // 가져온 데이터를 이용하여 이미지 업데이트 등의 작업 실행
-                updateChampionImages(champImgData);
-            }
-        }
-
-        // 메인 페이지로 이동할 때 호출
-        useStoredChampImgData();
-        
-
-        //새로고침 딜레이용 함수
-        //새로고침 필요한 ajax function 안에 넣어주면됨
-        function fetchDataWithDelay(delayTime) {
-            setTimeout(function() {
-                fetchDataChampImg();
-            }, delayTime);
-        }
-
-        
-        
-        // 이미지 업데이트 함수
-        function updateChampionImages(champImgData) {
-            $('.champion-box').each(function() {
-                var champName = $(this).find('.champname').text();
-                var imgSrc = findImageSrc(champImgData, champName);
-                if (imgSrc) {
-                    $(this).find('.faceimg').attr('src', imgSrc);
-                }
-            });
-        }
-        
-        
-        function updateChampionData(userPlayData) {
-            // userPlayData를 이용하여 데이터 업데이트
-            // 예: $(this).find('.kda').text(userPlayData.kda);
-        }
- 		
-        function findImageSrc(champImgData, champName) {
+     	      /*function findImageSrc(champImgData, champName) {
         	console.log("findImageSrc")
             for (var i = 0; i < champImgData.length; i++) {
                 if (champImgData[i].championName === champName) {
@@ -1357,30 +1317,124 @@ body[data-darkmode=on] .darkmode>.inner {
                 }
             }
             return null; 
+        }*/
+         // fetchDataBest5 호출
+        useStoredChampImgData(); // useStoredChampImgData 호출
+        function useStoredChampImgData() {
+            // 웹 스토리지에서 이미지 데이터 가져오기
+            const storedChampImgData = localStorage.getItem('champImgData');
+            if (storedChampImgData) {
+                const champImgData = JSON.parse(storedChampImgData);
+                // 가져온 데이터를 이용하여 이미지 업데이트 등의 작업 실행
+                updateChampionImages(champImgData);
+                console.log(champImgData)
+                fetchDataBest5(function(bestChamp) {
+                    updateChampionBoxes(bestChamp, champImgData);
+                });
+       		 }
+         }
+  
+        
+        function findImageSrc(champImgData, champNameFind) {
+            console.log("findImageSrc");
+            console.log(champImgData);
+            console.log(champNameFind);
+
+            // 데이터 형태에 따라서 접근 방법을 수정
+            if (Array.isArray(champImgData)) {
+                for (var i = 0; i < champImgData.length; i++) {
+                    if (champImgData[i]["championName"] === champNameFind) {
+                        return champImgData[i]["championImg"];
+                    }
+                }
+            } else if (typeof champImgData === "object") {
+                if (champImgData[champNameFind]) {
+                    return champImgData[champNameFind]["championImg"];
+                }
+            }
+
+            return null;
         }
         
- 		
- 		// best5개 추천
-        function fetchDataBest5() {
+        
+        // 이미지 업데이트 함수
+        function updateChampionImages(champImgData) {
+            $('.champion-box').each(function() {
+                var champNameFind = $(this).find('.champname').text();
+                console.log(champNameFind)
+                var imgSrc = findImageSrc(champImgData, champNameFind);
+                console.log(imgSrc)
+                if (imgSrc) {
+                    $(this).find('.faceimg').attr('src', imgSrc);
+                }
+            });
+        }
+        function updateChampionBoxes(bestChamp, champImgData) {
+            const championBoxes = $('.champion-box');
+
+            for (let i = 0; i < bestChamp.champAvgArray.length; i++) {
+                const championBox = championBoxes.eq(i);
+                const champData = bestChamp.champAvgArray[i];
+
+                const championName = champData.championName;
+                const csAvg = champData.csAvg;
+                const k = champData.k;
+                const d = champData.d;
+                const a = champData.a;
+                const played = champData.played;
+
+                const imgUrl = findImageSrc(champImgData, championName); // 이미지 URL 가져오기
+
+                championBox.find('.champname').text(championName);
+                championBox.find('.csavg').text('CS ' + csAvg);
+                championBox.find('.champavg > div:first-child').text('KDA ' + k + '/' + d + '/' + a);
+                championBox.find('.played .cnt').text(played + ' 게임');
+
+                if (imgUrl) {
+                    championBox.find('.faceimg').attr('src', imgUrl);
+                }
+            }
+        }
+
+        // best5개 추천
+        function fetchDataBest5(callback) {
             $.ajax({
                 url: 'getBest5Chart.do',
-                type: 'GET', 
-                dataType: 'json', 
+                type: 'GET',
+                dataType: 'json',
                 data: { userId: userId },
-                success: function(bestChamp) {
-                    console.log(bestChamp)
-                    
-                    
-                    updateChampionBoxes(bestChamp)// 받아온 데이터로 차트 업데이트
-                    
-                    
+                success: function (bestChamp) {
+                    console.log(bestChamp);
+                    callback(bestChamp); // 콜백 함수 호출하여 데이터 전달
                 },
-                error: function(xhr, status, error) {
-                
+                error: function (xhr, status, error) {
                     console.error('데이터를 가져오는데 실패했습니다:', error);
                 }
             });
         }
+        
+
+        //새로고침 딜레이용 함수
+        //새로고침 필요한 ajax function 안에 넣어주면됨
+       /* function fetchDataWithDelay(delayTime) {
+            setTimeout(function() {
+                fetchDataChampImg();
+            }, delayTime);
+        }*/
+
+        
+        
+       
+        
+        
+        function updateChampionData(userPlayData) {
+            // userPlayData를 이용하여 데이터 업데이트
+            // 예: $(this).find('.kda').text(userPlayData.kda);
+        }
+ 		
+        
+ 		
+ 	
         
  		
         function fetchPlayData() {
@@ -1545,29 +1599,7 @@ body[data-darkmode=on] .darkmode>.inner {
         
         //BEST5
         
-        function updateChampionBoxes(bestChamp) {
-            const championBoxes = $('.champion-box');
-
-            for (let i = 0; i < bestChamp.champAvgArray.length; i++) {
-                const championBox = championBoxes.eq(i);
-                const champData = bestChamp.champAvgArray[i];
-
-                const imgUrl = champData.championImg;
-                const championName = champData.championName;
-                const csAvg = champData.csAvg;
-                const k = champData.k;
-                const d = champData.d;
-                const a = champData.a;
-                const played = champData.played;
-
-               
-                championBox.find('.champname').text(championName);
-                championBox.find('.csavg').text('CS ' + csAvg);
-                championBox.find('.champavg > div:first-child').text('KDA ' + k + '/' + d + '/' + a);
-                championBox.find('.played .cnt').text( played + ' 게임');
-            }
-        }
-        fetchDataBest5();
+       
         
         
       
