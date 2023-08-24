@@ -353,7 +353,7 @@ body[data-tolight=on] {
 }
 
 
-#ChampImg img {
+.ChampImg img {
 	width: 90px;
 	height: 90px;
 	border-radius: 8px;
@@ -363,20 +363,16 @@ body[data-tolight=on] {
 }
 
 .item-content {
-
 	display: flex;
-	justify-content: space-between;
-	/* 요소들을 양 끝에 배치하고 간격을 균등하게 분배 */
-	align-items: center;
-	/* 요소들을 수직 가운데 정렬 */
-	padding: 20px;
-	border: none;
-	background: none;
-	cursor: pointer;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    left: 9%;
+    top : 47px;
 }
 
 /* 아이템 애니메이션 스타일 */
-
+.lastQue.animated-item,
 .lastQue.animated-item1,
 .lastQue.animated-item2,
 .lastQue.animated-item3,
@@ -525,7 +521,6 @@ button:hover {
 .record19,
 .record20 {
 	position: relative;
-
 	background-color: #007bff;
 	height: 120px;
 	border-radius: 24px;

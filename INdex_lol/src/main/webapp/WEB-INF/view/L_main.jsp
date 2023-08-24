@@ -19,96 +19,96 @@
 <link rel="stylesheet" href="assets/css/L_main.css">
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
-    <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-    <style>
-        /* CSS 스타일을 추가하여 name 텍스트를 굵게 표시 */
-        .indicator-name {
-            font-size: 16px;
-            font-weight: bold;
-        }
-    </style>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+<script
+	src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+/* CSS 스타일을 추가하여 name 텍스트를 굵게 표시 */
+.indicator-name {
+	font-size: 16px;
+	font-weight: bold;
+}
+</style>
 
-    <style>
-        #editBox {
-            visibility: hidden;
-        }
-    </style>
+<style>
+#editBox {
+	visibility: hidden;
+}
+</style>
 
-    <style>
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
 
-        body[data-darkmode=on] {
-            background-color: #1e1f21;
-            color: #e8e8e8 !important;
-        }
+body[data-darkmode=on] {
+	background-color: #1e1f21;
+	color: #e8e8e8 !important;
+}
 
-        /* Darkmode Toggle */
-        body[data-darkmode=on] .darkmode>.inner {
-            background-color: rgba(255, 255, 255, 0.25);
-        }
+/* Darkmode Toggle */
+body[data-darkmode=on] .darkmode>.inner {
+	background-color: rgba(255, 255, 255, 0.25);
+}
 
-        .darkmode>.inner {
-            position: relative;
-            display: inline-flex;
-            border-radius: 1.5em;
-            background-color: rgba(0, 0, 0, 0.1);
-            justify-content: right;
-            /* 추가 */
-        }
+.darkmode>.inner {
+	position: relative;
+	display: inline-flex;
+	border-radius: 1.5em;
+	background-color: rgba(0, 0, 0, 0.1);
+	justify-content: right;
+	/* 추가 */
+}
 
-        .darkmode label {
-            cursor: pointer;
-        }
+.darkmode label {
+	cursor: pointer;
+}
 
-        .darkmode label:first-of-type {
-            padding: 5px 5px 5px 10px;
-            border-radius: 50% 0 0 50%;
-        }
+.darkmode label:first-of-type {
+	padding: 5px 5px 5px 10px;
+	border-radius: 50% 0 0 50%;
+}
 
-        .darkmode label:last-of-type {
-            padding: 5px 10px 5px 5px;
-            border-radius: 0 50% 50% 0;
-        }
+.darkmode label:last-of-type {
+	padding: 5px 10px 5px 5px;
+	border-radius: 0 50% 50% 0;
+}
 
-        .darkmode i {
-            font-size: 1.5em;
-            color: #aaa;
-        }
+.darkmode i {
+	font-size: 1.5em;
+	color: #aaa;
+}
 
-        .darkmode input[type=radio] {
-            display: none;
-        }
+.darkmode input[type=radio] {
+	display: none;
+}
 
-        .darkmode input[type=radio]:checked+label>i {
-            color: #fff;
-            transition: all 0.35s ease-in-out;
-        }
+.darkmode input[type=radio]:checked+label>i {
+	color: #fff;
+	transition: all 0.35s ease-in-out;
+}
 
-        .darkmode .darkmode-bg {
-            width: 39px;
-            height: 34px;
-            position: absolute;
-            left: 5px;
-            border-radius: 50px 15px 15px 50px;
-            z-index: -1;
-            transition: all 0.35s ease-in-out;
-            background-color: #03a9f4;
-        }
+.darkmode .darkmode-bg {
+	width: 39px;
+	height: 34px;
+	position: absolute;
+	left: 5px;
+	border-radius: 50px 15px 15px 50px;
+	z-index: -1;
+	transition: all 0.35s ease-in-out;
+	background-color: #03a9f4;
+}
 
-        #toggle-radio-dark:checked~.darkmode-bg {
-            border-radius: 15px 50px 50px 15px;
-            top: 5px;
-            left: 44px;
-        }
-    </style>
-
+#toggle-radio-dark:checked ~.darkmode-bg {
+	border-radius: 15px 50px 50px 15px;
+	top: 5px;
+	left: 44px;
+}
+</style>
 </head>
 
 <body>
@@ -125,9 +125,10 @@
 
 	<header class="header">
 		<div class="logo">
-			<a href="#"><img src="/assets/img/logo.png" alt="" class="chal"></a> <a
-				href="#" class="lgm-link">L.gm</a>
+			<a href="#"><img src="assets/img/logo.png" alt="" class="chal"></a>
+			<a href="#" class="lgm-link">L.gm</a>
 		</div>
+
 
 		<div class="dkdk">
 			<div class="darkmode">
@@ -145,8 +146,10 @@
 		<div class="header-icons">
 
 
+
+
 			<div class="profile-card" id="profileCard">
-				<img class="profile-image" src="/assests/img/profile.png" alt="프로필 사진">
+				<img class="profile-image" src="assets/img/profile.png" alt="프로필 사진">
 			</div>
 			<div id="editBox">
 				<div id="edit-box-tool">
@@ -164,6 +167,7 @@
 				</div>
 			</div>
 		</div>
+
 
 	</header>
 
@@ -296,6 +300,7 @@
 				</div>
 			</div>
 
+			<!-- 전체차트 -->
 			<div class="bodyfirst">
 
 				<div id="chartAll">
@@ -306,6 +311,7 @@
 					</div>
 				</div>
 
+				<!-- 레이더차트 -->
 				<div id="radarChartAll">
 					<div id="radarChart" class="echart">
 						<canvas>
@@ -322,739 +328,36 @@
 
 				</div>
 
+
+
+				<!-- 대전기록 -->
+
 				<div id="wrapper">
-					<div class="que_container">
-						<div>
+				
+				</div>
 
-							<div class="record">
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-
-								<div class="item-content">
-									<span>k/d/a</span>
-									<div>
-
-										<span>win or loss (색으로 표현)</span> <br> <span>게임
-											플레이 시간</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="button_chart">
-								<button class="lastQue animated-item1">
-									<div class="expandable-content">
-										<div class="expanded-content-inner">
-											<div class="expanded-content-wrapper">
-
-												<div>
-													<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-														열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-												</div>
-												<!-- 실제 상세 정보 내용을 여기에 입력 -->
-												<div id="info1">게임 상세 정보를 표시합니다. 승리 or 패배</div>
-
-												<canvas id="main1" style="width: 800px; height: 600px;"></canvas>
-											</div>
-										</div>
-									</div>
-								</button>
-								<!-- lastQue animated-item2 -->
-
-								<button class="lastQue animated-item1">
-									<div class="expandable-content">
-										<div class="expanded-content-inner">
-											<div class="expanded-content-wrapper">
-
-												<div>
-													<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-														열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-												</div>
-												<!-- 실제 상세 정보 내용을 여기에 입력 -->
-												<div id="info1">게임 상세 정보를 표시합니다. 승리 or 패배</div>
-
-												<canvas id="main2" style="width: 800px; height: 600px;"></canvas>
-											</div>
-										</div>
-									</div>
-								</button>
-								<!-- lastQue animated-item2 -->
-							</div>
-
-						</div>
-
-						<button class="lastQue animated-item2">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main2" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item4 -->
-						<button class="lastQue animated-item3">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main3" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item6 -->
-						<button class="lastQue animated-item4">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main4" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item8 -->
-						<button class="lastQue animated-item5">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main5" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item10 -->
-						<button class="lastQue animated-item6">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main6" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item12 -->
-						<button class="lastQue animated-item7">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main7" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item14 -->
-						<button class="lastQue animated-item8">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main8" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item16 -->
-						<button class="lastQue animated-item9">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main9" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item18 -->
-						<button class="lastQue animated-item10">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main10" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item20 -->
-						<button class="lastQue animated-item11">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main11" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item12">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main12" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item13">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main13" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item14">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main14" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item15">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main15" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item16">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main16" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item17">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main17" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item18">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main18" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item19">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main19" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-						<button class="lastQue animated-item20">
-							<div>
-								<span id="ChampImg"><img
-									src="https://opgg-static.akamaized.net/meta/images/lol/champion/Garen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1692327966378"
-									alt="선택한 챔프사진" /></span>
-							</div>
-
-							<div class="item-content">
-								<span>k/d/a</span>
-								<div>
-
-									<span>win or loss (색으로 표현)</span> <br> <span>게임 플레이
-										시간</span>
-								</div>
-								<div class="expandable-content">
-									<div class="expanded-content-inner">
-										<div class="expanded-content-wrapper">
-
-											<div>
-												<p>최근 매치 기준으로 챔피언 통계를 먼저 보여드립니다. 시즌 전체의 챔피언 통계는 현재 서버가
-													열심히 산출 중입니다. 잠시 후 페이지를 새로고침 해주십시오.</p>
-											</div>
-											<!-- 실제 상세 정보 내용을 여기에 입력 -->
-											게임 상세 정보를 표시합니다.
-											<div id="info1">승리 or 패배</div>
-
-											<canvas id="main20" style="width: 800px; height: 600px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</button>
-						<!-- lastQue animated-item -->
-
-
-
-
-					</div>
-					<!-- wrapper -->
-
-
+					<!-- lastQue animated-item2 -->
 				</div>
 
 			</div>
 
 		</div>
 
-		<!-- 다른 필드들도 위와 같이 출력 -->
+	</div>
+
+	<!-- 다른 필드들도 위와 같이 출력 -->
 
 
-		<script src="https://code.jquery.com/jquery-3.7.0.min.js"
-			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-			crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+		crossorigin="anonymous">
             </script>
 
-		<script src="text/javascript">
+	<script src="text/javascript">
 
- </script><!-- 메인화면 스크립트 -->
-		<script>
+ </script>
+	<!-- 메인화면 스크립트 -->
+	<script>
 		// 일정 시간마다 데이터 업데이트 실행
 		// 1분마다 실행
 		
@@ -1219,7 +522,7 @@
                 success: function(response) {
                     // 서버 응답 성공 시 동작
                     console.log("Rank data refreshed successfully.");
-                    console.log(response);
+                    // 확인 console.log(response);
                     location.reload(true);
                 },
                 error: function(error) {
@@ -1232,8 +535,8 @@
 
         
     </script>
-		<!-- 파이형 차트 수정 -->
-		<script type="text/javascript">
+	<!-- 파이형 차트 수정 -->
+	<script type="text/javascript">
 		// 파이형차트
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom); // Initialize myChart
@@ -1243,10 +546,10 @@
         var chartTitleColor = document.body.dataset.darkmode === 'on' ? '#e2dddd' : '#1e1f21';
         var userId = '${user.u_id}';
         var userRank = '${user.u_rank}';
- 		//var userMatch = playDataList;
+ 		
  		// console.log(userPosition)
-        console.log(userId)
-        console.log(userRank)
+        // console.log(userId)
+        // console.log(userRank)
         
         
         
@@ -1262,7 +565,7 @@
                 dataType: 'json', 
                 data: { userId: userId },
                 success: function(data) {
-                    console.log(data)
+                    // 확인함 console.log(data)
                     $('#KDA span:eq(0)').text('평균 K' + data.K);
             		$('#KDA span.death').text('평균 D'+ data.D);
            			$('#KDA span:eq(2)').text('평균 A'+data.A);
@@ -1326,7 +629,7 @@
                 const champImgData = JSON.parse(storedChampImgData);
                 // 가져온 데이터를 이용하여 이미지 업데이트 등의 작업 실행
                 updateChampionImages(champImgData);
-                console.log(champImgData)
+                // 확인함 console.log(champImgData)
                 fetchDataBest5(function(bestChamp) {
                     updateChampionBoxes(bestChamp, champImgData);
                 });
@@ -1335,9 +638,9 @@
   
         
         function findImageSrc(champImgData, champNameFind) {
-            console.log("findImageSrc");
-            console.log(champImgData);
-            console.log(champNameFind);
+         // 확인함   console.log("findImageSrc");
+          // 확인함  console.log(champImgData);
+           //확인함  console.log(champNameFind);
 
             // 데이터 형태에 따라서 접근 방법을 수정
             if (Array.isArray(champImgData)) {
@@ -1360,9 +663,9 @@
         function updateChampionImages(champImgData) {
             $('.champion-box').each(function() {
                 var champNameFind = $(this).find('.champname').text();
-                console.log(champNameFind)
+             // 확인함   console.log(champNameFind)
                 var imgSrc = findImageSrc(champImgData, champNameFind);
-                console.log(imgSrc)
+                // 확인함 console.log(imgSrc)
                 if (imgSrc) {
                     $(this).find('.faceimg').attr('src', imgSrc);
                 }
@@ -1403,7 +706,7 @@
                 dataType: 'json',
                 data: { userId: userId },
                 success: function (bestChamp) {
-                    console.log(bestChamp);
+                    // 확인함 console.log(bestChamp);
                     callback(bestChamp); // 콜백 함수 호출하여 데이터 전달
                 },
                 error: function (xhr, status, error) {
@@ -1445,12 +748,19 @@
                 dataType: 'json', 
                 data: { userId: userId },
                 success: function(playDataList) {
-                    console.log(playDataList)
-                  // 받아온 데이터로 차트 업데이트
-                  // for문으로 length 까지 html태그 출력되게 만들어야함
+                  // 확인함  console.log(playDataList)
                     
+                    const ListPlayData = playDataList.userPlayData;
+
+                    // 대전기록 출력 함수 호출
+                    renderPlayData(ListPlayData);
                     
+
+                    
+                 
                 },
+                  
+                    
                 error: function(xhr, status, error) {
                 
                     console.error('데이터를 가져오는데 실패했습니다:', error);
@@ -1458,6 +768,213 @@
             });
         }
         
+     
+        $(document).ready(function () {
+            fetchPlayData(); // 대전기록 데이터 요청 및 처리
+
+            // 대전기록 컨테이너에 클릭 이벤트 위임
+            $("#wrapper").on("click", ".record1", function () {
+                console.log("클릭이벤트")
+                event.stopPropagation(); // 버튼 클릭 이벤트 전파 중단
+                
+                var index = $(this).index();
+                $(".lastQue.animated-item" + (index + 1)).toggle();
+
+                /*var lastQueElement = $(".lastQue.animated-item");
+                if (lastQueElement.css("display") === "none") {
+                    lastQueElement.css("display", "block");
+                } else {
+                    lastQueElement.css("display", "none");
+                }*/
+            });
+           
+            // wrapper 클릭이벤트
+            $("#wrapper").on("click", ".lastQue.animated-item", function (event) {
+            	console.log("확장이벤트")
+                event.stopPropagation();
+
+                var expandableContent = $(this).closest('.record1').find('.expandable-content');
+                expandableContent.toggleClass('expanded');
+
+                if (expandableContent.hasClass('expanded')) {
+                    var spaceElement = $("<div>", { class: "expandable-space" });
+                    $(this).parent().append(spaceElement);
+                } else {
+                    $(this).parent().find('.expandable-space').remove();
+                }
+            });
+        });
+
+        
+        
+        
+        function createEChartsGraph(index) {
+            var dom = document.getElementById('main' + index);
+            var myChart = echarts.init(dom, null, {
+                renderer: 'canvas',
+                useDirtyRect: false
+            });
+
+            var   option = {
+            	    dataset: [
+            	        {
+            	          id: 'dataset_raw',
+            	          source: _rawData
+            	        },
+            	        {
+            	          id: 'dataset_since_1950_of_germany',
+            	          fromDatasetId: 'dataset_raw',
+            	          transform: {
+            	            type: 'filter',
+            	            config: {
+            	              and: [
+            	                { dimension: 'Year', gte: 1950 },
+            	                { dimension: 'Country', '=': 'Germany' }
+            	              ]
+            	            }
+            	          }
+            	        },
+            	        {
+            	          id: 'dataset_since_1950_of_france',
+            	          fromDatasetId: 'dataset_raw',
+            	          transform: {
+            	            type: 'filter',
+            	            config: {
+            	              and: [
+            	                { dimension: 'Year', gte: 1950 },
+            	                { dimension: 'Country', '=': 'France' }
+            	              ]
+            	            }
+            	          }
+            	        }
+            	      ],
+            	      title: {
+            	        text: 'Income of Germany and France since 1950'
+            	      },
+            	      tooltip: {
+            	        trigger: 'axis'
+            	      },
+            	      xAxis: {
+            	        type: 'category',
+            	        nameLocation: 'middle'
+            	      },
+            	      yAxis: {
+            	        name: 'Income'
+            	      },
+            	      series: [
+            	        {
+            	          type: 'line',
+            	          datasetId: 'dataset_since_1950_of_germany',
+            	          showSymbol: false,
+            	          encode: {
+            	            x: 'Year',
+            	            y: 'Income',
+            	            itemName: 'Year',
+            	            tooltip: ['Income']
+            	          }
+            	        },
+            	        {
+            	          type: 'line',
+            	          datasetId: 'dataset_since_1950_of_france',
+            	          showSymbol: false,
+            	          encode: {
+            	            x: 'Year',
+            	            y: 'Income',
+            	            itemName: 'Year',
+            	            tooltip: ['Income']
+            	          }
+            	        }
+            	      ]
+            };
+
+            myChart.setOption(option);
+
+            // 그래프 크기 변경
+            myChart.resize(800, 600);
+        }
+        
+        // wrapper 클릭이벤트
+        $("#wrapper").on("click", ".lastQue-animated-item", function () {
+            var expandableContent = $(this).closest('.record1').find('.expandable-content');
+            expandableContent.toggleClass('expanded');
+
+            if (expandableContent.hasClass('expanded')) {
+                var spaceElement = $("<div>", { class: "expandable-space" });
+                $(this).parent().append(spaceElement);
+            } else {
+                $(this).parent().find('.expandable-space').remove();
+            }
+        });
+     
+
+// 대전기록 출력함수
+function renderPlayData(playDataList) {
+    const wrapper = $("#wrapper"); // wrapper 선택
+
+    playDataList.forEach(function(playData, index) {
+        const champImgSrc = "https://opgg-static.akamaized.net/meta/images/lol/champion/" + playData.u_champ + ".png";
+        const champName = playData.u_champ;
+        const level = playData.u_level;
+        const gold = playData.u_gold;
+        const damage = playData.u_damage;
+        const kill = playData.u_kill;
+        const death = playData.u_death;
+        const assist = playData.u_assist;
+        
+        const queContainer = $("<div>", { class: "que_container" }); // que_container 생성
+
+        const recordElement = $("<div>", { class: "record1" });
+        const champImgElement = $("<span>", { class: "ChampImg" });
+        const imgElement = $("<img>", { src: champImgSrc, alt: "선택한 챔프사진" });
+        const spanCloseElement = $("<span>");
+        const itemContentDiv = $("<div>", { class: "item-content" });
+        const champNameElement = $("<span>").text("챔피언명 " + champName);
+        const levelElement = $("<span>").text("레벨 " + level);
+        const goldElement = $("<span>").text("골드량 " + gold);
+        const damageElement = $("<span>").text("피해량 " + damage);
+        const killElement = $("<span>").text("킬 " + kill);
+        const deathElement = $("<span>").text("데스 " + death);
+        const assistElement = $("<span>").text("어시 " + assist);
+        
+        const buttonChartContainer = $("<div>", { class: "button_chart" });
+        const damageButton = $("<button>", { class: "lastQue animated-item" + (index+1) }).text("피해량");
+        const goldButton = $("<button>", { class: "lastQue animated-item"+ (index+1) }).text("골드량");
+        
+        const expandableContent = $("<div>", { class: "expandable-content" });
+        const expandedContentInner = $("<div>", { class: "expanded-content-inner" });
+        const expandedContentWrapper = $("<div>", { class: "expanded-content-wrapper" });
+
+        const infoElement = $("<div>", { id: "info" + index }).text("게임 상세 정보를 표시합니다.\n승리 or 패배");
+        const chartCanvas = $("<canvas>", { id: "main" + index, style: "width: 800px; height: 600px;" });
+
+        // 요소들을 계층적으로 구조에 추가
+        wrapper.append(queContainer);
+        queContainer.append(recordElement); // recordElement 추가
+        recordElement.append(champImgElement);
+        champImgElement.append(imgElement);
+        champImgElement.append(spanCloseElement);
+        recordElement.append(itemContentDiv);
+        itemContentDiv.append(champNameElement);
+        itemContentDiv.append(levelElement);
+        itemContentDiv.append(goldElement);
+        itemContentDiv.append(damageElement);
+        itemContentDiv.append(killElement);
+        itemContentDiv.append(deathElement);
+        itemContentDiv.append(assistElement);
+        recordElement.append(buttonChartContainer); // buttonChartContainer 추가
+        buttonChartContainer.append(damageButton);
+        buttonChartContainer.append(goldButton);
+        buttonChartContainer.append(expandableContent); // expandableContent 추가
+        expandableContent.append(expandedContentInner);
+        expandedContentInner.append(expandedContentWrapper);
+        expandedContentWrapper.append(infoElement);
+        expandedContentWrapper.append(chartCanvas);
+    });
+}
+
+
+
+
         
         // ghost 플레이데이터 목록 userRank 인자
         function fetchGhostPlayData() {
@@ -1468,14 +985,14 @@
                 data: { userRank: userRank },
                 success: function(ghostplayDataList) {
                 	
-                    console.log(ghostplayDataList)
+                   // 데이터확인함 console.log(ghostplayDataList)
                   // 받아온 데이터로 차트 업데이트
                   // 단 position 매칭시켜서 같은것만 가져오게해야함
                     
                     
                 },
                 error: function(xhr, status, error) {
-                	console.log(userRank)
+                	
                 
                     console.error('데이터를 가져오는데 실패했습니다:', error);
                 }
@@ -1491,7 +1008,7 @@
                 data: { userId: userId },
                 success: function(UserRadarData) {
                 	
-                    console.log(UserRadarData)
+                  // 확인함  console.log(UserRadarData)
                   
                     
                     
@@ -1512,7 +1029,7 @@
                 dataType: 'json', 
                 data: { userRank: userRank },
                 success: function(GhostTimeLineData) {
-                	  console.log(GhostTimeLineData);
+                	 // 확인함 console.log(GhostTimeLineData);
                       
               
                  } ,
@@ -1535,7 +1052,7 @@
                 data: { userMatch: userMatch },
                 success: function(userTimeLineData) {
                 	
-                    console.log(userTimeLineData)
+                  // 확인함  console.log(userTimeLineData)
                   
                     
                     
@@ -1556,21 +1073,21 @@
 ///////////////////////////////ajax 데이터 불러오기 끝 /////////////////////////
 ///////////////////////////////////////////////////////////////////////////
         fetchGhostPlayData();
-        fetchPlayData();
+      
         
         fetchUserRadarData();
         fetchGhostTimeLineData();
         // fetchUserTimeLineData();
         
         
-        $(document).ready(function () {
+      /*  $(document).ready(function () {
             $('.playDataList').click(function () {
                 var userRank = $(this).data('userRank');
                   // position 부분
                 fetchChartData(userRank);
             });
-        });
-        
+        }); */
+         
         function fetchChartData(userRank) {
             $.ajax({
                 url: 'getGhostTimeLineData.do',
@@ -1580,7 +1097,7 @@
                     userRank: userRank
                 },
                 success: function (chartData) {
-                    drawChart(chartData);
+                
                 },
                 error: function (xhr, status, error) {
                     console.error('데이터를 가져오는데 실패했습니다:', error);
@@ -1588,13 +1105,7 @@
             });
         }
         
-        function drawChart(chartData) {
-        	console.log('드로우차트안입니다.')
-            // 여기에서 차트를 그리는 로직을 구현
-            // 예: Chart.js 등의 라이브러리를 사용하여 차트 그리기
-            // chartData 객체를 이용하여 필요한 데이터 사용
-        }
-        
+  
         
         //BEST5
         
@@ -1746,8 +1257,8 @@
       
         
     </script>
-		<!-- 라이더차트 스크립트 수정 -->
-		<script>
+	<!-- 라이더차트 스크립트 수정 -->
+	<script>
             document.addEventListener("DOMContentLoaded", () => {
                 var radarChart = echarts.init(document.querySelector("#radarChart"));
 
@@ -1832,70 +1343,11 @@
                 }, false);
             });
         </script>
-		<script>
-            var expandableButtons = document.querySelectorAll('.lastQue');
+	<script>
 
-            expandableButtons.forEach(function (button) {
-                var expandableContent = button.querySelector('.expandable-content');
 
-                button.addEventListener('click', function (event) {
-                    expandableContent.classList.toggle('expanded');
-                    event.stopPropagation(); // 이벤트 전파 중지
 
-                    if (expandableContent.classList.contains('expanded')) {
-                        // 확장된 컨텐츠가 나타날 때
-                        var spaceElement = document.createElement('div');
-                        spaceElement.classList.add('expandable-space');
-                        button.parentNode.insertBefore(spaceElement, button.nextSibling);
-                    } else {
-                        // 확장된 컨텐츠가 사라질 때
-                        var spaceElement = button.nextElementSibling;
-                        if (spaceElement && spaceElement.classList.contains('expandable-space')) {
-                            spaceElement.remove();
-                        }
-                    }
-                });
-            });
-
-            /* main1 에대한 스크립트 코드 */
-
-            // 라인차트 main1~20 까지 적용
-            // 같은데이터만 적용 되는듯 
-
-            for (var i = 1; i <= 20; i++) {
-                var dom = document.getElementById('main' + i);
-                var myChart6 = echarts.init(dom, null, {
-                    renderer: 'canvas',
-                    useDirtyRect: false
-                });
-
-                var option = {
-                    xAxis: {
-                        type: 'category',
-                        data: ['5분', '10분', '15분', '20분', '25분', '30분', '35분', '40분']
-                    },
-                    yAxis: {
-                        type: 'value'
-                    },
-                    series: [
-                        {
-                            data: [820, 932, 901, 934, 1290, 1330, 1320, 1700],
-                            type: 'line',
-                            smooth: true
-                        },
-                        {
-                            data: [720, 632, 701, 834, 990, 1130, 1220, 1500],
-                            type: 'line',
-                            smooth: true
-                        }
-                    ]
-                };
-
-                myChart6.setOption(option);
-
-                // 그래프 크기 변경
-                myChart6.resize(800, 600);
-            }
+              
         </script>
 </body>
 </html>
