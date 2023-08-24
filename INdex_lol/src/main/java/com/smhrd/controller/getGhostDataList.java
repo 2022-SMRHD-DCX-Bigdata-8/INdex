@@ -22,13 +22,14 @@ public class getGhostDataList implements L_Controller {
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("고스트데이터 가져오는곳");
 		String u_rank = request.getParameter("userRank");
-		System.out.println(u_rank);
+		System.out.println("랭크입니다"+u_rank);
 		JSONObject jsonData = new JSONObject();
 		L_ghostdataDAO ghostDataDAO = new L_ghostdataDAO();
 		List<L_ghostdata> userdata = null;
 
+		
 		JSONArray ghostDataArray = new JSONArray();
-		if (u_rank.contains(" ")) {
+		if (u_rank !=null && u_rank.contains(" ")) {
 			u_rank = u_rank.substring(0, u_rank.indexOf(" "));
 			userdata = ghostDataDAO.gdview(u_rank);
 

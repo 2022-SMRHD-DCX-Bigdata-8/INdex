@@ -126,8 +126,8 @@ body[data-darkmode=on] .darkmode>.inner {
 
 	<header class="header">
 		<div class="logo">
-			<a href="#"><img src="assets/img/logo.png" alt="" class="chal"></a>
-			<a href="#" class="lgm-link">L.gm</a>
+			<a href="goMain.do"><img src="assets/img/logo.png" alt="" class="chal"></a>
+			<a href="goMain.do" class="lgm-link">L.gm</a>
 		</div>
 
 
@@ -379,7 +379,7 @@ body[data-darkmode=on] .darkmode>.inner {
                     }
                 });
             });
-            $(document).ready(function () {
+           /* $(document).ready(function () {
                 $("#withdrawLink").click(function () {
                     var password = prompt("비밀번호를 입력하세요:");
                     if (password !== null) {
@@ -388,7 +388,7 @@ body[data-darkmode=on] .darkmode>.inner {
                         alert("회원 탈퇴가 성공적으로 완료되었습니다.");
                     }
                 });
-            });
+            });*/
 
             // 다크모드 변환 시작
             document.addEventListener('DOMContentLoaded', function () {
@@ -1207,11 +1207,11 @@ $(document).ready(function () {
                 var isDarkMode = document.body.dataset.darkmode === 'on';
                 var ghostColor = isDarkMode ? '#e2dddd' : '#1e1f21';
                 var playerColor = isDarkMode ? '#e2dddd' : '#1e1f21';
-
+            
                 var option = {
                     responsive: false,
                     legend: {
-                        data: ['GhostData', 'PlayerData'],
+                        data: ['PlayerData', 'GhostData'],
                         textStyle: {
                             color: isDarkMode ? '#e2dddd' : '#1e1f21'
                         }
@@ -1219,11 +1219,11 @@ $(document).ready(function () {
                     radar: {
                         shape: 'polygon',
                         indicator: [
-                            { name: '생존력', max: 10000 },
-                            { name: '성장력', max: 16000 },
+                            { name: '생존력', max: 8 },
+                            { name: '성장력', max: 12000 },
                             { name: '전투력', max: 30000 },
-                            { name: '시야력', max: 38000 },
-                            { name: '총 골드량', max: 52000 }
+                            { name: '시야력', max: 25 },
+                            { name: 'CS 획득', max: 180 }
                         ],
                         axisLabel: {
                             textStyle: {
@@ -1238,11 +1238,11 @@ $(document).ready(function () {
                     },
                     series: [
                         {
-                            name: 'Budget vs spending',
+                            name: 'userData vs ghostData',
                             type: 'radar',
                             data: [
                                 {
-                                    value: [4200, 3000, 20000, 35000, 50000],
+                                    value: [4, 3000, 20000, 35000, 50000],
                                     name: 'GhostData',
                                     areaStyle: {
                                         color: 'rgba(16, 212, 243, 0.37)'
@@ -1253,6 +1253,7 @@ $(document).ready(function () {
                                     symbol: 'none',
                                 },
                                 {
+                                   
                                     value: [5000, 14000, 28000, 26000, 42000],
                                     name: 'PlayerData',
                                     areaStyle: {
@@ -1271,7 +1272,190 @@ $(document).ready(function () {
                         }
                     ]
                 };
+/*
+                function fetchUserData() {
+                    $.ajax({
+                        url: 'getRadarChart.do',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: { userId: userId },
+                        success: function(userDataArray) {
+                            // 유저 데이터를 가져와서 차트 데이터 업데이트
+                          clonsole.log(userdataArray)
+                            option.series[0].data[1].value = [
+                                userRadarData.userRadarData.u_death,
+                                userRadarData.userRadarData.u_gold,
+                                userRadarData.userRadarData.u_damage,
+                                userRadarData.userRadarData.u_wardsplaced,
+                                userRadarData.userRadarData.u_minionkill
+                            ];
+                            
+                            // 차트 업데이트
+                            radarChart.setOption(option);
+                        },
+                        error: function(xhr, status, error) {
+                        }
+                    });
+                }
+*/
+         // 유패치레이더데이터 // 
+            function fetchUserRadarData() {
+                $.ajax({
+                    url: 'getRadar.do',
+                    type: 'GET', 
+                    dataType: 'json', 
+                    data: { userId: userId },
+                    success: function(UserRadarData) {
 
+                       //확인함  
+            var udeath = UserRadarData.userRadarData.u_death;
+                var ugold = UserRadarData.userRadarData.u_gold;
+                var udamage = UserRadarData.userRadarData.u_damage;
+                var uwardsplaced = UserRadarData.userRadarData.u_wardsplaced;
+                var uminionkill = UserRadarData.userRadarData.u_minionkill;
+                // 포지션
+                var u_teamposition = UserRadarData.userRadarData.u_teamposition
+                // 확인 console.log(u_teamposition)
+                fetchGhostData(u_teamposition);
+                // 차트 업데이트
+                var modifiedUdeath = transformUdeath(udeath);
+
+            option.series[0].data[1].value = [
+               modifiedUdeath,
+                   ugold,
+                   udamage,
+                   uwardsplaced,
+                   uminionkill
+                            ];
+                            
+                            // 차트 업데이트
+                            radarChart.setOption(option);
+                       
+              /*         var u_death = UserRadarData.userRadarData.u_death;
+                         var u_gold = UserRadarData.userRadarData.u_gold;
+                         var u_damage = UserRadarData.userRadarData.u_damage;
+                         var u_wardsplaced = UserRadarData.userRadarData.u_wardsplaced;
+                         var u_minionkill = UserRadarData.userRadarData.u_minionkill;
+               */         
+                    },
+                    error: function(xhr, status, error) {
+                          console.error('Error fetching ghost data:', error);
+                           console.log(xhr.responseText); // 서버 응답 본문 확인
+                    }
+                });
+            }
+function transformUdeath(udeath) {
+    if (udeath >= 10) {
+        return 1;
+    } else if (udeath === 9) {
+        return 2;
+    } else if (udeath === 8) {
+        return 3;
+    } else if (udeath === 7) {
+        return 4;
+    } else if (udeath === 6) {
+        return 5;
+    } else if (udeath === 5) {
+        return 6;
+    } else if (udeath === 4) {
+        return 7;
+    } else if (udeath === 3) {
+        return 8;
+    } else if (udeath === 2) {
+        return 9;
+    } else if (udeath === 1) {
+        return 10;
+    }
+    return udeath;
+}
+
+
+// 고패치레이더데이터 // 
+
+                function fetchGhostData(u_teamposition) {
+                    $.ajax({
+                        url: 'getGhostDataList.do',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(ghostDataArray) {
+                            // 고스트 데이터를 가져와서 차트 데이터 업데이트
+                            ghostData = ghostDataArray.ghostDataArray;
+
+                            // 유저 데이터의 팀 포지션
+                             // 예시로 BOTTOM으로 설정
+                        
+                            // 일치하는 데이터 찾기
+                            var matchedGhostData = ghostData.find(function(ghostData) {
+                                return ghostData.g_teamposition === u_teamposition;
+                            });
+
+                            // matchedGhostData가 null이 아니면 데이터 활용
+                            if (matchedGhostData) {
+                                // matchedGhostData를 이용해서 필요한 작업 수행
+                                console.log("Matched Ghost Data:", matchedGhostData);
+                                // 여기에 차트 업데이트 등 작업 추가
+                                var gdeath = matchedGhostData.g_death;
+                                var ggold = matchedGhostData.g_gold;
+                                var gdamage = matchedGhostData.g_damage;
+                                var gwardsplaced = matchedGhostData.g_wardsplaced;
+                                var gminionkill = matchedGhostData.g_minionkill;
+                                
+                                var modifiedGdeath = transformUdeath(gdeath);
+
+                            option.series[0].data[0].value = [
+                               modifiedGdeath,
+                                   ggold,
+                                   gdamage,
+                                   gwardsplaced,
+                                   gminionkill
+                                            ];
+                                            
+                                            // 차트 업데이트
+                                            radarChart.setOption(option);
+                                
+                                
+                            } else {
+                                console.log("No matching ghost data found for user's team position.");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching ghost data:', error);
+                            console.log(xhr.responseText); // 서버 응답 본문 확인
+                        }
+                    });
+                }
+                function transformGdeath(gdeath) {
+                    if (gdeath >= 10) {
+                        return 1;
+                    } else if (gdeath === 9) {
+                        return 2;
+                    } else if (gdeath === 8) {
+                        return 3;
+                    } else if (gdeath === 7) {
+                        return 4;
+                    } else if (gdeath === 6) {
+                        return 5;
+                    } else if (gdeath === 5) {
+                        return 6;
+                    } else if (gdeath === 4) {
+                        return 7;
+                    } else if (gdeath === 3) {
+                        return 8;
+                    } else if (gdeath === 2) {
+                        return 9;
+                    } else if (gdeath === 1) {
+                        return 10;
+                    }
+                    return gdeath; // Return the original value if no condition is met
+                }
+
+                // 페이지가 로드되면 유저 데이터와 고스트 데이터를 가져와서 차트에 적용
+                fetchUserRadarData();
+                fetchGhostData();
+                
+                
+                
+                
                 radarChart.setOption(option);
 
                 document.querySelector('.darkmode').addEventListener('click', function () {
@@ -1284,76 +1468,6 @@ $(document).ready(function () {
                     radarChart.setOption(option);
                 }, false);
             });
-        </script>
-	<script>
-
-    for (var i = 1; i <= 20; i++) {
-        var expandableButtons = document.querySelectorAll('.lastQue.animated-item'+i);
-
-        expandableButtons.forEach(function (button) {
-            var expandableContent = button.querySelector('.expandable-content');
-
-            button.addEventListener('click', function (event) {
-                expandableContent.classList.toggle('expanded');
-                event.stopPropagation(); // 이벤트 전파 중지
-
-                if (expandableContent.classList.contains('expanded')) {
-                    // 확장된 컨텐츠가 나타날 때
-                    var spaceElement = document.createElement('div');
-                    spaceElement.classList.add('expandable-space');
-                    button.parentNode.insertBefore(spaceElement, button.nextSibling);
-                } else {
-                    // 확장된 컨텐츠가 사라질 때
-                    var spaceElement = button.nextElementSibling;
-                    if (spaceElement && spaceElement.classList.contains('expandable-space')) {
-                        spaceElement.remove();
-                    }
-                }
-            });
-        });
-    };
-
-        /* main1 에대한 스크립트 코드
-
-        // 라인차트 main1~20 까지 적용
-        // 같은데이터만 적용 되는듯 
-
-        for (var i = 0; i <= 20; i++) {
-            var dom = document.getElementById('main' + i);
-            var myChart6 = echarts.init(dom, null, {
-                renderer: 'canvas',
-                useDirtyRect: false
-            });
-
-            var option = {
-                xAxis: {
-                    type: 'category',
-                    data: ['5분', '10분', '15분', '20분', '25분', '30분', '35분', '40분']
-                },
-                yAxis: {
-                    type: 'value'
-                },
-                series: [
-                    {
-                        data: [820, 932, 901, 934, 1290, 1330, 1320, 1700],
-                        type: 'line',
-                        smooth: true
-                    },
-                    {
-                        data: [720, 632, 701, 834, 990, 1130, 1220, 1500],
-                        type: 'line',
-                        smooth: true
-                    }
-                ]
-            };
-
-            myChart6.setOption(option);
-
-            // 그래프 크기 변경
-            myChart6.resize(800, 600);
-        }
- */
-              
         </script>
 </body>
 </html>

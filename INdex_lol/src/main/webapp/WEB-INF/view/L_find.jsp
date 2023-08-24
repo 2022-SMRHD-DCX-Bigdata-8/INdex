@@ -36,7 +36,7 @@ System.out.println(l_user);
 							placeholder="이름을 입력해주세요."> 
 					<input class="ip" name="u_id"
 							id="login_findPwId" type="text" placeholder="아이디를 입력해주세요.">
-					<input name="u_email" id="login_findPwEmail" type="text"
+					<input class="ip" name="u_email" id="login_findPwEmail" type="text"
 						placeholder="이메일을 입력해주세요.">
 
 					<input type="button" id="login_findPWButton" class="btn" value="비밀번호찾기">

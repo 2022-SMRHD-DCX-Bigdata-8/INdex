@@ -32,7 +32,7 @@
 
     <header class="header">
         <div class="logo">
-            <a href="goMain.do"><img src="assets/img/logo11.png" alt="" class="chal"></a> <a href="goMain.do" class="lgm-link">L.gm</a>
+            <a href="goMain.do"><img src="assets/img/logo.png" alt="" class="chal"></a> <a href="goMain.do" class="lgm-link">L.gm</a>
         </div>
 
       
@@ -41,7 +41,7 @@
 
 
             <div class="profile-card" id="profileCard">
-                <img class="profile-image" src="assets/img/2.png" alt="프로필 사진">
+                <img class="profile-image" src="assets/img/profile.png" alt="프로필 사진">
             </div>
             <div id="editBox">
                 <div id="edit-box-tool">
@@ -64,7 +64,7 @@
 
             <div class="container">
                 <div class="header">
-                    <img src="assets/img/logo11.png" alt="로고">
+                    <img src="assets/img/logo.png" alt="로고">
                     <h2>회원 탈퇴</h2>
                 </div>
                 <form action="delete.do" method="POST" class="joinForm">
