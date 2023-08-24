@@ -1766,7 +1766,7 @@
                     radar: {
                         shape: 'polygon',
                         indicator: [
-                            { name: '생존력', max: 6500 },
+                            { name: '생존력', max: 10 },
                             { name: '성장력', max: 16000 },
                             { name: '전투력', max: 30000 },
                             { name: '시야력', max: 38000 },
