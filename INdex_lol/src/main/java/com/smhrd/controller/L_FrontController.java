@@ -41,6 +41,10 @@ public class L_FrontController extends HttpServlet {
 		handler.put("/findpw.do", new L_FindPwCon());
 		handler.put("/champion.do", new L_GoChampionCon());
 		handler.put("/newUserLogin.do", new NewUserLoginCon());
+		handler.put("/logout.do", new L_LogoutCon());
+		
+		handler.put("/delete.do", new L_DeleteCon());
+		handler.put("/goDelete.do", new L_GoDeleteCon());
 
 		// ajax
 		handler.put("/eCheck.do", new EmailCheckCon()); //완
@@ -59,7 +63,9 @@ public class L_FrontController extends HttpServlet {
 		
 		
 
-		//// test////////////////////////////////////////
+
+		
+		////test////////////////////////////////////////
 
 		handler.put("/gmailSend.do", new GmailSend());
 		handler.put("/getPlayData.do", new renewPlayDataCon());

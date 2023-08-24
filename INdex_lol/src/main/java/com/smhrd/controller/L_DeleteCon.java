@@ -16,50 +16,40 @@ public class L_DeleteCon implements L_Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		request.setCharacterEncoding("UTF-8");
 		
-		String pw = request.getParameter("pw");
+		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
 		
 		L_user user = (L_user)session.getAttribute("user");
 		
 		String id = user.getU_id();
-		System.out.println(id);
+		String pw = request.getParameter("loginPw");
+
+		L_user l_user = new L_user();
+		l_user.setU_id(id);
+		l_user.setU_pw(pw);
 		
-		L_user member = new L_user();
-		member.setU_id(id);
-		member.setU_pw(pw);
-		
-		
+		System.out.println("원서바보"+ l_user);
 		
 		L_userDAO dao = new L_userDAO();
+		int cnt = dao.delete(l_user);
+		
+		String url = "";
+		
+		if (cnt > 0) {
+			// 회원탈퇴 성공
+			System.out.println("탈퇴 성공");
+			session.removeAttribute("user");
+			url= "L_login";
+		} else {
 
-		try {
-			
-			int cnt = dao.delete(member);
-			
-			
-			if (cnt > 0) {
-				// 회원탈퇴 성공
-				System.out.println("탈퇴 성공");
-			
-			} else {
-				
-				
-				System.out.println("탈퇴 실패");
-				
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-							
+			System.out.println("탈퇴 실패");
+			url="L_main";
 		}
-				
-		return "L_login";
-		
-		
+
+		return url;
+
 	}
 
 }
