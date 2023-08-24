@@ -126,8 +126,8 @@ body[data-darkmode=on] .darkmode>.inner {
 
 	<header class="header">
 		<div class="logo">
-			<a href="goMain.do"><img src="assets/img/logo.png" alt="" class="chal"></a>
-			<a href="goMain.do" class="lgm-link">L.gm</a>
+			<a href="goMain.do"><img src="assets/img/logo.png" alt=""
+				class="chal"></a> <a href="goMain.do" class="lgm-link">L.gm</a>
 		</div>
 
 
@@ -178,9 +178,7 @@ body[data-darkmode=on] .darkmode>.inner {
 			<div class="side_navbar" style="border: 1;">
 				<form action="#">
 					<div id="tear">
-						<img
-							src="https://opgg-static.akamaized.net/images/medals_new/gold.png?image=q_auto,f_webp,w_144&amp;v=1692255489132"
-							alt="GOLD">
+						 <img id="tierImage" src="" alt="tier">
 						<p id="nick">${user.u_nick }</p>
 						<button id="renewal">갱신</button>
 					</div>
@@ -357,6 +355,29 @@ body[data-darkmode=on] .darkmode>.inner {
  </script>
 	<!-- 메인화면 스크립트 -->
 	<script>
+	// 사용자 rank에 따른 이미지 URL 매핑
+	const rankImages = {
+	    "BRONZE": "https://opgg-static.akamaized.net/images/medals_new/bronze.png?image=q_auto,f_webp,w_144&v=1692712288005",
+	    "SILVER": "https://opgg-static.akamaized.net/images/medals_new/silver.png?image=q_auto,f_webp,w_144&v=1692712288005",
+	    "GOLD": "https://opgg-static.akamaized.net/images/medals_new/gold.png?image=q_auto,f_webp,w_144&v=1692712288005",
+	    "PLATINUM": "https://opgg-static.akamaized.net/images/medals_new/platinum.png?image=q_auto,f_webp,w_144&v=1692712288005",
+	    "EMERALD": "https://opgg-static.akamaized.net/images/medals_new/emerald.png?image=q_auto,f_webp,w_144&v=1692712288005",
+	    "DIAMOND": "https://opgg-static.akamaized.net/images/medals_new/diamond.png?image=q_auto,f_webp,w_144&v=1692712288005",
+		"unranked" : "http://ddragon.leagueoflegends.com/cdn/4.19.2/img/profileicon/23.png"
+	};
+
+	
+	// 사용자 rank 가져오기 (세션에서 가져오거나 하드코딩)
+	const userRankIcon= "${user.u_rank}"; // 예시로 "GOLD"로 설정
+	console.log(rankImages)
+	console.log(userRankIcon)
+	const userTier = userRankIcon.split(" ")[0];
+	
+	// 이미지 요소 참조
+	const tierImage = document.getElementById("tierImage");
+
+	// 사용자 rank에 해당하는 이미지 URL 설정
+	tierImage.src = rankImages[userTier];
 		// 일정 시간마다 데이터 업데이트 실행
 		// 1분마다 실행
 		

@@ -40,23 +40,30 @@ public class getBest5Chart implements L_Controller {
 			double k_avg = 0;
 			double d_avg = 0;
 			double a_avg = 0;
+			double cs = 0;
+			double csAvg =0;
 
 			for (L_userdata user : userdata) {
 				if (champ.getU_champ().equals(user.getU_champ())) {
 					champkill += user.getU_kill();
 					champdeath += user.getU_death();
 					champassist += user.getU_assist();
+					cs += user.getU_minionkill();
 				}
 			}
 
 			k_avg = Math.round(champkill / (double) champ.getChampcnt() * 10) / 10.0;
 			d_avg = Math.round(champdeath / (double) champ.getChampcnt() * 10) / 10.0;
 			a_avg = Math.round(champassist / (double) champ.getChampcnt() * 10) / 10.0;
+			csAvg = Math.round(cs / champ.getChampcnt());
 			champAvg = Math.round((k_avg + a_avg) / d_avg * 10) / 10.0;
+			
+			System.out.println("챔카운트"+champ.getChampcnt());
+			
 
 			JSONObject champData = new JSONObject();
 			champData.put("championName", champ.getU_champ());
-			champData.put("csAvg", champ.getU_cs());
+			champData.put("csAvg", csAvg);
 			champData.put("k", k_avg);
 			champData.put("d", d_avg);
 			champData.put("a", a_avg);

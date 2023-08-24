@@ -1,6 +1,7 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -52,8 +53,8 @@ public class L_LoginCon implements L_Controller {
 		// champimg 필요없어질수도있음
 		List<L_champimg> champimg = cidao.champImg();
 		
-		
-		
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
 		
 
 		String url = "";
@@ -69,13 +70,16 @@ public class L_LoginCon implements L_Controller {
 			session.setAttribute("champDesc", champDesc);
 			session.setAttribute("champimg", champimg);
 			url = "redirect:/goMain.do";
+			return url;
 
 		} else {
+			
 			System.out.println("실패");
-			url = "redirect:/goLogin.do";
+			out.print("false");
+			
 		}
 
-		return url;
+		return null;
 	}
 
 }

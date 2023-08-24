@@ -33,9 +33,8 @@
 
 	L_user user = (L_user) session.getAttribute("user");
 	String result = (String) session.getAttribute("sucResult");
-	
-	System.out.print("success"+result);
-	
+
+	System.out.print("success" + result);
 	%>
 	<!-- 백그라운드 배경 html -->
 	<!-- Starbackground -->
@@ -53,14 +52,18 @@
 
 						<form action="login.do" method="post">
 							<h3>로그인</h3>
-							<input name="u_id" class="input_text" type="text"
-								placeholder="아이디를 입력해주세요" required> 
-							<input name="u_pw" class="input_text" type="password" placeholder="비밀번호를 입력해주세요" required>
+
+							<input id="login_id" name="u_id" class="input_text" type="text"
+								placeholder="아이디를 입력해주세요" required> <input id="login_pw"
+								name="u_pw" class="input_text" type="password"
+								placeholder="비밀번호를 입력해주세요" required>
 							<button id="login" type="submit">로그인</button>
 						</form>
 
 						<button id="join" type="submit">회원가입</button>
 
+						
+						
 						<span><a href="goFind.do">아이디/비밀번호를 잊으셨나요?</a></span>
 
 					</div>
@@ -131,7 +134,7 @@
 						disabled="disabled">
 				</div>
 			</form>
-			
+
 
 		</section>
 	</div>
@@ -155,6 +158,8 @@
 			$(".joinForm").css("visibility", "hidden");
 		});
 
+		
+		
 		$(document).click(
 				function(e) {
 					if (!$(e.target).is('#join') && !$(e.target).is('#tool')
@@ -175,45 +180,45 @@
 		$(document).ready(function() {
 			// apiError 메시지가 있다면
 			<%if (request.getAttribute("apiError") != null) {%>
-			alert("<%=request.getAttribute("apiError")%>");
+			alert("<%=request.getAttribute("apiError")%>
+		");
 
-		window.location.href = "http://localhost:8081/INdex_lol/goLogin.do";
+							window.location.href = "http://localhost:8081/INdex_lol/goLogin.do";
 	<%}%>
 		});
 	</script>
-	
-	
-	
-<script type="text/javascript">
 
-// 이미지 미리 로딩용
-function fetchAndStoreChampImg() {
-    $.ajax({
-        url: 'getChampImg.do',
-        type: 'GET', 
-        dataType: 'json', 
-        success: function(champImgData) {
-        	console.log(champImgData)
-            // 이미지 데이터를 웹 스토리지에 저장
-            localStorage.setItem('champImgData', JSON.stringify(champImgData));
-        },
-        error: function(xhr, status, error) {
-            console.error('이미지 데이터를 가져오는데 실패했습니다:', error);
-        }
-    });
-}
 
-// 로그인 페이지에서 호출
-fetchAndStoreChampImg();
 
-</script>
+	<script type="text/javascript">
+		// 이미지 미리 로딩용
+		function fetchAndStoreChampImg() {
+			$.ajax({
+				url : 'getChampImg.do',
+				type : 'GET',
+				dataType : 'json',
+				success : function(champImgData) {
+					console.log(champImgData)
+					// 이미지 데이터를 웹 스토리지에 저장
+					localStorage.setItem('champImgData', JSON
+							.stringify(champImgData));
+				},
+				error : function(xhr, status, error) {
+					console.error('이미지 데이터를 가져오는데 실패했습니다:', error);
+				}
+			});
+		}
+
+		// 로그인 페이지에서 호출
+		fetchAndStoreChampImg();
+	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var input = $("#checkEmail")
 
 			input.on("input", emailCheck);
 		});
-
+	
 		// emailCheck 기능 만들기
 		function emailCheck() {
 			// 입력된 값이 DB에 존재하는지 확인 필요
@@ -272,6 +277,45 @@ fetchAndStoreChampImg();
 					} else {
 						p.html('중복된 닉네임입니다.').css("color", "red");
 
+					}
+
+				},
+				error : function(e) {
+					alert('실패');
+				}
+
+			});
+
+		}
+		$(document).ready(function() {
+		    var loginBtn = $("#login");
+
+		    // 클릭 이벤트 발생 시 loginCheck 함수 호출
+		    loginBtn.on("click", function() {
+		        loginCheck();
+		    });
+		});
+
+		function loginCheck() {
+			var id_value = $("#login_id").val();
+			var pw_value = $("#login_pw").val();
+			$.ajax({
+				url : 'login.do',
+				type : 'post',
+				data : {
+					"u_id" : id_value,
+					"u_pw" : pw_value,
+				},
+				dataType : "text",
+				success : function(res) {
+
+					console.log(res.length, res);
+
+					
+
+					if (res == "false") {
+						alert("아이디나 비밀번호를 확인해주세요.")
+						window.location.href = "goLogin.do"
 					}
 
 				},
@@ -348,9 +392,6 @@ fetchAndStoreChampImg();
 			});
 
 		}
-		
-		
-		
 	</script>
 
 
@@ -391,9 +432,9 @@ fetchAndStoreChampImg();
 
 		}
 	</script>
-	
-	
-<!-- <script type="text/javascript">
+
+
+	<!-- <script type="text/javascript">
 	$('#joinButton').on("click", function() {
 		if(num!=null){
 			alert("회원가입 성공")
