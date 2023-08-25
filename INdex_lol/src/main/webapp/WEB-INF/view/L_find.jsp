@@ -41,7 +41,9 @@ System.out.println(l_user);
 
 					<input type="button" id="login_findPWButton" class="btn" value="비밀번호찾기">
 				</div>
-			
+				<div align="right">
+			<a href="goLogin.do" class="lgm-link" >메인화면으로 돌아가기</a>
+			</div>
 	</section>
 	</div>
 	

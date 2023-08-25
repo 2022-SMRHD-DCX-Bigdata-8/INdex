@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*  import google fonts */
+/*  import google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 * {
@@ -96,7 +97,7 @@ body {
 }
 
 #editBox {
-  background-color: white;
+  
   border-radius: 8px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -254,7 +255,7 @@ li{
   height: 16px;
   text-align: center;
 }
-.champion img{
+.champion img {
   border: 0px;
   vertical-align: middle;
   width: 100%;
@@ -283,3 +284,762 @@ nav.champion li {
   margin: 0;
   padding: 10%;
 }
+
+
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+
+.profile-card {
+  margin-right: 10px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-box{
+  position: absolute;
+  right: 15%;
+  top: 50px;
+  width: 500px;
+  
+
+}
+
+.info-box {
+  /* 핑크 배경색으로 변경 */
+  padding: 100px;
+  border: 1px solid #ccc;
+  background-color: #1e1f21;
+  position : absolute;
+  top : 15%;
+}
+
+
+
+#rkfps1{
+  position: absolute;
+  top: 15%;
+}
+#rkffldh1{
+  position: absolute;
+  top: 0;
+}
+#rodvmffodzm1{
+  position: absolute;
+  top: 0;
+}
+#rmfkrktm1{
+  position: absolute;
+  top: 0;
+}
+#rmfpdlqmwm1{
+  position: absolute;
+  top: 0;
+}
+#rmdnps1{
+  position: absolute;
+  top: 0;
+}
+#skfm1{
+  position: absolute;
+  top: 0;
+}
+#skal1{
+  position: absolute;
+  top: 0;
+}
+#sktjtm1{
+  position: absolute;
+  top: 0;
+}
+#skvlfl1{
+  position: absolute;
+  top: 0;
+}
+#shxlffjtm1{
+  position: absolute;
+  top: 0;
+}
+#shrxjs1{
+  position: absolute;
+  top: 0;
+}
+#snsndhkdnjffjavm1{
+  position: absolute;
+  top: 0;
+}
+#slekffl1{
+  position: absolute;
+  top: 0;
+}
+#slzh1{
+  position: absolute;
+  top: 0;
+}
+#slffk1{
+  position: absolute;
+  top: 0;
+}
+#ekfldntm1{
+  position: absolute;
+  top: 0;
+}
+#ekdldosk1{
+  position: absolute;
+  top: 0;
+}
+#emfpdlqms1{
+  position: absolute;
+  top: 0;
+}
+#fkdlwm1{
+  position: absolute;
+  top: 0;
+}
+#fkzks1{
+  position: absolute;
+  top: 0;
+}
+#fkaajtm1{
+  position: absolute;
+  top: 0;
+}
+#fjrtm1{
+  position: absolute;
+  top: 0;
+}
+#fjaqmf1{
+  position: absolute;
+  top: 0;
+}
+#fpskxkrmffktmzm1{
+  position: absolute;
+  top: 0;
+}
+#fpsprxhs1{
+  position: absolute;
+  top: 0;
+}
+#fpdhsk1{
+  position: absolute;
+  top: 0;
+}
+#fprtkdl1{
+  position: absolute;
+  top: 0;
+}
+#fpf1{
+  position: absolute;
+  top: 0;
+}
+#fpdrk1{
+  position: absolute;
+  top: 0;
+}
+#fntldks1{
+  position: absolute;
+  top: 0;
+}
+#fnffn1{
+  position: absolute;
+  top: 0;
+}
+#fmqmffkd1{
+  position: absolute;
+  top: 0;
+}
+#fltls1{
+  position: absolute;
+  top: 0;
+}
+#flqms1{
+  position: absolute;
+  top: 0;
+}
+#fltksemfk1{
+  position: absolute;
+  top: 0;
+}
+#flffldk1{
+  position: absolute;
+  top: 0;
+}
+#aktmxjdl1{
+  position: absolute;
+  top: 0;
+}
+#akdhzkdl1{
+  position: absolute;
+  top: 0;
+}
+#akfwkgk1{
+  position: absolute;
+  top: 0;
+}
+#akfvkdlxm1{
+  position: absolute;
+  top: 0;
+}
+#ahepzkdlwj1{
+  position: absolute;
+  top: 0;
+}
+#ahfmrksk1{
+  position: absolute;
+  top: 0;
+}
+#ansehqkrtk1{
+  position: absolute;
+  top: 0;
+}
+#altmvhcbs1{
+  position: absolute;
+  top: 0;
+}
+#alffldh1{
+  position: absolute;
+  top: 0;
+}
+#qkem1{
+  position: absolute;
+  top: 0;
+}
+#qkfntm1{
+  position: absolute;
+  top: 0;
+}
+#qkdl1{
+  position: absolute;
+  top: 0;
+}
+#qpdlrk1{
+  position: absolute;
+  top: 0;
+}
+#qpdls1{
+  position: absolute;
+  top: 0;
+}
+#qprtm1{
+  position: absolute;
+  top: 0;
+}
+#qpfqptm1{
+  position: absolute;
+  top: 0;
+}
+#qpfzhwm1{
+  position: absolute;
+  top: 0;
+}
+#qhfflqpdj1{
+  position: absolute;
+  top: 0;
+}
+#qmfkdna1{
+  position: absolute;
+  top: 0;
+}
+#qmfosem1{
+  position: absolute;
+  top: 0;
+}
+#qmffkelalfm1{
+  position: absolute;
+  top: 0;
+}
+#qmfflcmzmfodzm1{
+  position: absolute;
+  top: 0;
+}
+#qldprh1{
+  position: absolute;
+  top: 0;
+}
+#qlrxhfm1{
+  position: absolute;
+  top: 0;
+}
+#QhQl1{
+  position: absolute;
+  top: 0;
+}
+#tkalfk1{
+  position: absolute;
+  top: 0;
+}
+#tkdldhs1{
+  position: absolute;
+  top: 0;
+}
+#tkdlffjtm1{
+  position: absolute;
+  top: 0;
+}
+#tizh1{
+  position: absolute;
+  top: 0;
+}
+#tpsk1{
+  position: absolute;
+  top: 0;
+}
+#tpfkvls1{
+  position: absolute;
+  top: 0;
+}
+#tpwndksl1{
+  position: absolute;
+  top: 0;
+}
+#tpxm1{
+  position: absolute;
+  top: 0;
+}
+#thsk1{
+  position: absolute;
+  top: 0;
+}
+#thfkzk1{
+  position: absolute;
+  top: 0;
+}
+#tnps1{
+  position: absolute;
+  top: 0;
+}
+#tnlqksk1{
+  position: absolute;
+  top: 0;
+}
+#tmdnpdls1{
+  position: absolute;
+  top: 0;
+}
+#tmzksj1{
+  position: absolute;
+  top: 0;
+}
+#tlqlfm1{
+  position: absolute;
+  top: 0;
+}
+#tlsWkdh1{
+  position: absolute;
+  top: 0;
+}
+#tlsemfk1{
+  position: absolute;
+  top: 0;
+}
+#tlswlem1{
+  position: absolute;
+  top: 0;
+}
+#Tmfptnl1{
+  position: absolute;
+  top: 0;
+}
+#dkfl1{
+  position: absolute;
+  top: 0;
+}
+#dkanan1{
+  position: absolute;
+  top: 0;
+}
+#dkdnfpffldhsthf1{
+  position: absolute;
+  top: 0;
+}
+#dkdlqjs1{
+  position: absolute;
+  top: 0;
+}
+#dkwlfm1{
+  position: absolute;
+  top: 0;
+}
+#dkzkffl1{
+  position: absolute;
+  top: 0;
+}
+#dkzmtis1{
+  position: absolute;
+  top: 0;
+}
+#dkxmfhrtm1{
+  position: absolute;
+  top: 0;
+}
+#dkvpffldhtm1{
+  position: absolute;
+  top: 0;
+}
+#dkffltmxk1{
+  position: absolute;
+  top: 0;
+}
+#dosl1{
+  position: absolute;
+  top: 0;
+}
+#doslqldk1{
+  position: absolute;
+  top: 0;
+}
+#dotnl1{
+  position: absolute;
+  top: 0;
+}
+#ditmdh1{
+  position: absolute;
+  top: 0;
+}
+#dpzh1{
+  position: absolute;
+  top: 0;
+}
+#dpffltm1{
+  position: absolute;
+  top: 0;
+}
+#dhrhd1{
+  position: absolute;
+  top: 0;
+}
+#dhfms1{
+  position: absolute;
+  top: 0;
+}
+#dhfldksk1{
+  position: absolute;
+  top: 0;
+}
+#dhffkvm1{
+  position: absolute;
+  top: 0;
+}
+#dysp1{
+  position: absolute;
+  top: 0;
+}
+#dyflr1{
+  position: absolute;
+  top: 0;
+}
+#dnelfm1{
+  position: absolute;
+  top: 0;
+}
+#dnfmrht1{
+  position: absolute;
+  top: 0;
+}
+#dnjdnlr1{
+  position: absolute;
+  top: 0;
+}
+#dbal1{
+  position: absolute;
+  top: 0;
+}
+#dlfpffldk1{
+  position: absolute;
+  top: 0;
+}
+#dlqmffls1{
+  position: absolute;
+  top: 0;
+}
+#dlwmfldjf1{
+  position: absolute;
+  top: 0;
+}
+#dlffkdhdl1{
+  position: absolute;
+  top: 0;
+}
+#wkfmqks4tp1{
+  position: absolute;
+  top: 0;
+}
+#wkdi1{
+  position: absolute;
+  top: 0;
+}
+#wkdlfk1{
+  position: absolute;
+  top: 0;
+}
+#wkzm1{
+  position: absolute;
+  top: 0;
+}
+#wkssk1{
+  position: absolute;
+  top: 0;
+}
+#wortm1{
+  position: absolute;
+  top: 0;
+}
+#wortm1{
+  position: absolute;
+  top: 0;
+}
+#wpem1{
+  position: absolute;
+  top: 0;
+}
+#wpem1{
+  position: absolute;
+  top: 0;
+}
+#wpfktm1{
+  position: absolute;
+  top: 0;
+}
+#wpfl1{
+  position: absolute;
+  top: 0;
+}
+#wpdltm1{
+  position: absolute;
+  top: 0;
+}
+#whdl1{
+  position: absolute;
+  top: 0;
+}
+#wlrtm1{
+  position: absolute;
+  top: 0;
+}
+#wls1{
+  position: absolute;
+  top: 0;
+}
+#wlffldjs1{
+  position: absolute;
+  top: 0;
+}
+#wldzmtm1{
+  position: absolute;
+  top: 0;
+}
+#chrktm1{
+  position: absolute;
+  top: 0;
+}
+#zkfmak1{
+  position: absolute;
+  top: 0;
+}
+#zkalf1{
+  position: absolute;
+  top: 0;
+}
+#zktkels1{
+  position: absolute;
+  top: 0;
+}
+#zktjtm1{
+  position: absolute;
+  top: 0;
+}
+#zktldhvpdk1{
+  position: absolute;
+  top: 0;
+}
+#zkdltk1{
+  position: absolute;
+  top: 0;
+}
+#zkwlrtm1{
+  position: absolute;
+  top: 0;
+}
+#zkwlrtm1{
+  position: absolute;
+  top: 0;
+}
+#zkxkflsk1{
+  position: absolute;
+  top: 0;
+}
+#zkffltmxk1{
+  position: absolute;
+  top: 0;
+}
+#zpxpx1{
+  position: absolute;
+  top: 0;
+}
+#zpdlxmffls1{
+  position: absolute;
+  top: 0;
+}
+#zpdls1{
+  position: absolute;
+  top: 0;
+}
+#zpdlf1{
+  position: absolute;
+  top: 0;
+}
+#zhrmah1{
+  position: absolute;
+  top: 0;
+}
+#zhfmzl1{
+  position: absolute;
+  top: 0;
+}
+#znls1{
+  position: absolute;
+  top: 0;
+}
+#zmtksxp1{
+  position: absolute;
+  top: 0;
+}
+#zmffpem1{
+  position: absolute;
+  top: 0;
+}
+#zldksk1{
+  position: absolute;
+  top: 0;
+}
+#zlsemfpem1{
+  position: absolute;
+  top: 0;
+}
+#xkflr1{
+  position: absolute;
+  top: 0;
+}
+#xkffhs1{
+  position: absolute;
+  top: 0;
+}
+#xkffldi1{
+  position: absolute;
+  top: 0;
+}
+#xkazpscl1{
+  position: absolute;
+  top: 0;
+}
+#xmfjsemf1{
+  position: absolute;
+  top: 0;
+}
+#xmfltmxksk1{
+  position: absolute;
+  top: 0;
+}
+#xmflsekaldj1{
+  position: absolute;
+  top: 0;
+}
+#xmdnltmxlemvpdlxm1{
+  position: absolute;
+  top: 0;
+}
+#xmdnlcl1{
+  position: absolute;
+  top: 0;
+}
+#xlah1{
+  position: absolute;
+  top: 0;
+}
+#vkdlzm1{
+  position: absolute;
+  top: 0;
+}
+#vksxpdhs1{
+  position: absolute;
+  top: 0;
+}
+#vlemftmxlr1{
+  position: absolute;
+  top: 0;
+}
+#vldhfk1{
+  position: absolute;
+  top: 0;
+}
+#vlwm1{
+  position: absolute;
+  top: 0;
+}
+#gkdlajeldrj1{
+  position: absolute;
+  top: 0;
+}
+#gpzkfla1{
+  position: absolute;
+  top: 0;
+}
+#zpsps1{
+  position: absolute;
+  top: 0;
+
+}
+
+
+
+
+
+.ghffl img {
+  border: 0px;
+  width: 70%;
+  height: 100%;
+  border: 1px solid #ccc;
+  position: relative;
+  left: 16%;
+  bottom: 60px;
+  border: 1px solid #ccc;
+  
+ 
+}
+
+.dbgn img{
+  border: 1px solid #ccc;
+  margin-inline: 15px;
+ 
+
+}
+
+
+.ghffl::before {
+  content: ""; /* 가상 요소의 콘텐츠 없음 */
+  display: block; /* 블록 요소로 표시 */
+  width: 100%; /* 가로 길이를 .ghffl과 동일하게 설정 */
+  height: 1px; /* 선의 높이 설정 */
+  background-color: rgb(250, 250, 250); /* 선의 색상 설정 */
+  position: absolute; /* 절대 포지션을 사용하여 위에 배치 */
+  top: 60px; /* 선을 .ghffl 위로 배치 */
+  left: 0; /* 왼쪽에 배치 */
+}
+
+
+h1 { 
+  position: relative;
+
+  bottom: 100px;
+  left: 100px;
+  
+}
+
+
+

@@ -309,14 +309,7 @@
 				dataType : "text",
 				success : function(res) {
 
-					console.log(res.length, res);
-
 					
-
-					if (res == "false") {
-						alert("아이디나 비밀번호를 확인해주세요.")
-						window.location.href = "goLogin.do"
-					}
 
 				},
 				error : function(e) {

@@ -76,9 +76,7 @@
                         <div class="textForm">
                             <input name="loginPw" type="password" class="input" placeholder="비밀번호 변경" id="changePw" required >
                         </div>
-                        <div class="textForm">
-                            <input name="nickname" type="text" class="input" placeholder="롤 계정 닉네임 변경시만 가능" id="changeNick" required>
-                        </div>
+                       
                         <button type="submit" class="btn" id="updatebtn">수정 완료</button>
                     </div>
                 </form>

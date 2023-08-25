@@ -1240,11 +1240,11 @@ $(document).ready(function () {
                     radar: {
                         shape: 'polygon',
                         indicator: [
-                            { name: '생존력', max: 8 },
-                            { name: '성장력', max: 12000 },
+                            { name: '생존력', max: 10 },
+                            { name: '성장력', max: 14000 },
                             { name: '전투력', max: 30000 },
                             { name: '시야력', max: 25 },
-                            { name: 'CS 획득', max: 180 }
+                            { name: 'CS 획득', max: 200 }
                         ],
                         axisLabel: {
                             textStyle: {
@@ -1263,7 +1263,7 @@ $(document).ready(function () {
                             type: 'radar',
                             data: [
                                 {
-                                    value: [4, 3000, 20000, 35000, 50000],
+                                    value: [0, 0, 0, 0, 0],
                                     name: 'GhostData',
                                     areaStyle: {
                                         color: 'rgba(16, 212, 243, 0.37)'
@@ -1275,7 +1275,7 @@ $(document).ready(function () {
                                 },
                                 {
                                    
-                                    value: [5000, 14000, 28000, 26000, 42000],
+                                    value: [0, 0, 0, 0, 0],
                                     name: 'PlayerData',
                                     areaStyle: {
                                         color: 'rgba(253, 101, 5, 0.35)'

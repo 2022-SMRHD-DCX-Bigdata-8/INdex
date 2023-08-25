@@ -35,7 +35,6 @@
 	<update id="updateInfo" parameterType="com.smhrd.entity.L_user">
 		update l_user set
 		u_pw = #{u_pw}
-		u_nick = #{u_nick}
 		where u_id = #{u_id}
 
 	</update>

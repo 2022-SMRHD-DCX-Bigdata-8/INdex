@@ -17,7 +17,7 @@ public class L_LogoutCon implements L_Controller {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
-		return "L_login";
+		return "redirect:/goLogin.do";
 	}
 
 }
